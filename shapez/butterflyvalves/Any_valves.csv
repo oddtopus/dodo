@@ -1,0 +1,6 @@
+name;fileName;DN;PN;Kv;ports
+"ball valve 1/2""";ballDN15.stp;DN15;PN10;10;0:0:0/0:0:69
+"ball valve 3/4""";ballDN20.step;DN20;PN10;15;0:0:0/0:0:77
+"ball valve 1""";ballDN25.step;DN25;PN10;20;0:0:0/0:0:89
+"ball valve 1.1/2""";ballDN40.step;DN40;PN10;500;0:0:0/0:0:114
+"ball valve 2 flanged""";ballDN50flg.step;DN50;PN16;1000;0:0:0/0:0:70
