@@ -7,7 +7,7 @@ objToPaint=['Pipe','Elbow','Reduct','Flange','Cap']
 from math import degrees
 
 __author__="oddtopus"
-__url__="github.com/oddtopus/flamingo"
+__url__="github.com/oddtopus/dodo"
 __license__="LGPL 3"
 X=FreeCAD.Vector(1,0,0)
 Y=FreeCAD.Vector(0,1,0)

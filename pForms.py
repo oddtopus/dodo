@@ -4,19 +4,18 @@ __license__="LGPL 3"
 
 import FreeCAD,FreeCADGui,Part, csv
 pq=FreeCAD.Units.parseQuantity
-import fCmd, pCmd
+import fCmd, pCmd, dodoDialogs
 from os import listdir
 from os.path import join, dirname, abspath
 from PySide.QtCore import *
 from PySide.QtGui import *
 from math import degrees
 from DraftVecUtils import rounded
-from fForms import prototypeDialog
 
 # import prototypes
 class protopypeForm(QDialog): #, prototypes.protoPypeForm):
   'prototype dialog for insert pFeatures'
-  def __init__(self,winTitle='Title', PType='Pipe', PRating='SCH-STD', icon='flamingo.svg'):
+  def __init__(self,winTitle='Title', PType='Pipe', PRating='SCH-STD', icon='dodo.svg'):
     '''
     __init__(self,winTitle='Title', PType='Pipe', PRating='SCH-STD')
       winTitle: the window's title
@@ -1223,7 +1222,7 @@ class breakForm(QDialog):
 
 import pObservers as po
 
-class joinForm(prototypeDialog):
+class joinForm(dodoDialogs.protoTypeDialog):
   def __init__(self):
     super(joinForm,self).__init__('joinPypes.ui')
     self.form.btn1.clicked.connect(self.reset)
@@ -1234,9 +1233,6 @@ class joinForm(prototypeDialog):
     info["State"]="DOWN"
     info["Key"]="ESCAPE"
     self.observer.goOut(info)
-    #try: self.view.removeEventCallback('SoEvent',self.call)
-    #except: pass
-    #FreeCADGui.Control.closeDialog()
     super(joinForm,self).reject()
   def accept(self):
     self.reject()
@@ -1484,7 +1480,7 @@ class point2pointPipe(DraftTools.Line):
     #self.pform.close()
     #super(point2pointPipe,self).finish(closed,cont)
 
-class insertTankForm(prototypeDialog):
+class insertTankForm(dodoDialogs.protoTypeDialog):
   def __init__(self):
     self.nozzles=list()
     super(insertTankForm,self).__init__('tank.ui')
@@ -1525,26 +1521,32 @@ class insertTankForm(prototypeDialog):
     pCmd.makeNozzle(DN, float(self.form.editLength.text()), *args)
     FreeCAD.ActiveDocument.commitTransaction()
   def combine(self):
+    print('doing combine')
     self.form.listSizes.clear()
     try:
       fileName="Pipe_"+self.form.comboPipe.currentText()+".csv"
+      print(fileName)
       f=open(join(dirname(abspath(__file__)),"tablez",fileName),'r')
       reader=csv.DictReader(f,delimiter=';')
       pipes=dict([[line['PSize'],[float(line['OD']),float(line['thk'])]] for line in reader])
       f.close()
       fileName="Flange_"+self.form.comboFlange.currentText()+".csv"
+      print(fileName)
       f=open(join(dirname(abspath(__file__)),"tablez",fileName),'r')
       reader=csv.DictReader(f,delimiter=';')
       flanges=dict([[line['PSize'],[float(line['D']), float(line['d']), float(line['df']), float(line['f']), float(line['t']), int(line['n'])]] for line in reader])
       f.close()
+      print('files read')
     except:
+      print('files not read')
       return
     listNozzles=[[p[0],p[1]+flanges[p[0]]] for p in pipes.items() if p[0] in flanges.keys()]
+    print('listNozzles: %s' %str(listNozzles))
     self.nozzles=dict(listNozzles)
-    self.form.listSizes.addItems(self.nozzles.keys())
+    self.form.listSizes.addItems(list(self.nozzles.keys()))
     #self.form.listSizes.sortItems()
 
-class insertRouteForm(prototypeDialog):
+class insertRouteForm(dodoDialogs.protoTypeDialog):
   '''
   Dialog for makeRoute().
   '''

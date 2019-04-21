@@ -2,7 +2,7 @@
 
 __title__="pypeTools toolbar"
 __author__="oddtopus"
-__url__="github.com/oddtopus/flamingo"
+__url__="github.com/oddtopus/dodo"
 __license__="LGPL 3"
 
 # import FreeCAD modules
@@ -202,13 +202,13 @@ class point2point:
   def GetResources(self):
     return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","point2point.svg"),'MenuText':'draw a tube point-to-point','ToolTip':'Click on subsequent points.'}
     
-class insertAny:
+class insertAnyz:
   '''
   Dialog to insert any object saved as .STEP, .IGES or .BREP in folder ../Mod/dodo/shapez or subfolders.
   '''
   def Activated(self):
     import anyShapez
-    FreeCADGui.Control.showDialog(anyShapez.shapeDialog()) 
+    FreeCADGui.Control.showDialog(anyShapez.shapezDialog()) 
     
   def GetResources(self):
     return{'MenuText':'Insert any shape','ToolTip':'Insert a STEP, IGES or BREP'}
@@ -253,4 +253,4 @@ addCommand('extend1intersection',extend1intersection())
 addCommand('laydown',laydown())
 addCommand('raiseup',raiseup())
 addCommand('point2point',point2point())
-addCommand('insertAny',insertAny())
+addCommand('insertAnyz',insertAnyz())

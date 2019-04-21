@@ -3,10 +3,9 @@
 
 __license__="LGPL 3"
 
-import FreeCAD, FreeCADGui, fCmd
+import FreeCAD, FreeCADGui, fCmd, dodoDialogs
 from os.path import join, dirname, abspath
 from pivy import coin
-from fForms import prototypeDialog
 
 def setWP():
   'function to change working plane'
@@ -168,7 +167,7 @@ class arrow_move(arrow):
       self.__init__(self.edit, pl,direct,M,self.objs)
     FreeCAD.activeDocument().commitTransaction()
 
-class handleDialog(prototypeDialog):
+class handleDialog(dodoDialogs.protoTypeDialog):
   def __init__(self):
     self.arrow=None
     super(handleDialog,self).__init__('disp.ui')
@@ -207,10 +206,8 @@ class handleDialog(prototypeDialog):
     self.reject()
   def reject(self):
     if self.arrow: self.arrow.closeArrow()
-    try: self.view.removeEventCallback('SoEvent',self.call)
-    except: pass
     if FreeCAD.ActiveDocument: FreeCAD.ActiveDocument.recompute()
-    FreeCADGui.Control.closeDialog()
+    super(handleDialog,self).reject()
 
 class label3D(object):
   '''

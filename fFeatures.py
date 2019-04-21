@@ -2,7 +2,7 @@
 
 __title__="frameTools objects"
 __author__="oddtopus"
-__url__="github.com/oddtopus/flamingo"
+__url__="github.com/oddtopus/dodo"
 __license__="LGPL 3"
 
 import FreeCAD, FreeCADGui, Part, csv, fCmd, pCmd, ArchProfile
@@ -242,7 +242,7 @@ class insertSectForm(QWidget):
   NOTE: It's also possible to create customized 2D profiles and drag-and-drop
   them inside this group."
   '''
-  def __init__(self,winTitle='Insert section', icon='flamingo.svg'):
+  def __init__(self,winTitle='Insert section', icon='dodo.svg'):
     '''
     __init__(self,winTitle='Title',icon='filename.svg')
     '''
@@ -316,9 +316,9 @@ class insertSectForm(QWidget):
       group.addObject(s)
     FreeCAD.activeDocument().recompute()
 
-from fForms import prototypeDialog
+import dodoDialogs
 
-class frameBranchForm(prototypeDialog):
+class frameBranchForm(dodoDialogs.protoTypeDialog):
   'dialog for framebranches'
   def __init__(self):
     super(frameBranchForm,self).__init__('fbranch.ui')
@@ -414,9 +414,6 @@ class frameBranchForm(prototypeDialog):
         self.form.editTail.setText(str(obj.tailOffset))
         self.form.editHead.setText(str(obj.headOffset))
         self.form.editAngle.setText(str(obj.spin))
-        #self.form.sliTail.setValue(int(obj.tailOffset/float(obj.Height)*100))
-        #self.form.sliHead.setValue(int(obj.headOffset/float(obj.Height)*100))
-        #self.form.dialAngle.setValue(int(obj.spin))
         fb=findFB(i['Object'])
         if fb: 
           labText+=': part of '+fb.Label

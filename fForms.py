@@ -3,62 +3,13 @@
 __license__="LGPL 3"
 
 import FreeCAD,FreeCADGui
-import fCmd
+import fCmd, dodoDialogs
 from PySide.QtCore import *
 from PySide.QtGui import *
 from os.path import join, dirname, abspath
 from sys import platform
 
-class prototypeDialog(object): 
-  'prototype for dialogs.ui with callback function'
-  def __init__(self,dialog='anyFile.ui'):
-    dialogPath=join(dirname(abspath(__file__)),"dialogz",dialog)
-    FreeCAD.Console.PrintMessage(dialogPath+"\n")
-    self.form=FreeCADGui.PySideUic.loadUi(dialogPath)
-    FreeCAD.Console.PrintMessage(dialogPath+" loaded\n")
-    if platform.startswith('win'):
-      FreeCAD.Console.PrintWarning("No keyboard shortcuts.\n")
-    else:
-      FreeCAD.Console.PrintMessage('Keyboard shortcuts available.\n"S" to select\n"RETURN" to perform action\n')
-      try:
-        self.view=FreeCADGui.activeDocument().activeView()
-        self.call=self.view.addEventCallback("SoEvent", self.action)
-      except:
-        FreeCAD.Console.PrintError('No view available.\n')
-  def action(self,arg):
-    'Default function executed by callback'
-    if arg['Type']=='SoKeyboardEvent':
-      if arg['Key'] in ['s','S'] and arg['State']=='DOWN':# and FreeCADGui.Selection.getSelection():
-        self.selectAction()
-      elif arg['Key']=='RETURN' and arg['State']=='DOWN':
-        self.accept()
-      elif arg['Key']=='ESCAPE' and arg['State']=='DOWN':
-        self.reject()
-    if arg['Type']=='SoMouseButtonEvent':
-      CtrlAltShift=[arg['CtrlDown'],arg['AltDown'],arg['ShiftDown']]
-      if arg['Button']=='BUTTON1' and arg['State']=='DOWN': self.mouseActionB1(CtrlAltShift)
-      elif arg['Button']=='BUTTON2' and arg['State']=='DOWN': self.mouseActionB2(CtrlAltShift)
-      elif arg['Button']=='BUTTON3' and arg['State']=='DOWN': self.mouseActionB3(CtrlAltShift)
-  def selectAction(self):
-    'MUST be redefined in the child class'
-    pass
-  def mouseActionB1(self,CtrlAltShift):
-    'MUST be redefined in the child class'
-    pass
-  def mouseActionB2(self,CtrlAltShift):
-    'MUST be redefined in the child class'
-    pass
-  def mouseActionB3(self,CtrlAltShift):
-    'MUST be redefined in the child class'
-    pass
-  def reject(self):
-    'CAN be redefined to remove other attributes, such as arrow()s or label()s'
-    try: self.view.removeEventCallback('SoEvent',self.call)
-    except: pass
-    if FreeCAD.ActiveDocument: FreeCAD.ActiveDocument.recompute()
-    FreeCADGui.Control.closeDialog()
-
-class fillForm(prototypeDialog):
+class fillForm(dodoDialogs.protoTypeDialog):
   'dialog for fillFrame()'
   def __init__(self):
     super(fillForm,self).__init__('fillframe.ui')
@@ -82,7 +33,7 @@ class fillForm(prototypeDialog):
       self.form.label.setText(self.beam.Label+':'+self.beam.Profile)
       FreeCADGui.Selection.removeSelection(self.beam)
 
-class extendForm(prototypeDialog):
+class extendForm(dodoDialogs.protoTypeDialog):
   'dialog for fCmd.extendTheBeam()'
   def __init__(self):
     super(extendForm,self).__init__('extend.ui')
@@ -108,7 +59,7 @@ class extendForm(prototypeDialog):
       FreeCAD.activeDocument().recompute()
       FreeCAD.activeDocument().commitTransaction()
       
-class stretchForm(prototypeDialog):
+class stretchForm(dodoDialogs.protoTypeDialog):
   '''dialog for stretchTheBeam()
     [Get Length] measures the min. distance of the selected objects or
       the length of the selected edge or
@@ -178,7 +129,7 @@ class stretchForm(prototypeDialog):
       self.labTail.removeLabel()
     super(stretchForm,self).reject()
 
-class translateForm(prototypeDialog):   
+class translateForm(dodoDialogs.protoTypeDialog):   
   'dialog for moving blocks'
   def __init__(self):
     super(translateForm,self).__init__("beamshift.ui")
@@ -278,7 +229,7 @@ class translateForm(prototypeDialog):
     #FreeCADGui.Control.closeDialog()
     super(translateForm,self).reject()
 
-class alignForm(prototypeDialog):   
+class alignForm(dodoDialogs.protoTypeDialog):   
   'dialog to flush faces'
   def __init__(self):
     super(alignForm,self).__init__('align.ui')
@@ -320,7 +271,7 @@ class alignForm(prototypeDialog):
       FreeCAD.activeDocument().recompute()
       FreeCAD.activeDocument().commitTransaction()
     
-class rotateAroundForm(prototypeDialog):
+class rotateAroundForm(dodoDialogs.protoTypeDialog):
   '''
   Dialog for rotateTheBeamAround().
   It allows to rotate one object around one edge or the axis of a circular edge (or one principal axis.)

@@ -58,14 +58,14 @@ def makeThing(n='Valvola', fn='ballDN15.stp', p='0:0:0', pos=None, Z=None):
   a.Placement.Rotation=rot.multiply(a.Placement.Rotation)
   return a
 
-from fForms import prototypeDialog
+import dodoDialogs
 
-class shapeDialog(prototypeDialog):
-  'dialog for any()'
+class shapezDialog(dodoDialogs.protoTypeDialog):
+  'dialog for to import conveniently any shape from a STEP, IGS or BREP file'
   def __init__(self):
-    super(shapeDialog,self).__init__('shapes.ui')
+    super(shapezDialog,self).__init__('shapes.ui')
     self.shapesDir=join(dirname(abspath(__file__)),'shapez')
-    FreeCAD.Console.PrintMessage(str(self.shapesDir))
+    FreeCAD.Console.PrintMessage('Listing files in '+str(self.shapesDir)+'\n')
     self.cwd=self.shapesDir
     self.pipeDictList=list()
     self.filesListed=list()

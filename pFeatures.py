@@ -2,7 +2,7 @@
 
 __title__="pypeTools objects"
 __author__="oddtopus"
-__url__="github.com/oddtopus/flamingo"
+__url__="github.com/oddtopus/dodo"
 __license__="LGPL 3"
 objs=['Pipe','Elbow','Reduct','Cap','Flange','Ubolt','Valve']
 metaObjs=['PypeLine','PypeBranch']

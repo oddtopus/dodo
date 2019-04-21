@@ -4,29 +4,27 @@ from sys import platform
 from os.path import join, dirname, abspath
 import FreeCAD, FreeCADGui
 
-class prototypeDialog(QDialog): 
+class protoTypeDialog(object): 
   'prototype for dialogs.ui with callback function'
   def __init__(self,dialog='anyFile.ui'):
-    super(prototypeDialog,self).__init__()
     dialogPath=join(dirname(abspath(__file__)),"dialogz",dialog)
-    FreeCAD.Console.PrintMessage(dialogPath+"\n")
     self.form=FreeCADGui.PySideUic.loadUi(dialogPath)
-    FreeCAD.Console.PrintMessage(dialogPath+" loaded\n")
     ### new shortcuts procedure
-    mw = FreeCADGui.getMainWindow()
-    for act in mw.findChildren(QtGui.QAction):
+    self.mw = FreeCADGui.getMainWindow()
+    for act in self.mw.findChildren(QAction):
       if act.objectName() in ["actionX", "actionS"]:
-        mw.removeAction(act)
-    actionKey = QAction(mw)
-    actionKey.setObjectName("actionX") # define X action
-    actionKey.setShortcut(QKeySequence("Alt+X"))
-    actionKey.triggered.connect(self.accept)
-    mw.addAction(actionKey)
-    actionKey.setObjectName("actionS") # define S action
-    actionKey.setShortcut(QKeySequence("Alt+S"))
-    actionKey.triggered.connect(self.selectAction)
-    mw.addAction(actionKey)
-    FreeCAD.Console.PrintMessage('"Alt+S" to select\n"Alt+X" to execute\n')
+        self.mw.removeAction(act)
+    self.actionX = QAction(self.mw)
+    self.actionX.setObjectName("actionX") # define X action
+    self.actionX.setShortcut(QKeySequence("X"))
+    self.actionX.triggered.connect(self.accept)
+    self.mw.addAction(self.actionX)
+    self.actionS = QAction(self.mw)
+    self.actionS.setObjectName("actionS") # define S action
+    self.actionS.setShortcut(QKeySequence("S"))
+    self.actionS.triggered.connect(self.selectAction)
+    self.mw.addAction(self.actionS)
+    FreeCAD.Console.PrintMessage('"%s" to select; "%s" to execute\n' %(self.actionX.shortcuts()[0].toString(),self.actionS.shortcuts()[0].toString()))
     try:
       self.view=FreeCADGui.activeDocument().activeView()
       self.call=self.view.addEventCallback("SoMouseButtonEvent", self.action) # SoKeyboardEvents replaced by QAction'
@@ -41,6 +39,7 @@ class prototypeDialog(QDialog):
     elif arg['Button']=='BUTTON3' and arg['State']=='DOWN': self.mouseActionB3(CtrlAltShift)
   def selectAction(self):
     'MUST be redefined in the child class'
+    print('"selectAction" performed')
     pass
   def mouseActionB1(self,CtrlAltShift):
     'MUST be redefined in the child class'
@@ -53,10 +52,9 @@ class prototypeDialog(QDialog):
     pass
   def reject(self):
     'CAN be redefined to remove other attributes, such as arrow()s or label()s'
-    mw = FreeCADGui.getMainWindow()
-    for act in mw.findChildren(QtGui.QAction):
-      if act.objectName() in ["actionX", "actionS"]:
-        mw.removeAction(act)
+    self.mw.removeAction(self.actionX)
+    self.mw.removeAction(self.actionS)
+    FreeCAD.Console.PrintMessage('Actions "%s" and "%s" removed\n' %(self.actionX.objectName(),self.actionS.objectName()))
     try: self.view.removeEventCallback('SoMouseButtonEvent',self.call)
     except: pass
     FreeCADGui.Control.closeDialog()
@@ -64,7 +62,7 @@ class prototypeDialog(QDialog):
 
 class protopypeForm(QDialog): #, prototypes.protoPypeForm):
   'prototype dialog for insert pFeatures'
-  def __init__(self,winTitle='Title', PType='Pipe', PRating='SCH-STD', icon='flamingo.svg'):
+  def __init__(self,winTitle='Title', PType='Pipe', PRating='SCH-STD', icon='dodo.svg'):
     '''
     __init__(self,winTitle='Title', PType='Pipe', PRating='SCH-STD')
       winTitle: the window's title
@@ -156,4 +154,121 @@ class protopypeForm(QDialog): #, prototypes.protoPypeForm):
         result=row
         break
     return result
+
+# PIEMENU
+from PySide import QtCore, QtGui
+from math import pi, cos, sin
+import numpy as np
+
+class PieButton(QtGui.QGraphicsEllipseItem):
+    def __init__(self, pos=[0, 0], angle_range=(0, 1), size=[50, 50], view=None, parent=None):
+        super(PieButton, self).__init__(None, scene=parent)
+        self.view = view
+        self.angle_range = angle_range
+        self.setRect(pos[0] - size[0] / 2, pos[1] - size[1] / 2, size[0], size[1])
+        self.setBrush(QtGui.QBrush(QtCore.Qt.blue))
+        self.setAcceptHoverEvents(True)
+        self.command = None
+        self.hoover = False
+    def setHoover(self, value):
+        if not self.hoover == value:
+            self.hoover = value
+            if value:
+                self.setBrush(QtGui.QBrush(QtCore.Qt.red))
+                self.view.setText(self.command[0])
+            else:
+                self.setBrush(QtGui.QBrush(QtCore.Qt.blue))
+
+class PieView(QtGui.QGraphicsView):
+    def __init__(self, key, commands, parent=None):
+        super(PieView, self).__init__(parent)
+        self.key = key
+        self.setWindowFlags(QtCore.Qt.Widget | QtCore.Qt.FramelessWindowHint)
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.setStyleSheet("QGraphicsView {border-style: none; background: transparent;}" )
+        self.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.scene = QtGui.QGraphicsScene(self)
+        self.scene.setSceneRect(-200, -200, 400, 400)
+        self.setScene(self.scene)
+        self.center = [0, 0]
+        self.buttons = []
+        self.label = QtGui.QGraphicsSimpleTextItem("")
+        self.scene.addItem(self.label)
+        self.add_commands(commands)
+
+    def setText(self, text):
+        self.label.setText(text)
+        self.label.update()
+        self.label.setPos(-self.label.sceneBoundingRect().width() / 2, 0)
+    def add_commands(self, commands):
+        num = len(commands)
+        r = 100
+        a = 70
+        pie_phi = np.linspace(0, np.pi * 2, num + 1)
+        phi = [(p + pie_phi[i + 1]) / 2 for i, p in enumerate(pie_phi[:-1])]
+        for i, command in enumerate(commands):
+            button = PieButton(
+                [r * cos(phi[i]), r * sin(phi[i])],
+                [pie_phi[i], pie_phi[i + 1]],
+                [a, a], self, self.scene)
+            button.command = command
+            self.scene.addItem(button)
+            self.buttons.append(button)
+    def mouseMoveEvent(self, event):
+        r2, angle = self.polarCoordinates
+        hoover = False
+        for item in self.buttons:
+            if (item.angle_range[0] < angle and
+                angle < item.angle_range[1] and
+                r2 > 1000):
+                item.setHoover(True)
+                hoover = True
+            else:
+                item.setHoover(False)
+        if not hoover:
+            self.setText("")
+    @property
+    def polarCoordinates(self):
+        pos = QtGui.QCursor.pos() - self.center
+        r2 = pos.x() ** 2 + pos.y() ** 2
+        angle = np.arctan2(pos.y(), pos.x())
+        return r2, angle + (angle < 0) * 2 * pi
+    def showAtMouse(self, event):
+        if event["Key"] == self.key:
+            self.show()
+            self.center = QtGui.QCursor.pos()
+            self.move(self.center.x()-(self.width()/2), self.center.y()-(self.height()/2))
+    def keyReleaseEvent(self, event):
+        super(PieView, self).keyReleaseEvent(event)
+        if event.key() == QtGui.QKeySequence(self.key):
+            if not event.isAutoRepeat():
+                for item in self.scene.items():
+                    if hasattr(item, "hoover"):
+                        if item.hoover:
+                            item.command[1]()
+                self.hide()
+
+def startPieMenu():
+  if __name__ == "__main__":
+    def part_design(): FreeCADGui.activateWorkbench("PartDesignWorkbench")
+    def part(): FreeCADGui.activateWorkbench("PartWorkbench")
+    def draft(): FreeCADGui.activateWorkbench("DraftWorkbench")
+    def arch(): FreeCADGui.activateWorkbench("ArchWorkbench")
+    def fem(): FreeCADGui.activateWorkbench("FemWorkbench")
+    def sketch(): FreeCADGui.activateWorkbench("SketcherWorkbench")
+    def draw(): FreeCADGui.activateWorkbench("DrawingWorkbench")
+    def mesh(): FreeCADGui.activateWorkbench("MeshWorkbench")
+    command_list = [
+        ["PartDesign", part_design],
+        ["Part", part],
+        ["Draft", draft],
+        ["Arch", arch],
+        ["Fem", fem],
+        ["sketch", sketch],
+        ["draw", draw],
+        ["mesh", mesh]]
+    a = PieView("a", command_list)
+    view = FreeCADGui.ActiveDocument.ActiveView
+    view.addEventCallback("SoKeyboardEvent", a.showAtMouse)
 

@@ -2,7 +2,7 @@
 
 __title__="frameTools functions"
 __author__="oddtopus"
-__url__="github.com/oddtopus/flamingo"
+__url__="github.com/oddtopus/dodo"
 __license__="LGPL 3"
 
 import FreeCAD,FreeCADGui
