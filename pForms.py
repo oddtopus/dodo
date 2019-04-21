@@ -12,102 +12,6 @@ from PySide.QtGui import *
 from math import degrees
 from DraftVecUtils import rounded
 
-# import prototypes
-class protopypeForm(QDialog): #, prototypes.protoPypeForm):
-  'prototype dialog for insert pFeatures'
-  def __init__(self,winTitle='Title', PType='Pipe', PRating='SCH-STD', icon='dodo.svg'):
-    '''
-    __init__(self,winTitle='Title', PType='Pipe', PRating='SCH-STD')
-      winTitle: the window's title
-      PType: the pipeFeature type
-      PRating: the pipeFeature pressure rating class
-    It lookups in the directory ./tablez the file PType+"_"+PRating+".csv",
-    imports it's content in a list of dictionaries -> .pipeDictList and
-    shows a summary in the QListWidget -> .sizeList
-    Also create a property -> PRatingsList with the list of available PRatings for the 
-    selected PType.   
-    '''
-    super(protopypeForm,self).__init__()
-    #self.initUI() #added 20190331
-    #self.setupUi()
-    self.move(QPoint(100,250))
-    self.PType=PType
-    self.PRating=PRating
-    self.setWindowFlags(Qt.WindowStaysOnTopHint)
-    self.setWindowTitle(winTitle)
-    iconPath=join(dirname(abspath(__file__)),"iconz",icon)
-    from PySide.QtGui import QIcon
-    Icon=QIcon()
-    Icon.addFile(iconPath)
-    self.setWindowIcon(Icon) 
-    self.mainHL=QHBoxLayout()
-    self.setLayout(self.mainHL)
-    self.firstCol=QWidget()
-    self.firstCol.setLayout(QVBoxLayout())
-    self.mainHL.addWidget(self.firstCol)
-    self.currentRatingLab=QLabel('Rating: '+self.PRating)
-    self.firstCol.layout().addWidget(self.currentRatingLab)
-    self.sizeList=QListWidget()
-    self.firstCol.layout().addWidget(self.sizeList)
-    self.pipeDictList=[]
-    self.fileList=listdir(join(dirname(abspath(__file__)),"tablez"))
-    self.fillSizes()
-    self.PRatingsList=[s.lstrip(PType+"_").rstrip(".csv") for s in self.fileList if s.startswith(PType) and s.endswith('.csv')]
-    self.secondCol=QWidget()
-    self.secondCol.setLayout(QVBoxLayout())
-    self.combo=QComboBox()
-    self.combo.addItem('<none>')
-    try:
-      self.combo.addItems([o.Label for o in FreeCAD.activeDocument().Objects if hasattr(o,'PType') and o.PType=='PypeLine'])
-    except:
-      None
-    self.combo.currentIndexChanged.connect(self.setCurrentPL)
-    if FreeCAD.__activePypeLine__ and FreeCAD.__activePypeLine__ in [self.combo.itemText(i) for i in range(self.combo.count())]:
-      self.combo.setCurrentIndex(self.combo.findText(FreeCAD.__activePypeLine__))
-    self.secondCol.layout().addWidget(self.combo)
-    self.ratingList=QListWidget()
-    self.ratingList.addItems(self.PRatingsList)
-    self.ratingList.itemClicked.connect(self.changeRating)
-    self.ratingList.setCurrentRow(0)
-    self.secondCol.layout().addWidget(self.ratingList)
-    self.btn1=QPushButton('Insert')
-    self.secondCol.layout().addWidget(self.btn1)
-    self.mainHL.addWidget(self.secondCol)
-    self.resize(350,350)
-    self.mainHL.setContentsMargins(0,0,0,0)
-  def setCurrentPL(self,PLName=None):
-    if self.combo.currentText() not in ['<none>','<new>']:
-      FreeCAD.__activePypeLine__= self.combo.currentText()
-    else:
-      FreeCAD.__activePypeLine__=None
-  def fillSizes(self):
-    self.sizeList.clear()
-    for fileName in self.fileList:
-      if fileName==self.PType+'_'+self.PRating+'.csv':
-        f=open(join(dirname(abspath(__file__)),"tablez",fileName),'r')
-        reader=csv.DictReader(f,delimiter=';')
-        self.pipeDictList=[DNx for DNx in reader]
-        f.close()
-        for row in self.pipeDictList:
-          s=row['PSize']
-          if 'OD' in row.keys():
-            s+=" - "+row['OD']
-          if 'thk' in row.keys():
-            s+="x"+row['thk']
-          self.sizeList.addItem(s)
-        break
-  def changeRating(self,item):
-    self.PRating=item.text()
-    self.currentRatingLab.setText('Rating: '+self.PRating)
-    self.fillSizes()
-  def findDN(self,DN):
-    result=None
-    for row in self.pipeDictList:
-      if row['PSize']==DN:
-        result=row
-        break
-    return result
-
 class redrawDialog(QDialog):
   def __init__(self):
     super(redrawDialog,self).__init__()
@@ -161,7 +65,7 @@ class redrawDialog(QDialog):
   def clearAll(self):
     for cb in self.checkBoxes: cb.setChecked(False)
         
-class insertPipeForm(protopypeForm):
+class insertPipeForm(dodoDialogs.protoPypeForm):
   '''
   Dialog to insert tubes.
   For position and orientation you can select
@@ -289,7 +193,7 @@ class insertPipeForm(protopypeForm):
         self.lastPipe.Height=newL
       FreeCAD.ActiveDocument.recompute()
 
-class insertElbowForm(protopypeForm):
+class insertElbowForm(dodoDialogs.protoPypeForm):
   '''
   Dialog to insert one elbow.
   For position and orientation you can select
@@ -488,7 +392,7 @@ class insertElbowForm(protopypeForm):
       pCmd.rotateTheTubeAx(self.lastElbow,angle=180)
       self.lastElbow.Placement.move(self.lastElbow.Placement.Rotation.multVec(self.lastElbow.Ports[0])*-2)
 
-class insertFlangeForm(protopypeForm):
+class insertFlangeForm(dodoDialogs.protoPypeForm):
   '''
   Dialog to insert flanges.
   For position and orientation you can select
@@ -593,7 +497,7 @@ class insertFlangeForm(protopypeForm):
         obj.PRating=self.PRating
         FreeCAD.activeDocument().recompute()
 
-class insertReductForm(protopypeForm):
+class insertReductForm(dodoDialogs.protoPypeForm):
   '''
   Dialog to insert concentric reductions.
   For position and orientation you can select
@@ -744,7 +648,7 @@ class insertReductForm(protopypeForm):
     self.sizeList.setCurrentRow(0)
     self.fillOD2()
 
-class insertUboltForm(protopypeForm):
+class insertUboltForm(dodoDialogs.protoPypeForm):
   '''
   Dialog to insert U-bolts.
   For position and orientation you can select
@@ -823,7 +727,7 @@ class insertUboltForm(protopypeForm):
       FreeCAD.activeDocument().commitTransaction()
     FreeCAD.activeDocument().recompute()
 
-class insertCapForm(protopypeForm):
+class insertCapForm(dodoDialogs.protoPypeForm):
   '''
   Dialog to insert caps.
   For position and orientation you can select
@@ -895,7 +799,7 @@ class insertCapForm(protopypeForm):
         obj.PRating=self.PRating
         FreeCAD.activeDocument().recompute()
 
-class insertPypeLineForm(protopypeForm):
+class insertPypeLineForm(dodoDialogs.protoPypeForm):
   '''
   Dialog to insert pypelines.
   Note: Elbow created within this dialog have a standard bending radius of 
@@ -1032,7 +936,7 @@ class insertPypeLineForm(protopypeForm):
         plist.close()
         FreeCAD.Console.PrintMessage('Data saved in %s.\n' %f)
     
-class insertBranchForm(protopypeForm):
+class insertBranchForm(dodoDialogs.protoPypeForm):
   '''
   Dialog to insert branches.
   Note: Elbow created within this dialog have a standard bending radius of 
@@ -1246,7 +1150,7 @@ class joinForm(dodoDialogs.protoTypeDialog):
     po.pCmd.arrows1=[]
     po.pCmd.arrows2=[]
 
-class insertValveForm(protopypeForm):
+class insertValveForm(dodoDialogs.protoPypeForm):
   '''
   Dialog to insert Valves.
   For position and orientation you can select

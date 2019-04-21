@@ -2,7 +2,8 @@ from PySide.QtCore import *
 from PySide.QtGui import *
 from sys import platform
 from os.path import join, dirname, abspath
-import FreeCAD, FreeCADGui
+from os import listdir
+import FreeCAD, FreeCADGui, csv
 
 class protoTypeDialog(object): 
   'prototype for dialogs.ui with callback function'
@@ -60,7 +61,7 @@ class protoTypeDialog(object):
     FreeCADGui.Control.closeDialog()
     if FreeCAD.ActiveDocument: FreeCAD.ActiveDocument.recompute()
 
-class protopypeForm(QDialog): #, prototypes.protoPypeForm):
+class protoPypeForm(QDialog): 
   'prototype dialog for insert pFeatures'
   def __init__(self,winTitle='Title', PType='Pipe', PRating='SCH-STD', icon='dodo.svg'):
     '''
@@ -74,9 +75,7 @@ class protopypeForm(QDialog): #, prototypes.protoPypeForm):
     Also create a property -> PRatingsList with the list of available PRatings for the 
     selected PType.   
     '''
-    super(protopypeForm,self).__init__()
-    self.initUI() #added 20190331
-    #self.setupUi()
+    super(protoPypeForm,self).__init__()
     self.move(QPoint(100,250))
     self.PType=PType
     self.PRating=PRating
@@ -155,7 +154,33 @@ class protopypeForm(QDialog): #, prototypes.protoPypeForm):
         break
     return result
 
-# PIEMENU
+# Following code is derived from
+# PieMenu widget for FreeCAD
+#
+# Copyright (C) 2016, 2017 triplus @ FreeCAD
+# Copyright (C) 2015,2016 looo @ FreeCAD
+# Copyright (C) 2015 microelly <microelly2@freecadbuch.de>
+#
+#
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 2.1 of the License, or (at your option) any later version.
+#
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public
+# License along with this library; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301 USA
+#
+# Attribution:
+# http://forum.freecadweb.org/
+# http://www.freecadweb.org/wiki/index.php?title=Code_snippets
+
+
 from PySide import QtCore, QtGui
 from math import pi, cos, sin
 import numpy as np
