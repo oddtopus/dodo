@@ -134,9 +134,13 @@ class insertPipeForm(dodoDialogs.protoPypeForm):
     else:
       selex=FreeCADGui.Selection.getSelectionEx()
       for objex in selex:
-        o=objex.Object # SELECT PROPERTIES ACCORDING OBJECT
+        o=objex.Object # SELECT PROPERTIES ACCORDING OBJECT -> to add OD2 an thk2 according o.nearestPort(point)
         if hasattr(o,'PSize') and hasattr(o,'OD') and hasattr(o,'thk'):
-          propList=[o.PSize,o.OD,o.thk,self.H]
+          if o.PType=='Reduct' and o.Proxy.nearestPort(objex.SubObjects[0].CenterOfMass)[0]==1:
+            propList=[o.PSize,o.OD2,o.thk2,self.H]
+          else:
+            propList=[o.PSize,o.OD,o.thk,self.H]
+          #print(o.Proxy.nearestPort(objex.SubObjects[0].CenterOfMass))
         else:
           propList=[d['PSize'],float(pq(d['OD'])),float(pq(d['thk'])),self.H]
         if fCmd.faces(): # Face selected...

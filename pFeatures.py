@@ -50,7 +50,7 @@ class pypeType(object):
       if type(so)==Part.Vertex: point=so.Point
       else: point=so.CenterOfMass
     if point:
-      pos=pCmd.portsPos(obj)[0]; Z=pipeCmd.portsDir(obj)[0]
+      pos=pCmd.portsPos(obj)[0]; Z=pCmd.portsDir(obj)[0]
       i=nearest=0
       if len(obj.Ports)>1:
         for p in pCmd.portsPos(obj)[1:] :

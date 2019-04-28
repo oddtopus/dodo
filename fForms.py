@@ -223,10 +223,6 @@ class translateForm(dodoDialogs.protoTypeDialog):
     self.arrow=None
   def reject(self): # redefined to remove arrow from scene
     self.deleteArrow()
-    #try: self.view.removeEventCallback('SoEvent',self.call)
-    #except: pass
-    #if FreeCAD.ActiveDocument: FreeCAD.ActiveDocument.recompute()
-    #FreeCADGui.Control.closeDialog()
     super(translateForm,self).reject()
 
 class alignForm(dodoDialogs.protoTypeDialog):   
@@ -339,8 +335,4 @@ class rotateAroundForm(dodoDialogs.protoTypeDialog):
     self.arrow=None
   def reject(self): # redefined to remove arrow from scene
     self.deleteArrow()
-    #try: self.view.removeEventCallback('SoEvent',self.call)
-    #except: pass
-    #if FreeCAD.ActiveDocument: FreeCAD.ActiveDocument.recompute()
-    #FreeCADGui.Control.closeDialog()
     super(rotateAroundForm,self).reject()
