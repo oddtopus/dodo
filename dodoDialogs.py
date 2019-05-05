@@ -63,7 +63,7 @@ class protoTypeDialog(object):
 
 class protoPypeForm(QDialog): 
   'prototype dialog for insert pFeatures'
-  def __init__(self,winTitle='Title', PType='Pipe', PRating='SCH-STD', icon='dodo.svg'):
+  def __init__(self,winTitle='Title', PType='Pipe', PRating='SCH-STD', icon='dodo.svg',x=100,y=350):
     '''
     __init__(self,winTitle='Title', PType='Pipe', PRating='SCH-STD')
       winTitle: the window's title
@@ -76,7 +76,7 @@ class protoPypeForm(QDialog):
     selected PType.   
     '''
     super(protoPypeForm,self).__init__()
-    self.move(QPoint(100,250))
+    self.move(QPoint(x,y))
     self.PType=PType
     self.PRating=PRating
     self.setWindowFlags(Qt.WindowStaysOnTopHint)
@@ -119,7 +119,7 @@ class protoPypeForm(QDialog):
     self.btn1=QPushButton('Insert')
     self.secondCol.layout().addWidget(self.btn1)
     self.mainHL.addWidget(self.secondCol)
-    self.resize(350,350)
+    self.resize(max(350,int(FreeCADGui.getMainWindow().width()/4)),max(350,int(FreeCADGui.getMainWindow().height()/2)))
     self.mainHL.setContentsMargins(0,0,0,0)
   def setCurrentPL(self,PLName=None):
     if self.combo.currentText() not in ['<none>','<new>']:

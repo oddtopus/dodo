@@ -12,6 +12,9 @@ from PySide.QtGui import *
 from math import degrees
 from DraftVecUtils import rounded
 
+x=100
+y=max(300,int(FreeCADGui.getMainWindow().height()/3))#350
+
 class redrawDialog(QDialog):
   def __init__(self):
     super(redrawDialog,self).__init__()
@@ -77,8 +80,7 @@ class insertPipeForm(dodoDialogs.protoPypeForm):
   Available one button to reverse the orientation of the last or selected tubes.
   '''
   def __init__(self):
-    super(insertPipeForm,self).__init__("Insert pipes","Pipe","SCH-STD","pipe.svg")
-    self.move(QPoint(75,225))
+    super(insertPipeForm,self).__init__("Insert pipes","Pipe","SCH-STD","pipe.svg",x,y)
     self.sizeList.setCurrentRow(0)
     self.ratingList.setCurrentRow(0)
     self.btn1.clicked.connect(self.insert)
@@ -212,8 +214,7 @@ class insertElbowForm(dodoDialogs.protoPypeForm):
   edges, if necessary.
   '''
   def __init__(self):
-    super(insertElbowForm,self).__init__("Insert elbows","Elbow","SCH-STD","elbow.svg")
-    self.move(QPoint(125,275))
+    super(insertElbowForm,self).__init__("Insert elbows","Elbow","SCH-STD","elbow.svg",x,y)
     self.sizeList.setCurrentRow(0)
     self.ratingList.setCurrentRow(0)
     self.btn1.clicked.connect(self.insert)
@@ -408,7 +409,7 @@ class insertFlangeForm(dodoDialogs.protoPypeForm):
   flanges.
   '''
   def __init__(self):
-    super(insertFlangeForm,self).__init__("Insert flanges","Flange","DIN-PN16","flange.svg")
+    super(insertFlangeForm,self).__init__("Insert flanges","Flange","DIN-PN16","flange.svg",x,y)
     self.sizeList.setCurrentRow(0)
     self.ratingList.setCurrentRow(0)
     self.btn1.clicked.connect(self.insert)
@@ -517,7 +518,7 @@ class insertReductForm(dodoDialogs.protoPypeForm):
   reductions.
   '''
   def __init__(self):
-    super(insertReductForm,self).__init__("Insert reductions","Reduct","SCH-STD","reduct.svg")
+    super(insertReductForm,self).__init__("Insert reductions","Reduct","SCH-STD","reduct.svg",x,y)
     self.sizeList.setCurrentRow(0)
     self.ratingList.setCurrentRow(0)
     self.ratingList.itemClicked.connect(self.changeRating2)
@@ -662,7 +663,7 @@ class insertUboltForm(dodoDialogs.protoPypeForm):
   Available one button to reverse the orientation of the last or selected tubes.
   '''
   def __init__(self):
-    super(insertUboltForm,self).__init__("Insert U-bolt","Clamp","DIN-UBolt","clamp.svg")
+    super(insertUboltForm,self).__init__("Insert U-bolt","Clamp","DIN-UBolt","clamp.svg",x,y)
     self.sizeList.setCurrentRow(0)
     self.ratingList.setCurrentRow(0)
     self.lab1=QLabel('- no ref. face -')
@@ -741,7 +742,7 @@ class insertCapForm(dodoDialogs.protoPypeForm):
   Available one button to reverse the orientation of the last or selected tubes.
   '''
   def __init__(self):
-    super(insertCapForm,self).__init__("Insert caps","Cap","SCH-STD","cap.svg")
+    super(insertCapForm,self).__init__("Insert caps","Cap","SCH-STD","cap.svg",x,y)
     self.sizeList.setCurrentRow(0)
     self.ratingList.setCurrentRow(0)
     self.btn1.clicked.connect(self.insert)
@@ -812,7 +813,7 @@ class insertPypeLineForm(dodoDialogs.protoPypeForm):
   dialog or change it manually. 
   '''
   def __init__(self):
-    super(insertPypeLineForm,self).__init__("PypeLine Manager","Pipe","SCH-STD","pypeline.svg")
+    super(insertPypeLineForm,self).__init__("PypeLine Manager","Pipe","SCH-STD","pypeline.svg",x,y)
     self.sizeList.setCurrentRow(0)
     self.ratingList.setCurrentRow(0)
     self.btn1.clicked.connect(self.insert)
@@ -947,7 +948,7 @@ class insertBranchForm(dodoDialogs.protoPypeForm):
   3/4 x OD, corresponding to a 3D curve.  
   '''
   def __init__(self):
-    super(insertBranchForm,self).__init__("Insert a branch","Pipe","SCH-STD","branch.svg")
+    super(insertBranchForm,self).__init__("Insert a branch","Pipe","SCH-STD","branch.svg",x,y)
     self.sizeList.setCurrentRow(0)
     self.ratingList.setCurrentRow(0)
     self.btn1.clicked.connect(self.insert)
@@ -1169,7 +1170,7 @@ class insertValveForm(dodoDialogs.protoPypeForm):
     self.PType='Valve'
     self.PRating=''
     #super(insertValveForm,self).__init__("valves.ui")
-    super(insertValveForm,self).__init__("Insert valves","Valve","ball","valve.svg")
+    super(insertValveForm,self).__init__("Insert valves","Valve","ball","valve.svg",x,y)
     self.move(QPoint(75,225))
     self.sizeList.setCurrentRow(0)
     self.ratingList.setCurrentRow(0)
