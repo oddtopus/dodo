@@ -1,4 +1,4 @@
-#(c) 2016 R. T. LGPL: part of Flamingo tools w.b. for FreeCAD
+#(c) 2019 R. T. LGPL: part of dodo tools w.b. for FreeCAD
 
 __title__="frameTools objects"
 __author__="oddtopus"
@@ -362,11 +362,14 @@ class frameBranchForm(dodoDialogs.protoTypeDialog):
         beam=makeStructure(profile)
         beam.Placement=FreeCAD.Placement(f.CenterOfMass,FreeCAD.Rotation(Z,f.normalAt(0,0)))
         if self.form.editLength.text(): beam.Height=float(self.form.editLength.text())
-    else:
+    elif fCmd.edges():
       for e in fCmd.edges():
         beam=makeStructure(profile)
         fCmd.placeTheBeam(beam,e)
         if self.form.editLength.text(): beam.Height=float(self.form.editLength.text())
+    else:
+      beam=makeStructure(profile)
+      if self.form.editLength.text(): beam.Height=float(self.form.editLength.text())
     FreeCAD.ActiveDocument.recompute()
   def accept(self):
     if FreeCAD.ActiveDocument:

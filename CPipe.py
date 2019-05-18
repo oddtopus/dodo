@@ -1,4 +1,4 @@
-#(c) 2016 R. T. LGPL: part of Flamingo tools w.b. for FreeCAD
+#(c) 2019 R. T. LGPL: part of dodo w.b. for FreeCAD
 
 __title__="pypeTools toolbar"
 __author__="oddtopus"

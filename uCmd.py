@@ -127,7 +127,8 @@ class arrow(object):
 
 class arrow_move(arrow):
   '''
-  arrow_move(pl=None,direct=None,M=100)
+  arrow_move(edit,edit2,pl=None,direct=None,M=100)
+    edit,edit2: displacement and angle QLineEdit widgets
     pl: the placement of the arrow
     direct: the displacement vector
     M: the scale of display
@@ -135,10 +136,11 @@ class arrow_move(arrow):
   objects when the arrow is picked.  This is accomplished by redefining the
   method "pickAction".
   '''
-  def __init__(self, edit, pl=None, direct=None, M=100.0, objs=None):
+  def __init__(self, edit, edit2, pl=None, direct=None, M=100.0, objs=None):
     self.objs=objs
     self.edge=None
     self.edit=edit
+    self.edit2=edit2
     # define direction
     self.scale=M
     if direct: self.direct=direct
@@ -154,17 +156,18 @@ class arrow_move(arrow):
     sel=FreeCADGui.Selection.getSelection()
     if sel: self.objs=[o for o in sel if hasattr(o,'Shape')]
     if event.wasCtrlDown() and event.wasAltDown():
+      alfa=float(self.edit2.text())
       if fCmd.edges(): 
         self.edge=fCmd.edges()[0]
-        for o in self.objs: fCmd.rotateTheBeamAround(o, self.edge, 90)
+        for o in self.objs: fCmd.rotateTheBeamAround(o, self.edge, alfa)
       elif self.edge:
-        for o in self.objs: fCmd.rotateTheBeamAround(o, self.edge, 90)
+        for o in self.objs: fCmd.rotateTheBeamAround(o, self.edge, alfa)
     else:
       for o in self.objs: o.Placement.move(self.direct*k)
       self.Placement.move(self.direct*k)
       pl,direct,M=[self.Placement,self.direct,self.scale]
       self.closeArrow()
-      self.__init__(self.edit, pl,direct,M,self.objs)
+      self.__init__(self.edit, self.edit2, pl,direct,M,self.objs)
     FreeCAD.activeDocument().commitTransaction()
 
 class handleDialog(dodoDialogs.protoTypeDialog):
@@ -172,7 +175,10 @@ class handleDialog(dodoDialogs.protoTypeDialog):
     self.arrow=None
     super(handleDialog,self).__init__('disp.ui')
     self.form.edit1.setValidator(QDoubleValidator())
+    self.form.edit2.setValidator(QDoubleValidator())
     self.form.btn1.clicked.connect(self.selectAction)
+    self.form.scrollbar.valueChanged.connect(lambda: self.form.edit1.setText("%i" %self.form.scrollbar.value()))
+    self.form.dial.valueChanged.connect(lambda: self.form.edit2.setText("%i" %self.form.dial.value()))
     from sys import platform
     if platform.startswith('win'):
       self.form.lab2.hide()
@@ -201,7 +207,7 @@ class handleDialog(dodoDialogs.protoTypeDialog):
     # create the arrow_move object
     if direct: 
       pl.Rotation=FreeCAD.Rotation(FreeCAD.Vector(0,0,1),direct).multiply(pl.Rotation)
-      self.arrow=arrow_move(self.form.edit1,pl=pl,direct=direct,M=M,objs=self.objs)
+      self.arrow=arrow_move(self.form.edit1,self.form.edit2,pl=pl,direct=direct,M=M,objs=self.objs)
   def accept(self):
     self.reject()
   def reject(self):

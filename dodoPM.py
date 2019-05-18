@@ -1,3 +1,4 @@
+# Copyright (C) 2018 oddtopus (www.github.com/oddtopus/dodo)
 # Following code is derived from
 # PieMenu widget for FreeCAD
 #
@@ -6,19 +7,10 @@
 # Copyright (C) 2015 microelly <microelly2@freecadbuch.de>
 
 import math
-import operator
 import platform
 import FreeCAD, FreeCADGui
 from PySide import QtCore
 from PySide import QtGui
-# sign = {
-    # "<": operator.lt,
-    # "<=": operator.le,
-    # "==": operator.eq,
-    # "!=": operator.ne,
-    # ">": operator.gt,
-    # ">=": operator.ge,
-    # }
 
 # definition of style
 styleButton = ("""
@@ -58,14 +50,14 @@ styleMenuClose = ("""
 
     """)
 styleContainer = ("QMenu{background: transparent}")
-styleCombo = ("""
-    QComboBox {
-        background: transparent;
-        border: 1px solid transparent;
-    }
+# styleCombo = ("""
+    # QComboBox {
+        # background: transparent;
+        # border: 1px solid transparent;
+    # }
 
-    """)
-styleQuickMenu = ("padding: 5px")
+    # """)
+# styleQuickMenu = ("padding: 5px")
 iconClose = QtGui.QApplication.style().standardIcon(QtGui.QStyle.SP_DialogCloseButton)
 def radiusSize(buttonSize):
     radius = str(buttonSize / 2)
@@ -74,7 +66,7 @@ def iconSize(buttonSize):
     icon = buttonSize# / 3 * 2
     return icon
 
-# definition of widgets (commented those used in unused dialogs)
+# definition of widgets 
 def closeButton(buttonSize=50):
     icon = iconSize(buttonSize)
     radius = radiusSize(buttonSize)
@@ -90,127 +82,6 @@ def closeButton(buttonSize=50):
         PieMenuInstance.hide()
     button.clicked.connect(onButton)
     return button
-
-# def getActionList():
-    # actions = {}
-    # duplicates = []
-    # for i in mw.findChildren(QtGui.QAction):
-        # if i.objectName() is not None:
-            # if i.objectName() != "" and i.icon():
-                # if i.objectName() in actions:
-                    # if i.objectName() not in duplicates:
-                        # duplicates.append(i.objectName())
-                    # else:
-                        # pass
-                # else:
-                    # actions[i.objectName()] = i
-            # else:
-                # pass
-        # else:
-            # pass
-    # for d in duplicates:
-        # del actions[d]
-    # return actions
-
-def updateCommands():
-    toolList=["insertPipe","insertElbow","insertReduct","insertCap","insertValve","insertFlange","insertUbolt"]
-    actionDict=dict([(a.objectName(),a) for a in FreeCADGui.getMainWindow().findChildren(QtGui.QAction)])
-    try: actions.pop('')
-    except:pass
-    # commands = []
-    # actionList = getActionList()
-    # for i in toolList:
-        # if i in actionList:
-            # commands.append(actionList[i])
-        # else:
-            # pass
-    commands=[actionDict[n] for n in toolList if n in actionDict]
-    PieMenuInstance.add_commands(commands)#, False)
-
-# def getGroup(mode=0):
-    # paramGet = FreeCAD.ParamGet("User parameter:BaseApp/PieMenu")
-    # paramIndexGet = FreeCAD.ParamGet("User parameter:BaseApp/PieMenu/Index")
-    # indexList = paramIndexGet.GetString("IndexList")
-    # if mode == 2:
-        # try:
-            # text = paramGet.GetString("ContextPie").decode("UTF-8")
-        # except AttributeError:
-            # text = paramGet.GetString("ContextPie")
-    # elif mode == 1:
-        # try:
-            # text = paramGet.GetString("CurrentPie").decode("UTF-8")
-        # except AttributeError:
-            # text = paramGet.GetString("CurrentPie")
-    # else:
-        # text = cBox.currentText()
-    # if indexList:
-        # indexList = indexList.split(".,.")
-        # temp = []
-        # for i in indexList:
-            # temp.append(int(i))
-        # indexList = temp
-    # else:
-        # indexList = []
-    # group = None
-    # for i in indexList:
-        # a = str(i)
-        # try:
-            # pie = paramIndexGet.GetString(a).decode("UTF-8")
-        # except AttributeError:
-            # pie = paramIndexGet.GetString(a)
-        # if pie == text:
-            # group = paramIndexGet.GetGroup(a)
-        # else:
-            # pass
-    # # if group:
-        # # pass
-    # # else:
-        # # if 0 in indexList:
-            # # group = paramIndexGet.GetGroup("0")
-        # # else:
-            # # setDefaultPie()
-            # # updateCommands()
-            # # group = paramIndexGet.GetGroup("0")
-    # print(group)
-    # return group
-
-# def setDefaultPie():
-    # paramGet = FreeCAD.ParamGet("User parameter:BaseApp/PieMenu")
-    # paramIndexGet = FreeCAD.ParamGet("User parameter:BaseApp/PieMenu/Index")
-    # indexList = paramIndexGet.GetString("IndexList")
-    # defaultTools = ["Std_ViewTop",
-                    # "Std_New",
-                    # "Std_ViewRight",
-                    # "Std_BoxSelection",
-                    # "Std_ViewBottom",
-                    # "Std_ViewAxo",
-                    # "Std_ViewLeft",
-                    # "Std_ViewScreenShot"]
-    # if indexList:
-        # indexList = indexList.split(".,.")
-        # temp = []
-        # for i in indexList:
-            # temp.append(int(i))
-        # indexList = temp
-    # else:
-        # indexList = []
-    # if 0 in indexList:
-        # pass
-    # else:
-        # indexList.append(0)
-        # temp = []
-        # for i in indexList:
-            # temp.append(str(i))
-        # indexList = temp
-        # paramIndexGet.SetString("0", "Default")
-        # paramIndexGet.SetString("IndexList", ".,.".join(indexList))
-        # group = paramIndexGet.GetGroup("0")
-        # group.SetString("ToolList", ".,.".join(defaultTools))
-    # paramGet.SetBool("ToolBar", False)
-    # paramGet.SetString("CurrentPie", "Default")
-    # group = getGroup(mode=1)
-    # group.SetInt("Radius", 100)
-    # group.SetInt("Button", 32)
 
 # main classes
 class HoverButton(QtGui.QToolButton):
@@ -247,32 +118,19 @@ class PieMenu:
             pass
         else:
             self.menu.setAttribute(QtCore.Qt.WA_PaintOnScreen)
-    def add_commands(self, commands):#, context=False):
+    def add_commands(self, commands):
         paramGet = FreeCAD.ParamGet("User parameter:BaseApp/PieMenu")
         for i in self.buttons:
             i.deleteLater()
         self.buttons = []
-        # if context:
-            # group = getGroup(mode=2)
-        # else:
-        # group = getGroup(mode=1)
         if len(commands) == 0:
             commandNumber = 1
         else:
             commandNumber = len(commands)
-        valueRadius = 100#group.GetInt("Radius")
-        valueButton = 50#32#group.GetInt("Button")
-        # if paramGet.GetBool("ToolBar"):
-            # valueRadius = 100
-            # valueButton = 32
-        if valueRadius:
-            self.radius = valueRadius
-        else:
-            self.radius = 100
-        if valueButton:
-            self.buttonSize = valueButton
-        else:
-            self.buttonSize = 32
+        valueRadius = 100
+        valueButton = 50
+        self.radius = valueRadius
+        self.buttonSize = valueButton
         if commandNumber == 1:
             angle = 0
             buttonSize = self.buttonSize
@@ -326,7 +184,11 @@ class PieMenu:
             i.hide()
         self.menu.hide()
     def showAtMouse(self):
-        updateCommands()
+        actionDict=dict([(a.objectName(),a) for a in FreeCADGui.getMainWindow().findChildren(QtGui.QAction)])
+        try: actions.pop('')
+        except:pass
+        commands=[actionDict[n] for n in toolList if n in actionDict]
+        self.add_commands(commands)
         if self.menu.isVisible():
             self.hide()
         else:
@@ -350,6 +212,7 @@ class PieMenu:
 
 # main
 mw = FreeCADGui.getMainWindow()
+toolList=["insertPipe","insertElbow","insertReduct","insertCap","insertValve","insertFlange","insertUbolt"]
 compositingManager = True
 if QtCore.qVersion() < "5":
     windowShadow = False
@@ -368,7 +231,7 @@ if platform.system() == "Windows":
 PieMenuInstance = PieMenu()
 FreeCAD.__dodoPMact__ = QtGui.QAction(mw)
 FreeCAD.__dodoPMact__.setObjectName("PieTest")
-FreeCAD.__dodoPMact__.setShortcut(QtGui.QKeySequence("Ctrl+Q"))
+FreeCAD.__dodoPMact__.setShortcut(QtGui.QKeySequence("Z"))
 FreeCAD.__dodoPMact__.triggered.connect(PieMenuInstance.showAtMouse)
 mw.addAction(FreeCAD.__dodoPMact__)
 

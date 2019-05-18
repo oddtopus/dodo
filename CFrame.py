@@ -1,4 +1,4 @@
-#(c) 2016 R. T. LGPL: part of Flamingo tools w.b. for FreeCAD
+#(c) 2019 R. T. LGPL: part of dodo tools w.b. for FreeCAD
 
 __title__="frameTools toolbar"
 __author__="oddtopus"
@@ -27,19 +27,19 @@ def addCommand(name,cmdObject):
 # The command classes
 #---------------------------------------------------------------------------
 
-class frameIt:
-  '''
-  Given a beam object and an edge in the model, this tool lay down the
-  beam over the edge by selecting them one after the other until ESC is
-  pressed.
-  '''
-  def Activated(self):
-    import FreeCAD, FreeCADGui, fObservers, fCmd
-    s=fObservers.frameItObserver()
-    FreeCADGui.Selection.addObserver(s)
+# class frameIt:
+  # '''
+  # Given a beam object and an edge in the model, this tool lay down the
+  # beam over the edge by selecting them one after the other until ESC is
+  # pressed.
+  # '''
+  # def Activated(self):
+    # import FreeCAD, FreeCADGui, fObservers, fCmd
+    # s=fObservers.frameItObserver()
+    # FreeCADGui.Selection.addObserver(s)
     
-  def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","beamFit.svg"),'MenuText':'Place one-beam over one-edge','ToolTip':'Place one beam after the other over the edges'}
+  # def GetResources(self):
+    # return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","beamFit.svg"),'MenuText':'Place one-beam over one-edge','ToolTip':'Place one beam after the other over the edges'}
 
 class spinSect:
   '''
@@ -275,63 +275,63 @@ class rotJoin:
   def GetResources(self):
     return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","rotjoin.svg"),'MenuText':'rotJoinEdge','ToolTip':'Rotates and align the beam according another edge'}
 
-# class insertPath:
-  # '''
-  # Tool to create a continuous DWire over the path defined by the
-  # edges selected in the viewport, even if these are not continuous or
-  # belongs to different objects.
-  # '''
-  # def Activated(self):
-    # import pCmd
-    # FreeCAD.activeDocument().openTransaction('make Path')
-    # pCmd.makeW()
-    # FreeCAD.activeDocument().recompute()
-    # FreeCAD.activeDocument().commitTransaction()
-
-  # def GetResources(self):
-    # return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","path.svg"),'MenuText':'insert Path','ToolTip':'Creates one path along selected edges'}
-
-class FrameLineManager:
+class insertPath:
   '''
-  Dialog to create and change properties of objects FrameLine
-  providing the following features:
-  * a list of beams' profiles previously included in the model 
-  by "insertSection" dialog;
-  * a combo-box to select the active FrameLine among those already
-  created or <new> to create a new one;
-  * a text-box where to write the name of the FrameLine that is going
-  to be created; if nothing or "<name>", the FrameLined will be named
-  as default "Telaio00n";
-  * [Insert] button: creates a new FrameLine object or adds new members
-  to the one selected in the combo-box if edges are selected in the
-  active viewport.
-  * [Redraw] button: creates new beams and places them over the selected
-  path. New beams will be collected inside the group of the FrameLine.
-  Does not create or update beams added to the FrameLine outside
-  its defined path.
-  * [Clear] button: deletes all beams in the FrameLine group. It applies
-  also to beams added to the FrameLine outside its defined path.
-  * [Get Path] button: assigns the Dwire selected to the attribute Path
-  of the FrameLine object.
-  * [Get Profile] button: changes the Profile attribute of the FrameLine
-  object to the one of the beam selected in the viewport or the one 
-  selected in the list.
-  * "Copy profile" checkbox: if checked generates a new profile object
-  for each beam in order to avoid multiple references in the model.
-  * "Move to origin" checkbox: if checked, moves the center-of-mass
-  of the profile to the origin of coordinates system: that makes the
-  centerline of the beam coincide with the c.o.m. of the profile.
-  
-  Notes: - if the name of a FrameLine object is modified, also the name
-  of the relevant group will change automatically but not viceversa. 
+  Tool to create a continuous DWire over the path defined by the
+  edges selected in the viewport, even if these are not continuous or
+  belongs to different objects.
   '''
   def Activated(self):
-    if FreeCAD.ActiveDocument:
-      import fFeatures
-      frameFormObj=fFeatures.frameLineForm()
+    import pCmd
+    FreeCAD.activeDocument().openTransaction('make Path')
+    pCmd.makeW()
+    FreeCAD.activeDocument().recompute()
+    FreeCAD.activeDocument().commitTransaction()
 
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","frameline.svg"),'MenuText':'FrameLine Manager','ToolTip':'Open FrameLine Manager'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","path.svg"),'MenuText':'insert Path','ToolTip':'Creates one path along selected edges'}
+
+# class FrameLineManager:
+  # '''
+  # Dialog to create and change properties of objects FrameLine
+  # providing the following features:
+  # * a list of beams' profiles previously included in the model 
+  # by "insertSection" dialog;
+  # * a combo-box to select the active FrameLine among those already
+  # created or <new> to create a new one;
+  # * a text-box where to write the name of the FrameLine that is going
+  # to be created; if nothing or "<name>", the FrameLined will be named
+  # as default "Telaio00n";
+  # * [Insert] button: creates a new FrameLine object or adds new members
+  # to the one selected in the combo-box if edges are selected in the
+  # active viewport.
+  # * [Redraw] button: creates new beams and places them over the selected
+  # path. New beams will be collected inside the group of the FrameLine.
+  # Does not create or update beams added to the FrameLine outside
+  # its defined path.
+  # * [Clear] button: deletes all beams in the FrameLine group. It applies
+  # also to beams added to the FrameLine outside its defined path.
+  # * [Get Path] button: assigns the Dwire selected to the attribute Path
+  # of the FrameLine object.
+  # * [Get Profile] button: changes the Profile attribute of the FrameLine
+  # object to the one of the beam selected in the viewport or the one 
+  # selected in the list.
+  # * "Copy profile" checkbox: if checked generates a new profile object
+  # for each beam in order to avoid multiple references in the model.
+  # * "Move to origin" checkbox: if checked, moves the center-of-mass
+  # of the profile to the origin of coordinates system: that makes the
+  # centerline of the beam coincide with the c.o.m. of the profile.
+  
+  # Notes: - if the name of a FrameLine object is modified, also the name
+  # of the relevant group will change automatically but not viceversa. 
+  # '''
+  # def Activated(self):
+    # if FreeCAD.ActiveDocument:
+      # import fFeatures
+      # frameFormObj=fFeatures.frameLineForm()
+
+  # def GetResources(self):
+    # return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","frameline.svg"),'MenuText':'FrameLine Manager','ToolTip':'Open FrameLine Manager'}
 
 class FrameBranchManager:
   '''
@@ -345,36 +345,36 @@ class FrameBranchManager:
   def GetResources(self):
     return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","framebranch.svg"),'MenuText':'FrameBranch Manager','ToolTip':'Open FrameBranch Manager'}
 
-class insertSection:
-  '''
-  Dialog to create the set of profiles to be used in the model for
-  object FrameLine.
-  * "Section:" list: it includes all the sections defined in the .csv
-  file corresponding to the selected section type.
-  * "Section types:" list: the types of profiles defined with the .csv
-  files included in the folder /tablez
-  * [Insert] button: creates the group "Profiles_set", if not already
-  existing, and adds to it the object of the selected profile.
+# class insertSection:
+  # '''
+  # Dialog to create the set of profiles to be used in the model for
+  # object FrameLine.
+  # * "Section:" list: it includes all the sections defined in the .csv
+  # file corresponding to the selected section type.
+  # * "Section types:" list: the types of profiles defined with the .csv
+  # files included in the folder /tablez
+  # * [Insert] button: creates the group "Profiles_set", if not already
+  # existing, and adds to it the object of the selected profile.
   
-  Notes: - other profiles tablez can be created by adding the relevant
-  .csv file in the /tablez folder.
-  - Other profiles can be drafted in the model and dragged inside
-  the group "Profiles_set". 
-  - The orientation of the DWires may influence the rendering of beams
-  on the FrameLine.
-  '''
-  def Activated(self):
-    if FreeCAD.ActiveDocument:
-      import fFeatures
-      frameFormObj=fFeatures.insertSectForm()
+  # Notes: - other profiles tablez can be created by adding the relevant
+  # .csv file in the /tablez folder.
+  # - Other profiles can be drafted in the model and dragged inside
+  # the group "Profiles_set". 
+  # - The orientation of the DWires may influence the rendering of beams
+  # on the FrameLine.
+  # '''
+  # def Activated(self):
+    # if FreeCAD.ActiveDocument:
+      # import fFeatures
+      # frameFormObj=fFeatures.insertSectForm()
 
-  def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","sect.svg"),'MenuText':'Insert Std. Sections','ToolTip':'Creates in the model standard beam profiles to be used with Frameline Manager'}
+  # def GetResources(self):
+    # return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","sect.svg"),'MenuText':'Insert Std. Sections','ToolTip':'Creates in the model standard beam profiles to be used with Frameline Manager'}
 
 #---------------------------------------------------------------------------
 # Adds the commands to the FreeCAD command manager
 #---------------------------------------------------------------------------
-addCommand('frameIt',frameIt()) 
+#addCommand('frameIt',frameIt()) 
 addCommand('spinSect',spinSect())
 addCommand('reverseBeam',reverseBeam())
 #addCommand('fillFrame',fillFrame())
@@ -387,7 +387,7 @@ addCommand('stretchBeam',stretchBeam())
 addCommand('extend',extend())
 addCommand('adjustFrameAngle',adjustFrameAngle())
 addCommand('rotJoin',rotJoin())
-#addCommand('insertPath',insertPath())
-addCommand('FrameLineManager',FrameLineManager())
-addCommand('insertSection',insertSection())
+addCommand('insertPath',insertPath())
+#addCommand('FrameLineManager',FrameLineManager())
+#addCommand('insertSection',insertSection())
 addCommand('FrameBranchManager',FrameBranchManager())

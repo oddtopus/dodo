@@ -12,8 +12,9 @@ from PySide.QtGui import *
 from math import degrees
 from DraftVecUtils import rounded
 
-x=100
-y=max(300,int(FreeCADGui.getMainWindow().height()/3))#350
+mw=FreeCADGui.getMainWindow()
+x=mw.x()+int(mw.width()/20)#100
+y=max(300,int(mw.height()/3))#350
 
 class redrawDialog(QDialog):
   def __init__(self):

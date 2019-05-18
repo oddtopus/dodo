@@ -1,4 +1,4 @@
-#(c) 2016 R. T. LGPL: part of Flamingo tools w.b. for FreeCAD
+#(c) 2019 R. T. LGPL: part of dodo tools w.b. for FreeCAD
 
 __title__="pypeTools functions"
 import FreeCAD, FreeCADGui, Part, fCmd, pFeatures
@@ -359,14 +359,24 @@ def makeCap(propList=[], pos=None, Z=None):
 def makeW():
   edges=fCmd.edges()
   if len(edges)>1:
-    # patch for FC 0.17: 
     first=edges[0]
+    last=edges[-1]
     points=list()
     while len(edges)>1: points.append(fCmd.intersectionCLines(edges.pop(0),edges[0]))
-    if edges[0].valueAt(0)==points[-1]: points.append(edges[0].valueAt(edges[0].LastParameter))
-    else: points.append(edges[0].valueAt(0))
-    if first.valueAt(0)==points[0]: points.insert(0,first.valueAt(first.LastParameter))
-    else: points.insert(0,first.valueAt(0)) # END
+    # new{
+    delta1=(first.valueAt(0)-points[0]).Length
+    delta2=(first.valueAt(first.LastParameter)-points[0]).Length
+    if delta1>delta2:
+      points.insert(0,first.valueAt(0))
+    else:
+      points.insert(0,first.valueAt(first.LastParameter))
+    delta1=(last.valueAt(0)-points[0]).Length
+    delta2=(last.valueAt(last.LastParameter)-points[0]).Length
+    if delta1>delta2:
+      points.append(last.valueAt(0))
+    else:
+      points.append(last.valueAt(last.LastParameter))
+    # }
     from Draft import makeWire
     try:
       p=makeWire(points)

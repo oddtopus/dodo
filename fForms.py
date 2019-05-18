@@ -211,11 +211,12 @@ class translateForm(dodoDialogs.protoTypeDialog):
     scale=float(self.form.edit4.text())/float(self.form.edit5.text())
     disp=FreeCAD.Vector(float(self.form.edit1.text())*self.form.cbX.isChecked(),float(self.form.edit2.text())*self.form.cbY.isChecked(),float(self.form.edit3.text())*self.form.cbZ.isChecked()).scale(scale,scale,scale)
     FreeCAD.activeDocument().openTransaction('Translate')    
-    if self.form.radio2.isChecked():
-      for o in set(FreeCADGui.Selection.getSelection()):
-        FreeCAD.activeDocument().copyObject(o,True)
     for o in set(FreeCADGui.Selection.getSelection()):
-      o.Placement.move(disp)
+      if self.form.cbCopy.isChecked():
+        for i in range(self.form.spinBox.value()):
+          FreeCAD.activeDocument().copyObject(o,True).Placement.move(disp*(i+1))
+      else:
+        o.Placement.move(disp)
     FreeCAD.activeDocument().recompute()
     FreeCAD.activeDocument().commitTransaction()    
   def deleteArrow(self):

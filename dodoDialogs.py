@@ -77,6 +77,7 @@ class protoPypeForm(QDialog):
     '''
     super(protoPypeForm,self).__init__()
     self.move(QPoint(x,y))
+    self.mw = FreeCADGui.getMainWindow()
     self.PType=PType
     self.PRating=PRating
     self.setWindowFlags(Qt.WindowStaysOnTopHint)
@@ -119,7 +120,7 @@ class protoPypeForm(QDialog):
     self.btn1=QPushButton('Insert')
     self.secondCol.layout().addWidget(self.btn1)
     self.mainHL.addWidget(self.secondCol)
-    self.resize(max(350,int(FreeCADGui.getMainWindow().width()/4)),max(350,int(FreeCADGui.getMainWindow().height()/2)))
+    self.resize(max(350,int(self.mw.width()/4)),max(350,int(self.mw.height()/2)))
     self.mainHL.setContentsMargins(0,0,0,0)
   def setCurrentPL(self,PLName=None):
     if self.combo.currentText() not in ['<none>','<new>']:
