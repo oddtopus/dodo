@@ -6,11 +6,11 @@
 # Copyright (C) 2015,2016 looo @ FreeCAD
 # Copyright (C) 2015 microelly <microelly2@freecadbuch.de>
 
-import math
-import platform
-import FreeCAD, FreeCADGui
+import FreeCAD, FreeCADGui, math, platform, csv
 from PySide import QtCore
 from PySide import QtGui
+from os.path import join, dirname, abspath
+from os import listdir
 
 # definition of style
 styleButton = ("""
@@ -235,3 +235,122 @@ FreeCAD.__dodoPMact__.setShortcut(QtGui.QKeySequence("Z"))
 FreeCAD.__dodoPMact__.triggered.connect(PieMenuInstance.showAtMouse)
 mw.addAction(FreeCAD.__dodoPMact__)
 
+class QkMenu(object):
+  def setupUi(self, Dialog):
+    # sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Minimum)
+    # sizePolicy.setHorizontalStretch(0)
+    # sizePolicy.setVerticalStretch(0)
+    # sizePolicy.setHeightForWidth(Dialog.sizePolicy().hasHeightForWidth())
+    # Dialog.setSizePolicy(sizePolicy)
+    # Dialog.setMinimumSize(QtCore.QSize(300, 300))
+    # Dialog.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+    # Dialog.setFocusPolicy(QtCore.Qt.StrongFocus)
+    # Dialog.setWindowOpacity(1.0)
+    ###
+    self.gridLayout = QtGui.QGridLayout(Dialog)
+    self.gridLayout.setObjectName("gridLayout")
+    self.comboRating = QtGui.QComboBox(Dialog)
+    sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.Fixed)
+    sizePolicy.setHorizontalStretch(0)
+    sizePolicy.setVerticalStretch(0)
+    sizePolicy.setHeightForWidth(self.comboRating.sizePolicy().hasHeightForWidth())
+    self.comboRating.setSizePolicy(sizePolicy)
+    self.comboRating.setObjectName("comboRating")
+    self.gridLayout.addWidget(self.comboRating, 1, 1, 1, 1)
+    self.labRating = QtGui.QLabel("Rating:",Dialog)
+    self.labRating.setAlignment(QtCore.Qt.AlignCenter)
+    self.labRating.setObjectName("labRating")
+    self.gridLayout.addWidget(self.labRating, 1, 0, 1, 1)
+    self.comboPL = QtGui.QComboBox(Dialog)
+    sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.Fixed)
+    sizePolicy.setHorizontalStretch(0)
+    sizePolicy.setVerticalStretch(0)
+    sizePolicy.setHeightForWidth(self.comboPL.sizePolicy().hasHeightForWidth())
+    self.comboPL.setSizePolicy(sizePolicy)
+    self.comboPL.setObjectName("comboPL")
+    self.comboPL.addItem("<none>")
+    self.gridLayout.addWidget(self.comboPL, 0, 1, 1, 1)
+    self.btnGO = QtGui.QPushButton("GO",Dialog)
+    sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.MinimumExpanding)
+    sizePolicy.setHorizontalStretch(0)
+    sizePolicy.setVerticalStretch(0)
+    sizePolicy.setHeightForWidth(self.btnGO.sizePolicy().hasHeightForWidth())
+    self.btnGO.setSizePolicy(sizePolicy)
+    self.btnGO.setMinimumSize(QtCore.QSize(50, 50))
+    self.btnGO.setMaximumSize(QtCore.QSize(80, 80))
+    self.btnGO.setObjectName("btnGO")
+    self.gridLayout.addWidget(self.btnGO, 0, 2, 2, 1)
+    self.labPL = QtGui.QLabel("PypeLine: ",Dialog)
+    self.labPL.setAlignment(QtCore.Qt.AlignCenter)
+    self.labPL.setObjectName("labPL")
+    self.gridLayout.addWidget(self.labPL, 0, 0, 1, 1)
+    self.listSize = QtGui.QListWidget(Dialog)
+    self.listSize.setStyleSheet("QListWidget{background: transparent}")
+    self.listSize.setObjectName("listSize")
+    for i in range(3):
+      self.listSize.addItem("item "+str(i))
+    self.gridLayout.addWidget(self.listSize, 2, 0, 1, 3)
+    self.listSize.setSortingEnabled(True)
+    #self.retranslateUi(Dialog)
+    QtCore.QMetaObject.connectSlotsByName(Dialog)
+    Dialog.setTabOrder(self.listSize, self.btnGO)
+    Dialog.setTabOrder(self.btnGO, self.comboRating)
+    Dialog.setTabOrder(self.comboRating, self.comboPL)
+  # def retranslateUi(self, Dialog):
+    # _translate = QtCore.QCoreApplication.translate
+    # self.labRating.setText(_translate("Dialog", "Rating: "))
+    # self.comboPL.setItemText(0, _translate("Dialog", "<none>"))
+    # self.btnGO.setText(_translate("Dialog", "GO"))
+    # self.labPL.setText(_translate("Dialog", "Pypeline"))
+
+class DialogQM(QtGui.QDialog):
+  def __init__(self, winTitle="Quick Insert", PType='Pipe'):
+    super(DialogQM,self).__init__(FreeCADGui.getMainWindow())
+    self.setWindowTitle(winTitle)
+    self.setObjectName("DQkMenu")
+    self.resize(300, 300)
+    self.setStyleSheet(("Qself{background: transparent}"))
+    self.setWindowFlags(self.windowFlags() | QtCore.Qt.FramelessWindowHint)
+    self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+    self.QM=QkMenu()
+    self.QM.setupUi(self)
+    self.QM.btnGO.clicked.connect(self.close)
+    self.QM.comboRating.currentIndexChanged.connect(self.updateSizes)
+    ###
+    self.PType=PType
+    self.PRating=''
+    self.files=listdir(join(dirname(abspath(__file__)),"tablez"))
+    ratings=[s.lstrip(PType+"_").rstrip(".csv") for s in self.files if s.startswith(PType) and s.endswith('.csv')]
+    pypelines=[o.Label for o in FreeCAD.activeDocument().Objects if hasattr(o,'PType') and o.PType=='PypeLine']
+    if ratings: # adds ratings in combo
+      self.QM.comboRating.addItems(ratings) 
+      self.updateSizes()
+    if pypelines: # adds pypelines in combo
+      self.QM.comboPL.addItems(pypelines)
+  def updateSizes(self):
+    self.QM.listSize.clear()
+    self.PRating=self.QM.comboRating.currentText()
+    for fileName in self.files: #adds sizes in list
+      if fileName==self.PType+'_'+self.PRating+'.csv':
+        f=open(join(dirname(abspath(__file__)),"tablez",fileName),'r')
+        reader=csv.DictReader(f,delimiter=';')
+        pipeDictList=[DNx for DNx in reader]
+        f.close()
+        for row in pipeDictList:
+          s=row['PSize']
+          if 'OD' in row.keys():
+            s+=" - "+row['OD']
+          if 'thk' in row.keys():
+            s+="x"+row['thk']
+          self.QM.listSize.addItem(s)
+        break
+     ###
+    self.show()
+
+class pipeQM(DialogQM):
+  def __init__(self):
+    super(pipeQM,self).__init__('Insert pipes', 'Pipe')
+
+class elbowQM(DialogQM):
+  def __init__(self):
+    super(elbowQM,self).__init__('Insert pipes', 'Elbow')
