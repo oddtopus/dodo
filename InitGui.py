@@ -21,7 +21,7 @@
 #*   USA                                                                    *
 #*                                                                          *
 #****************************************************************************
-import dodoPM
+
 class dodo ( Workbench ):
   import DraftSnap
   import sys, FreeCAD
@@ -145,14 +145,13 @@ static char * dodo1_xpm[] = {
     Log ('Loading Frame tools: done\n')
     import CPipe
     self.pypeList=["insertPipe","insertElbow","insertReduct","insertCap","insertValve","insertFlange","insertUbolt","insertPypeLine","insertBranch","insertTank","insertRoute","breakPipe","mateEdges","flat","extend2intersection","extend1intersection","laydown","raiseup","attach2tube","point2point","insertAnyz"]#,"joinPype"]
+    self.qm=["pipeQM","elbowQM","reductQM"]
     self.appendToolbar("pipeTools",self.pypeList)
     Log ('Loading Pipe tools: done\n')
-    menu1 = ["Frame tools"]
-    menu2 = ["Pype tools"]
-    menu3 = ["Utils"]
-    self.appendMenu(menu1,self.frameList)
-    self.appendMenu(menu2,self.pypeList)    
-    self.appendMenu(menu3,self.utilsList)
+    self.appendMenu(["Frame tools"],self.frameList)
+    self.appendMenu(["Pype tools"],self.pypeList)    
+    self.appendMenu(["Utils"],self.utilsList)
+    self.appendMenu(["QkMenus"], self.qm)
 
   def ContextMenu(self, recipient):
     self.appendContextMenu('Frames', self.frameList)
@@ -169,11 +168,12 @@ static char * dodo1_xpm[] = {
     Msg("Created variables in FreeCAD module:\n")
     Msg("__activePypeLine__\n")
     Msg("__activeFrameLine__\n")
-    Msg("__dodoPMact__ \n")
     try:
-      FreeCAD.Console.PrintWarning(FreeCAD.__dodoPMact__.objectName()+' \'s shortcut = '+FreeCAD.__dodoPMact__.shortcuts()[0].toString()+'\n\t****\n')
+      import dodoPM
+      Msg("__dodoPMact__ \n")
+      FreeCAD.Console.PrintMessage(FreeCAD.__dodoPMact__.objectName()+' \'s shortcut = '+FreeCAD.__dodoPMact__.shortcuts()[0].toString()+'\n\t****\n')
     except:
-      pass
+      FreeCAD.Console.PrintError('dodoPM not loaded \n')
 
   def Deactivated(self):
     del FreeCAD.__activePypeLine__
@@ -185,6 +185,6 @@ static char * dodo1_xpm[] = {
     # Msg("dodoPM shortcut removed\n")
     # del FreeCAD.__dodoPMact__
     # Msg("__dodoPMact__ variable deleted\n")
-    Msg("dodo deactivated()\n")
+    # Msg("dodo deactivated()\n")
  
 Gui.addWorkbench(dodo)

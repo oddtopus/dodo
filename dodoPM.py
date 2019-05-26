@@ -6,7 +6,7 @@
 # Copyright (C) 2015,2016 looo @ FreeCAD
 # Copyright (C) 2015 microelly <microelly2@freecadbuch.de>
 
-import FreeCAD, FreeCADGui, math, platform, csv
+import FreeCAD, FreeCADGui, math, platform, csv, pCmd
 from PySide import QtCore
 from PySide import QtGui
 from os.path import join, dirname, abspath
@@ -119,7 +119,7 @@ class PieMenu:
         else:
             self.menu.setAttribute(QtCore.Qt.WA_PaintOnScreen)
     def add_commands(self, commands):
-        paramGet = FreeCAD.ParamGet("User parameter:BaseApp/PieMenu")
+        # paramGet = FreeCAD.ParamGet("User parameter:BaseApp/PieMenu")
         for i in self.buttons:
             i.deleteLater()
         self.buttons = []
@@ -210,43 +210,10 @@ class PieMenu:
                     i.setVisible(True)
                 self.menu.popup(QtCore.QPoint(pos.x() - self.menuSize / 2, pos.y() - self.menuSize / 2))
 
-# main
-mw = FreeCADGui.getMainWindow()
-toolList=["insertPipe","insertElbow","insertReduct","insertCap","insertValve","insertFlange","insertUbolt"]
-compositingManager = True
-if QtCore.qVersion() < "5":
-    windowShadow = False
-else:
-    windowShadow = True
-if platform.system() == "Linux":
-    try:
-        if QtGui.QX11Info.isCompositingManagerRunning():
-            windowShadow = True
-        else:
-            compositingManager = False
-    except AttributeError:
-        windowShadow = True
-if platform.system() == "Windows":
-    windowShadow = True
-PieMenuInstance = PieMenu()
-FreeCAD.__dodoPMact__ = QtGui.QAction(mw)
-FreeCAD.__dodoPMact__.setObjectName("PieTest")
-FreeCAD.__dodoPMact__.setShortcut(QtGui.QKeySequence("Z"))
-FreeCAD.__dodoPMact__.triggered.connect(PieMenuInstance.showAtMouse)
-mw.addAction(FreeCAD.__dodoPMact__)
+# QkMenus:
 
 class QkMenu(object):
   def setupUi(self, Dialog):
-    # sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Minimum)
-    # sizePolicy.setHorizontalStretch(0)
-    # sizePolicy.setVerticalStretch(0)
-    # sizePolicy.setHeightForWidth(Dialog.sizePolicy().hasHeightForWidth())
-    # Dialog.setSizePolicy(sizePolicy)
-    # Dialog.setMinimumSize(QtCore.QSize(300, 300))
-    # Dialog.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-    # Dialog.setFocusPolicy(QtCore.Qt.StrongFocus)
-    # Dialog.setWindowOpacity(1.0)
-    ###
     self.gridLayout = QtGui.QGridLayout(Dialog)
     self.gridLayout.setObjectName("gridLayout")
     self.comboRating = QtGui.QComboBox(Dialog)
@@ -290,18 +257,10 @@ class QkMenu(object):
     for i in range(3):
       self.listSize.addItem("item "+str(i))
     self.gridLayout.addWidget(self.listSize, 2, 0, 1, 3)
-    self.listSize.setSortingEnabled(True)
-    #self.retranslateUi(Dialog)
     QtCore.QMetaObject.connectSlotsByName(Dialog)
     Dialog.setTabOrder(self.listSize, self.btnGO)
     Dialog.setTabOrder(self.btnGO, self.comboRating)
     Dialog.setTabOrder(self.comboRating, self.comboPL)
-  # def retranslateUi(self, Dialog):
-    # _translate = QtCore.QCoreApplication.translate
-    # self.labRating.setText(_translate("Dialog", "Rating: "))
-    # self.comboPL.setItemText(0, _translate("Dialog", "<none>"))
-    # self.btnGO.setText(_translate("Dialog", "GO"))
-    # self.labPL.setText(_translate("Dialog", "Pypeline"))
 
 class DialogQM(QtGui.QDialog):
   def __init__(self, winTitle="Quick Insert", PType='Pipe'):
@@ -314,19 +273,24 @@ class DialogQM(QtGui.QDialog):
     self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
     self.QM=QkMenu()
     self.QM.setupUi(self)
-    self.QM.btnGO.clicked.connect(self.close)
+    self.QM.btnGO.clicked.connect(self.go)
     self.QM.comboRating.currentIndexChanged.connect(self.updateSizes)
-    ###
+    ### pype stuff ###
     self.PType=PType
     self.PRating=''
+    self.dictList=list()
     self.files=listdir(join(dirname(abspath(__file__)),"tablez"))
     ratings=[s.lstrip(PType+"_").rstrip(".csv") for s in self.files if s.startswith(PType) and s.endswith('.csv')]
-    pypelines=[o.Label for o in FreeCAD.activeDocument().Objects if hasattr(o,'PType') and o.PType=='PypeLine']
+    if FreeCAD.activeDocument():
+      pypelines=[o.Label for o in FreeCAD.activeDocument().Objects if hasattr(o,'PType') and o.PType=='PypeLine']
+    else:
+      pypelines=[]
     if ratings: # adds ratings in combo
       self.QM.comboRating.addItems(ratings) 
       self.updateSizes()
     if pypelines: # adds pypelines in combo
       self.QM.comboPL.addItems(pypelines)
+    self.show()
   def updateSizes(self):
     self.QM.listSize.clear()
     self.PRating=self.QM.comboRating.currentText()
@@ -334,9 +298,9 @@ class DialogQM(QtGui.QDialog):
       if fileName==self.PType+'_'+self.PRating+'.csv':
         f=open(join(dirname(abspath(__file__)),"tablez",fileName),'r')
         reader=csv.DictReader(f,delimiter=';')
-        pipeDictList=[DNx for DNx in reader]
+        self.dictList=[DNx for DNx in reader]
         f.close()
-        for row in pipeDictList:
+        for row in self.dictList:
           s=row['PSize']
           if 'OD' in row.keys():
             s+=" - "+row['OD']
@@ -344,13 +308,56 @@ class DialogQM(QtGui.QDialog):
             s+="x"+row['thk']
           self.QM.listSize.addItem(s)
         break
-     ###
-    self.show()
+  def go(self):
+    self.close()
 
-class pipeQM(DialogQM):
-  def __init__(self):
-    super(pipeQM,self).__init__('Insert pipes', 'Pipe')
+# DEFINITION OF QKMENUS DIALOGS: alternative to the commands created in CPipe.py
 
-class elbowQM(DialogQM):
+class pQM(DialogQM):
   def __init__(self):
-    super(elbowQM,self).__init__('Insert pipes', 'Elbow')
+    super(pQM,self).__init__('Insert pipe', 'Pipe')
+  def go(self):
+    #pCmd.doPipes([],pl)
+    print('create pipe!')
+    super(pQM,self).go()
+
+class eQM(DialogQM):
+  def __init__(self):
+    super(eQM,self).__init__('Insert elbow', 'Elbow')
+  def go(self):
+    #pCmd.doElbow([],pl)
+    print('create elbow!')
+    super(eQM,self).go()
+
+class rQM(DialogQM):
+  def __init__(self):
+    super(rQM,self).__init__('Insert reduction', 'Reduct')
+  def go(self):
+    #pCmd.doReduct([],pl)
+    print('create reduction!')
+    super(rQM,self).go()
+
+# main
+mw = FreeCADGui.getMainWindow()
+toolList=["pipeQM","elbowQM","reductQM"]#["insertPipe","insertElbow","insertReduct","insertCap","insertValve","insertFlange","insertUbolt"]
+compositingManager = True
+if QtCore.qVersion() < "5":
+    windowShadow = False
+else:
+    windowShadow = True
+if platform.system() == "Linux":
+    try:
+        if QtGui.QX11Info.isCompositingManagerRunning():
+            windowShadow = True
+        else:
+            compositingManager = False
+    except AttributeError:
+        windowShadow = True
+if platform.system() == "Windows":
+    windowShadow = True
+PieMenuInstance = PieMenu()
+FreeCAD.__dodoPMact__ = QtGui.QAction(mw)
+FreeCAD.__dodoPMact__.setObjectName("PieTest")
+FreeCAD.__dodoPMact__.setShortcut(QtGui.QKeySequence("Z"))
+FreeCAD.__dodoPMact__.triggered.connect(PieMenuInstance.showAtMouse)
+mw.addAction(FreeCAD.__dodoPMact__)

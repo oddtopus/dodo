@@ -140,6 +140,60 @@ def makePipe(propList=[], pos=None, Z=None):
   a.Placement.Rotation=rot.multiply(a.Placement.Rotation)
   return a
 
+def doPipes(propList=[], pypeline=None): 
+  '''
+    propList = [
+      DN (string): nominal diameter
+      OD (float): outside diameter
+      thk (float): shell thickness
+      H (float): length of pipe ]
+    pypeline = string
+  '''
+  FreeCAD.activeDocument().openTransaction('Insert pipe')
+  plist=list()
+  if len(fCmd.edges())==0: #..no edges selected
+    vs=[v for sx in FreeCADGui.Selection.getSelectionEx() for so in sx.SubObjects for v in so.Vertexes]
+    if len(vs)==0: # ...no vertexes selected
+      plist.append(makePipe(propList))
+    else: # ... one or more vertexes
+      for v in vs: plist.append(makePipe(propList,v.Point))
+  else:
+    selex=FreeCADGui.Selection.getSelectionEx()
+    for objex in selex:
+      # o=objex.Object 
+      # SELECT PROPERTIES ACCORDING OBJECT
+      # if hasattr(o,'PSize') and hasattr(o,'OD') and hasattr(o,'thk'):
+        # if o.PType=='Reduct' and o.Proxy.nearestPort(objex.SubObjects[0].CenterOfMass)[0]==1:
+          # propList[:3]=o.PSize, o.OD2, o.thk2
+        # else:
+          # propList[:3]=o.PSize, o.OD, o.thk
+      if fCmd.faces(): # Face selected...
+        for face in fCmd.faces():
+          x=(face.ParameterRange[0]+face.ParameterRange[1])/2
+          y=(face.ParameterRange[2]+face.ParameterRange[3])/2
+          plist.append(makePipe(propList,face.valueAt(x,y),face.normalAt(x,y)))
+        FreeCAD.activeDocument().commitTransaction()
+        FreeCAD.activeDocument().recompute()
+        return 
+      for edge in fCmd.edges([objex]): # ...one or more edges...
+        if edge.curvatureAt(0)==0: # ...straight edges
+          pL=propList
+          pL[3]=edge.Length
+          plist.append(makePipe(pL,edge.valueAt(0),edge.tangentAt(0)))
+        else: # ...curved edges
+          pos=edge.centerOfCurvatureAt(0)
+          Z=edge.tangentAt(0).cross(edge.normalAt(0))
+          if isElbow(o):
+            p0,p1=[o.Placement.Rotation.multVec(p) for p in o.Ports]
+            if not fCmd.isParallel(Z,p0):
+              Z=p1
+          plist.append(makePipe(propList,pos,Z))
+  if pypeline:
+    for p in plist:
+      moveToPyLi(p,pypeline)
+  FreeCAD.activeDocument().commitTransaction()
+  FreeCAD.activeDocument().recompute()
+
 def makeElbow(propList=[], pos=None, Z=None):
   '''Adds an Elbow object
   makeElbow(propList,pos,Z);

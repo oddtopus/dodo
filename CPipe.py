@@ -13,16 +13,17 @@ import FreeCAD, FreeCADGui,inspect, os
 # (c) 2007 Juergen Riegel LGPL
 
 def addCommand(name,cmdObject):
-	(list,num) = inspect.getsourcelines(cmdObject.Activated)
-	pos = 0
-	# check for indentation
-	while(list[1][pos] == ' ' or list[1][pos] == '\t'):
-		pos += 1
-	source = ""
-	for i in range(len(list)-1):
-		source += list[i+1][pos:]
-	FreeCADGui.addCommand(name,cmdObject,source)
-
+  (list,num) = inspect.getsourcelines(cmdObject.Activated)
+  pos = 0
+  # check for indentation
+  while(list[1][pos] == ' ' or list[1][pos] == '\t'):
+    pos += 1
+  source = ""
+  for i in range(len(list)-1):
+    source += list[i+1][pos:]
+  FreeCADGui.addCommand(name,cmdObject,source)
+  #print(name+":\n"+str(source))
+  
 #---------------------------------------------------------------------------
 # The command classes
 #---------------------------------------------------------------------------
@@ -254,3 +255,29 @@ addCommand('laydown',laydown())
 addCommand('raiseup',raiseup())
 addCommand('point2point',point2point())
 addCommand('insertAnyz',insertAnyz())
+
+### QkMenus ###
+class pipeQM:
+  def Activated(self):
+    from dodoPM import pQM
+    dialog=pQM()
+  def GetResources(self):
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","pipe.svg"),'MenuText':'QM for pipes'} 
+addCommand('pipeQM',pipeQM())
+
+class elbowQM():
+  def Activated (self):
+    from dodoPM import eQM
+    dialog=eQM()
+  def GetResources(self):
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","elbow.svg"),'MenuText':'QM for elbows'} 
+addCommand('elbowQM',elbowQM())
+
+class reductQM():
+  def Activated (self):
+    from dodoPM import rQM
+    dialog=rQM()
+  def GetResources(self):
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","reduct.svg"),'MenuText':'QM for reductions'} 
+addCommand('reductQM',reductQM())
+
