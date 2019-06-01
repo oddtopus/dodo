@@ -19,7 +19,7 @@ class fillForm(dodoDialogs.protoTypeDialog):
     if self.beam!=None and len(fCmd.edges())>0:
       FreeCAD.activeDocument().openTransaction('Fill frame')
       if self.form.radio1.isChecked():
-        fCmd.placeTheBeam(self.beam,frameCmd.edges()[0])
+        fCmd.placeTheBeam(self.beam,fCmd.edges()[0])
       else:
         for edge in fCmd.edges():
           struct=FreeCAD.activeDocument().copyObject(self.beam,True)
@@ -242,7 +242,7 @@ class alignForm(dodoDialogs.protoTypeDialog):
     self.form.Z.setValidator(QDoubleValidator())
   def selectAction(self):
     if fCmd.faces():
-      a=[(o,fCmd.faces([o])[0]) for o in FreeCADGui.Selection.getSelectionEx() if frameCmd.faces([o])][0]
+      a=[(o,fCmd.faces([o])[0]) for o in FreeCADGui.Selection.getSelectionEx() if fCmd.faces([o])][0]
       self.faceRef=a[1]
       self.form.label.setText(a[0].Object.Label+':Face')
       FreeCADGui.Selection.clearSelection()

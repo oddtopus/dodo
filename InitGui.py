@@ -145,7 +145,8 @@ static char * dodo1_xpm[] = {
     Log ('Loading Frame tools: done\n')
     import CPipe
     self.pypeList=["insertPipe","insertElbow","insertReduct","insertCap","insertValve","insertFlange","insertUbolt","insertPypeLine","insertBranch","insertTank","insertRoute","breakPipe","mateEdges","flat","extend2intersection","extend1intersection","laydown","raiseup","attach2tube","point2point","insertAnyz"]#,"joinPype"]
-    self.qm=["pipeQM","elbowQM","reductQM"]
+    from dodoPM import toolList
+    self.qm=toolList # ["pipeQM","elbowQM","reductQM"]
     self.appendToolbar("pipeTools",self.pypeList)
     Log ('Loading Pipe tools: done\n')
     self.appendMenu(["Frame tools"],self.frameList)

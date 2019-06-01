@@ -89,7 +89,7 @@ class insertPipeForm(dodoDialogs.protoPypeForm):
     self.edit1.setPlaceholderText('<length>')
     self.edit1.setAlignment(Qt.AlignHCenter)
     self.edit1.setValidator(QDoubleValidator())
-    #self.edit1.editingFinished.connect(lambda: self.sli.setValue(100))
+    self.edit1.editingFinished.connect(lambda: self.sli.setValue(100))
     self.secondCol.layout().addWidget(self.edit1)
     self.btn2=QPushButton('Reverse')
     self.secondCol.layout().addWidget(self.btn2)
@@ -118,62 +118,30 @@ class insertPipeForm(dodoDialogs.protoPypeForm):
   def insert(self):      # insert the pipe
     self.lastPipe=None
     d=self.pipeDictList[self.sizeList.currentRow()]
-    FreeCAD.activeDocument().openTransaction('Insert pipe')
     if self.edit1.text():
       self.H=float(self.edit1.text())
     self.sli.setValue(100)
-    if len(fCmd.edges())==0: #..no edges selected
-      propList=[d['PSize'],float(pq(d['OD'])),float(pq(d['thk'])),self.H]
-      vs=[v for sx in FreeCADGui.Selection.getSelectionEx() for so in sx.SubObjects for v in so.Vertexes]
-      if len(vs)==0: # ...no vertexes selected
-        self.lastPipe=pCmd.makePipe(propList)
-        if self.combo.currentText()!='<none>':
-          pCmd.moveToPyLi(self.lastPipe,self.combo.currentText())
-      else:
-        for v in vs: # ... one or more vertexes
-          self.lastPipe=pCmd.makePipe(propList,v.Point)
-        if self.combo.currentText()!='<none>':
-          pCmd.moveToPyLi(self.lastPipe,self.combo.currentText())
-    else:
-      selex=FreeCADGui.Selection.getSelectionEx()
+    # DEFINE PROPERTIES
+    selex=FreeCADGui.Selection.getSelectionEx()
+    if selex:
       for objex in selex:
-        o=objex.Object # SELECT PROPERTIES ACCORDING OBJECT -> to add OD2 an thk2 according o.nearestPort(point)
+        o=objex.Object
         if hasattr(o,'PSize') and hasattr(o,'OD') and hasattr(o,'thk'):
-          if o.PType=='Reduct' and o.Proxy.nearestPort(objex.SubObjects[0].CenterOfMass)[0]==1:
+          if o.PType=='Reduct' and o.Proxy.nearestPort(objex.SubObjects[0].CenterOfMass)[0]==1: # props of a reduction
             propList=[o.PSize,o.OD2,o.thk2,self.H]
+            break
           else:
-            propList=[o.PSize,o.OD,o.thk,self.H]
-          #print(o.Proxy.nearestPort(objex.SubObjects[0].CenterOfMass))
+            propList=[o.PSize,o.OD,o.thk,self.H] # props of other pypes
+            break
         else:
-          propList=[d['PSize'],float(pq(d['OD'])),float(pq(d['thk'])),self.H]
-        if fCmd.faces(): # Face selected...
-          for face in fCmd.faces():
-            x=(face.ParameterRange[0]+face.ParameterRange[1])/2
-            y=(face.ParameterRange[2]+face.ParameterRange[3])/2
-            self.lastPipe=pCmd.makePipe(propList,face.valueAt(x,y),face.normalAt(x,y))
-            if self.combo.currentText()!='<none>':
-              pCmd.moveToPyLi(self.lastPipe,self.combo.currentText())
-          FreeCAD.activeDocument().commitTransaction()
-          FreeCAD.activeDocument().recompute()
-          return 
-        for edge in fCmd.edges([objex]): # ...one or more edges...
-          if edge.curvatureAt(0)==0: # ...straight edges
-            pL=propList
-            pL[3]=edge.Length
-            self.lastPipe=pCmd.makePipe(pL,edge.valueAt(0),edge.tangentAt(0))
-          else: # ...curved edges
-            pos=edge.centerOfCurvatureAt(0)
-            Z=edge.tangentAt(0).cross(edge.normalAt(0))
-            if pCmd.isElbow(o):
-              p0,p1=[o.Placement.Rotation.multVec(p) for p in o.Ports]
-              if not fCmd.isParallel(Z,p0):
-                Z=p1
-            self.lastPipe=pCmd.makePipe(propList,pos,Z)
-          if self.combo.currentText()!='<none>':
-            pCmd.moveToPyLi(self.lastPipe,self.combo.currentText())
+          propList=[d['PSize'],float(pq(d['OD'])),float(pq(d['thk'])),self.H] #props of the dialog
+          break
+    else:
+      propList=[d['PSize'],float(pq(d['OD'])),float(pq(d['thk'])),self.H]
+    # INSERT PIPES
+    self.lastPipe=pCmd.doPipes(propList,FreeCAD.__activePypeLine__)[-1]
     self.H=float(self.lastPipe.Height)
     self.edit1.setText(str(float(self.H)))
-    FreeCAD.activeDocument().commitTransaction()
     FreeCAD.activeDocument().recompute()
   def apply(self):
     self.lastPipe=None
@@ -258,6 +226,7 @@ class insertElbowForm(dodoDialogs.protoPypeForm):
     self.lastAngle=0
     self.dial.setValue(0)
     DN=OD=thk=PRating=None
+    propList=[]
     d=self.pipeDictList[self.sizeList.currentRow()]
     try:
       if float(self.edit1.text())>180:
@@ -266,18 +235,20 @@ class insertElbowForm(dodoDialogs.protoPypeForm):
     except:
       ang=float(pq(d['BendAngle']))
     selex=FreeCADGui.Selection.getSelectionEx()
-    if len(selex)==0:     # no selection -> insert one elbow at origin
-      propList=[d['PSize'],float(pq(d['OD'])),float(pq(d['thk'])),ang,float(pq(d['BendRadius']))]
-      FreeCAD.activeDocument().openTransaction('Insert elbow in (0,0,0)')
-      self.lastElbow=pCmd.makeElbow(propList)
-      if self.combo.currentText()!='<none>':
-        pCmd.moveToPyLi(self.lastElbow,self.combo.currentText())
-      FreeCAD.activeDocument().commitTransaction()
-    elif len(selex)==1 and len(selex[0].SubObjects)==1:  #one selection -> ...
-      if hasattr(selex[0].Object,'PType') and selex[0].Object.PType in ['Pipe','Elbow','Cap','Reduct']:
-        DN=selex[0].Object.PSize
-        OD=float(selex[0].Object.OD)
-        thk=float(selex[0].Object.thk)
+    # if len(selex)==0:     # no selection -> insert one elbow at origin
+      # propList=[d['PSize'],float(pq(d['OD'])),float(pq(d['thk'])),ang,float(pq(d['BendRadius']))]
+      # FreeCAD.activeDocument().openTransaction('Insert elbow in (0,0,0)')
+      # self.lastElbow=pCmd.makeElbow(propList)
+      # if self.combo.currentText()!='<none>':
+        # pCmd.moveToPyLi(self.lastElbow,self.combo.currentText())
+      # FreeCAD.activeDocument().commitTransaction()
+    # elif len(selex)==1 and len(selex[0].SubObjects)==1:  #one selection -> ...
+    # DEFINE PROPERTIES
+    for sx in selex:
+      if hasattr(sx.Object,'PType') and sx.Object.PType in ['Pipe','Elbow','Cap','Reduct']:
+        DN=sx.Object.PSize
+        OD=float(sx.Object.OD)
+        thk=float(sx.Object.thk)
         BR=None
         for prop in self.pipeDictList:
           if prop['PSize']==DN:
@@ -285,81 +256,82 @@ class insertElbowForm(dodoDialogs.protoPypeForm):
         if BR==None:
           BR=1.5*OD/2
         propList=[DN,OD,thk,ang,BR]
-      else:
-        propList=[d['PSize'],float(pq(d['OD'])),float(pq(d['thk'])),ang,float(pq(d['BendRadius']))]
-      if selex[0].SubObjects[0].ShapeType=="Vertex":   # ...on vertex
-        FreeCAD.activeDocument().openTransaction('Insert elbow on vertex')
-        self.lastElbow=pCmd.makeElbow(propList,selex[0].SubObjects[0].Point)
-        if self.combo.currentText()!='<none>':
-          pCmd.moveToPyLi(self.lastElbow,self.combo.currentText())
-        FreeCAD.activeDocument().commitTransaction()
-      elif selex[0].SubObjects[0].ShapeType=="Edge" and  selex[0].SubObjects[0].curvatureAt(0)!=0: # ...on center of curved edge
-        P=selex[0].SubObjects[0].centerOfCurvatureAt(0)
-        N=selex[0].SubObjects[0].normalAt(0).cross(selex[0].SubObjects[0].tangentAt(0)).normalize()
-        FreeCAD.activeDocument().openTransaction('Insert elbow on curved edge')
-        self.lastElbow=pCmd.makeElbow(propList,P) # ,Z)
-        if pCmd.isPipe(selex[0].Object):
-          ax=selex[0].Object.Shape.Solids[0].CenterOfMass-P
-          rot=FreeCAD.Rotation(self.lastElbow.Ports[0],ax)
-          self.lastElbow.Placement.Rotation=rot.multiply(self.lastElbow.Placement.Rotation)
-          Port0=pCmd.getElbowPort(self.lastElbow)
-          self.lastElbow.Placement.move(P-Port0)
-        elif pCmd.isElbow(selex[0].Object):
-          p0,p1=[selex[0].Object.Placement.Rotation.multVec(p) for p in selex[0].Object.Ports]
-          if fCmd.isParallel(p0,N):
-            self.lastElbow.Placement.Rotation=FreeCAD.Rotation(self.lastElbow.Ports[0],p0*-1)
-          else:
-            self.lastElbow.Placement.Rotation=FreeCAD.Rotation(self.lastElbow.Ports[0],p1*-1)
-          self.lastElbow.Placement.move(P-pCmd.getElbowPort(self.lastElbow))
-        else:
-          rot=FreeCAD.Rotation(self.lastElbow.Ports[0],N)
-          self.lastElbow.Placement.Rotation=rot.multiply(self.lastElbow.Placement.Rotation)
-          self.lastElbow.Placement.move(self.lastElbow.Placement.Rotation.multVec(self.lastElbow.Ports[0])*-1)
-        if self.combo.currentText()!='<none>':
-          pCmd.moveToPyLi(self.lastElbow,self.combo.currentText())
-        FreeCAD.activeDocument().recompute()
-        FreeCAD.activeDocument().commitTransaction()
-    else:       # multiple selection -> insert one elbow at intersection of two edges or beams or pipes ##
-      # selection of axes
-      things=[]
-      for objEx in selex:
-        # if the profile is not defined and the selection is one piping object, take its profile for elbow
-        if OD==thk==None and hasattr(objEx.Object,'PType') and objEx.Object.PType in ['Pipe','Elbow','Cap','Reduct']: 
-          DN=objEx.Object.PSize
-          OD=objEx.Object.OD
-          thk=objEx.Object.thk
-          PRating=objEx.Object.PRating
-        # if the object is a beam or pipe, append it to the "things"..
-        if len(fCmd.beams([objEx.Object]))==1:
-          things.append(objEx.Object)
-        else:
-          # ..else append its edges
-          for edge in fCmd.edges([objEx]):
-            things.append(edge)
-        if len(things)>=2:
-          break
-      FreeCAD.activeDocument().openTransaction('Insert elbow on intersection')
-      try:
-        #create the feature
-        if None in [DN,OD,thk,PRating]:
-          propList=[d['PSize'],float(pq(d['OD'])),float(pq(d['thk'])),ang,float(pq(d['BendRadius']))]
-          self.lastElbow=pCmd.makeElbowBetweenThings(*things[:2],propList=propList)
-          self.lastElbow.PRating=self.ratingList.item(self.ratingList.currentRow()).text()
-        else:
-          for prop in self.pipeDictList:
-            if prop['PSize']==DN:
-              BR=float(pq(prop['BendRadius']))
-          if BR==None:
-            BR=1.5*OD/2
-          propList=[DN,OD,thk,ang,BR]
-          self.lastElbow=pCmd.makeElbowBetweenThings(*things[:2],propList=propList)
-          self.lastElbow.PRating=PRating
-        if self.combo.currentText()!='<none>':
-          pCmd.moveToPyLi(self.lastElbow,self.combo.currentText())
-      except:
-        FreeCAD.Console.PrintError('Creation of elbow is failed\n')
-      FreeCAD.activeDocument().commitTransaction()
-      ####
+        break
+    if not propList:
+      propList=[d['PSize'],float(pq(d['OD'])),float(pq(d['thk'])),ang,float(pq(d['BendRadius']))]
+      # if selex[0].SubObjects[0].ShapeType=="Vertex":   # ...on vertex
+        # FreeCAD.activeDocument().openTransaction('Insert elbow on vertex')
+        # self.lastElbow=pCmd.makeElbow(propList,selex[0].SubObjects[0].Point)
+        # if self.combo.currentText()!='<none>':
+          # pCmd.moveToPyLi(self.lastElbow,self.combo.currentText())
+        # FreeCAD.activeDocument().commitTransaction()
+      # elif selex[0].SubObjects[0].ShapeType=="Edge" and  selex[0].SubObjects[0].curvatureAt(0)!=0: # ...on center of curved edge
+        # P=selex[0].SubObjects[0].centerOfCurvatureAt(0)
+        # N=selex[0].SubObjects[0].normalAt(0).cross(selex[0].SubObjects[0].tangentAt(0)).normalize()
+        # FreeCAD.activeDocument().openTransaction('Insert elbow on curved edge')
+        # self.lastElbow=pCmd.makeElbow(propList,P) # ,Z)
+        # if pCmd.isPipe(selex[0].Object):
+          # ax=selex[0].Object.Shape.Solids[0].CenterOfMass-P
+          # rot=FreeCAD.Rotation(self.lastElbow.Ports[0],ax)
+          # self.lastElbow.Placement.Rotation=rot.multiply(self.lastElbow.Placement.Rotation)
+          # Port0=pCmd.getElbowPort(self.lastElbow)
+          # self.lastElbow.Placement.move(P-Port0)
+        # elif pCmd.isElbow(selex[0].Object):
+          # p0,p1=[selex[0].Object.Placement.Rotation.multVec(p) for p in selex[0].Object.Ports]
+          # if fCmd.isParallel(p0,N):
+            # self.lastElbow.Placement.Rotation=FreeCAD.Rotation(self.lastElbow.Ports[0],p0*-1)
+          # else:
+            # self.lastElbow.Placement.Rotation=FreeCAD.Rotation(self.lastElbow.Ports[0],p1*-1)
+          # self.lastElbow.Placement.move(P-pCmd.getElbowPort(self.lastElbow))
+        # else:
+          # rot=FreeCAD.Rotation(self.lastElbow.Ports[0],N)
+          # self.lastElbow.Placement.Rotation=rot.multiply(self.lastElbow.Placement.Rotation)
+          # self.lastElbow.Placement.move(self.lastElbow.Placement.Rotation.multVec(self.lastElbow.Ports[0])*-1)
+        # if self.combo.currentText()!='<none>':
+          # pCmd.moveToPyLi(self.lastElbow,self.combo.currentText())
+        # FreeCAD.activeDocument().recompute()
+        # FreeCAD.activeDocument().commitTransaction()
+    # else:       # multiple selection -> insert one elbow at intersection of two edges or beams or pipes ##
+      # # selection of axes
+      # things=[]
+      # for objEx in selex:
+        # # if the profile is not defined and the selection is one piping object, take its profile for elbow
+        # if OD==thk==None and hasattr(objEx.Object,'PType') and objEx.Object.PType in ['Pipe','Elbow','Cap','Reduct']: 
+          # DN=objEx.Object.PSize
+          # OD=objEx.Object.OD
+          # thk=objEx.Object.thk
+          # PRating=objEx.Object.PRating
+        # # if the object is a beam or pipe, append it to the "things"..
+        # if len(fCmd.beams([objEx.Object]))==1:
+          # things.append(objEx.Object)
+        # else:
+          # # ..else append its edges
+          # for edge in fCmd.edges([objEx]):
+            # things.append(edge)
+        # if len(things)>=2:
+          # break
+      # FreeCAD.activeDocument().openTransaction('Insert elbow on intersection')
+      # try:
+        # #create the feature
+        # if None in [DN,OD,thk,PRating]:
+          # propList=[d['PSize'],float(pq(d['OD'])),float(pq(d['thk'])),ang,float(pq(d['BendRadius']))]
+          # self.lastElbow=pCmd.makeElbowBetweenThings(*things[:2],propList=propList)
+          # self.lastElbow.PRating=self.ratingList.item(self.ratingList.currentRow()).text()
+        # else:
+          # for prop in self.pipeDictList:
+            # if prop['PSize']==DN:
+              # BR=float(pq(prop['BendRadius']))
+          # if BR==None:
+            # BR=1.5*OD/2
+          # propList=[DN,OD,thk,ang,BR]
+          # self.lastElbow=pCmd.makeElbowBetweenThings(*things[:2],propList=propList)
+          # self.lastElbow.PRating=PRating
+        # if self.combo.currentText()!='<none>':
+          # pCmd.moveToPyLi(self.lastElbow,self.combo.currentText())
+      # except:
+        # FreeCAD.Console.PrintError('Creation of elbow is failed\n')
+      # FreeCAD.activeDocument().commitTransaction()
+    self.lastElbow=pCmd.doElbow(propList, FreeCAD.__activePypeLine__)[-1] 
     FreeCAD.activeDocument().recompute()
   def trim(self):
     if len(fCmd.beams())==1:

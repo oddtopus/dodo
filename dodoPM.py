@@ -275,22 +275,26 @@ class DialogQM(QtGui.QDialog):
     self.QM.setupUi(self)
     self.QM.btnGO.clicked.connect(self.go)
     self.QM.comboRating.currentIndexChanged.connect(self.updateSizes)
+    self.QM.comboPL.currentIndexChanged.connect(self.setCurrentPL)
     ### pype stuff ###
     self.PType=PType
     self.PRating=''
     self.dictList=list()
     self.files=listdir(join(dirname(abspath(__file__)),"tablez"))
     ratings=[s.lstrip(PType+"_").rstrip(".csv") for s in self.files if s.startswith(PType) and s.endswith('.csv')]
-    if FreeCAD.activeDocument():
-      pypelines=[o.Label for o in FreeCAD.activeDocument().Objects if hasattr(o,'PType') and o.PType=='PypeLine']
-    else:
-      pypelines=[]
     if ratings: # adds ratings in combo
       self.QM.comboRating.addItems(ratings) 
       self.updateSizes()
-    if pypelines: # adds pypelines in combo
-      self.QM.comboPL.addItems(pypelines)
-    self.show()
+    self.updatePL()
+    # self.show()
+  def show(self):
+    self.updatePL()
+    super(DialogQM,self).show()
+  def setCurrentPL(self,PLName=None):
+    if self.QM.comboPL.currentText() not in ['<none>','<new>']:
+      FreeCAD.__activePypeLine__= self.QM.comboPL.currentText()
+    else:
+      FreeCAD.__activePypeLine__=None
   def updateSizes(self):
     self.QM.listSize.clear()
     self.PRating=self.QM.comboRating.currentText()
@@ -308,6 +312,18 @@ class DialogQM(QtGui.QDialog):
             s+="x"+row['thk']
           self.QM.listSize.addItem(s)
         break
+  def updatePL(self):
+    if FreeCAD.activeDocument():
+      pypelines=[o.Label for o in FreeCAD.activeDocument().Objects if hasattr(o,'PType') and o.PType=='PypeLine']
+    else:
+      pypelines=[]
+    if pypelines: # updates pypelines in combo
+      pl=FreeCAD.__activePypeLine__
+      self.QM.comboPL.clear()
+      pypelines.insert(0,'<none>')
+      self.QM.comboPL.addItems(pypelines)
+      if pl and pl in pypelines:
+        self.QM.comboPL.setCurrentIndex(self.QM.comboPL.findText(pl))
   def go(self):
     self.close()
 
@@ -316,30 +332,44 @@ class DialogQM(QtGui.QDialog):
 class pQM(DialogQM):
   def __init__(self):
     super(pQM,self).__init__('Insert pipe', 'Pipe')
+    self.QM.lineEdit = QtGui.QLineEdit()
+    self.QM.lineEdit.setAlignment(QtCore.Qt.AlignCenter)
+    self.QM.lineEdit.setObjectName("lineEdit")
+    self.QM.gridLayout.addWidget(self.QM.lineEdit, 3, 0, 1, 3)
+    self.QM.lineEdit.setPlaceholderText("<length>")
+    self.QM.lineEdit.setValidator(QtGui.QDoubleValidator())
   def go(self):
-    #pCmd.doPipes([],pl)
-    print('create pipe!')
+    d=self.dictList[self.QM.listSize.currentRow()]
+    if self.QM.lineEdit.text():
+      L=float(self.QM.lineEdit.text())
+    else:
+      L=1000
+    pCmd.doPipes([d['PSize'],float(d['OD']),float(d['thk']),L],FreeCAD.__activePypeLine__)
     super(pQM,self).go()
 
 class eQM(DialogQM):
   def __init__(self):
     super(eQM,self).__init__('Insert elbow', 'Elbow')
   def go(self):
-    #pCmd.doElbow([],pl)
-    print('create elbow!')
+    d=self.dictList[self.QM.listSize.currentRow()]
+    pCmd.doElbow([d['PSize'],float(d['OD']),float(d['thk']),90,d['BendRadius']],FreeCAD.__activePypeLine__)
     super(eQM,self).go()
 
-class rQM(DialogQM):
+class fQM(DialogQM):
   def __init__(self):
-    super(rQM,self).__init__('Insert reduction', 'Reduct')
+    super(fQM,self).__init__('Insert flange', 'Flange')
   def go(self):
-    #pCmd.doReduct([],pl)
-    print('create reduction!')
-    super(rQM,self).go()
+    #pCmd.doFlange([],FreeCAD.__activePypeLine__)
+    super(fQM,self).go()
+
+# create instances of qkMenu dialogs
+pqm=pQM()
+eqm=eQM()
+fqm=fQM()
 
 # main
 mw = FreeCADGui.getMainWindow()
-toolList=["pipeQM","elbowQM","reductQM"]#["insertPipe","insertElbow","insertReduct","insertCap","insertValve","insertFlange","insertUbolt"]
+toolList=["pipeQM","elbowQM","flangeQM"]#["insertPipe","insertElbow","insertReduct","insertCap","insertValve","insertFlange","insertUbolt"]
 compositingManager = True
 if QtCore.qVersion() < "5":
     windowShadow = False

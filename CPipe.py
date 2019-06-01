@@ -23,6 +23,15 @@ def addCommand(name,cmdObject):
     source += list[i+1][pos:]
   FreeCADGui.addCommand(name,cmdObject,source)
   #print(name+":\n"+str(source))
+
+def updatesPL(dialogqm):
+  if FreeCAD.activeDocument():
+    pypelines=[o.Label for o in FreeCAD.activeDocument().Objects if hasattr(o,'PType') and o.PType=='PypeLine']
+  else:
+    pypelines=[]
+  if pypelines: # updates pypelines in combo
+    dialogqm.QM.comboPL.clear()
+    dialogqm.QM.comboPL.addItems(pypelines)
   
 #---------------------------------------------------------------------------
 # The command classes
@@ -259,25 +268,28 @@ addCommand('insertAnyz',insertAnyz())
 ### QkMenus ###
 class pipeQM:
   def Activated(self):
-    from dodoPM import pQM
-    dialog=pQM()
+    import dodoPM
+    #dodoPM.pqm.updatePL()
+    dodoPM.pqm.show()
   def GetResources(self):
     return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","pipe.svg"),'MenuText':'QM for pipes'} 
 addCommand('pipeQM',pipeQM())
 
 class elbowQM():
   def Activated (self):
-    from dodoPM import eQM
-    dialog=eQM()
+    import dodoPM
+    #dodoPM.eqm.updatePL()
+    dodoPM.eqm.show()
   def GetResources(self):
     return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","elbow.svg"),'MenuText':'QM for elbows'} 
 addCommand('elbowQM',elbowQM())
 
-class reductQM():
+class flangeQM():
   def Activated (self):
-    from dodoPM import rQM
-    dialog=rQM()
+    import dodoPM
+    #dodoPM.fqm.updatePL()
+    dodoPM.fqm.show()
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","reduct.svg"),'MenuText':'QM for reductions'} 
-addCommand('reductQM',reductQM())
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","flange.svg"),'MenuText':'QM for flanges'} 
+addCommand('flangeQM',flangeQM())
 
