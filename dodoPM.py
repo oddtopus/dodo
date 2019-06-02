@@ -332,12 +332,13 @@ class DialogQM(QtGui.QDialog):
 class pQM(DialogQM):
   def __init__(self):
     super(pQM,self).__init__('Insert pipe', 'Pipe')
-    self.QM.lineEdit = QtGui.QLineEdit()
+    self.QM.lineEdit = QtGui.QLineEdit(self)
     self.QM.lineEdit.setAlignment(QtCore.Qt.AlignCenter)
     self.QM.lineEdit.setObjectName("lineEdit")
     self.QM.gridLayout.addWidget(self.QM.lineEdit, 3, 0, 1, 3)
     self.QM.lineEdit.setPlaceholderText("<length>")
     self.QM.lineEdit.setValidator(QtGui.QDoubleValidator())
+    self.QM.lineEdit.validator().setBottom(0)
   def go(self):
     d=self.dictList[self.QM.listSize.currentRow()]
     if self.QM.lineEdit.text():
@@ -350,16 +351,44 @@ class pQM(DialogQM):
 class eQM(DialogQM):
   def __init__(self):
     super(eQM,self).__init__('Insert elbow', 'Elbow')
+    self.QM.lineEdit = QtGui.QLineEdit(self)
+    self.QM.lineEdit.setAlignment(QtCore.Qt.AlignCenter)
+    self.QM.lineEdit.setObjectName("lineEdit")
+    self.QM.gridLayout.addWidget(self.QM.lineEdit, 3, 0, 1, 3)
+    self.QM.lineEdit.setPlaceholderText("<angle>")
+    self.QM.lineEdit.setValidator(QtGui.QDoubleValidator())
+    self.QM.lineEdit.validator().setBottom(0)
+    self.QM.lineEdit.validator().setTop(90)
   def go(self):
     d=self.dictList[self.QM.listSize.currentRow()]
-    pCmd.doElbow([d['PSize'],float(d['OD']),float(d['thk']),90,d['BendRadius']],FreeCAD.__activePypeLine__)
+    if self.QM.lineEdit.text():
+      ang=float(self.QM.lineEdit.text())
+      if ang>180: 
+        ang=180
+        self.QM.lineEdit.setText('180')
+    else:
+      ang=90
+    pCmd.doElbow([d['PSize'],float(d['OD']),float(d['thk']),ang,d['BendRadius']],FreeCAD.__activePypeLine__)
     super(eQM,self).go()
 
 class fQM(DialogQM):
   def __init__(self):
     super(fQM,self).__init__('Insert flange', 'Flange')
   def go(self):
-    #pCmd.doFlange([],FreeCAD.__activePypeLine__)
+    d=self.dictList[self.QM.listSize.currentRow()]
+    proplist=[d['PSize'],d['FlangeType'],float(d['D']),float(d['d']),float(d['df']),float(d['f']),float(d['t']),int(d['n'])]
+    try: # for raised-face
+      proplist.append(float(d['trf']))
+      proplist.append(float(d['drf']))
+    except:
+      pass
+    try: # for welding-neck
+      proplist.append(float(d['twn']))
+      proplist.append(float(d['dwn']))
+      proplist.append(float(d['ODp']))
+    except:
+      pass
+    pCmd.doFlange(proplist ,FreeCAD.__activePypeLine__)
     super(fQM,self).go()
 
 # create instances of qkMenu dialogs

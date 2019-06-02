@@ -142,6 +142,7 @@ class insertPipeForm(dodoDialogs.protoPypeForm):
     self.lastPipe=pCmd.doPipes(propList,FreeCAD.__activePypeLine__)[-1]
     self.H=float(self.lastPipe.Height)
     self.edit1.setText(str(float(self.H)))
+    # TODO: SET PRATING
     FreeCAD.activeDocument().recompute()
   def apply(self):
     self.lastPipe=None
@@ -222,7 +223,7 @@ class insertElbowForm(dodoDialogs.protoPypeForm):
     self.show()
     self.lastElbow=None
     self.lastAngle=0
-  def insert(self):    # insert the curve
+  def insert(self):
     self.lastAngle=0
     self.dial.setValue(0)
     DN=OD=thk=PRating=None
@@ -235,14 +236,6 @@ class insertElbowForm(dodoDialogs.protoPypeForm):
     except:
       ang=float(pq(d['BendAngle']))
     selex=FreeCADGui.Selection.getSelectionEx()
-    # if len(selex)==0:     # no selection -> insert one elbow at origin
-      # propList=[d['PSize'],float(pq(d['OD'])),float(pq(d['thk'])),ang,float(pq(d['BendRadius']))]
-      # FreeCAD.activeDocument().openTransaction('Insert elbow in (0,0,0)')
-      # self.lastElbow=pCmd.makeElbow(propList)
-      # if self.combo.currentText()!='<none>':
-        # pCmd.moveToPyLi(self.lastElbow,self.combo.currentText())
-      # FreeCAD.activeDocument().commitTransaction()
-    # elif len(selex)==1 and len(selex[0].SubObjects)==1:  #one selection -> ...
     # DEFINE PROPERTIES
     for sx in selex:
       if hasattr(sx.Object,'PType') and sx.Object.PType in ['Pipe','Elbow','Cap','Reduct']:
@@ -259,79 +252,9 @@ class insertElbowForm(dodoDialogs.protoPypeForm):
         break
     if not propList:
       propList=[d['PSize'],float(pq(d['OD'])),float(pq(d['thk'])),ang,float(pq(d['BendRadius']))]
-      # if selex[0].SubObjects[0].ShapeType=="Vertex":   # ...on vertex
-        # FreeCAD.activeDocument().openTransaction('Insert elbow on vertex')
-        # self.lastElbow=pCmd.makeElbow(propList,selex[0].SubObjects[0].Point)
-        # if self.combo.currentText()!='<none>':
-          # pCmd.moveToPyLi(self.lastElbow,self.combo.currentText())
-        # FreeCAD.activeDocument().commitTransaction()
-      # elif selex[0].SubObjects[0].ShapeType=="Edge" and  selex[0].SubObjects[0].curvatureAt(0)!=0: # ...on center of curved edge
-        # P=selex[0].SubObjects[0].centerOfCurvatureAt(0)
-        # N=selex[0].SubObjects[0].normalAt(0).cross(selex[0].SubObjects[0].tangentAt(0)).normalize()
-        # FreeCAD.activeDocument().openTransaction('Insert elbow on curved edge')
-        # self.lastElbow=pCmd.makeElbow(propList,P) # ,Z)
-        # if pCmd.isPipe(selex[0].Object):
-          # ax=selex[0].Object.Shape.Solids[0].CenterOfMass-P
-          # rot=FreeCAD.Rotation(self.lastElbow.Ports[0],ax)
-          # self.lastElbow.Placement.Rotation=rot.multiply(self.lastElbow.Placement.Rotation)
-          # Port0=pCmd.getElbowPort(self.lastElbow)
-          # self.lastElbow.Placement.move(P-Port0)
-        # elif pCmd.isElbow(selex[0].Object):
-          # p0,p1=[selex[0].Object.Placement.Rotation.multVec(p) for p in selex[0].Object.Ports]
-          # if fCmd.isParallel(p0,N):
-            # self.lastElbow.Placement.Rotation=FreeCAD.Rotation(self.lastElbow.Ports[0],p0*-1)
-          # else:
-            # self.lastElbow.Placement.Rotation=FreeCAD.Rotation(self.lastElbow.Ports[0],p1*-1)
-          # self.lastElbow.Placement.move(P-pCmd.getElbowPort(self.lastElbow))
-        # else:
-          # rot=FreeCAD.Rotation(self.lastElbow.Ports[0],N)
-          # self.lastElbow.Placement.Rotation=rot.multiply(self.lastElbow.Placement.Rotation)
-          # self.lastElbow.Placement.move(self.lastElbow.Placement.Rotation.multVec(self.lastElbow.Ports[0])*-1)
-        # if self.combo.currentText()!='<none>':
-          # pCmd.moveToPyLi(self.lastElbow,self.combo.currentText())
-        # FreeCAD.activeDocument().recompute()
-        # FreeCAD.activeDocument().commitTransaction()
-    # else:       # multiple selection -> insert one elbow at intersection of two edges or beams or pipes ##
-      # # selection of axes
-      # things=[]
-      # for objEx in selex:
-        # # if the profile is not defined and the selection is one piping object, take its profile for elbow
-        # if OD==thk==None and hasattr(objEx.Object,'PType') and objEx.Object.PType in ['Pipe','Elbow','Cap','Reduct']: 
-          # DN=objEx.Object.PSize
-          # OD=objEx.Object.OD
-          # thk=objEx.Object.thk
-          # PRating=objEx.Object.PRating
-        # # if the object is a beam or pipe, append it to the "things"..
-        # if len(fCmd.beams([objEx.Object]))==1:
-          # things.append(objEx.Object)
-        # else:
-          # # ..else append its edges
-          # for edge in fCmd.edges([objEx]):
-            # things.append(edge)
-        # if len(things)>=2:
-          # break
-      # FreeCAD.activeDocument().openTransaction('Insert elbow on intersection')
-      # try:
-        # #create the feature
-        # if None in [DN,OD,thk,PRating]:
-          # propList=[d['PSize'],float(pq(d['OD'])),float(pq(d['thk'])),ang,float(pq(d['BendRadius']))]
-          # self.lastElbow=pCmd.makeElbowBetweenThings(*things[:2],propList=propList)
-          # self.lastElbow.PRating=self.ratingList.item(self.ratingList.currentRow()).text()
-        # else:
-          # for prop in self.pipeDictList:
-            # if prop['PSize']==DN:
-              # BR=float(pq(prop['BendRadius']))
-          # if BR==None:
-            # BR=1.5*OD/2
-          # propList=[DN,OD,thk,ang,BR]
-          # self.lastElbow=pCmd.makeElbowBetweenThings(*things[:2],propList=propList)
-          # self.lastElbow.PRating=PRating
-        # if self.combo.currentText()!='<none>':
-          # pCmd.moveToPyLi(self.lastElbow,self.combo.currentText())
-      # except:
-        # FreeCAD.Console.PrintError('Creation of elbow is failed\n')
-      # FreeCAD.activeDocument().commitTransaction()
+    # INSERT ELBOW
     self.lastElbow=pCmd.doElbow(propList, FreeCAD.__activePypeLine__)[-1] 
+    # TODO: SET PRATING
     FreeCAD.activeDocument().recompute()
   def trim(self):
     if len(fCmd.beams())==1:
@@ -424,42 +347,44 @@ class insertFlangeForm(dodoDialogs.protoPypeForm):
       propList.append(float(d['ODp']))
     except:
       pass
-    FreeCAD.activeDocument().openTransaction('Insert flange')
-    if len(fCmd.edges())==0:
-      vs=[v for sx in FreeCADGui.Selection.getSelectionEx() for so in sx.SubObjects for v in so.Vertexes]
-      if len(vs)==0:
-        self.lastFlange=pCmd.makeFlange(propList)
-        self.lastFlange.PRating=self.PRating
-        if self.combo.currentText()!='<none>':
-          pCmd.moveToPyLi(self.lastFlange,self.combo.currentText())
-      else:
-        for v in vs:
-          self.lastFlange=pCmd.makeFlange(propList,v.Point)
-          self.lastFlange.PRating=self.PRating
-          if self.combo.currentText()!='<none>':
-            pCmd.moveToPyLi(self.lastFlange,self.combo.currentText())
-    elif tubes:
-      selex=FreeCADGui.Selection.getSelectionEx()
-      for sx in selex:
-        if hasattr(sx.Object,'PType') and sx.Object.PType=='Pipe' and fCmd.edges([sx]):
-          for edge in fCmd.edges([sx]):
-            if edge.curvatureAt(0)!=0:
-              self.lastFlange=pCmd.makeFlange(propList,edge.centerOfCurvatureAt(0),sx.Object.Shape.Solids[0].CenterOfMass-edge.centerOfCurvatureAt(0))
-              self.lastFlange.PRating=self.PRating
-              if self.combo.currentText()!='<none>':
-                pCmd.moveToPyLi(self.lastFlange,self.combo.currentText())
-      FreeCAD.activeDocument().commitTransaction()
-      FreeCAD.activeDocument().recompute()
-      return
-    else:
-      for edge in fCmd.edges():
-        if edge.curvatureAt(0)!=0:
-          self.lastFlange=pCmd.makeFlange(propList,edge.centerOfCurvatureAt(0),edge.tangentAt(0).cross(edge.normalAt(0)))
-          self.lastFlange.PRating=self.PRating
-          if self.combo.currentText()!='<none>':
-            pCmd.moveToPyLi(self.lastFlange,self.combo.currentText())
-    FreeCAD.activeDocument().commitTransaction()
-    FreeCAD.activeDocument().recompute()
+    ###
+    # FreeCAD.activeDocument().openTransaction('Insert flange')
+    # if len(fCmd.edges())==0:
+      # vs=[v for sx in FreeCADGui.Selection.getSelectionEx() for so in sx.SubObjects for v in so.Vertexes]
+      # if len(vs)==0:
+        # self.lastFlange=pCmd.makeFlange(propList)
+        # self.lastFlange.PRating=self.PRating
+        # if self.combo.currentText()!='<none>':
+          # pCmd.moveToPyLi(self.lastFlange,self.combo.currentText())
+      # else:
+        # for v in vs:
+          # self.lastFlange=pCmd.makeFlange(propList,v.Point)
+          # self.lastFlange.PRating=self.PRating
+          # if self.combo.currentText()!='<none>':
+            # pCmd.moveToPyLi(self.lastFlange,self.combo.currentText())
+    # elif tubes:
+      # selex=FreeCADGui.Selection.getSelectionEx()
+      # for sx in selex:
+        # if hasattr(sx.Object,'PType') and sx.Object.PType=='Pipe' and fCmd.edges([sx]):
+          # for edge in fCmd.edges([sx]):
+            # if edge.curvatureAt(0)!=0:
+              # self.lastFlange=pCmd.makeFlange(propList,edge.centerOfCurvatureAt(0),sx.Object.Shape.Solids[0].CenterOfMass-edge.centerOfCurvatureAt(0))
+              # self.lastFlange.PRating=self.PRating
+              # if self.combo.currentText()!='<none>':
+                # pCmd.moveToPyLi(self.lastFlange,self.combo.currentText())
+      # FreeCAD.activeDocument().commitTransaction()
+      # FreeCAD.activeDocument().recompute()
+      # return
+    # else:
+      # for edge in fCmd.edges():
+        # if edge.curvatureAt(0)!=0:
+          # self.lastFlange=pCmd.makeFlange(propList,edge.centerOfCurvatureAt(0),edge.tangentAt(0).cross(edge.normalAt(0)))
+          # self.lastFlange.PRating=self.PRating
+          # if self.combo.currentText()!='<none>':
+            # pCmd.moveToPyLi(self.lastFlange,self.combo.currentText())
+    # FreeCAD.activeDocument().commitTransaction()
+    # FreeCAD.activeDocument().recompute()
+    pCmd.doFlange(propList,FreeCAD.__activePypeLine__)
   def apply(self):
     for obj in FreeCADGui.Selection.getSelection():
       d=self.pipeDictList[self.sizeList.currentRow()]

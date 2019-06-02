@@ -424,6 +424,7 @@ class frameBranchForm(dodoDialogs.protoTypeDialog):
           self.labTail.removeLabel()
         self.labTail=label3D(pl=obj.Placement, text='____TAIL')
       else:
+        FreeCAD.Console.PrintMessage('debug1\n')
         if self.labTail:
           self.labTail.removeLabel()
         self.form.editTail.clear()

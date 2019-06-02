@@ -168,11 +168,11 @@ class Flange(pypeType):
     f (float): bolts holes diameter
     t (float): flange thickness
     n (int): nr. of bolts
-    trf (float): raised-face thikness
-    drf (float): raised-face diameter
-    twn (float): welding-neck thikness
-    dwn (float): welding-neck diameter
-    ODp (float): outside diameter of pipe for wn flanges
+    trf (float): raised-face thikness - OPTIONAL -
+    drf (float): raised-face diameter - OPTIONAL -
+    twn (float): welding-neck thikness - OPTIONAL -
+    dwn (float): welding-neck diameter - OPTIONAL -
+    ODp (float): outside diameter of pipe for wn flanges - OPTIONAL -
   '''
   def __init__(self, obj,DN="DN50",FlangeType="SO",D=160,d=60.3,df=132,f=14, t=15, n=4, trf=0, drf=0, twn=0, dwn=0, ODp=0):
     # initialize the parent class
