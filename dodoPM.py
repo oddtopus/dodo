@@ -388,17 +388,41 @@ class fQM(DialogQM):
       proplist.append(float(d['ODp']))
     except:
       pass
-    pCmd.doFlange(proplist ,FreeCAD.__activePypeLine__)
+    pCmd.doFlanges(proplist ,FreeCAD.__activePypeLine__)
     super(fQM,self).go()
+
+class vQM(DialogQM):
+  def __init__(self):
+    super(vQM,self).__init__('Insert valve', 'Valve')
+    self.QM.slider = QtGui.QSlider(self)
+    self.QM.slider.setOrientation(QtCore.Qt.Horizontal)
+    self.QM.slider.setObjectName("slider")
+    self.QM.gridLayout.addWidget(self.QM.slider, 4, 0, 1, 3)
+  def go(self):
+    d=self.dictList[self.QM.listSize.currentRow()]
+    proplist=[d['PSize'],d['VType'],float(d['OD']),float(d['ID']),float(d['H']),float(d['Kv'])]
+    pCmd.doValves(proplist ,FreeCAD.__activePypeLine__, self.QM.slider.value())
+    super(vQM,self).go()
+
+class cQM(DialogQM):
+  def __init__(self):
+    super(cQM,self).__init__('Insert cap', 'Cap')
+  def go(self):
+    d=self.dictList[self.QM.listSize.currentRow()]
+    proplist=[ ]
+    pCmd.doCaps([d['PSize'],float(d['OD']),float(d['thk'])],FreeCAD.__activePypeLine__)
+    super(cQM,self).go()
 
 # create instances of qkMenu dialogs
 pqm=pQM()
 eqm=eQM()
 fqm=fQM()
+vqm=vQM()
+cqm=cQM()
 
 # main
 mw = FreeCADGui.getMainWindow()
-toolList=["pipeQM","elbowQM","flangeQM"]#["insertPipe","insertElbow","insertReduct","insertCap","insertValve","insertFlange","insertUbolt"]
+toolList=["pipeQM","elbowQM","flangeQM","valveQM","capQM"]#["insertPipe","insertElbow","insertReduct","insertCap","insertValve","insertFlange","insertUbolt"]
 compositingManager = True
 if QtCore.qVersion() < "5":
     windowShadow = False

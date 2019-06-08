@@ -27,19 +27,19 @@ def addCommand(name,cmdObject):
 # The command classes
 #---------------------------------------------------------------------------
 
-# class frameIt:
-  # '''
-  # Given a beam object and an edge in the model, this tool lay down the
-  # beam over the edge by selecting them one after the other until ESC is
-  # pressed.
-  # '''
-  # def Activated(self):
-    # import FreeCAD, FreeCADGui, fObservers, fCmd
-    # s=fObservers.frameItObserver()
-    # FreeCADGui.Selection.addObserver(s)
+class frameIt:
+  '''
+  Given a beam object and an edge in the model, this tool lay down the
+  beam over the edge by selecting them one after the other until ESC is
+  pressed.
+  '''
+  def Activated(self):
+    import FreeCAD, FreeCADGui, fObservers, fCmd
+    s=fObservers.frameItObserver()
+    FreeCADGui.Selection.addObserver(s)
     
-  # def GetResources(self):
-    # return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","beamFit.svg"),'MenuText':'Place one-beam over one-edge','ToolTip':'Place one beam after the other over the edges'}
+  def GetResources(self):
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","beamFit.svg"),'MenuText':'Place one-beam over one-edge','ToolTip':'Place one beam after the other over the edges'}
 
 class spinSect:
   '''
@@ -374,7 +374,7 @@ class FrameBranchManager:
 #---------------------------------------------------------------------------
 # Adds the commands to the FreeCAD command manager
 #---------------------------------------------------------------------------
-#addCommand('frameIt',frameIt()) 
+addCommand('frameIt',frameIt()) 
 addCommand('spinSect',spinSect())
 addCommand('reverseBeam',reverseBeam())
 #addCommand('fillFrame',fillFrame())

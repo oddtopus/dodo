@@ -349,6 +349,7 @@ class frameBranchForm(dodoDialogs.protoTypeDialog):
     self.fillSizes()
     self.targets=list()
     self.labTail=None
+    # self.actionX.triggered.connect(self.trim) #reconnected to trim
   def makeSingle(self):
     FreeCAD.activeDocument().openTransaction('Insert Single Struct')
     if self.SType=='<by sketch>':
@@ -424,9 +425,9 @@ class frameBranchForm(dodoDialogs.protoTypeDialog):
           self.labTail.removeLabel()
         self.labTail=label3D(pl=obj.Placement, text='____TAIL')
       else:
-        FreeCAD.Console.PrintMessage('debug1\n')
         if self.labTail:
           self.labTail.removeLabel()
+        self.labTail=label3D(pl=FreeCAD.Placement(), text='')
         self.form.editTail.clear()
         self.form.editHead.clear()
         self.form.editAngle.clear()
@@ -437,6 +438,7 @@ class frameBranchForm(dodoDialogs.protoTypeDialog):
     else:
       if self.labTail:
         self.labTail.removeLabel()
+      self.labTail=label3D(pl=FreeCAD.Placement(), text='')
       self.form.sliHead.setValue(0)
       self.form.sliTail.setValue(0)
       self.form.dialAngle.setValue(0)
@@ -567,11 +569,8 @@ class frameBranchForm(dodoDialogs.protoTypeDialog):
           else: 
             P=None
           if P:
-            #print P
-            #print ax.Length
             deltaTail=(P-tail).dot(ax)
             deltaHead=(P-head).dot(ax)
-            #print "D-tail = %.1f; D-head = %.1f" %(deltaTail,deltaHead)
             if abs(deltaTail)<abs(deltaHead):
               b.tailOffset=-deltaTail
             else:

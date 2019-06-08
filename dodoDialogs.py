@@ -25,6 +25,7 @@ class protoTypeDialog(object):
     self.actionS.setShortcut(QKeySequence("S"))
     self.actionS.triggered.connect(self.selectAction)
     self.mw.addAction(self.actionS)
+    self.actionESC = QAction(self.mw)
     FreeCAD.Console.PrintMessage('"%s" to select; "%s" to execute\n' %(self.actionX.shortcuts()[0].toString(),self.actionS.shortcuts()[0].toString()))
     try:
       self.view=FreeCADGui.activeDocument().activeView()

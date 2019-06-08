@@ -374,7 +374,7 @@ def makeFlange(propList=[], pos=None, Z=None):
   a.Placement.Rotation=rot.multiply(a.Placement.Rotation)
   return a
 
-def doFlange(propList=["DN50", "SO", 160, 60.3, 132, 14, 15, 4, 0, 0, 0, 0, 0], pypeline=None):
+def doFlanges(propList=["DN50", "SO", 160, 60.3, 132, 14, 15, 4, 0, 0, 0, 0, 0], pypeline=None):
   '''
     propList = [
       DN (string): nominal diameter
@@ -535,6 +535,39 @@ def makeCap(propList=[], pos=None, Z=None):
   rot=FreeCAD.Rotation(FreeCAD.Vector(0,0,1),Z)
   a.Placement.Rotation=rot.multiply(a.Placement.Rotation)
   return a
+
+def doCaps(propList=['DN50',60.3,3], pypeline=None): 
+  '''
+    propList = [
+      DN (string): nominal diameter
+      OD (float): outside diameter
+      thk (float): shell thickness ]
+    pypeline = string
+  '''
+  clist=[]
+  FreeCAD.activeDocument().openTransaction('Insert cap')
+  if len(fCmd.edges())==0:
+    vs=[v for sx in FreeCADGui.Selection.getSelectionEx() for so in sx.SubObjects for v in so.Vertexes]
+    if len(vs)==0:   # nothing is selected
+      clist.append(makeCap(propList))
+    else:
+      for v in vs:   # vertexes are selected
+        clist.append(makeCap(propList,v.Point))
+  else:
+    for edge in fCmd.edges():
+      if edge.curvatureAt(0)!=0:   # curved edges are selected...
+        objs=[o for o in FreeCADGui.Selection.getSelection() if hasattr(o,'PSize') and hasattr(o,'OD') and hasattr(o,'thk')]
+        Z=None
+        if len(objs)>0:  # ...pype objects are selected
+          Z=edge.centerOfCurvatureAt(0)-objs[0].Shape.Solids[0].CenterOfMass
+        else:            # ...no pype objects are selected
+          Z=edge.tangentAt(0).cross(edge.normalAt(0))
+        clist.append(makeCap(propList,edge.centerOfCurvatureAt(0),Z))
+  if pypeline:
+    for c in clist:
+      moveToPyLi(c,pypeline)
+  FreeCAD.activeDocument().commitTransaction()
+  FreeCAD.activeDocument().recompute()
 
 def makeW():
   edges=fCmd.edges()
@@ -971,6 +1004,80 @@ def makeValve(propList=[], pos=None, Z=None):
   rot=FreeCAD.Rotation(FreeCAD.Vector(0,0,1),Z)
   a.Placement.Rotation=rot.multiply(a.Placement.Rotation)
   return a
+
+def doValves(propList=["DN50", "ball", 72, 50, 40, 150],pypeline=None, pos=0):
+  '''
+    propList = [
+      DN (string): nominal diameter
+      VType (string): type of valve
+      OD (float): outside diameter
+      ID (float): inside diameter
+      H (float): length of pipe
+      Kv (float): valve's flow factor (optional) ]
+    pypeline = string
+    pos (]0..100[) = position along pipe or edge
+  '''
+  # self.lastValve=None
+  color=0.05,0.3,0.75
+  vlist=[]
+  # d=self.pipeDictList[self.sizeList.currentRow()]
+  FreeCAD.activeDocument().openTransaction('Insert valve')
+  # propList=[d['PSize'],d['VType'],float(pq(d['OD'])),float(pq(d['ID'])),float(pq(d['H'])),float(pq(d['Kv']))]
+  if 0 < pos < 100: # ..place the valve in the middle of pipe(s)
+    pipes=[p for p in FreeCADGui.Selection.getSelection() if isPipe(p)]
+    if pipes:
+      for p1 in pipes:
+        vlist.append(makeValve(propList))
+        p2=breakTheTubes(float(p1.Height)*pos/100, pipes=[p1], gap=float(vlist[-1].Height))[0]
+        if p2 and pypeline: moveToPyLi(p2,pypeline)
+        vlist[-1].Placement=p1.Placement
+        vlist[-1].Placement.move(portsDir(p1)[1]*float(p1.Height))
+        vlist[-1].ViewObject.ShapeColor=color
+        # if self.combo.currentText()!='<none>':
+          # pCmd.moveToPyLi(self.lastValve,self.combo.currentText())  
+      # FreeCAD.ActiveDocument.recompute()
+  elif len(fCmd.edges())==0: #..no edges selected
+    vs=[v for sx in FreeCADGui.Selection.getSelectionEx() for so in sx.SubObjects for v in so.Vertexes]
+    if len(vs)==0: # ...no vertexes selected
+      vlist.append(makeValve(propList))
+      vlist[-1].ViewObject.ShapeColor=color
+      # if self.combo.currentText()!='<none>':
+        # pCmd.moveToPyLi(self.lastValve,self.combo.currentText())  
+    else:
+      for v in vs: # ... one or more vertexes
+        vlist.append(makeValve(propList,v.Point))
+        vlist[-1].ViewObject.ShapeColor=color
+        # if self.combo.currentText()!='<none>':
+          # pCmd.moveToPyLi(self.lastValve,self.combo.currentText()) 
+  else:
+    selex=FreeCADGui.Selection.getSelectionEx()
+    for objex in selex:
+      o=objex.Object
+      for edge in fCmd.edges([objex]): # ...one or more edges...
+        if edge.curvatureAt(0)==0: # ...straight edges
+          vlist.append(makeValve(propList,edge.valueAt(edge.LastParameter/2-propList[4]/2),edge.tangentAt(0)))
+          # if self.combo.currentText()!='<none>':
+            # pCmd.moveToPyLi(self.lastValve,self.combo.currentText())  
+        else: # ...curved edges
+          pos=edge.centerOfCurvatureAt(0) # SNIPPET TO ALIGN WITH THE PORTS OF Pype SELECTED: BEGIN...
+          if hasattr(o,'PType') and len(o.Ports)==2:
+            p0,p1=portsPos(o) 
+            if (p0-pos).Length<(p1-pos).Length:
+              Z=portsDir(o)[0]
+            else:
+              Z=portsDir(o)[1]
+          else:
+            Z=edge.tangentAt(0).cross(edge.normalAt(0)) # ...END
+          vlist.append(makeValve(propList,pos,Z))
+          # if self.combo.currentText()!='<none>':
+            # pCmd.moveToPyLi(self.lastValve,self.combo.currentText())  
+        vlist[-1].ViewObject.ShapeColor=color
+  if pypeline:
+    for v in vlist:
+      moveToPyLi(v,pypeline)
+  FreeCAD.activeDocument().commitTransaction()
+  FreeCAD.activeDocument().recompute()
+  return vlist
 
 def attachToTube(port=None):
   pypes=[p for p in FreeCADGui.Selection.getSelection() if hasattr(p,'PType')]

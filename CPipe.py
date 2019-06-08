@@ -278,7 +278,6 @@ addCommand('pipeQM',pipeQM())
 class elbowQM():
   def Activated (self):
     import dodoPM
-    #dodoPM.eqm.updatePL()
     dodoPM.eqm.show()
   def GetResources(self):
     return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","elbow.svg"),'MenuText':'QM for elbows'} 
@@ -287,9 +286,23 @@ addCommand('elbowQM',elbowQM())
 class flangeQM():
   def Activated (self):
     import dodoPM
-    #dodoPM.fqm.updatePL()
     dodoPM.fqm.show()
   def GetResources(self):
     return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","flange.svg"),'MenuText':'QM for flanges'} 
 addCommand('flangeQM',flangeQM())
 
+class valveQM():
+  def Activated (self):
+    import dodoPM
+    dodoPM.vqm.show()
+  def GetResources(self):
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","valve.svg"),'MenuText':'QM for valves'} 
+addCommand('valveQM',valveQM())
+
+class capQM():
+  def Activated (self):
+    import dodoPM
+    dodoPM.cqm.show()
+  def GetResources(self):
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","cap.svg"),'MenuText':'QM for caps'} 
+addCommand('capQM',capQM())
