@@ -98,7 +98,7 @@ class QueryForm(QtGui.QDialog): #QWidget):
         self.labProfile.setText("Profile: "+b.Profile)
       elif len(fCmd.beams())>1:
         b1,b2=fCmd.beams()[:2]
-        self.labBeam.setText(b1.Label+"^"+b2.Label+": %.2f"%(degrees(fCmd.beamAx(b1).getAngle(frameCmd.beamAx(b2)))))
+        self.labBeam.setText(b1.Label+"^"+b2.Label+": %.2f"%(degrees(fCmd.beamAx(b1).getAngle(fCmd.beamAx(b2)))))
         self.labProfile.setText("")
       else:
         self.labBeam.setText("")

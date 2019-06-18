@@ -192,14 +192,18 @@ class translateForm(dodoDialogs.protoTypeDialog):
       self.form.edit1.setText(str(round(dx,roundDigits)))
       self.form.edit2.setText(str(round(dy,roundDigits)))
       self.form.edit3.setText(str(round(dz,roundDigits)))
-      FreeCADGui.Selection.clearSelection()
       self.deleteArrow()
       from uCmd import arrow
       where=FreeCAD.Placement()
       where.Base=edge.valueAt(0)
       where.Rotation=FreeCAD.Rotation(FreeCAD.Vector(0,0,1),edge.tangentAt(0))
+      # obj=fCmd.edgeName[0] #TARGET [working]: make "where" deal with App::Parts
+      # if fCmd.isPartOfPart(obj):
+        # part=fCmd.isPartOfPart(obj)
+        # where=part.Placement.multiply(where)
       size=[edge.Length/20.0,edge.Length/10.0,edge.Length/20.0]
       self.arrow=arrow(pl=where,scale=size,offset=edge.Length/2.0)
+      FreeCADGui.Selection.clearSelection()
   def selectAction(self):
     shapes=[y for x in FreeCADGui.Selection.getSelectionEx() for y in x.SubObjects if hasattr(y,'ShapeType')][:2]
     if len(shapes)>1:
@@ -286,7 +290,7 @@ class rotateAroundForm(dodoDialogs.protoTypeDialog):
     self.Axis=None
     self.arrow=None
     self.selectAction()
-  def accept(self, ang=None):
+  def accept(self, ang=None):  #TARGET [working]: not correct if objects belong to different App::Part
     if not ang:
       ang=float(self.form.edit1.text())
     self.deleteArrow()
@@ -323,6 +327,10 @@ class rotateAroundForm(dodoDialogs.protoTypeDialog):
       where=FreeCAD.Placement()
       where.Base=self.Axis.valueAt(self.Axis.LastParameter)
       where.Rotation=FreeCAD.Rotation(FreeCAD.Vector(0,0,1),self.Axis.tangentAt(self.Axis.LastParameter))
+      obj=edged[0].Object #TARGET [solved]: make "where" deal with App::Parts
+      if fCmd.isPartOfPart(obj):
+        part=fCmd.isPartOfPart(obj)
+        where=part.Placement.multiply(where)
       size=[self.Axis.Length/20.0,self.Axis.Length/10.0,self.Axis.Length/20.0]
       self.arrow=arrow(pl=where,scale=size,offset=self.Axis.Length/10.0)
       if self.Axis.curvatureAt(0):

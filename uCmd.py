@@ -7,7 +7,7 @@ import FreeCAD, FreeCADGui, fCmd, dodoDialogs
 from os.path import join, dirname, abspath
 from pivy import coin
 
-def setWP():
+def setWP(): #TARGET [working]: deal with App::Parts
   'function to change working plane'
   import FreeCAD, FreeCADGui, fCmd
   normal=point=None

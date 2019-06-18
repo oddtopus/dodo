@@ -251,7 +251,7 @@ class insertElbowForm(dodoDialogs.protoPypeForm):
         propList=[DN,OD,thk,ang,BR]
         break
     if not propList:
-      propList=[d['PSize'],float(pq(d['OD'])),float(pq(d['thk'])),ang,float(pq(d['BendRadius']))]
+      propList=[d['PSize'],float(pq(d['OD'])),float(pq(d['thk'])),ang,float(d['BendRadius'])]
     # INSERT ELBOW
     self.lastElbow=pCmd.doElbow(propList, FreeCAD.__activePypeLine__)[-1] 
     # TODO: SET PRATING
@@ -263,7 +263,7 @@ class insertElbowForm(dodoDialogs.protoPypeForm):
       eds=[e for e in fCmd.edges() if not e.CenterOfMass in comPipeEdges]
       FreeCAD.activeDocument().openTransaction('Trim pipes')
       for edge in eds:
-        fCmd.extendTheBeam(frameCmd.beams()[0],edge)
+        fCmd.extendTheBeam(fCmd.beams()[0],edge)
       FreeCAD.activeDocument().commitTransaction()
       FreeCAD.activeDocument().recompute()
     else:
@@ -988,7 +988,7 @@ class joinForm(dodoDialogs.protoTypeDialog):
   def reset(self):
     po.pCmd.o1=None
     po.pCmd.o2=None
-    for a in po.pCmd.arrows1+po.pipeCmd.arrows2:
+    for a in po.pCmd.arrows1+po.pCmd.arrows2:
       a.closeArrow()
     po.pCmd.arrows1=[]
     po.pCmd.arrows2=[]
@@ -1040,9 +1040,7 @@ class insertValveForm(dodoDialogs.protoPypeForm):
       else:
         pCmd.rotateTheTubeAx(self.lastValve,FreeCAD.Vector(1,0,0),180)
   def insert(self):      
-    # color=0.05,0.3,0.75
     d=self.pipeDictList[self.sizeList.currentRow()]
-    # FreeCAD.activeDocument().openTransaction('Insert valve')
     propList=[d['PSize'],d['VType'],float(pq(d['OD'])),float(pq(d['ID'])),float(pq(d['H'])),float(pq(d['Kv']))]
     if self.cb1.isChecked(): # ..place the valve in the middle of pipe(s)
       pipes=[p for p in FreeCADGui.Selection.getSelection() if hasattr(p,'PType') and p.PType=='Pipe']
@@ -1051,54 +1049,6 @@ class insertValveForm(dodoDialogs.protoPypeForm):
         self.lastValve=pCmd.doValves(propList,FreeCAD.__activePypeLine__,pos)[-1]
     else:
       self.lastValve=pCmd.doValves(propList,FreeCAD.__activePypeLine__)[-1]
-        # for p1 in pipes:
-          # self.lastValve=pCmd.makeValve(propList)
-          # p2=pCmd.breakTheTubes(float(p1.Height)*self.sli.value()/100, pipes=[p1], gap=float(self.lastValve.Height))[0]
-          # if p2 and self.combo.currentText()!='<none>': pCmd.moveToPyLi(p2,self.combo.currentText())
-          # self.lastValve.Placement=p1.Placement
-          # self.lastValve.Placement.move(pCmd.portsDir(p1)[1]*float(p1.Height))
-          # self.lastValve.ViewObject.ShapeColor=color
-          # if self.combo.currentText()!='<none>':
-            # pCmd.moveToPyLi(self.lastValve,self.combo.currentText())  
-        # FreeCAD.ActiveDocument.recompute()
-    # elif len(fCmd.edges())==0: #..no edges selected
-      # vs=[v for sx in FreeCADGui.Selection.getSelectionEx() for so in sx.SubObjects for v in so.Vertexes]
-      # if len(vs)==0: # ...no vertexes selected
-        # self.lastValve=pCmd.makeValve(propList)
-        # self.lastValve.ViewObject.ShapeColor=color
-        # if self.combo.currentText()!='<none>':
-          # pCmd.moveToPyLi(self.lastValve,self.combo.currentText())  
-      # else:
-        # for v in vs: # ... one or more vertexes
-          # self.lastValve=pCmd.makeValve(propList,v.Point)
-          # self.lastValve.ViewObject.ShapeColor=color
-          # if self.combo.currentText()!='<none>':
-            # pCmd.moveToPyLi(self.lastValve,self.combo.currentText())  
-    # else:
-      # selex=FreeCADGui.Selection.getSelectionEx()
-      # for objex in selex:
-        # o=objex.Object
-        # for edge in fCmd.edges([objex]): # ...one or more edges...
-          # if edge.curvatureAt(0)==0: # ...straight edges
-            # self.lastValve=pCmd.makeValve(propList,edge.valueAt(edge.LastParameter/2-propList[4]/2),edge.tangentAt(0))
-            # if self.combo.currentText()!='<none>':
-              # pCmd.moveToPyLi(self.lastValve,self.combo.currentText())  
-          # else: # ...curved edges
-            # pos=edge.centerOfCurvatureAt(0) # SNIPPET TO ALIGN WITH THE PORTS OF Pype SELECTED: BEGIN...
-            # if hasattr(o,'PType') and len(o.Ports)==2:
-              # p0,p1=pCmd.portsPos(o) 
-              # if (p0-pos).Length<(p1-pos).Length:
-                # Z=pCmd.portsDir(o)[0]
-              # else:
-                # Z=pCmd.portsDir(o)[1]
-            # else:
-              # Z=edge.tangentAt(0).cross(edge.normalAt(0)) # ...END
-            # self.lastValve=pCmd.makeValve(propList,pos,Z)
-            # if self.combo.currentText()!='<none>':
-              # pCmd.moveToPyLi(self.lastValve,self.combo.currentText())  
-          # self.lastValve.ViewObject.ShapeColor=color
-    # FreeCAD.activeDocument().commitTransaction()
-    # FreeCAD.activeDocument().recompute()
   def apply(self):
     for obj in FreeCADGui.Selection.getSelection():
       d=self.pipeDictList[self.sizeList.currentRow()]
@@ -1206,11 +1156,6 @@ class point2pointPipe(DraftTools.Line):
               FreeCAD.ActiveDocument.recompute()
               if prev:
                 c= pCmd.makeElbowBetweenThings(prev,self.lastPipe, [d['PSize'],float(pq(d['OD'])),float(pq(d['thk'])),90,float(pq(d['OD'])*.75)])
-                #c= pCmd.makeElbow([d['PSize'],float(pq(d['OD'])),float(pq(d['thk'])),90,float(pq(d['OD'])*.75)])
-                #pCmd.placeTheElbow(c,pipeCmd.portsDir(prev)[1], pipeCmd.portsDir(self.lastPipe)[1], pipeCmd.portsPos(self.lastPipe)[0])
-                #portA, portB = pCmd.portsPos(c)
-                #fCmd.extendTheBeam(prev,portA)
-                #fCmd.extendTheBeam(self.lastPipe,portB)
                 if c and self.pform.combo.currentText()!='<none>':
                   pCmd.moveToPyLi(c,self.pform.combo.currentText())
                 FreeCAD.ActiveDocument.recompute()
@@ -1226,9 +1171,6 @@ class point2pointPipe(DraftTools.Line):
                 self.undolast()
                 self.finish(True,cont=True)
       FreeCAD.activeDocument().commitTransaction()
-  #def finish(self, closed=False, cont=False):
-    #self.pform.close()
-    #super(point2pointPipe,self).finish(closed,cont)
 
 class insertTankForm(dodoDialogs.protoTypeDialog):
   def __init__(self):

@@ -26,7 +26,7 @@ class protoTypeDialog(object):
     self.actionS.triggered.connect(self.selectAction)
     self.mw.addAction(self.actionS)
     self.actionESC = QAction(self.mw)
-    FreeCAD.Console.PrintMessage('"%s" to select; "%s" to execute\n' %(self.actionX.shortcuts()[0].toString(),self.actionS.shortcuts()[0].toString()))
+    FreeCAD.Console.PrintMessage('"%s" to select; "%s" to execute\n' %(self.actionS.shortcuts()[0].toString(),self.actionX.shortcuts()[0].toString()))
     try:
       self.view=FreeCADGui.activeDocument().activeView()
       self.call=self.view.addEventCallback("SoMouseButtonEvent", self.action) # SoKeyboardEvents replaced by QAction'

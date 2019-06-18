@@ -327,7 +327,7 @@ def doElbow(propList=['DN50',60.3,3,90,45.225], pypeline=None):
       if len(things)>=2:
         break
     try:                                      #create the feature
-      elb=makeElbowBetweenThings(*things[:2],propList=propList)
+      elb=elist.append(makeElbowBetweenThings(*things[:2],propList=propList))
     except:
       FreeCAD.Console.PrintError('Creation of elbow is failed\n')
   if pypeline:
@@ -399,15 +399,9 @@ def doFlanges(propList=["DN50", "SO", 160, 60.3, 132, 14, 15, 4, 0, 0, 0, 0, 0],
     vs=[v for sx in FreeCADGui.Selection.getSelectionEx() for so in sx.SubObjects for v in so.Vertexes]
     if len(vs)==0:
       flist.append(makeFlange(propList))
-      # self.lastFlange.PRating=self.PRating
-      # if self.combo.currentText()!='<none>':
-        # pCmd.moveToPyLi(self.lastFlange,self.combo.currentText())
     else:
       for v in vs:
         flist.append(makeFlange(propList,v.Point))
-        # self.lastFlange.PRating=self.PRating
-        # if self.combo.currentText()!='<none>':
-          # pCmd.moveToPyLi(self.lastFlange,self.combo.currentText())
   elif tubes:
     selex=FreeCADGui.Selection.getSelectionEx()
     for sx in selex:
@@ -415,19 +409,10 @@ def doFlanges(propList=["DN50", "SO", 160, 60.3, 132, 14, 15, 4, 0, 0, 0, 0, 0],
         for edge in fCmd.edges([sx]):
           if edge.curvatureAt(0)!=0:
             flist.append(makeFlange(propList,edge.centerOfCurvatureAt(0),sx.Object.Shape.Solids[0].CenterOfMass-edge.centerOfCurvatureAt(0)))
-            # self.lastFlange.PRating=self.PRating
-            # if self.combo.currentText()!='<none>':
-              # pCmd.moveToPyLi(self.lastFlange,self.combo.currentText())
-    # FreeCAD.activeDocument().commitTransaction()
-    # FreeCAD.activeDocument().recompute()
-    # return
   else:
     for edge in fCmd.edges():
       if edge.curvatureAt(0)!=0:
         flist.append(makeFlange(propList,edge.centerOfCurvatureAt(0),edge.tangentAt(0).cross(edge.normalAt(0))))
-        # self.lastFlange.PRating=self.PRating
-        # if self.combo.currentText()!='<none>':
-          # pCmd.moveToPyLi(self.lastFlange,self.combo.currentText())
   if pypeline:
     for f in flist:
       moveToPyLi(f,pypeline)
@@ -576,7 +561,6 @@ def makeW():
     last=edges[-1]
     points=list()
     while len(edges)>1: points.append(fCmd.intersectionCLines(edges.pop(0),edges[0]))
-    # new{
     delta1=(first.valueAt(0)-points[0]).Length
     delta2=(first.valueAt(first.LastParameter)-points[0]).Length
     if delta1>delta2:
@@ -589,7 +573,6 @@ def makeW():
       points.append(last.valueAt(0))
     else:
       points.append(last.valueAt(last.LastParameter))
-    # }
     from Draft import makeWire
     try:
       p=makeWire(points)
@@ -720,6 +703,13 @@ def alignTheTube():
       reverseTheTube(FreeCADGui.Selection.getSelectionEx()[:2][1])
   except: 
     pass
+  #TARGET [achieved]: verify if t1 or t2 belong to App::Part and changes the Placement consequently
+  if fCmd.isPartOfPart(t1):
+    part=fCmd.isPartOfPart(t1) 
+    t2.Placement=part.Placement.multiply(t2.Placement)
+  if fCmd.isPartOfPart(t2):
+    part=fCmd.isPartOfPart(t2) 
+    t2.Placement=part.Placement.inverse().multiply(t2.Placement)
   
 def rotateTheTubeAx(obj=None,vShapeRef=None, angle=45):
   '''
@@ -758,7 +748,7 @@ def reverseTheTube(objEx):
     objEx.Object.Placement.move(disp*2)
   
 def rotateTheTubeEdge(ang=45):
-  if len(fCmd.edges())>0 and frameCmd.edges()[0].curvatureAt(0)!=0:
+  if len(fCmd.edges())>0 and fCmd.edges()[0].curvatureAt(0)!=0:
     originalPos=fCmd.edges()[0].centerOfCurvatureAt(0)
     obj=FreeCADGui.Selection.getSelection()[0]
     rotateTheTubeAx(vShapeRef=shapeReferenceAxis(),angle=ang)
@@ -775,7 +765,7 @@ def placeTheElbow(c,v1=None,v2=None,P=None):
   if not (v1 and v2):
     v1,v2=[e.tangentAt(0) for e in fCmd.edges()]
     try:
-      P=fCmd.intersectionCLines(*frameCmd.edges())
+      P=fCmd.intersectionCLines(*fCmd.edges())
     except: pass
   if hasattr(c,'PType') and hasattr(c,'BendAngle') and v1 and v2:
     v1.normalize()
@@ -799,7 +789,7 @@ def placeoTherElbow(c,v1=None,v2=None,P=None):
   if not (v1 and v2):
     v1,v2=[e.tangentAt(0) for e in fCmd.edges()]
     try:
-      P=fCmd.intersectionCLines(*frameCmd.edges())
+      P=fCmd.intersectionCLines(*fCmd.edges())
     except: pass
   if hasattr(c,'PType') and hasattr(c,'BendAngle') and v1 and v2:
     v1.normalize()
@@ -894,7 +884,7 @@ def laydownTheTube(pipe=None, refFace=None, support=None):
     refFace=[f for f in fCmd.faces() if type(f.Surface)==Part.Plane][0]
     pipe=[p for p in fCmd.beams() if hasattr(p,'OD')] [0]
   try:
-    if type(refFace.Surface)==Part.Plane and fCmd.isOrtho(refFace,frameCmd.beamAx(pipe)) and hasattr(pipe,'OD'):
+    if type(refFace.Surface)==Part.Plane and fCmd.isOrtho(refFace,fCmd.beamAx(pipe)) and hasattr(pipe,'OD'):
       dist=rounded(refFace.normalAt(0,0).multiply(refFace.normalAt(0,0).dot(pipe.Placement.Base-refFace.CenterOfMass)-float(pipe.OD)/2))
       if support:
         support.Placement.move(dist)
@@ -1145,7 +1135,12 @@ def makeRoute(n=Z):
   if curvedEdges:
     s=FreeCAD.ActiveDocument.addObject('Sketcher::SketchObject','pipeRoute')
     s.MapMode = "SectionOfRevolution"
-    s.Support = [fCmd.edgeName()]
+    sup=fCmd.edgeName()
+    s.Support = [sup]
+    if fCmd.isPartOfPart(sup[0]): #TARGET [working]: takes care if support belongs to App::Part
+      part=fCmd.isPartOfPart(sup[0])
+      FreeCAD.Console.PrintMessage('*** '+sup[0].Label+' is part of '+part.Label+' ***\n') #debug
+      #s.AttachmentOffset=part.Placement.multiply(s.AttachmentOffset)
   else:
     return None
   if fCmd.faces(): 

@@ -280,6 +280,13 @@ def edgeName(obj=None,edge=None):
         return obj,"Edge"+str(i)
       i+=1
     return None
+
+def isPartOfPart(obj):
+  '''
+  returns the part to which obj belongs'''
+  for c in obj.InList:
+    if 'App.Part' in str(type(c)): return c
+  return None
   
 ############ COMMANDS #############
 
@@ -360,7 +367,7 @@ def stretchTheBeam(beam,L):
   if beam!=None and beam.TypeId=="Part::FeaturePython" and hasattr(beam,"Height"):
     beam.Height=L
       
-def extendTheBeam(beam,target):
+def extendTheBeam(beam,target):  #TARGET [working]: make it work when target and beam belong to different App::Parts
   '''arg1=beam, arg2=target: extend the beam to a plane, normal to its axis, defined by target.
   If target is a Vertex or a Vector, the plane is the one that includes the point defined by target.
   If target is a Face, the plane is the one that includes the intersection between the axis of beam and the plane of the face.
