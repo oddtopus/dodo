@@ -345,3 +345,112 @@ class rotateAroundForm(dodoDialogs.protoTypeDialog):
   def reject(self): # redefined to remove arrow from scene
     self.deleteArrow()
     super(rotateAroundForm,self).reject()
+
+###### PROFILE EDITOR ########
+
+import fFeatures
+
+# the icons 
+pixs=[pixSquare,pixT,pixU,pixH,pixL,pixZ,pixOmega,pixCircle]=[QPixmap(join(dirname(abspath(__file__)),"iconz","sectionz",fileName)) for fileName in ["square.png","T.png","U.png","H.png","L.png","Z.png","omega.png","circle.png"]]
+
+class profEdit(dodoDialogs.protoTypeDialog):
+  def __init__(self):
+    # dialogPath=join(dirname(abspath(__file__)),"dialogz","sections.ui")
+    # self.form=FreeCADGui.PySideUic.loadUi(dialogPath)
+    super(profEdit,self).__init__("sections.ui")
+    ##################################################################
+    # self.form.editH.setText('100')
+    # self.form.editB.setText('50')
+    # self.form.editD.setText('50')
+    # self.form.editT1.setText('5')
+    # self.form.editT2.setText('10')
+    # self.form.editT3.setText('10')
+    # self.type="RH"
+    # self.label='Square_tube'
+    # self.form.labImg.setPixmap(pixSquare)
+    self.setProfile('square')
+    #self.form.cbFull.stateChanged.connect(lambda: self.setProfile('square'))
+    self.form.editB.editingFinished.connect(lambda: self.form.editD.setText(self.form.editB.text()))
+    self.form.editT2.editingFinished.connect(lambda: self.form.editT3.setText(self.form.editT2.text()))
+    self.form.tbSquare.clicked.connect(lambda: self.setProfile('square'))
+    self.form.tbCircle.clicked.connect(lambda: self.setProfile('circle'))
+    self.form.tbT.clicked.connect(lambda: self.setProfile('T'))
+    self.form.tbU.clicked.connect(lambda: self.setProfile('U'))
+    self.form.tbH.clicked.connect(lambda: self.setProfile('H'))
+    self.form.tbL.clicked.connect(lambda: self.setProfile('L'))
+    self.form.tbZ.clicked.connect(lambda: self.setProfile('Z'))
+    self.form.tbOmega.clicked.connect(lambda: self.setProfile('omega'))
+    for z in list(zip(pixs,[self.form.tbSquare,self.form.tbT,self.form.tbU,self.form.tbH,self.form.tbL,self.form.tbZ,self.form.tbOmega,self.form.tbCircle])):
+      icon = QIcon()
+      icon.addPixmap(z[0], QIcon.Normal, QIcon.Off)
+      z[1].setIcon(icon)
+  def setProfile(self, typeS):
+    if typeS=='square':
+      self.form.labImg.setPixmap(pixSquare)
+      self.type="R"
+      self.label="Square"
+    elif typeS=='T':
+      self.form.labImg.setPixmap(pixT)
+      self.type="T"
+      self.label="T-profile"
+    elif typeS=='U':
+      self.form.labImg.setPixmap(pixU)
+      self.type="U"
+      self.label="U-profile"
+    elif typeS=='H':
+      self.form.labImg.setPixmap(pixH)
+      self.type="H"
+      self.label="H-profile"
+    elif typeS=='L':
+      self.form.labImg.setPixmap(pixL)
+      self.type="L"
+      self.label="L-profile"
+    elif typeS=='Z':
+      self.form.labImg.setPixmap(pixZ)
+      self.type="Z"
+      self.label="Z-profile"
+    elif typeS=='omega':
+      self.form.labImg.setPixmap(pixOmega)
+      self.type="omega"
+      self.label="Omega-profile"
+    elif typeS=='circle':
+      self.form.labImg.setPixmap(pixCircle)
+      self.type="circle"
+      self.label="Circle-profile"
+  def accept(self):
+    D, H, B, t1, t2, t3 = float(self.form.editD.text()),\
+                          float(self.form.editH.text()),\
+                          float(self.form.editB.text()),\
+                          float(self.form.editT1.text()),\
+                          float(self.form.editT2.text()),\
+                          float(self.form.editT3.text())
+    if not self.form.lineEdit.text(): label=self.label
+    else: label= self.form.lineEdit.text()
+    if FreeCAD.ActiveDocument:
+      FreeCAD.activeDocument().openTransaction('Insert profile')
+      if self.type=='R':
+        if not self.form.cbFull.isChecked() and t2<H/2 and t1<B/2:
+          fFeatures.doProfile("RH",label,[B,H,t1,t2])
+        else:
+          fFeatures.doProfile("R",label,[B,H])
+      elif self.type=='H':
+        fFeatures.doProfile(self.type,label,[B,H,D,t1,t2,t3])
+      elif self.type=='U' and t2<H and t1<B/2:
+        fFeatures.doProfile(self.type,label,[B,H,D,t1,t2,t3])
+      elif self.type=='L' and t2<H and t1<B:
+        fFeatures.doProfile(self.type,label,[B,H,t1,t2])
+      elif self.type=='T' and t2<H and t1<B:
+        fFeatures.doProfile(self.type,label,[B,H,t1,t2])
+      elif self.type=='Z'and t2<H/2 and t1<B*2:
+        fFeatures.doProfile(self.type,label,[B,H,t1,t2])
+      elif self.type=='omega':
+        fFeatures.doProfile(self.type,label,[B,H,D,t1,t2,t3])
+      elif self.type=='circle':
+        if self.form.cbFull.isChecked():
+          fFeatures.doProfile(self.type,label,[D,0])
+        else:
+          fFeatures.doProfile(self.type,label,[D,t1])
+      FreeCAD.activeDocument().commitTransaction()
+      FreeCAD.ActiveDocument.recompute()
+      FreeCAD.ActiveDocument.recompute()
+      ##################################################################

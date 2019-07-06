@@ -140,7 +140,7 @@ static char * dodo1_xpm[] = {
     self.appendToolbar("Utils",self.utilsList)
     Log ('Loading Utils: done\n')
     import CFrame
-    self.frameList=["frameIt","FrameBranchManager","spinSect","reverseBeam","shiftBeam","pivotBeam","levelBeam","alignEdge","rotJoin","alignFlange","stretchBeam","extend","adjustFrameAngle","insertPath"]
+    self.frameList=["frameIt","FrameBranchManager","insertSection","spinSect","reverseBeam","shiftBeam","pivotBeam","levelBeam","alignEdge","rotJoin","alignFlange","stretchBeam","extend","adjustFrameAngle","insertPath"]
     self.appendToolbar("frameTools",self.frameList)
     Log ('Loading Frame tools: done\n')
     import CPipe

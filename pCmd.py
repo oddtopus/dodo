@@ -703,7 +703,7 @@ def alignTheTube():
       reverseTheTube(FreeCADGui.Selection.getSelectionEx()[:2][1])
   except: 
     pass
-  #TARGET [achieved]: verify if t1 or t2 belong to App::Part and changes the Placement consequently
+  #TARGET [solved]: verify if t1 or t2 belong to App::Part and changes the Placement consequently
   if fCmd.isPartOfPart(t1):
     part=fCmd.isPartOfPart(t1) 
     t2.Placement=part.Placement.multiply(t2.Placement)

@@ -345,31 +345,17 @@ class FrameBranchManager:
   def GetResources(self):
     return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","framebranch.svg"),'MenuText':'FrameBranch Manager','ToolTip':'Open FrameBranch Manager'}
 
-# class insertSection:
-  # '''
-  # Dialog to create the set of profiles to be used in the model for
-  # object FrameLine.
-  # * "Section:" list: it includes all the sections defined in the .csv
-  # file corresponding to the selected section type.
-  # * "Section types:" list: the types of profiles defined with the .csv
-  # files included in the folder /tablez
-  # * [Insert] button: creates the group "Profiles_set", if not already
-  # existing, and adds to it the object of the selected profile.
-  
-  # Notes: - other profiles tablez can be created by adding the relevant
-  # .csv file in the /tablez folder.
-  # - Other profiles can be drafted in the model and dragged inside
-  # the group "Profiles_set". 
-  # - The orientation of the DWires may influence the rendering of beams
-  # on the FrameLine.
-  # '''
-  # def Activated(self):
-    # if FreeCAD.ActiveDocument:
-      # import fFeatures
-      # frameFormObj=fFeatures.insertSectForm()
+class insertSection:
+  '''
+  Dialog to create the set of profiles to be used in the model.
+  '''
+  def Activated(self):
+    if FreeCAD.ActiveDocument:
+      import fForms
+      FreeCADGui.Control.showDialog(fForms.profEdit())
 
-  # def GetResources(self):
-    # return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","sect.svg"),'MenuText':'Insert Std. Sections','ToolTip':'Creates in the model standard beam profiles to be used with Frameline Manager'}
+  def GetResources(self):
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","sect.svg"),'MenuText':'Insert sections','ToolTip':'Creates customized beam profiles 2D'}
 
 #---------------------------------------------------------------------------
 # Adds the commands to the FreeCAD command manager
@@ -389,5 +375,5 @@ addCommand('adjustFrameAngle',adjustFrameAngle())
 addCommand('rotJoin',rotJoin())
 addCommand('insertPath',insertPath())
 #addCommand('FrameLineManager',FrameLineManager())
-#addCommand('insertSection',insertSection())
+addCommand('insertSection',insertSection())
 addCommand('FrameBranchManager',FrameBranchManager())
