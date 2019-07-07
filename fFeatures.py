@@ -864,6 +864,7 @@ from ArchProfile import _Profile
 class _ProfileRH(_Profile):
     '''A parametric Rectangular hollow beam profile. Profile data: [width, height, thickness]'''
     def __init__(self,obj, profile):
+        obj.addProperty("App::PropertyString","FType","Profile",QT_TRANSLATE_NOOP("App::Property","Type of section")).FType = 'RH'
         obj.addProperty("App::PropertyLength","W","Draft",QT_TRANSLATE_NOOP("App::Property","Width of the beam")).W = profile[4]
         obj.addProperty("App::PropertyLength","H","Draft",QT_TRANSLATE_NOOP("App::Property","Height of the beam")).H = profile[5]
         obj.addProperty("App::PropertyLength","t1","Draft",QT_TRANSLATE_NOOP("App::Property","Thickness of the vertical sides")).t1 = profile[6]
@@ -886,6 +887,7 @@ class _ProfileRH(_Profile):
 class _ProfileR(_Profile):
     '''A parametric Rectangular solid beam profile. Profile data: [width, height]'''
     def __init__(self,obj, profile):
+        obj.addProperty("App::PropertyString","FType","Profile",QT_TRANSLATE_NOOP("App::Property","Type of section")).FType = 'R'
         obj.addProperty("App::PropertyLength","W","Draft",QT_TRANSLATE_NOOP("App::Property","Width of the beam")).W = profile[4]
         obj.addProperty("App::PropertyLength","H","Draft",QT_TRANSLATE_NOOP("App::Property","Height of the beam")).H = profile[5]
         _Profile.__init__(self,obj,profile)
@@ -904,6 +906,7 @@ class _ProfileCircle(_Profile):
       D: diameter
       t1: thickness (optional; "0" for solid section)'''
     def __init__(self,obj, profile):
+        obj.addProperty("App::PropertyString","FType","Profile",QT_TRANSLATE_NOOP("App::Property","Type of section")).FType = 'circle'
         obj.addProperty("App::PropertyLength","D","Draft",QT_TRANSLATE_NOOP("App::Property","Diameter of the beam")).D = profile[4]
         obj.addProperty("App::PropertyLength","t1","Draft",QT_TRANSLATE_NOOP("App::Property","Thickness")).t1 = profile[5]
         _Profile.__init__(self,obj,profile)
@@ -919,6 +922,7 @@ class _ProfileCircle(_Profile):
 class _ProfileL(_Profile):
     '''A parametric L beam profile. Profile data: [width, height, web thickness]'''
     def __init__(self,obj, profile):
+        obj.addProperty("App::PropertyString","FType","Profile",QT_TRANSLATE_NOOP("App::Property","Type of section")).FType = 'L'
         obj.addProperty("App::PropertyLength","W","Draft",QT_TRANSLATE_NOOP("App::Property","W of the beam")).W = profile[4]
         obj.addProperty("App::PropertyLength","H","Draft",QT_TRANSLATE_NOOP("App::Property","Height of the beam")).H = profile[5]
         obj.addProperty("App::PropertyLength","t1","Draft",QT_TRANSLATE_NOOP("App::Property","Thickness of the webs")).t1 = profile[6]
@@ -931,6 +935,7 @@ class _ProfileL(_Profile):
 class _ProfileT(_Profile):
     '''A parametric T beam profile. Profile data: [width, height, web thickness]'''
     def __init__(self,obj, profile):
+        obj.addProperty("App::PropertyString","FType","Profile",QT_TRANSLATE_NOOP("App::Property","Type of section")).FType = 'T'
         obj.addProperty("App::PropertyLength","W","Draft",QT_TRANSLATE_NOOP("App::Property","W of the beam")).W = profile[4]
         obj.addProperty("App::PropertyLength","H","Draft",QT_TRANSLATE_NOOP("App::Property","H of the beam")).H = profile[5]
         obj.addProperty("App::PropertyLength","t1","Draft",QT_TRANSLATE_NOOP("App::Property","Thickness of the web")).t1 = profile[6]
@@ -943,6 +948,7 @@ class _ProfileT(_Profile):
 class _ProfileZ(_Profile):
     '''A parametric Z beam profile. Profile data: [width, height, web thickness, flange thickness]'''
     def __init__(self,obj, profile):
+        obj.addProperty("App::PropertyString","FType","Profile",QT_TRANSLATE_NOOP("App::Property","Type of section")).FType = 'Z'
         obj.addProperty("App::PropertyLength","W","Draft",QT_TRANSLATE_NOOP("App::Property","Width of the beam")).W = profile[5]
         obj.addProperty("App::PropertyLength","H","Draft",QT_TRANSLATE_NOOP("App::Property","Height of the beam")).H = profile[4]
         obj.addProperty("App::PropertyLength","t1","Draft",QT_TRANSLATE_NOOP("App::Property","Thickness of the web")).t1 = profile[6]
@@ -955,6 +961,7 @@ class _ProfileZ(_Profile):
 class _ProfileOmega(_Profile):
     '''A parametric omega beam profile. Profile data: [W, H, D, t1,t2,t3]'''
     def __init__(self,obj, profile):
+        obj.addProperty("App::PropertyString","FType","Profile",QT_TRANSLATE_NOOP("App::Property","Type of section")).FType = 'omega'
         obj.addProperty("App::PropertyLength","W","Draft",QT_TRANSLATE_NOOP("App::Property","Width of the beam")).W = profile[4]
         obj.addProperty("App::PropertyLength","H","Draft",QT_TRANSLATE_NOOP("App::Property","Height of the beam")).H = profile[5]
         obj.addProperty("App::PropertyLength","D","Draft",QT_TRANSLATE_NOOP("App::Property","Width of the flanges")).D = profile[6]
@@ -969,6 +976,7 @@ class _ProfileOmega(_Profile):
 class _ProfileH(_Profile):
     '''A parametric omega beam profile. Profile data: [W, H, D, t1,t2,t3]'''
     def __init__(self,obj, profile):
+        obj.addProperty("App::PropertyString","FType","Profile",QT_TRANSLATE_NOOP("App::Property","Type of section")).FType = 'H'
         obj.addProperty("App::PropertyLength","W","Draft",QT_TRANSLATE_NOOP("App::Property","Width of the bottom flange")).W = profile[4]
         obj.addProperty("App::PropertyLength","H","Draft",QT_TRANSLATE_NOOP("App::Property","Height of the beam")).H = profile[5]
         obj.addProperty("App::PropertyLength","D","Draft",QT_TRANSLATE_NOOP("App::Property","Width of the top flange")).D = profile[6]
@@ -983,6 +991,7 @@ class _ProfileH(_Profile):
 class _ProfileU(_Profile):
     '''A parametric U beam profile. Profile data: [W, H, D, t1,t2,t3]'''
     def __init__(self,obj, profile):
+        obj.addProperty("App::PropertyString","FType","Profile",QT_TRANSLATE_NOOP("App::Property","Type of section")).FType = 'U'
         obj.addProperty("App::PropertyLength","W","Draft",QT_TRANSLATE_NOOP("App::Property","Width of the bottom flange")).W = profile[4]
         obj.addProperty("App::PropertyLength","H","Draft",QT_TRANSLATE_NOOP("App::Property","Height of the beam")).H = profile[5]
         obj.addProperty("App::PropertyLength","D","Draft",QT_TRANSLATE_NOOP("App::Property","Width of the top flange")).D = profile[6]

@@ -9,6 +9,8 @@ from PySide.QtGui import *
 from os.path import join, dirname, abspath
 from sys import platform
 
+FTypes=['R','circle','T','H','U','L','Z','omega']
+
 class fillForm(dodoDialogs.protoTypeDialog):
   'dialog for fillFrame()'
   def __init__(self):
@@ -355,21 +357,8 @@ pixs=[pixSquare,pixT,pixU,pixH,pixL,pixZ,pixOmega,pixCircle]=[QPixmap(join(dirna
 
 class profEdit(dodoDialogs.protoTypeDialog):
   def __init__(self):
-    # dialogPath=join(dirname(abspath(__file__)),"dialogz","sections.ui")
-    # self.form=FreeCADGui.PySideUic.loadUi(dialogPath)
     super(profEdit,self).__init__("sections.ui")
-    ##################################################################
-    # self.form.editH.setText('100')
-    # self.form.editB.setText('50')
-    # self.form.editD.setText('50')
-    # self.form.editT1.setText('5')
-    # self.form.editT2.setText('10')
-    # self.form.editT3.setText('10')
-    # self.type="RH"
-    # self.label='Square_tube'
-    # self.form.labImg.setPixmap(pixSquare)
     self.setProfile('square')
-    #self.form.cbFull.stateChanged.connect(lambda: self.setProfile('square'))
     self.form.editB.editingFinished.connect(lambda: self.form.editD.setText(self.form.editB.text()))
     self.form.editT2.editingFinished.connect(lambda: self.form.editT3.setText(self.form.editT2.text()))
     self.form.tbSquare.clicked.connect(lambda: self.setProfile('square'))
@@ -379,6 +368,8 @@ class profEdit(dodoDialogs.protoTypeDialog):
     self.form.tbH.clicked.connect(lambda: self.setProfile('H'))
     self.form.tbL.clicked.connect(lambda: self.setProfile('L'))
     self.form.tbZ.clicked.connect(lambda: self.setProfile('Z'))
+    self.form.btn1.clicked.connect(self.apply)
+    self.form.btn2.clicked.connect(lambda: self.shiftProfile(None))
     self.form.tbOmega.clicked.connect(lambda: self.setProfile('omega'))
     for z in list(zip(pixs,[self.form.tbSquare,self.form.tbT,self.form.tbU,self.form.tbH,self.form.tbL,self.form.tbZ,self.form.tbOmega,self.form.tbCircle])):
       icon = QIcon()
@@ -430,27 +421,115 @@ class profEdit(dodoDialogs.protoTypeDialog):
       FreeCAD.activeDocument().openTransaction('Insert profile')
       if self.type=='R':
         if not self.form.cbFull.isChecked() and t2<H/2 and t1<B/2:
-          fFeatures.doProfile("RH",label,[B,H,t1,t2])
+          sect=fFeatures.doProfile("RH",label,[B,H,t1,t2])
         else:
-          fFeatures.doProfile("R",label,[B,H])
+          sect=fFeatures.doProfile("R",label,[B,H])
       elif self.type=='H':
-        fFeatures.doProfile(self.type,label,[B,H,D,t1,t2,t3])
+        sect=fFeatures.doProfile(self.type,label,[B,H,D,t1,t2,t3])
       elif self.type=='U' and t2<H and t1<B/2:
-        fFeatures.doProfile(self.type,label,[B,H,D,t1,t2,t3])
+        sect=fFeatures.doProfile(self.type,label,[B,H,D,t1,t2,t3])
       elif self.type=='L' and t2<H and t1<B:
-        fFeatures.doProfile(self.type,label,[B,H,t1,t2])
+        sect=fFeatures.doProfile(self.type,label,[B,H,t1,t2])
       elif self.type=='T' and t2<H and t1<B:
-        fFeatures.doProfile(self.type,label,[B,H,t1,t2])
+        sect=fFeatures.doProfile(self.type,label,[B,H,t1,t2])
       elif self.type=='Z'and t2<H/2 and t1<B*2:
-        fFeatures.doProfile(self.type,label,[B,H,t1,t2])
+        sect=fFeatures.doProfile(self.type,label,[B,H,t1,t2])
       elif self.type=='omega':
-        fFeatures.doProfile(self.type,label,[B,H,D,t1,t2,t3])
+        sect=fFeatures.doProfile(self.type,label,[B,H,D,t1,t2,t3])
       elif self.type=='circle':
         if self.form.cbFull.isChecked():
-          fFeatures.doProfile(self.type,label,[D,0])
+          sect=fFeatures.doProfile(self.type,label,[D,0])
         else:
-          fFeatures.doProfile(self.type,label,[D,t1])
+          sect=fFeatures.doProfile(self.type,label,[D,t1])
+      #self.shiftProfile(sect)
       FreeCAD.activeDocument().commitTransaction()
       FreeCAD.ActiveDocument.recompute()
       FreeCAD.ActiveDocument.recompute()
-      ##################################################################
+  def apply(self):
+    D, H, B, t1, t2, t3 = float(self.form.editD.text()),\
+                          float(self.form.editH.text()),\
+                          float(self.form.editB.text()),\
+                          float(self.form.editT1.text()),\
+                          float(self.form.editT2.text()),\
+                          float(self.form.editT3.text())
+    sel=FreeCADGui.Selection.getSelection()
+    if sel:
+      obj=sel[0]
+      if hasattr(obj,'Shape') and obj.Shape.ShapeType in ('Face','Shell'):
+        if hasattr(obj,'H'):
+          obj.H=H
+        if hasattr(obj,'W'):
+          obj.W=B
+        if hasattr(obj,'D'):
+          obj.D=D
+        if hasattr(obj,'t1'):
+          obj.t1=t1
+        if hasattr(obj,'t2'):
+          obj.t2=t2
+        if hasattr(obj,'t3'):
+          obj.t3=t3
+        # obj.Placement.move(obj.Shape.CenterOfMass.negative())
+        # FreeCAD.ActiveDocument.recompute()
+        self.shiftProfile(obj)
+      FreeCAD.ActiveDocument.recompute()
+  def mouseActionB1(self,CtrlAltShift):
+    self.form.labSelect.setText('<selection>')
+    v = FreeCADGui.ActiveDocument.ActiveView
+    i = v.getObjectInfo(v.getCursorPos())
+    if i: 
+      labText=i['Object']
+      obj=FreeCAD.ActiveDocument.getObject(i['Object'])
+      if hasattr(obj,'FType') and obj.FType in FTypes:
+        if obj.FType=='R':
+          self.setProfile('R')
+        elif obj.FType=='circle':
+          self.setProfile('circle')
+        elif obj.FType=='T':
+          self.setProfile('T')
+        elif obj.FType=='H':
+          self.setProfile('H')
+        elif obj.FType=='L':
+          self.setProfile('L')
+        elif obj.FType=='U':
+          self.setProfile('U')
+        elif obj.FType=='Z':
+          self.setProfile('Z')
+        elif obj.FType=='omega':
+          self.setProfile('omega')
+        self.form.labSelect.setText(obj.Label)
+  def shiftProfile (self,sect=None):
+    if not sect:
+      sel=FreeCADGui.Selection.getSelection()
+      if sel and hasattr(sel[0],'FType'): sect=sel[0]
+    if sect:
+      sect.Placement.move(sect.Shape.CenterOfMass.negative())
+      FreeCAD.ActiveDocument.recompute()
+      FreeCAD.ActiveDocument.openTransaction('Shift profile')
+      B=sect.Shape.BoundBox
+      O=sect.Shape.CenterOfMass
+      N=FreeCAD.Vector(0,O.y-B.YMin,0)
+      S=FreeCAD.Vector(0,O.y-B.YMax,0)
+      E=FreeCAD.Vector(O.x-B.XMin,0,0)
+      W=FreeCAD.Vector(O.x-B.XMax,0,0)
+      delta=FreeCAD.Vector() 
+      if self.form.rbN.isChecked(): 
+        delta=S
+      elif self.form.rbS.isChecked(): 
+        delta=N
+      elif self.form.rbE.isChecked(): 
+        delta=W
+      elif self.form.rbW.isChecked(): 
+        delta=E
+      elif self.form.rbNE.isChecked(): 
+        delta=S.add(W)
+      elif self.form.rbNW.isChecked(): 
+        delta=S.add(E)
+      elif self.form.rbSE.isChecked(): 
+        delta=N.add(W)
+      elif self.form.rbSW.isChecked(): 
+        delta=N.add(E)
+      elif self.form.rbC.isChecked():
+        delta=O*-1
+      print (delta)
+      sect.Placement.move(delta)
+      FreeCAD.ActiveDocument.commitTransaction()
