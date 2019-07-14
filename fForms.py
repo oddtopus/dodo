@@ -521,7 +521,7 @@ class profEdit(dodoDialogs.protoTypeDialog):
       self.form.editT1.setText('5')
       self.form.editT2.setText('5')
       self.form.editT3.setText('5')
-      self.form.labSelect.setText('')
+      # self.form.labSelect.setText('')
       self.form.lineEdit.setText('')
   def shiftProfile (self,sect=None):
     if not sect:
@@ -556,6 +556,5 @@ class profEdit(dodoDialogs.protoTypeDialog):
         delta=N.add(E)
       elif self.form.rbC.isChecked():
         delta=O*-1
-      print (delta)
       sect.Placement.move(delta)
       FreeCAD.ActiveDocument.commitTransaction()
