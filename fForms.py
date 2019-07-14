@@ -441,7 +441,8 @@ class profEdit(dodoDialogs.protoTypeDialog):
           sect=fFeatures.doProfile(self.type,label,[D,0])
         else:
           sect=fFeatures.doProfile(self.type,label,[D,t1])
-      #self.shiftProfile(sect)
+      FreeCAD.ActiveDocument.recompute()
+      self.shiftProfile(sect)
       FreeCAD.activeDocument().commitTransaction()
       FreeCAD.ActiveDocument.recompute()
       FreeCAD.ActiveDocument.recompute()
@@ -456,6 +457,9 @@ class profEdit(dodoDialogs.protoTypeDialog):
     if sel:
       obj=sel[0]
       if hasattr(obj,'Shape') and obj.Shape.ShapeType in ('Face','Shell'):
+        FreeCAD.ActiveDocument.openTransaction('Modify profile')
+        if self.form.lineEdit.text(): 
+          obj.Label = self.form.lineEdit.text()
         if hasattr(obj,'H'):
           obj.H=H
         if hasattr(obj,'W'):
@@ -468,12 +472,11 @@ class profEdit(dodoDialogs.protoTypeDialog):
           obj.t2=t2
         if hasattr(obj,'t3'):
           obj.t3=t3
-        # obj.Placement.move(obj.Shape.CenterOfMass.negative())
-        # FreeCAD.ActiveDocument.recompute()
-        self.shiftProfile(obj)
+        FreeCAD.ActiveDocument.commitTransaction()
+        #self.shiftProfile(obj)
       FreeCAD.ActiveDocument.recompute()
   def mouseActionB1(self,CtrlAltShift):
-    self.form.labSelect.setText('<selection>')
+    # self.form.labSelect.setText('<selection>')
     v = FreeCADGui.ActiveDocument.ActiveView
     i = v.getObjectInfo(v.getCursorPos())
     if i: 
@@ -496,7 +499,30 @@ class profEdit(dodoDialogs.protoTypeDialog):
           self.setProfile('Z')
         elif obj.FType=='omega':
           self.setProfile('omega')
-        self.form.labSelect.setText(obj.Label)
+        ###############
+        self.form.lineEdit.setText(obj.Label)
+        if hasattr(obj,'H'): self.form.editH.setText(str(float(obj.H.Value)))
+        else: self.form.editH.setText('0')
+        if hasattr(obj,'W'): self.form.editB.setText(str(float(obj.W)))
+        else: self.form.editW.setText('0')
+        if hasattr(obj,'D'): self.form.editD.setText(str(float(obj.D)))
+        else: self.form.editD.setText('0')
+        if hasattr(obj,'t1'): self.form.editT1.setText(str(float(obj.t1)))
+        else: self.form.editT1.setText('0')
+        if hasattr(obj,'t2'): self.form.editT2.setText(str(float(obj.t2)))
+        else: self.form.editT2.setText('0')
+        if hasattr(obj,'t3'): self.form.editT3.setText(str(float(obj.t3)))
+        else: self.form.editT3.setText('0')
+        # self.form.labSelect.setText(obj.Label)
+    else:
+      self.form.editH.setText('80')
+      self.form.editB.setText('45')
+      self.form.editD.setText('45')
+      self.form.editT1.setText('5')
+      self.form.editT2.setText('5')
+      self.form.editT3.setText('5')
+      self.form.labSelect.setText('')
+      self.form.lineEdit.setText('')
   def shiftProfile (self,sect=None):
     if not sect:
       sel=FreeCADGui.Selection.getSelection()

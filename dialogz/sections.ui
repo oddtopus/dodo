@@ -717,27 +717,18 @@
      </property>
     </widget>
    </item>
-   <item row="10" column="2">
-    <widget class="QLabel" name="labSelect">
-     <property name="text">
-      <string>&lt;selection&gt;</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="11" column="2">
+   <item row="4" column="2" rowspan="2">
     <widget class="QPushButton" name="btn1">
      <property name="enabled">
       <bool>true</bool>
      </property>
      <property name="text">
-      <string>Apply</string>
+      <string>Apply
+dimensions</string>
      </property>
     </widget>
    </item>
-   <item row="12" column="2">
+   <item row="10" column="2">
     <widget class="QPushButton" name="btn2">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
@@ -746,7 +737,8 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>Shift</string>
+      <string>Shift
+profile</string>
      </property>
     </widget>
    </item>
