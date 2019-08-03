@@ -369,6 +369,11 @@ class frameBranchForm(dodoDialogs.protoTypeDialog):
         beam=makeStructure(profile)
         fCmd.placeTheBeam(beam,e)
         if self.form.editLength.text(): beam.Height=float(self.form.editLength.text())
+    elif [v for sx in FreeCADGui.Selection.getSelectionEx() for so in sx.SubObjects for v in so.Vertexes]:
+      vs=[v for sx in FreeCADGui.Selection.getSelectionEx() for so in sx.SubObjects for v in so.Vertexes]
+      for v in vs:
+        beam=makeStructure(profile)
+        beam.Placement.Base=v.Point
     else:
       beam=makeStructure(profile)
       if self.form.editLength.text(): beam.Height=float(self.form.editLength.text())

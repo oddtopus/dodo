@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>175</width>
+    <width>243</width>
     <height>275</height>
    </rect>
   </property>
@@ -20,23 +20,13 @@
    <property name="bottomMargin">
     <number>0</number>
    </property>
-   <item row="5" column="1">
-    <widget class="QSpinBox" name="spinBox">
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-     <property name="minimum">
-      <number>1</number>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0" colspan="2">
-    <widget class="QPushButton" name="btn1">
-     <property name="focusPolicy">
-      <enum>Qt::NoFocus</enum>
-     </property>
+   <item row="9" column="0">
+    <widget class="QLabel" name="label_4">
      <property name="text">
-      <string>Set dist.</string>
+      <string> Multiple: </string>
+     </property>
+     <property name="buddy">
+      <cstring>edit4</cstring>
      </property>
     </widget>
    </item>
@@ -60,13 +50,33 @@
      </property>
     </widget>
    </item>
-   <item row="9" column="0">
-    <widget class="QLabel" name="label_4">
-     <property name="text">
-      <string> Multiple: </string>
+   <item row="4" column="0" colspan="2">
+    <widget class="QPushButton" name="btn1">
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
      </property>
-     <property name="buddy">
-      <cstring>edit4</cstring>
+     <property name="text">
+      <string>Set dist.</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLineEdit" name="edit1">
+     <property name="text">
+      <string>0</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QCheckBox" name="cbZ">
+     <property name="text">
+      <string> Z:</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
      </property>
     </widget>
    </item>
@@ -80,8 +90,18 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="1">
-    <widget class="QLineEdit" name="edit1">
+   <item row="5" column="1">
+    <widget class="QSpinBox" name="spinBox">
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="minimum">
+      <number>1</number>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QLineEdit" name="edit2">
      <property name="text">
       <string>0</string>
      </property>
@@ -100,23 +120,6 @@
      </property>
     </widget>
    </item>
-   <item row="7" column="0" colspan="2">
-    <widget class="Line" name="line">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0">
-    <widget class="QCheckBox" name="cbZ">
-     <property name="text">
-      <string> Z:</string>
-     </property>
-     <property name="checked">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
    <item row="1" column="0">
     <widget class="QCheckBox" name="cbY">
      <property name="text">
@@ -127,13 +130,17 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="1">
-    <widget class="QLineEdit" name="edit2">
-     <property name="text">
-      <string>0</string>
+   <item row="7" column="0" colspan="2">
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
      </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QCheckBox" name="cbCopy">
+     <property name="text">
+      <string>copy</string>
      </property>
     </widget>
    </item>
@@ -147,10 +154,13 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="0">
-    <widget class="QCheckBox" name="cbCopy">
+   <item row="11" column="0" colspan="2">
+    <widget class="QLabel" name="label">
      <property name="text">
-      <string>copy</string>
+      <string>hotkeys: &quot;S&quot; to select, &quot;X&quot; to execute</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </item>

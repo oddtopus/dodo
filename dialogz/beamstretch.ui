@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>216</width>
-    <height>186</height>
+    <width>243</width>
+    <height>193</height>
    </rect>
   </property>
   <property name="baseSize">
@@ -44,13 +44,6 @@
      </property>
      <property name="checked">
       <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>Stretched end:</string>
      </property>
     </widget>
    </item>
@@ -91,10 +84,17 @@
    <item row="7" column="0" colspan="3">
     <widget class="QLabel" name="label_3">
      <property name="text">
-      <string>OK or Return to stretch</string>
+      <string>hotkeys: &quot;S&quot; to select, &quot;X&quot; to execute</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" rowspan="3">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Stretched end:</string>
      </property>
     </widget>
    </item>

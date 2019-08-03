@@ -24,14 +24,10 @@
    <item>
     <widget class="QLabel" name="labTagretObj">
      <property name="text">
-      <string>&quot;S&quot; to reset</string>
+      <string>hotkeys: &quot;S&quot; to select, &quot;X&quot; to execute</string>
      </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="labTargetPort">
-     <property name="text">
-      <string>&quot;RETURN&quot; or &quot;ESC&quot; to exit</string>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </item>

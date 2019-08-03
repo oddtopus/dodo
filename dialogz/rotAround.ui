@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>225</width>
+    <width>275</width>
     <height>242</height>
    </rect>
   </property>
@@ -220,7 +220,7 @@
       </size>
      </property>
      <property name="text">
-      <string>OK or RETURN to rotate</string>
+      <string>hotkeys: &quot;S&quot; to select, &quot;X&quot; to execute</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>

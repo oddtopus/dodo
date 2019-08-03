@@ -168,20 +168,20 @@ def doPipes(propList=['DN50',60.3,3,1000], pypeline=None):
           plist.append(makePipe(propList,face.valueAt(x,y),face.normalAt(x,y)))
         FreeCAD.activeDocument().commitTransaction()
         FreeCAD.activeDocument().recompute()
-        return 
-      for edge in fCmd.edges([objex]): # ...one or more edges...
-        if edge.curvatureAt(0)==0: # ...straight edges
-          pL=propList
-          pL[3]=edge.Length
-          plist.append(makePipe(pL,edge.valueAt(0),edge.tangentAt(0)))
-        else: # ...curved edges
-          pos=edge.centerOfCurvatureAt(0)
-          Z=edge.tangentAt(0).cross(edge.normalAt(0))
-          if isElbow(o):
-            p0,p1=[o.Placement.Rotation.multVec(p) for p in o.Ports]
-            if not fCmd.isParallel(Z,p0):
-              Z=p1
-          plist.append(makePipe(propList,pos,Z))
+      else: 
+        for edge in fCmd.edges([objex]): # ...one or more edges...
+          if edge.curvatureAt(0)==0: # ...straight edges
+            pL=propList
+            pL[3]=edge.Length
+            plist.append(makePipe(pL,edge.valueAt(0),edge.tangentAt(0)))
+          else: # ...curved edges
+            pos=edge.centerOfCurvatureAt(0)
+            Z=edge.tangentAt(0).cross(edge.normalAt(0))
+            if isElbow(o):
+              p0,p1=[o.Placement.Rotation.multVec(p) for p in o.Ports]
+              if not fCmd.isParallel(Z,p0):
+                Z=p1
+            plist.append(makePipe(propList,pos,Z))
   if pypeline:
     for p in plist:
       moveToPyLi(p,pypeline)

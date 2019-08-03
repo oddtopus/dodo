@@ -30,19 +30,6 @@
      </property>
     </widget>
    </item>
-   <item row="13" column="0">
-    <widget class="QPushButton" name="btnRefresh">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>Redraw</string>
-     </property>
-    </widget>
-   </item>
    <item row="13" column="2">
     <widget class="QLineEdit" name="editAngle">
      <property name="minimumSize">
@@ -59,11 +46,43 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="2">
-    <widget class="QComboBox" name="comboRatings"/>
+   <item row="15" column="2">
+    <widget class="QLineEdit" name="editTail">
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="placeholderText">
+      <string>offset tail</string>
+     </property>
+    </widget>
    </item>
-   <item row="4" column="1" rowspan="6" colspan="2">
-    <widget class="QListWidget" name="listSizes"/>
+   <item row="8" column="0">
+    <widget class="QPushButton" name="btnTrim">
+     <property name="text">
+      <string>Trim/Extend</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QPushButton" name="btnAdd">
+     <property name="text">
+      <string>AddBeams</string>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="0">
+    <widget class="QPushButton" name="btnSingle">
+     <property name="text">
+      <string>Add single</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0">
+    <widget class="QPushButton" name="btnProfile">
+     <property name="text">
+      <string>ChangeProfile</string>
+     </property>
+    </widget>
    </item>
    <item row="2" column="0" colspan="2">
     <widget class="QLineEdit" name="editName">
@@ -81,10 +100,62 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="0">
-    <widget class="QPushButton" name="btnAdd">
+   <item row="4" column="1" rowspan="6" colspan="2">
+    <widget class="QListWidget" name="listSizes"/>
+   </item>
+   <item row="15" column="0" colspan="2">
+    <widget class="QSlider" name="sliTail">
+     <property name="minimum">
+      <number>-99</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="3">
+    <widget class="QLabel" name="lab1">
      <property name="text">
-      <string>AddBeams</string>
+      <string>&lt;no item selected&gt;</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="13" column="0">
+    <widget class="QPushButton" name="btnRefresh">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Redraw</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2">
+    <widget class="QComboBox" name="comboRatings"/>
+   </item>
+   <item row="14" column="2">
+    <widget class="QLineEdit" name="editHead">
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="placeholderText">
+      <string>offset head</string>
+     </property>
+    </widget>
+   </item>
+   <item row="14" column="0" colspan="2">
+    <widget class="QSlider" name="sliHead">
+     <property name="minimum">
+      <number>-99</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
      </property>
     </widget>
    </item>
@@ -113,74 +184,10 @@
      </property>
     </widget>
    </item>
-   <item row="8" column="0">
-    <widget class="QPushButton" name="btnTrim">
-     <property name="text">
-      <string>Trim/Extend</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="0">
-    <widget class="QPushButton" name="btnProfile">
-     <property name="text">
-      <string>ChangeProfile</string>
-     </property>
-    </widget>
-   </item>
    <item row="5" column="0">
     <widget class="QPushButton" name="btnRemove">
      <property name="text">
       <string>RemoveBeams</string>
-     </property>
-    </widget>
-   </item>
-   <item row="14" column="2">
-    <widget class="QLineEdit" name="editHead">
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-     <property name="placeholderText">
-      <string>offset head</string>
-     </property>
-    </widget>
-   </item>
-   <item row="15" column="2">
-    <widget class="QLineEdit" name="editTail">
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-     <property name="placeholderText">
-      <string>offset tail</string>
-     </property>
-    </widget>
-   </item>
-   <item row="14" column="0" colspan="2">
-    <widget class="QSlider" name="sliHead">
-     <property name="minimum">
-      <number>-99</number>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="15" column="0" colspan="2">
-    <widget class="QSlider" name="sliTail">
-     <property name="minimum">
-      <number>-99</number>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0" colspan="3">
-    <widget class="QLabel" name="lab1">
-     <property name="text">
-      <string>&lt;no item selected&gt;</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </item>
@@ -191,13 +198,6 @@
      </property>
     </widget>
    </item>
-   <item row="10" column="0">
-    <widget class="QPushButton" name="btnSingle">
-     <property name="text">
-      <string>Add single</string>
-     </property>
-    </widget>
-   </item>
    <item row="10" column="1" colspan="2">
     <widget class="QLineEdit" name="editLength">
      <property name="alignment">
@@ -205,6 +205,16 @@
      </property>
      <property name="placeholderText">
       <string>&lt;length&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item row="16" column="0" colspan="3">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>hotkeys: &quot;S&quot; to select, &quot;X&quot; to trim</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </item>
