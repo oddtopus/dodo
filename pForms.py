@@ -193,6 +193,11 @@ class insertElbowForm(dodoDialogs.protoPypeForm):
     self.edit1.setAlignment(Qt.AlignHCenter)
     self.edit1.setValidator(QDoubleValidator())
     self.secondCol.layout().addWidget(self.edit1)
+    self.edit2=QLineEdit()
+    self.edit2.setPlaceholderText('<bend radius>')
+    self.edit2.setAlignment(Qt.AlignHCenter)
+    self.edit2.setValidator(QDoubleValidator())
+    self.secondCol.layout().addWidget(self.edit2)
     self.btn2=QPushButton('Trim/Extend')
     self.btn2.clicked.connect(self.trim)
     self.secondCol.layout().addWidget(self.btn2)
@@ -252,6 +257,8 @@ class insertElbowForm(dodoDialogs.protoPypeForm):
         break
     if not propList:
       propList=[d['PSize'],float(pq(d['OD'])),float(pq(d['thk'])),ang,float(d['BendRadius'])]
+    if self.edit2.text():
+      propList[-1]=float(self.edit2.text())
     # INSERT ELBOW
     self.lastElbow=pCmd.doElbow(propList, FreeCAD.__activePypeLine__)[-1] 
     # TODO: SET PRATING
@@ -281,11 +288,14 @@ class insertElbowForm(dodoDialogs.protoPypeForm):
         obj.PSize=d['PSize']
         obj.OD=pq(d['OD'])
         obj.thk=pq(d['thk'])
-        try:
+        if self.edit1.text():
           obj.BendAngle=float(self.edit1.text())
-        except:
-          pass
-        obj.BendRadius=pq(d['BendRadius'])
+        else:
+          obj.BendAngle=pq(d['BendAngle'])
+        if self.edit2.text():
+          obj.BendRadius=float(self.edit2.text())
+        else:
+          obj.BendRadius=pq(d['BendRadius'])
         obj.PRating=self.PRating
         FreeCAD.activeDocument().recompute()
   def reverse(self):

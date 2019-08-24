@@ -359,6 +359,12 @@ class eQM(DialogQM):
     self.QM.lineEdit.setValidator(QtGui.QDoubleValidator())
     self.QM.lineEdit.validator().setBottom(0)
     self.QM.lineEdit.validator().setTop(90)
+    self.QM.lineEdit2 = QtGui.QLineEdit(self)
+    self.QM.lineEdit2.setAlignment(QtCore.Qt.AlignCenter)
+    self.QM.lineEdit2.setObjectName("lineEdit2")
+    self.QM.gridLayout.addWidget(self.QM.lineEdit2, 4, 0, 1, 3)
+    self.QM.lineEdit2.setPlaceholderText("<radius>")
+    self.QM.lineEdit2.setValidator(QtGui.QDoubleValidator())
   def go(self):
     d=self.dictList[self.QM.listSize.currentRow()]
     if self.QM.lineEdit.text():
@@ -368,7 +374,14 @@ class eQM(DialogQM):
         self.QM.lineEdit.setText('180')
     else:
       ang=90
-    pCmd.doElbow([d['PSize'],float(d['OD']),float(d['thk']),ang,d['BendRadius']],FreeCAD.__activePypeLine__)
+    if self.QM.lineEdit2.text():
+      rad=float(self.QM.lineEdit2.text())
+      if rad<float(d['OD'])/2: 
+        rad=float(d['OD'])/2*1.1
+        self.QM.lineEdit.setText(str(rad))
+    else:
+      rad=d['BendRadius']
+    pCmd.doElbow([d['PSize'],float(d['OD']),float(d['thk']),ang,rad],FreeCAD.__activePypeLine__)
     super(eQM,self).go()
 
 class fQM(DialogQM):

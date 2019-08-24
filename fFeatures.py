@@ -658,6 +658,7 @@ class FrameBranch(object):
     # PROXY CLASS PROPERTIES
     self.objName=obj.Name
     # FEATUREPYTHON OBJECT PROPERTIES
+    # obj.addExtension("App::GroupExtensionPython",obj) #test
     obj.addProperty("App::PropertyString","FType","FrameBranch","Type of frameFeature").FType='FrameBranch'
     obj.addProperty("App::PropertyStringList","Beams","FrameBranch","The beams names")
     obj.addProperty("App::PropertyLink","Base","FrameBranch","The path.").Base=base

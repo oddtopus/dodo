@@ -306,7 +306,8 @@ def doElbow(propList=['DN50',60.3,3,90,45.225], pypeline=None):
           elb.Placement.Rotation=FreeCAD.Rotation(elb.Ports[0],p0*-1)
         else:
           elb.Placement.Rotation=FreeCAD.Rotation(elb.Ports[0],p1*-1)
-        elb.Placement.move(P-getElbowPort(elb))
+        delta=getElbowPort(elb)
+        elb.Placement.move(P-delta)
       else: #..on any other curved edge
         print('hello')
         rot=FreeCAD.Rotation(elb.Ports[0],N)
