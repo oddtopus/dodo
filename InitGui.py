@@ -23,7 +23,13 @@
 #****************************************************************************
 
 class dodo ( Workbench ):
-  import DraftSnap
+  try:
+      import DraftSnap
+  except Exception:
+      import draftguitools.gui_snapper as DraftSnap
+  if not hasattr(FreeCADGui, "Snapper"):
+      FreeCADGui.Snapper = DraftSnap.Snapper()
+
   import sys, FreeCAD
   v=sys.version_info[0]
   if v<3: FreeCAD.Console.PrintWarning('Dodo is written for Py3 and Qt5\n You may experience mis-behaviuors\n')
