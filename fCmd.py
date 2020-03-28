@@ -44,6 +44,11 @@ def faces(selex=[]):
     FreeCAD.Console.PrintError('\nNo valid selection.\n')
   return fcs
 
+def points(selex=[]):
+  '''returns a list of selected vertexes'''
+  if len(selex)==0: selex=FreeCADGui.Selection.getSelectionEx()
+  return [p for sx in selex for so in sx.SubObjects for p in so.Vertexes]
+
 def intersectionLines2(p1=None,v1=None,p2=None,v2=None):   # TODO!
   '''
   intersectionLines2(p1,v1,p2,v2)
