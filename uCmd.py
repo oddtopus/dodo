@@ -67,6 +67,13 @@ def offsetWP(delta):
     point=FreeCAD.DraftWorkingPlane.getPlacement().Base+offset
     FreeCAD.DraftWorkingPlane.alignToPointAndAxis(point,offset)
     FreeCADGui.Snapper.setGrid()
+def getSubElement():
+  subelements=list()
+  for sx in FreeCADGui.Selection.getSelectionEx():
+    obj=sx.Object 
+    for name in sx.SubElementNames:
+      subelements.append((obj.Shape.getElement(name),name))
+  return subelements
   
 class arrow(object):
   '''
@@ -220,8 +227,8 @@ class label3D(object):
   This class writes a 2D label in the 3D viewport.
   To be used as an auxiliary tool to show flags during execution
   of commands.
-  Note: default text size is 7 units.
-    label3D(pl=None, scale=[1,1,1], color=(1.0,0.6,0.0), text='TEXT')
+  Note: default text size is 30 units.
+    label3D(pl=None, sizeFont=30, color=(1.0,0.6,0.0), text='TEXT')
   '''
   def __init__(self,pl=None, sizeFont=30, color=(1.0,0.6,0.0), text='TEXT'):
     import FreeCAD, FreeCADGui

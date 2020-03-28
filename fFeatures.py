@@ -686,16 +686,17 @@ class FrameBranch(object):
     i=0
     beamsList=[]
     for e in obj.Base.Shape.Edges:
-      beam=makeStructure(obj.Profile)
-      beam.addProperty("App::PropertyFloat","tailOffset","FrameBranch","The extension of the tail")
-      beam.addProperty("App::PropertyFloat","headOffset","FrameBranch","The extension of the head")
-      beam.addProperty("App::PropertyFloat","spin","FrameBranch","The rotation of the section")
-      beam.addExtension("Part::AttachExtensionPython",beam)
-      beam.Support=[(obj.Base,'Edge'+str(i+1))]
-      beam.MapMode='NormalToEdge'
-      beam.MapReversed=True
-      beamsList.append(str(beam.Name))
-      i+=1
+      if e.curvatureAt(0)==0:
+        beam=makeStructure(obj.Profile)
+        beam.addProperty("App::PropertyFloat","tailOffset","FrameBranch","The extension of the tail")
+        beam.addProperty("App::PropertyFloat","headOffset","FrameBranch","The extension of the head")
+        beam.addProperty("App::PropertyFloat","spin","FrameBranch","The rotation of the section")
+        beam.addExtension("Part::AttachExtensionPython",beam)
+        beam.Support=[(obj.Base,'Edge'+str(i+1))]
+        beam.MapMode='NormalToEdge'
+        beam.MapReversed=True
+        beamsList.append(str(beam.Name))
+        i+=1
     obj.Beams=beamsList
   def remove(self,i):
     obj=FreeCAD.ActiveDocument.getObject(self.objName)
