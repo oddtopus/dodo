@@ -7,9 +7,10 @@ __license__="LGPL 3"
 
 # import FreeCAD modules
 import FreeCAD, FreeCADGui,inspect, os
-
+from PySide.QtCore import QT_TRANSLATE_NOOP
+from DraftGui import translate
 # helper -------------------------------------------------------------------
-# FreeCAD TemplatePyMod module  
+# FreeCAD TemplatePyMod module
 # (c) 2007 Juergen Riegel LGPL
 
 def addCommand(name,cmdObject):
@@ -32,7 +33,7 @@ def updatesPL(dialogqm):
   if pypelines: # updates pypelines in combo
     dialogqm.QM.comboPL.clear()
     dialogqm.QM.comboPL.addItems(pypelines)
-  
+
 #---------------------------------------------------------------------------
 # The command classes
 #---------------------------------------------------------------------------
@@ -42,49 +43,70 @@ class insertPipe:
     import pForms
     pipForm=pForms.insertPipeForm()
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","pipe.svg"),'MenuText':'Insert a tube','ToolTip':'Insert a tube'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+    "iconz","pipe.svg"),
+    'MenuText':QT_TRANSLATE_NOOP('insertPipe','Insert a tube'),
+    'ToolTip':QT_TRANSLATE_NOOP('insertPipe','Insert a tube')}
 
-class insertElbow: 
+class insertElbow:
   def Activated (self):
     import pForms,FreeCAD
     elbForm=pForms.insertElbowForm()
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","elbow.svg"),'MenuText':'Insert a curve','ToolTip':'Insert a curve'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+    "iconz","elbow.svg"),
+    'MenuText':QT_TRANSLATE_NOOP('insertElbow','Insert a curve'),
+    'ToolTip':QT_TRANSLATE_NOOP('insertElbow','Insert a curve')}
 
-class insertReduct: 
+class insertReduct:
   def Activated (self):
     import pForms
     pipeFormObj=pForms.insertReductForm()
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","reduct.svg"),'MenuText':'Insert a reduction','ToolTip':'Insert a reduction'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+    "iconz","reduct.svg"),
+    'MenuText':QT_TRANSLATE_NOOP('insertReduct','Insert a reduction'),
+    'ToolTip':QT_TRANSLATE_NOOP('insertReduct','Insert a reduction')}
 
-class insertCap: 
+class insertCap:
   def Activated (self):
     import pForms
     pipeFormObj=pForms.insertCapForm()
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","cap.svg"),'MenuText':'Insert a cap','ToolTip':'Insert a cap'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+    "iconz","cap.svg"),
+    'MenuText':QT_TRANSLATE_NOOP('insertCap','Insert a cap'),
+    'ToolTip':QT_TRANSLATE_NOOP('insertCap','Insert a cap')}
 
 class insertFlange:
   def Activated (self):
     import pForms
     pipeFormObj=pForms.insertFlangeForm()
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","flange.svg"),'MenuText':'Insert a flange','ToolTip':'Insert a flange'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+    "iconz","flange.svg"),
+    'MenuText':QT_TRANSLATE_NOOP('insertFlange','Insert a flange'),
+    'ToolTip':QT_TRANSLATE_NOOP('insertFlange','Insert a flange')}
 
 class insertUbolt:
   def Activated (self):
     import pForms
     pipeFormObj=pForms.insertUboltForm()
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","clamp.svg"),'MenuText':'Insert a U-bolt','ToolTip':'Insert a U-bolt'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+    "iconz","clamp.svg"),
+    'MenuText':QT_TRANSLATE_NOOP('insertUbolt','Insert a U-bolt'),
+    'ToolTip':QT_TRANSLATE_NOOP('insertUbolt','Insert a U-bolt')}
 
 class insertPypeLine:
   def Activated (self):
     import pForms
     pipeFormObj=pForms.insertPypeLineForm()
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","pypeline.svg"),'MenuText':'PypeLine Manager','ToolTip':'Open PypeLine Manager'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+    "iconz","pypeline.svg"),
+    'MenuText':QT_TRANSLATE_NOOP('insertPypeLine','PypeLine Manager'),
+    'ToolTip':QT_TRANSLATE_NOOP('insertPypeLine','Open PypeLine Manager')}
 
 class insertBranch:
   def Activated (self):
@@ -92,14 +114,20 @@ class insertBranch:
     #pCmd.makeBranch()
     pipeFormObj=pForms.insertBranchForm()
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","branch.svg"),'MenuText':'Insert a branch','ToolTip':'Insert a PypeBranch'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+    "iconz","branch.svg"),
+    'MenuText':QT_TRANSLATE_NOOP('insertBranch','Insert a branch'),
+    'ToolTip':QT_TRANSLATE_NOOP('insertBranch','Insert a PypeBranch')}
 
 class breakPipe:
   def Activated (self):
     import pForms
     pipeFormObj=pForms.breakForm()
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","break.svg"),'MenuText':'Break the pipe','ToolTip':'Break one pipe at point and insert gap'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+    "iconz","break.svg"),
+    'MenuText':QT_TRANSLATE_NOOP('breakPipe','Break the pipe'),
+    'ToolTip':QT_TRANSLATE_NOOP('breakPipe','Break one pipe at point and insert gap')}
 
 class mateEdges:
   def Activated (self):
@@ -109,14 +137,21 @@ class mateEdges:
     FreeCAD.activeDocument().commitTransaction()
     FreeCAD.activeDocument().recompute()
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","mate.svg"),'Accel':"M,E",'MenuText':'Mate pipes edges','ToolTip':'Mate two terminations through their edges'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+    "iconz","mate.svg"),
+    'Accel':"M,E",
+    'MenuText':QT_TRANSLATE_NOOP('mateEdges','Mate pipes edges'),
+    'ToolTip':QT_TRANSLATE_NOOP('mateEdges','Mate two terminations through their edges')}
 
-class flat:  
+class flat:
   def Activated (self):
     import pCmd
     pCmd.flatten()
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","flat.svg"),'MenuText':'Fit one elbow','ToolTip':'Place the elbow between two pipes or beams'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+    "iconz","flat.svg"),
+    'MenuText':QT_TRANSLATE_NOOP('flat','Fit one elbow'),
+    'ToolTip':QT_TRANSLATE_NOOP('flat','Place the elbow between two pipes or beams')}
 
 class extend2intersection:
   def Activated (self):
@@ -126,7 +161,10 @@ class extend2intersection:
     FreeCAD.activeDocument().recompute()
     FreeCAD.activeDocument().commitTransaction()
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","intersect.svg"),'MenuText':'Extends pipes to intersection','ToolTip':'Extends pipes to intersection'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+    "iconz","intersect.svg"),
+    'MenuText':QT_TRANSLATE_NOOP('extend2intersection','Extends pipes to intersection'),
+    'ToolTip':QT_TRANSLATE_NOOP('extend2intersection','Extends pipes to intersection')}
 
 class extend1intersection:
   def Activated (self):
@@ -136,7 +174,10 @@ class extend1intersection:
     FreeCAD.activeDocument().recompute()
     FreeCAD.activeDocument().commitTransaction()
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","intersect1.svg"),'MenuText':'Extends pipe to intersection','ToolTip':'Extends pipe to intersection'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+    "iconz","intersect1.svg"),
+    'MenuText':QT_TRANSLATE_NOOP('extend1intersection','Extends pipe to intersection'),
+    'ToolTip':QT_TRANSLATE_NOOP('extend1intersection','Extends pipe to intersection')}
 
 class laydown:
   def Activated (self):
@@ -150,7 +191,10 @@ class laydown:
     FreeCAD.activeDocument().recompute()
     FreeCAD.activeDocument().commitTransaction()
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","laydown.svg"),'MenuText':'Lay-down the pipe','ToolTip':'Lay-down the pipe on the support plane'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+    "iconz","laydown.svg"),
+    'MenuText':QT_TRANSLATE_NOOP('laydown','Lay-down the pipe'),
+    'ToolTip':QT_TRANSLATE_NOOP('laydown','Lay-down the pipe on the support plane')}
 
 class raiseup:
   def Activated (self):
@@ -170,28 +214,37 @@ class raiseup:
     FreeCAD.activeDocument().recompute()
     FreeCAD.activeDocument().commitTransaction()
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","raiseup.svg"),'MenuText':'Raise-up the support','ToolTip':'Raise the support to the pipe'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+    "iconz","raiseup.svg"),
+    'MenuText':QT_TRANSLATE_NOOP('raiseup','Raise-up the support'),
+    'ToolTip':QT_TRANSLATE_NOOP('raiseup','Raise the support to the pipe')}
 
 class joinPype:
   '''
-  
+
   '''
   def Activated(self):
     import FreeCAD, FreeCADGui, pForms #pObservers
     # s=pObservers.joinObserver()
     FreeCADGui.Control.showDialog(pForms.joinForm()) #.Selection.addObserver(s)
-    
+
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","join.svg"),'MenuText':'Join pypes','ToolTip':'Select the part-pype and the port'} 
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+    "iconz","join.svg"),
+    'MenuText':QT_TRANSLATE_NOOP('joinPype','Join pypes'),
+    'ToolTip':QT_TRANSLATE_NOOP('joinPype','Select the part-pype and the port')}
 
 class insertValve:
   def Activated (self):
     import pForms
     #pipeFormObj=pForms.insertValveForm()
-    #FreeCADGui.Control.showDialog(pForms.insertValveForm()) 
+    #FreeCADGui.Control.showDialog(pForms.insertValveForm())
     pipeFormObj=pForms.insertValveForm()
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","valve.svg"),'MenuText':'Insert a valve','ToolTip':'Insert a valve'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+    "iconz","valve.svg"),
+    'MenuText':QT_TRANSLATE_NOOP('insertValve','Insert a valve'),
+    'ToolTip':QT_TRANSLATE_NOOP('insertValve','Insert a valve')}
 
 class attach2tube:
   def Activated (self):
@@ -201,7 +254,10 @@ class attach2tube:
     FreeCAD.activeDocument().recompute()
     FreeCAD.activeDocument().commitTransaction()
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","attach.svg"),'MenuText':'Attach  to tube','ToolTip':'Attach one pype to the nearest port of selected pipe'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+    "iconz","attach.svg"),
+    'MenuText':QT_TRANSLATE_NOOP('attach2tube','Attach  to tube'),
+    'ToolTip':QT_TRANSLATE_NOOP('attach2tube','Attach one pype to the nearest port of selected pipe')}
 
 class point2point:
 
@@ -210,34 +266,44 @@ class point2point:
     form = pForms.point2pointPipe()
 
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","point2point.svg"),'MenuText':'draw a tube point-to-point','ToolTip':'Click on subsequent points.'}
-    
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+    "iconz","point2point.svg"),
+    'MenuText':QT_TRANSLATE_NOOP('point2point','draw a tube point-to-point'),
+    'ToolTip':QT_TRANSLATE_NOOP('point2point','Click on subsequent points.')}
+
 class insertAnyz:
   '''
   Dialog to insert any object saved as .STEP, .IGES or .BREP in folder ../Mod/dodo/shapez or subfolders.
   '''
   def Activated(self):
     import anyShapez
-    FreeCADGui.Control.showDialog(anyShapez.shapezDialog()) 
-    
+    FreeCADGui.Control.showDialog(anyShapez.shapezDialog())
+
   def GetResources(self):
-    return{'MenuText':'Insert any shape','ToolTip':'Insert a STEP, IGES or BREP'}
+    return{'MenuText':QT_TRANSLATE_NOOP('insertAnyz','Insert any shape'),
+    'ToolTip':QT_TRANSLATE_NOOP('insertAnyz','Insert a STEP, IGES or BREP')}
 
 class insertTank:
   def Activated(self):
     import FreeCADGui, pForms
     FreeCADGui.Control.showDialog(pForms.insertTankForm())
-    
+
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","tank.svg"),'MenuText':'Insert a tank','ToolTip':'Create tank and nozzles'} 
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+    "iconz","tank.svg"),
+    'MenuText':QT_TRANSLATE_NOOP('insertTank','Insert a tank'),
+    'ToolTip':QT_TRANSLATE_NOOP('insertTank','Create tank and nozzles')}
 
 class insertRoute:
   def Activated(self):
     import FreeCADGui, pForms
     FreeCADGui.Control.showDialog(pForms.insertRouteForm())
-    
+
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","route.svg"),'MenuText':'Insert a pipe route','ToolTip':'Create a sketch attached to a circular edge'} 
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+    "iconz","route.svg"),
+    'MenuText':QT_TRANSLATE_NOOP('insertRoute','Insert a pipe route'),
+    'ToolTip':QT_TRANSLATE_NOOP('insertRoute','Create a sketch attached to a circular edge')}
 
 class makeHeader:
   def Activated (self):
@@ -252,7 +318,7 @@ class makeHeader:
 #---------------------------------------------------------------------------
 # Adds the commands to the FreeCAD command manager
 #---------------------------------------------------------------------------
-addCommand('insertPipe',insertPipe()) 
+addCommand('insertPipe',insertPipe())
 addCommand('insertElbow',insertElbow())
 addCommand('insertReduct',insertReduct())
 addCommand('insertCap',insertCap())
@@ -283,7 +349,9 @@ class pipeQM:
     #dodoPM.pqm.updatePL()
     dodoPM.pqm.show()
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","pipe.svg"),'MenuText':'QM for pipes'} 
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+    "iconz","pipe.svg"),
+    'MenuText':QT_TRANSLATE_NOOP('pipeQM','QM for pipes')}
 addCommand('pipeQM',pipeQM())
 
 class elbowQM():
@@ -291,7 +359,9 @@ class elbowQM():
     import dodoPM
     dodoPM.eqm.show()
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","elbow.svg"),'MenuText':'QM for elbows'} 
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+    "iconz","elbow.svg"),
+    'MenuText':QT_TRANSLATE_NOOP('elbowQM','QM for elbows')}
 addCommand('elbowQM',elbowQM())
 
 class flangeQM():
@@ -299,7 +369,9 @@ class flangeQM():
     import dodoPM
     dodoPM.fqm.show()
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","flange.svg"),'MenuText':'QM for flanges'} 
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+    "iconz","flange.svg"),
+    'MenuText':QT_TRANSLATE_NOOP('flangeQM','QM for flanges')}
 addCommand('flangeQM',flangeQM())
 
 class valveQM():
@@ -307,7 +379,9 @@ class valveQM():
     import dodoPM
     dodoPM.vqm.show()
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","valve.svg"),'MenuText':'QM for valves'} 
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+    "iconz","valve.svg"),
+    'MenuText':QT_TRANSLATE_NOOP('valveQM','QM for valves')}
 addCommand('valveQM',valveQM())
 
 class capQM():
@@ -315,5 +389,7 @@ class capQM():
     import dodoPM
     dodoPM.cqm.show()
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","cap.svg"),'MenuText':'QM for caps'} 
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+    "iconz","cap.svg"),
+    'MenuText':QT_TRANSLATE_NOOP('capQM','QM for caps')}
 addCommand('capQM',capQM())

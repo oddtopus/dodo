@@ -14,6 +14,8 @@ from os import listdir
 from os.path import join, dirname, abspath
 from math import degrees
 from uCmd import label3D
+from PySide.QtCore import QT_TRANSLATE_NOOP
+from DraftGui import translate
 
 ################ FUNCTIONS ###########################
 
@@ -26,7 +28,7 @@ def newProfile(prop):
   else:
     profile=ArchProfile.makeProfile([0,'SECTION',prop['SSize']+'-000',prop['stype'],float(prop['W']),float(prop['H']),float(prop['ta']),float(prop['tf'])])
   return profile
-  
+
 def indexEdge(edge,listedges):
   '''
   Auxiliary function to find the index of an edge
@@ -47,7 +49,7 @@ def findFB(beamName=None, baseName=None):
       if baseName==FreeCAD.ActiveDocument.getObject(name).Base.Name: #if beam.Name in activeFB.Beams:
         return FreeCAD.ActiveDocument.getObject(name)
   return None
-  
+
 def refresh():
   for b in [o for o in FreeCAD.ActiveDocument.Objects if hasattr(o,'FType') and o.FType=='FrameBranch']:
     b.touch()
@@ -66,7 +68,7 @@ class frameLineForm(QDialog):
   - redraw it,
   - clear it.
   To select profiles, the 2D objects msut be included insied the "Profiles_set"
-  group, either created manually or automatically by "Insert Std. Section" 
+  group, either created manually or automatically by "Insert Std. Section"
   '''
   def __init__(self,winTitle='FrameLine Manager', icon='frameline.svg'):
     super(frameLineForm,self).__init__()
@@ -77,7 +79,7 @@ class frameLineForm(QDialog):
     Icon=QIcon()
     iconPath=join(dirname(abspath(__file__)),"iconz",icon)
     Icon.addFile(iconPath)
-    self.setWindowIcon(Icon) 
+    self.setWindowIcon(Icon)
     self.mainHL=QHBoxLayout()
     self.setLayout(self.mainHL)
     self.firstCol=QWidget()
@@ -101,7 +103,7 @@ class frameLineForm(QDialog):
     self.mainHL.addWidget(self.firstCol)
     self.secondCol=QWidget()
     self.secondCol.setLayout(QVBoxLayout())
-    self.current=None    
+    self.current=None
     self.combo=QComboBox()
     self.combo.addItem('<new>')
     #self.combo.activated[str].connect(self.setCurrent)
@@ -254,7 +256,7 @@ class insertSectForm(QWidget):
     from PySide.QtGui import QIcon
     Icon=QIcon()
     Icon.addFile(iconPath)
-    self.setWindowIcon(Icon) 
+    self.setWindowIcon(Icon)
     self.mainHL=QHBoxLayout()
     self.setLayout(self.mainHL)
     self.firstCol=QWidget()
@@ -417,7 +419,7 @@ class frameBranchForm(dodoDialogs.protoTypeDialog):
   def mouseActionB1(self, CtrlAltShift):
     v = FreeCADGui.ActiveDocument.ActiveView
     i = v.getObjectInfo(v.getCursorPos())
-    if i: 
+    if i:
       labText=i['Object']
       obj=FreeCAD.ActiveDocument.getObject(i['Object'])
       if hasattr(obj,'tailOffset') and hasattr(obj,'headOffset') and hasattr(obj,'spin'):
@@ -425,7 +427,7 @@ class frameBranchForm(dodoDialogs.protoTypeDialog):
         self.form.editHead.setText(str(obj.headOffset))
         self.form.editAngle.setText(str(obj.spin))
         fb=findFB(i['Object'])
-        if fb: 
+        if fb:
           labText+=': part of '+fb.Label
         if self.labTail:
           self.labTail.removeLabel()
@@ -476,9 +478,9 @@ class frameBranchForm(dodoDialogs.protoTypeDialog):
       for edge in fCmd.edges():
         i=indexEdge(edge,FB.Base.Shape.Edges)
         beam=makeStructure(FB.Profile)
-        beam.addProperty("App::PropertyFloat","tailOffset","FrameBranch","The extension of the tail")
-        beam.addProperty("App::PropertyFloat","headOffset","FrameBranch","The extension of the head")
-        beam.addProperty("App::PropertyFloat","spin","FrameBranch","The rotation of the section")
+        beam.addProperty("App::PropertyFloat","tailOffset","FrameBranch",QT_TRANSLATE_NOOP("App::PropertyFloat","The extension of the tail"))
+        beam.addProperty("App::PropertyFloat","headOffset","FrameBranch",QT_TRANSLATE_NOOP("App::PropertyFloat","The extension of the head"))
+        beam.addProperty("App::PropertyFloat","spin","FrameBranch",QT_TRANSLATE_NOOP("App::PropertyFloat","The rotation of the section"))
         if int(FreeCAD.Version()[1])>19: #20220704
           beam.addExtension("Part::AttachExtensionPython")
         else:
@@ -521,7 +523,7 @@ class frameBranchForm(dodoDialogs.protoTypeDialog):
       FreeCAD.Console.PrintError('No frameBranch or profile selected\n')
   def changeHeadOffset(self):
     for beam in fCmd.beams():
-      if hasattr(beam,'headOffset'): 
+      if hasattr(beam,'headOffset'):
         beam.headOffset=float(self.form.editHead.text())
         FB=findFB(beam.Name)
         FB.touch()
@@ -529,7 +531,7 @@ class frameBranchForm(dodoDialogs.protoTypeDialog):
     FreeCAD.ActiveDocument.recompute()
   def changeTailOffset(self):
     for beam in fCmd.beams():
-      if hasattr(beam,'tailOffset'): 
+      if hasattr(beam,'tailOffset'):
         beam.tailOffset=float(self.form.editTail.text())
         FB=findFB(beam.Name)
         FB.touch()
@@ -537,7 +539,7 @@ class frameBranchForm(dodoDialogs.protoTypeDialog):
     FreeCAD.ActiveDocument.recompute()
   def changeAngle(self):
     for beam in fCmd.beams():
-      if hasattr(beam,'spin'): 
+      if hasattr(beam,'spin'):
         FB=findFB(beam.Name)
         beam.spin=float(self.form.editAngle.text())
         FB.touch()
@@ -575,7 +577,7 @@ class frameBranchForm(dodoDialogs.protoTypeDialog):
             P=fCmd.intersectionPlane(tail,ax,target)
           elif hasattr(target,"CenterOfMass"):
             P=target.CenterOfMass
-          else: 
+          else:
             P=None
           if P:
             deltaTail=(P-tail).dot(ax)
@@ -592,12 +594,12 @@ class frameBranchForm(dodoDialogs.protoTypeDialog):
     if obj: obj.Proxy.redraw(obj)
     FreeCAD.ActiveDocument.recompute()
     FreeCAD.ActiveDocument.recompute()
-    
+
 ################ CLASSES ###########################
 
 class FrameLine(object):
   '''Class for object FrameLine
-  Has attributes Base (the path) and Profile to define the frame shape and 
+  Has attributes Base (the path) and Profile to define the frame shape and
   the type section's profile.
   Creates a group to collect the Structure objects.
   Provides methods update() and purge() to redraw the Structure objects
@@ -605,16 +607,16 @@ class FrameLine(object):
   '''
   def __init__(self, obj, section="IPE200", lab=None):
     obj.Proxy = self
-    obj.addProperty("App::PropertyString","FType","FrameLine","Type of frameFeature").FType='FrameLine'
-    obj.addProperty("App::PropertyString","FSize","FrameLine","Size of frame").FSize=section
+    obj.addProperty("App::PropertyString","FType","FrameLine",QT_TRANSLATE_NOOP("App::PropertyString","Type of frameFeature")).FType='FrameLine'
+    obj.addProperty("App::PropertyString","FSize","FrameLine",QT_TRANSLATE_NOOP("App::PropertyString","Size of frame")).FSize=section
     if lab:
       obj.Label=lab
-    obj.addProperty("App::PropertyString","Group","FrameLine","The group.").Group=obj.Label+"_pieces"
+    obj.addProperty("App::PropertyString","Group","FrameLine",QT_TRANSLATE_NOOP("App::PropertyString","The group.")).Group=obj.Label+"_pieces"
     group=FreeCAD.activeDocument().addObject("App::DocumentObjectGroup",obj.Group)
     group.addObject(obj)
     FreeCAD.Console.PrintWarning("Created group "+obj.Group+"\n")
-    obj.addProperty("App::PropertyLink","Base","FrameLine","the edges")
-    obj.addProperty("App::PropertyLink","Profile","FrameLine","the profile")
+    obj.addProperty("App::PropertyLink","Base","FrameLine",QT_TRANSLATE_NOOP("App::PropertyLink","the edges"))
+    obj.addProperty("App::PropertyLink","Profile","FrameLine",QT_TRANSLATE_NOOP("App::PropertyLink","the profile"))
   def onChanged(self, fp, prop):
     if prop=='Label' and len(fp.InList):
       fp.InList[0].Label=fp.Label+"_pieces"
@@ -661,10 +663,10 @@ class FrameBranch(object):
     # PROXY CLASS PROPERTIES
     self.objName=obj.Name
     # FEATUREPYTHON OBJECT PROPERTIES
-    obj.addProperty("App::PropertyString","FType","FrameBranch","Type of frameFeature").FType='FrameBranch'
-    obj.addProperty("App::PropertyStringList","Beams","FrameBranch","The beams names")
-    obj.addProperty("App::PropertyLink","Base","FrameBranch","The path.").Base=base
-    obj.addProperty("App::PropertyLink","Profile","FrameBranch","The profile").Profile=profile
+    obj.addProperty("App::PropertyString","FType","FrameBranch",QT_TRANSLATE_NOOP("App::PropertyString","Type of frameFeature")).FType='FrameBranch'
+    obj.addProperty("App::PropertyStringList","Beams","FrameBranch",QT_TRANSLATE_NOOP("App::PropertyStringList","The beams names"))
+    obj.addProperty("App::PropertyLink","Base","FrameBranch",QT_TRANSLATE_NOOP("App::PropertyLink","The path.")).Base=base
+    obj.addProperty("App::PropertyLink","Profile","FrameBranch",QT_TRANSLATE_NOOP("App::PropertyLink","The profile")).Profile=profile
     self.redraw(obj)
   def execute(self,obj):
     X=FreeCAD.Vector(1,0,0)
@@ -690,9 +692,9 @@ class FrameBranch(object):
     for e in obj.Base.Shape.Edges:
       if e.curvatureAt(0)==0:
         beam=makeStructure(obj.Profile)
-        beam.addProperty("App::PropertyFloat","tailOffset","FrameBranch","The extension of the tail")
-        beam.addProperty("App::PropertyFloat","headOffset","FrameBranch","The extension of the head")
-        beam.addProperty("App::PropertyFloat","spin","FrameBranch","The rotation of the section")
+        beam.addProperty("App::PropertyFloat","tailOffset","FrameBranch",QT_TRANSLATE_NOOP("App::PropertyFloat","The extension of the tail"))
+        beam.addProperty("App::PropertyFloat","headOffset","FrameBranch",QT_TRANSLATE_NOOP("App::PropertyFloat","The extension of the head"))
+        beam.addProperty("App::PropertyFloat","spin","FrameBranch",QT_TRANSLATE_NOOP("App::PropertyFloat","The rotation of the section"))
         if int(FreeCAD.Version()[1])>19: #20220704
           beam.addExtension("Part::AttachExtensionPython")
         else:
@@ -732,7 +734,7 @@ class ViewProviderFrameBranch:
     return None
   def claimChildren(self):
     children=[FreeCAD.ActiveDocument.getObject(name) for name in self.Object.Beams]
-    return children 
+    return children
   def onDelete(self, feature, subelements): # subelements is a tuple of strings
     return True
 
@@ -788,7 +790,7 @@ def doProfile(typeS="RH", label="Square", dims=[50,100,5]): # rearrange args in 
 def drawAndCenter (points):
     p = Part.makePolygon(points)
     s = Part.Face(p)
-    v=s.CenterOfMass 
+    v=s.CenterOfMass
     points2 = [point.add(v.negative()) for point in points]
     p2 = Part.makePolygon(points2)
     return Part.Face(p2)
@@ -798,7 +800,7 @@ def drawAndCenter (points):
 def pointsH(H, W, D, t1, t2, t3):
   p1 = Vector(0,0,0)
   p2 = Vector(W,0,0)
-  p3 = Vector(W,t2,0) 
+  p3 = Vector(W,t2,0)
   p4 = Vector(W/2+t1/2,t2,0)
   p5 = Vector(W/2+t1/2,H-t3,0)
   p6 = Vector(W/2+D/2,H-t3,0)
@@ -816,13 +818,13 @@ def pointsL(H,W,t1,t2):
   p3 = Vector(W/2,H/2,0)
   p4 = Vector(W/2-t1,H/2,0)
   p5 = Vector(W/2-t1,t2-H/2,0)
-  p6 = Vector(-W/2,t2-H/2,0)        
+  p6 = Vector(-W/2,t2-H/2,0)
   return [p1,p2,p3,p4,p5,p6,p1]
 
 def pointsOmega(H, W, D, t1, t2, t3):
   p1 = Vector(0,0,0)
   p2 = Vector(W,0,0)
-  p3 = Vector(W,H-t3,0) 
+  p3 = Vector(W,H-t3,0)
   p4 = Vector(W+D-t1,H-t3,0)
   p5 = Vector(W+D-t1,H,0)
   p6 = Vector(W-t1,H,0)
@@ -848,7 +850,7 @@ def pointsT(H, W, t1, t2):
 def pointsU(H, W, D, t1, t2, t3):
   p1 = Vector(0,0,0)
   p2 = Vector(W,0,0)
-  p3 = Vector(W,H,0) 
+  p3 = Vector(W,H,0)
   p4 = Vector(W-D,H,0)
   p5 = Vector(W-D,H-t3,0)
   p6 = Vector(W-t1,H-t3,0)
@@ -880,11 +882,11 @@ from ArchProfile import _Profile
 class _ProfileRH(_Profile):
     '''A parametric Rectangular hollow beam profile. Profile data: [width, height, thickness]'''
     def __init__(self,obj, profile):
-        obj.addProperty("App::PropertyString","FType","Profile",QT_TRANSLATE_NOOP("App::Property","Type of section")).FType = 'RH'
-        obj.addProperty("App::PropertyLength","W","Draft",QT_TRANSLATE_NOOP("App::Property","Width of the beam")).W = profile[4]
-        obj.addProperty("App::PropertyLength","H","Draft",QT_TRANSLATE_NOOP("App::Property","Height of the beam")).H = profile[5]
-        obj.addProperty("App::PropertyLength","t1","Draft",QT_TRANSLATE_NOOP("App::Property","Thickness of the vertical sides")).t1 = profile[6]
-        obj.addProperty("App::PropertyLength","t2","Draft",QT_TRANSLATE_NOOP("App::Property","Thickness of the horizontal sides")).t2 = profile[7]
+        obj.addProperty("App::PropertyString","FType","Profile",QT_TRANSLATE_NOOP("App::PropertyString","Type of section")).FType = 'RH'
+        obj.addProperty("App::PropertyLength","W","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Width of the beam")).W = profile[4]
+        obj.addProperty("App::PropertyLength","H","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Height of the beam")).H = profile[5]
+        obj.addProperty("App::PropertyLength","t1","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Thickness of the vertical sides")).t1 = profile[6]
+        obj.addProperty("App::PropertyLength","t2","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Thickness of the horizontal sides")).t2 = profile[7]
         _Profile.__init__(self,obj,profile)
     def execute(self,obj):
         W, H, t1, t2= obj.W.Value, obj.H.Value, obj.t1.Value, obj.t2.Value
@@ -899,13 +901,13 @@ class _ProfileRH(_Profile):
         p = Part.makePolygon([p1,p2,p3,p4,p1])
         q = Part.makePolygon([q1,q2,q3,q4,q1])
         obj.Shape = Part.Face(p).cut(Part.Face(q))
-        
+
 class _ProfileR(_Profile):
     '''A parametric Rectangular solid beam profile. Profile data: [width, height]'''
     def __init__(self,obj, profile):
-        obj.addProperty("App::PropertyString","FType","Profile",QT_TRANSLATE_NOOP("App::Property","Type of section")).FType = 'R'
-        obj.addProperty("App::PropertyLength","W","Draft",QT_TRANSLATE_NOOP("App::Property","Width of the beam")).W = profile[4]
-        obj.addProperty("App::PropertyLength","H","Draft",QT_TRANSLATE_NOOP("App::Property","Height of the beam")).H = profile[5]
+        obj.addProperty("App::PropertyString","FType","Profile",QT_TRANSLATE_NOOP("App::PropertyString","Type of section")).FType = 'R'
+        obj.addProperty("App::PropertyLength","W","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Width of the beam")).W = profile[4]
+        obj.addProperty("App::PropertyLength","H","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Height of the beam")).H = profile[5]
         _Profile.__init__(self,obj,profile)
     def execute(self,obj):
         W, H= obj.W.Value, obj.H.Value
@@ -917,14 +919,14 @@ class _ProfileR(_Profile):
         obj.Shape = Part.Face(p)
 
 class _ProfileCircle(_Profile):
-    '''A parametric circular beam profile. 
-    Profile data: 
+    '''A parametric circular beam profile.
+    Profile data:
       D: diameter
       t1: thickness (optional; "0" for solid section)'''
     def __init__(self,obj, profile):
-        obj.addProperty("App::PropertyString","FType","Profile",QT_TRANSLATE_NOOP("App::Property","Type of section")).FType = 'circle'
-        obj.addProperty("App::PropertyLength","D","Draft",QT_TRANSLATE_NOOP("App::Property","Diameter of the beam")).D = profile[4]
-        obj.addProperty("App::PropertyLength","t1","Draft",QT_TRANSLATE_NOOP("App::Property","Thickness")).t1 = profile[5]
+        obj.addProperty("App::PropertyString","FType","Profile",QT_TRANSLATE_NOOP("App::PropertyString","Type of section")).FType = 'circle'
+        obj.addProperty("App::PropertyLength","D","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Diameter of the beam")).D = profile[4]
+        obj.addProperty("App::PropertyLength","t1","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Thickness")).t1 = profile[5]
         _Profile.__init__(self,obj,profile)
     def execute(self,obj):
         D,t1= obj.D.Value, obj.t1.Value
@@ -933,16 +935,16 @@ class _ProfileCircle(_Profile):
         elif t1<D/2:
           c1=Part.makeFace([Part.makeCircle(D/2)],"Part::FaceMakerSimple")
           c2=Part.makeFace([Part.makeCircle(D/2-t1)],"Part::FaceMakerSimple")
-          obj.Shape = c1.cut(c2)  
-        
+          obj.Shape = c1.cut(c2)
+
 class _ProfileL(_Profile):
     '''A parametric L beam profile. Profile data: [width, height, web thickness]'''
     def __init__(self,obj, profile):
-        obj.addProperty("App::PropertyString","FType","Profile",QT_TRANSLATE_NOOP("App::Property","Type of section")).FType = 'L'
-        obj.addProperty("App::PropertyLength","W","Draft",QT_TRANSLATE_NOOP("App::Property","W of the beam")).W = profile[4]
-        obj.addProperty("App::PropertyLength","H","Draft",QT_TRANSLATE_NOOP("App::Property","Height of the beam")).H = profile[5]
-        obj.addProperty("App::PropertyLength","t1","Draft",QT_TRANSLATE_NOOP("App::Property","Thickness of the webs")).t1 = profile[6]
-        obj.addProperty("App::PropertyLength","t2","Draft",QT_TRANSLATE_NOOP("App::Property","Thickness of the webs")).t2 = profile[7]
+        obj.addProperty("App::PropertyString","FType","Profile",QT_TRANSLATE_NOOP("App::PropertyString","Type of section")).FType = 'L'
+        obj.addProperty("App::PropertyLength","W","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","W of the beam")).W = profile[4]
+        obj.addProperty("App::PropertyLength","H","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Height of the beam")).H = profile[5]
+        obj.addProperty("App::PropertyLength","t1","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Thickness of the webs")).t1 = profile[6]
+        obj.addProperty("App::PropertyLength","t2","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Thickness of the webs")).t2 = profile[7]
         _Profile.__init__(self,obj,profile)
     def execute(self,obj):
         W, H, t1, t2= obj.W.Value, obj.H.Value, obj.t1.Value, obj.t2.Value
@@ -951,11 +953,11 @@ class _ProfileL(_Profile):
 class _ProfileT(_Profile):
     '''A parametric T beam profile. Profile data: [width, height, web thickness]'''
     def __init__(self,obj, profile):
-        obj.addProperty("App::PropertyString","FType","Profile",QT_TRANSLATE_NOOP("App::Property","Type of section")).FType = 'T'
-        obj.addProperty("App::PropertyLength","W","Draft",QT_TRANSLATE_NOOP("App::Property","W of the beam")).W = profile[4]
-        obj.addProperty("App::PropertyLength","H","Draft",QT_TRANSLATE_NOOP("App::Property","H of the beam")).H = profile[5]
-        obj.addProperty("App::PropertyLength","t1","Draft",QT_TRANSLATE_NOOP("App::Property","Thickness of the web")).t1 = profile[6]
-        obj.addProperty("App::PropertyLength","t2","Draft",QT_TRANSLATE_NOOP("App::Property","Thickness of the web")).t2 = profile[7]
+        obj.addProperty("App::PropertyString","FType","Profile",QT_TRANSLATE_NOOP("App::PropertyString","Type of section")).FType = 'T'
+        obj.addProperty("App::PropertyLength","W","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","W of the beam")).W = profile[4]
+        obj.addProperty("App::PropertyLength","H","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","H of the beam")).H = profile[5]
+        obj.addProperty("App::PropertyLength","t1","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Thickness of the web")).t1 = profile[6]
+        obj.addProperty("App::PropertyLength","t2","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Thickness of the web")).t2 = profile[7]
         _Profile.__init__(self,obj,profile)
     def execute(self,obj):
         W, H, t1, t2= obj.W.Value, obj.H.Value, obj.t1.Value, obj.t2.Value
@@ -964,11 +966,11 @@ class _ProfileT(_Profile):
 class _ProfileZ(_Profile):
     '''A parametric Z beam profile. Profile data: [width, height, web thickness, flange thickness]'''
     def __init__(self,obj, profile):
-        obj.addProperty("App::PropertyString","FType","Profile",QT_TRANSLATE_NOOP("App::Property","Type of section")).FType = 'Z'
-        obj.addProperty("App::PropertyLength","W","Draft",QT_TRANSLATE_NOOP("App::Property","Width of the beam")).W = profile[5]
-        obj.addProperty("App::PropertyLength","H","Draft",QT_TRANSLATE_NOOP("App::Property","Height of the beam")).H = profile[4]
-        obj.addProperty("App::PropertyLength","t1","Draft",QT_TRANSLATE_NOOP("App::Property","Thickness of the web")).t1 = profile[6]
-        obj.addProperty("App::PropertyLength","t2","Draft",QT_TRANSLATE_NOOP("App::Property","Thickness of the flanges")).t2 = profile[7]
+        obj.addProperty("App::PropertyString","FType","Profile",QT_TRANSLATE_NOOP("App::PropertyString","Type of section")).FType = 'Z'
+        obj.addProperty("App::PropertyLength","W","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Width of the beam")).W = profile[5]
+        obj.addProperty("App::PropertyLength","H","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Height of the beam")).H = profile[4]
+        obj.addProperty("App::PropertyLength","t1","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Thickness of the web")).t1 = profile[6]
+        obj.addProperty("App::PropertyLength","t2","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Thickness of the flanges")).t2 = profile[7]
         _Profile.__init__(self,obj,profile)
     def execute(self,obj):
         W, H, t1, t2= obj.W.Value, obj.H.Value, obj.t1.Value, obj.t2.Value
@@ -977,44 +979,44 @@ class _ProfileZ(_Profile):
 class _ProfileOmega(_Profile):
     '''A parametric omega beam profile. Profile data: [W, H, D, t1,t2,t3]'''
     def __init__(self,obj, profile):
-        obj.addProperty("App::PropertyString","FType","Profile",QT_TRANSLATE_NOOP("App::Property","Type of section")).FType = 'omega'
-        obj.addProperty("App::PropertyLength","W","Draft",QT_TRANSLATE_NOOP("App::Property","Width of the beam")).W = profile[4]
-        obj.addProperty("App::PropertyLength","H","Draft",QT_TRANSLATE_NOOP("App::Property","Height of the beam")).H = profile[5]
-        obj.addProperty("App::PropertyLength","D","Draft",QT_TRANSLATE_NOOP("App::Property","Width of the flanges")).D = profile[6]
-        obj.addProperty("App::PropertyLength","t1","Draft",QT_TRANSLATE_NOOP("App::Property","Thickness 1")).t1 = profile[7]
-        obj.addProperty("App::PropertyLength","t2","Draft",QT_TRANSLATE_NOOP("App::Property","Thickness 2")).t2 = profile[8]
-        obj.addProperty("App::PropertyLength","t3","Draft",QT_TRANSLATE_NOOP("App::Property","Thickness 3")).t3 = profile[9]
+        obj.addProperty("App::PropertyString","FType","Profile",QT_TRANSLATE_NOOP("App::PropertyString","Type of section")).FType = 'omega'
+        obj.addProperty("App::PropertyLength","W","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Width of the beam")).W = profile[4]
+        obj.addProperty("App::PropertyLength","H","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Height of the beam")).H = profile[5]
+        obj.addProperty("App::PropertyLength","D","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Width of the flanges")).D = profile[6]
+        obj.addProperty("App::PropertyLength","t1","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Thickness 1")).t1 = profile[7]
+        obj.addProperty("App::PropertyLength","t2","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Thickness 2")).t2 = profile[8]
+        obj.addProperty("App::PropertyLength","t3","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Thickness 3")).t3 = profile[9]
         _Profile.__init__(self,obj,profile)
     def execute(self,obj):
-        W, H, D, t1, t2, t3 = obj.W.Value, obj.H.Value, obj.D.Value, obj.t1.Value, obj.t2.Value,obj.t3.Value, 
+        W, H, D, t1, t2, t3 = obj.W.Value, obj.H.Value, obj.D.Value, obj.t1.Value, obj.t2.Value,obj.t3.Value,
         obj.Shape = drawAndCenter(pointsOmega(H,W,D,t1,t2,t3))
 
 class _ProfileH(_Profile):
     '''A parametric omega beam profile. Profile data: [W, H, D, t1,t2,t3]'''
     def __init__(self,obj, profile):
-        obj.addProperty("App::PropertyString","FType","Profile",QT_TRANSLATE_NOOP("App::Property","Type of section")).FType = 'H'
-        obj.addProperty("App::PropertyLength","W","Draft",QT_TRANSLATE_NOOP("App::Property","Width of the bottom flange")).W = profile[4]
-        obj.addProperty("App::PropertyLength","H","Draft",QT_TRANSLATE_NOOP("App::Property","Height of the beam")).H = profile[5]
-        obj.addProperty("App::PropertyLength","D","Draft",QT_TRANSLATE_NOOP("App::Property","Width of the top flange")).D = profile[6]
-        obj.addProperty("App::PropertyLength","t1","Draft",QT_TRANSLATE_NOOP("App::Property","Thickness 1")).t1 = profile[7]
-        obj.addProperty("App::PropertyLength","t2","Draft",QT_TRANSLATE_NOOP("App::Property","Thickness 2")).t2 = profile[8]
-        obj.addProperty("App::PropertyLength","t3","Draft",QT_TRANSLATE_NOOP("App::Property","Thickness 3")).t3 = profile[9]
+        obj.addProperty("App::PropertyString","FType","Profile",QT_TRANSLATE_NOOP("App::PropertyString","Type of section")).FType = 'H'
+        obj.addProperty("App::PropertyLength","W","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Width of the bottom flange")).W = profile[4]
+        obj.addProperty("App::PropertyLength","H","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Height of the beam")).H = profile[5]
+        obj.addProperty("App::PropertyLength","D","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Width of the top flange")).D = profile[6]
+        obj.addProperty("App::PropertyLength","t1","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Thickness 1")).t1 = profile[7]
+        obj.addProperty("App::PropertyLength","t2","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Thickness 2")).t2 = profile[8]
+        obj.addProperty("App::PropertyLength","t3","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Thickness 3")).t3 = profile[9]
         _Profile.__init__(self,obj,profile)
     def execute(self,obj):
-        W, H, D, t1, t2, t3 = obj.W.Value, obj.H.Value, obj.D.Value, obj.t1.Value, obj.t2.Value,obj.t3.Value, 
+        W, H, D, t1, t2, t3 = obj.W.Value, obj.H.Value, obj.D.Value, obj.t1.Value, obj.t2.Value,obj.t3.Value,
         obj.Shape = drawAndCenter(pointsH(H,W,D,t1,t2,t3))
 
 class _ProfileU(_Profile):
     '''A parametric U beam profile. Profile data: [W, H, D, t1,t2,t3]'''
     def __init__(self,obj, profile):
-        obj.addProperty("App::PropertyString","FType","Profile",QT_TRANSLATE_NOOP("App::Property","Type of section")).FType = 'U'
-        obj.addProperty("App::PropertyLength","W","Draft",QT_TRANSLATE_NOOP("App::Property","Width of the bottom flange")).W = profile[4]
-        obj.addProperty("App::PropertyLength","H","Draft",QT_TRANSLATE_NOOP("App::Property","Height of the beam")).H = profile[5]
-        obj.addProperty("App::PropertyLength","D","Draft",QT_TRANSLATE_NOOP("App::Property","Width of the top flange")).D = profile[6]
-        obj.addProperty("App::PropertyLength","t1","Draft",QT_TRANSLATE_NOOP("App::Property","Thickness 1")).t1 = profile[7]
-        obj.addProperty("App::PropertyLength","t2","Draft",QT_TRANSLATE_NOOP("App::Property","Thickness 2")).t2 = profile[8]
-        obj.addProperty("App::PropertyLength","t3","Draft",QT_TRANSLATE_NOOP("App::Property","Thickness 3")).t3 = profile[9]
+        obj.addProperty("App::PropertyString","FType","Profile",QT_TRANSLATE_NOOP("App::PropertyString","Type of section")).FType = 'U'
+        obj.addProperty("App::PropertyLength","W","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Width of the bottom flange")).W = profile[4]
+        obj.addProperty("App::PropertyLength","H","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Height of the beam")).H = profile[5]
+        obj.addProperty("App::PropertyLength","D","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Width of the top flange")).D = profile[6]
+        obj.addProperty("App::PropertyLength","t1","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Thickness 1")).t1 = profile[7]
+        obj.addProperty("App::PropertyLength","t2","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Thickness 2")).t2 = profile[8]
+        obj.addProperty("App::PropertyLength","t3","Draft",QT_TRANSLATE_NOOP("App::PropertyLength","Thickness 3")).t3 = profile[9]
         _Profile.__init__(self,obj,profile)
     def execute(self,obj):
-        W, H, D, t1, t2, t3 = obj.W.Value, obj.H.Value, obj.D.Value, obj.t1.Value, obj.t2.Value,obj.t3.Value, 
+        W, H, D, t1, t2, t3 = obj.W.Value, obj.H.Value, obj.D.Value, obj.t1.Value, obj.t2.Value,obj.t3.Value,
         obj.Shape = drawAndCenter(pointsU(H,W,D,t1,t2,t3))

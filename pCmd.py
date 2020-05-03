@@ -3,6 +3,8 @@
 __title__="pypeTools functions"
 import FreeCAD, FreeCADGui, Part, fCmd, pFeatures
 from DraftVecUtils import rounded
+from PySide.QtCore import QT_TRANSLATE_NOOP
+from DraftGui import translate
 objToPaint=['Pipe','Elbow','Reduct','Flange','Cap']
 from math import degrees
 
@@ -13,13 +15,13 @@ X=FreeCAD.Vector(1,0,0)
 Y=FreeCAD.Vector(0,1,0)
 Z=FreeCAD.Vector(0,0,1)
 
-############### AUX FUNCTIONS ###################### 
+############### AUX FUNCTIONS ######################
 
 def readTable(fileName="Pipe_SCH-STD.csv"):
   '''
   readTable(fileName)
   Returns the list of dictionaries read from file in ./tablez
-    fileName: the file name without path; default="Pipe_SCH-STD.csv" 
+    fileName: the file name without path; default="Pipe_SCH-STD.csv"
   '''
   from os.path import join, dirname, abspath
   import csv
@@ -45,7 +47,7 @@ def shapeReferenceAxis(obj=None, axObj=None):
     selex=FreeCADGui.Selection.getSelectionEx()
     if len(selex)==1 and len(selex[0].SubObjects)>0:
       sub=selex[0].SubObjects[0]
-      if sub.ShapeType=='Edge' and sub.curvatureAt(0)>0:  
+      if sub.ShapeType=='Edge' and sub.curvatureAt(0)>0:
         axObj=sub.tangentAt(0).cross(sub.normalAt(0))
         obj=selex[0].Object
   X=obj.Placement.Rotation.multVec(FreeCAD.Vector(1,0,0)).dot(axObj)
@@ -61,7 +63,7 @@ def isPipe(obj):
 def isElbow(obj):
   'True if obj is an elbow'
   return hasattr(obj,'PType') and obj.PType=='Elbow'
-  
+
 def moveToPyLi(obj,plName):
   '''
   Move obj to the group of pypeLine plName
@@ -73,7 +75,7 @@ def moveToPyLi(obj,plName):
     if obj.PType in objToPaint:
       obj.ViewObject.ShapeColor=pl.ViewObject.ShapeColor
     elif obj.PType == 'PypeBranch':
-      for e in [FreeCAD.ActiveDocument.getObject(name) for name in obj.Tubes+obj.Curves]: 
+      for e in [FreeCAD.ActiveDocument.getObject(name) for name in obj.Tubes+obj.Curves]:
         e.ViewObject.ShapeColor=pl.ViewObject.ShapeColor
 
 def portsPos(o):
@@ -93,7 +95,7 @@ def portsDir(o):
   if hasattr(o,'PType'):
     if o.PType in two_ways:
       dirs=[o.Placement.Rotation.multVec(p) for p in [FreeCAD.Vector(0,0,-1),FreeCAD.Vector(0,0,1)]]
-    elif hasattr(o,'Ports') and hasattr(o,'Placement'): 
+    elif hasattr(o,'Ports') and hasattr(o,'Placement'):
       dirs=list()
       for p in o.Ports:
         if p.Length:
@@ -106,7 +108,7 @@ def portsDir(o):
 
 def simpleSurfBend(path=None,profile=None):
   'select the centerline and the O.D. and let it sweep'
-  curva=FreeCAD.activeDocument().addObject("Part::Feature","CurvaSemplice")
+  curva=FreeCAD.activeDocument().addObject("Part::Feature",translate("Part::Feature","Simple curve"))
   if path==None or profile==None:
     curva.Shape=Part.makeSweepSurface(*fCmd.edges()[:2])
   elif path.ShapeType==profile.ShapeType=='Edge':
@@ -129,7 +131,7 @@ def makePipe(propList=[], pos=None, Z=None):
     pos=FreeCAD.Vector(0,0,0)
   if Z==None:
     Z=FreeCAD.Vector(0,0,1)
-  a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython","Tubo")
+  a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython",translate("Part::FeaturePython","Tube"))
   if len(propList)==4:
     pFeatures.Pipe(a,*propList)
   else:
@@ -140,7 +142,7 @@ def makePipe(propList=[], pos=None, Z=None):
   a.Placement.Rotation=rot.multiply(a.Placement.Rotation)
   return a
 
-def doPipes(propList=['DN50',60.3,3,1000], pypeline=None): 
+def doPipes(propList=['DN50',60.3,3,1000], pypeline=None):
   '''
     propList = [
       DN (string): nominal diameter
@@ -160,7 +162,7 @@ def doPipes(propList=['DN50',60.3,3,1000], pypeline=None):
   else:
     selex=FreeCADGui.Selection.getSelectionEx()
     for objex in selex:
-      o=objex.Object 
+      o=objex.Object
       if fCmd.faces(): # Face selected...
         for face in fCmd.faces():
           x=(face.ParameterRange[0]+face.ParameterRange[1])/2
@@ -168,7 +170,7 @@ def doPipes(propList=['DN50',60.3,3,1000], pypeline=None):
           plist.append(makePipe(propList,face.valueAt(x,y),face.normalAt(x,y)))
         FreeCAD.activeDocument().commitTransaction()
         FreeCAD.activeDocument().recompute()
-      else: 
+      else:
         for edge in fCmd.edges([objex]): # ...one or more edges...
           if edge.curvatureAt(0)==0: # ...straight edges
             pL=propList
@@ -207,7 +209,7 @@ def makeElbow(propList=[], pos=None, Z=None):
     pos=FreeCAD.Vector(0,0,0)
   if Z==None:
     Z=FreeCAD.Vector(0,0,1)
-  a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython","Curva")
+  a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython",translate("Part::FeaturePython","Elbow"))
   if len(propList)==5:
     pFeatures.Elbow(a,*propList)
   else:
@@ -272,7 +274,7 @@ def makeElbowBetweenThings(thing1=None, thing2=None, propList=None):
       fCmd.extendTheBeam(tube,portB)
   return elb
 
-def doElbow(propList=['DN50',60.3,3,90,45.225], pypeline=None): 
+def doElbow(propList=['DN50',60.3,3,90,45.225], pypeline=None):
   '''
     propList = [
       DN (string): nominal diameter
@@ -364,7 +366,7 @@ def makeFlange(propList=[], pos=None, Z=None):
     pos=FreeCAD.Vector(0,0,0)
   if Z==None:
     Z=FreeCAD.Vector(0,0,1)
-  a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython","Flangia")
+  a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython",translate("Part::FeaturePython","Flange"))
   if len(propList)>=8:
     pFeatures.Flange(a,*propList)
   else:
@@ -430,7 +432,7 @@ def makeReduct(propList=[], pos=None, Z=None, conc=True):
       OD2 (float): minor diameter
       thk (float): major thickness
       thk2 (float): minor thickness
-      H (float): length of reduction      
+      H (float): length of reduction
     pos (vector): position of insertion; default = 0,0,0
     Z (vector): orientation: default = 0,0,1
     conc (bool): True for concentric or Flase for eccentric reduction
@@ -440,7 +442,7 @@ def makeReduct(propList=[], pos=None, Z=None, conc=True):
     pos=FreeCAD.Vector(0,0,0)
   if Z==None:
     Z=FreeCAD.Vector(0,0,1)
-  a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython","Riduz")
+  a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython",translate("Part::FeaturePython","Reduction"))
   propList.append(conc)
   pFeatures.Reduct(a,*propList)
   a.ViewObject.Proxy=0
@@ -466,7 +468,7 @@ def makeUbolt(propList=[], pos=None, Z=None):
     pos=FreeCAD.Vector(0,0,0)
   if Z==None:
     Z=FreeCAD.Vector(0,0,1)
-  a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython","U-Bolt")
+  a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython",translate("Part::FeaturePython","U-Bolt"))
   if len(propList)==5:
     pFeatures.Ubolt(a,*propList)
   else:
@@ -486,7 +488,7 @@ def makeShell(L=1000,W=1500,H=1500,thk1=6,thk2=8):
     H(eight):        default=500
     thk (thickness): default=6
   '''
-  a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython","Serbatoio")
+  a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython",translate("Part::FeaturePython","Tank"))
   pFeatures.Shell(a,L,W,H,thk1,thk2)
   a.ViewObject.Proxy=0
   a.Placement.Base=FreeCAD.Vector(0,0,0)
@@ -511,7 +513,7 @@ def makeCap(propList=[], pos=None, Z=None):
     pos=FreeCAD.Vector(0,0,0)
   if Z==None:
     Z=FreeCAD.Vector(0,0,1)
-  a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython","Fondo")
+  a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython",translate("Part::FeaturePython","Cap"))
   if len(propList)==3:
     pFeatures.Cap(a,*propList)
   else:
@@ -522,7 +524,7 @@ def makeCap(propList=[], pos=None, Z=None):
   a.Placement.Rotation=rot.multiply(a.Placement.Rotation)
   return a
 
-def doCaps(propList=['DN50',60.3,3], pypeline=None): 
+def doCaps(propList=['DN50',60.3,3], pypeline=None):
   '''
     propList = [
       DN (string): nominal diameter
@@ -577,7 +579,7 @@ def makeW():
     from Draft import makeWire
     try:
       p=makeWire(points)
-    except: 
+    except:
       FreeCAD.Console.PrintError('Missing intersection\n')
       return None
     p.Label='Path'
@@ -651,7 +653,7 @@ def makeBranch(base=None, DN="DN50",PRating="SCH-STD",OD=60.3,thk=3,BR=None, lab
     return a
   else:
     FreeCAD.Console.PrintError('Select a valid path.\n')
-  
+
 def updatePLColor(sel=None, color=None):
   if not sel:
     sel=FreeCADGui.Selection.getSelection()
@@ -663,15 +665,15 @@ def updatePLColor(sel=None, color=None):
       group=FreeCAD.activeDocument().getObjectsByLabel(pl.Group)[0]
       for o in group.OutList:
         if hasattr(o,'PType'):
-          if o.PType in objToPaint: 
+          if o.PType in objToPaint:
             o.ViewObject.ShapeColor=color
           elif o.PType == 'PypeBranch':
-            for e in [FreeCAD.ActiveDocument.getObject(name) for name in o.Tubes+o.Curves]: 
+            for e in [FreeCAD.ActiveDocument.getObject(name) for name in o.Tubes+o.Curves]:
               e.ViewObject.ShapeColor=color
   else:
     FreeCAD.Console.PrintError('Select first one pype line\n')
 
-def alignTheTube(): 
+def alignTheTube():
   '''
   Mates the selected 2 circular edges
   of 2 separate objects.
@@ -686,7 +688,7 @@ def alignTheTube():
   if d1.curvatureAt(0)!=0 and d2.curvatureAt(0)!=0:
     n1=d1.tangentAt(0).cross(d1.normalAt(0))
     n2=d2.tangentAt(0).cross(d2.normalAt(0))
-  else: 
+  else:
     FreeCAD.Console.PrintError("Select 2 curved edges.\n")
     return None
   rot=FreeCAD.Rotation(n2,n1)
@@ -702,16 +704,16 @@ def alignTheTube():
       pass
     elif (com1-d1.centerOfCurvatureAt(0)).dot(com2-d1.centerOfCurvatureAt(0))>0:
       reverseTheTube(FreeCADGui.Selection.getSelectionEx()[:2][1])
-  except: 
+  except:
     pass
   #TARGET [solved]: verify if t1 or t2 belong to App::Part and changes the Placement consequently
   if fCmd.isPartOfPart(t1):
-    part=fCmd.isPartOfPart(t1) 
+    part=fCmd.isPartOfPart(t1)
     t2.Placement=part.Placement.multiply(t2.Placement)
   if fCmd.isPartOfPart(t2):
-    part=fCmd.isPartOfPart(t2) 
+    part=fCmd.isPartOfPart(t2)
     t2.Placement=part.Placement.inverse().multiply(t2.Placement)
-  
+
 def rotateTheTubeAx(obj=None,vShapeRef=None, angle=45):
   '''
   rotateTheTubeAx(obj=None,vShapeRef=None,angle=45)
@@ -747,7 +749,7 @@ def reverseTheTube(objEx):
   rotateTheTubeAx(objEx.Object,FreeCAD.Vector(1,0,0),180)
   if disp:
     objEx.Object.Placement.move(disp*2)
-  
+
 def rotateTheTubeEdge(ang=45):
   if len(fCmd.edges())>0 and fCmd.edges()[0].curvatureAt(0)!=0:
     originalPos=fCmd.edges()[0].centerOfCurvatureAt(0)
@@ -946,7 +948,7 @@ def laydownTheTube(pipe=None, refFace=None, support=None):
       FreeCAD.Console.PrintError('Face is not flat or not parallel to axis of pipe\n')
   except:
     FreeCAD.Console.PrintError('Wrong selection\n')
-    
+
 def breakTheTubes(point,pipes=[],gap=0):
   '''
   breakTheTube(point,pipes=[],gap=0)
@@ -966,7 +968,7 @@ def breakTheTubes(point,pipes=[],gap=0):
         pipes2nd.append(pipe2nd)
     #FreeCAD.activeDocument().recompute()
   return pipes2nd
-    
+
 def drawAsCenterLine(obj):
   try:
     obj.ViewObject.LineWidth=4
@@ -974,7 +976,7 @@ def drawAsCenterLine(obj):
     obj.ViewObject.DrawStyle='Dashdot'
   except:
     FreeCAD.Console.PrintError('The object can not be center-lined\n')
-  
+
 def getElbowPort(elbow, portId=0):
   '''
   getElbowPort(elbow, portId=0)
@@ -997,13 +999,13 @@ def rotateTheElbowPort(curve=None, port=0, ang=45):
     except:
       FreeCAD.Console.PrintError('Please select something before.\n')
   rotateTheTubeAx(curve,curve.Ports[port],ang)
-  
+
 def join(obj1,port1,obj2,port2):
   '''
   join(obj1,port1,obj2,port2)
   \t obj1, obj2 = two "Pype" parts
   \t port1, port2 = their respective ports to join
-  '''  
+  '''
   if hasattr(obj1,'PType') and hasattr(obj2,'PType'):
     if port1>len(obj1.Ports)-1 or port2>len(obj2.Ports)-1:
       FreeCAD.Console.PrintError('Wrong port(s) number\n')
@@ -1036,7 +1038,7 @@ def makeValve(propList=[], pos=None, Z=None):
     pos=FreeCAD.Vector(0,0,0)
   if Z==None:
     Z=FreeCAD.Vector(0,0,1)
-  a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython","Valvola")
+  a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython",translate("Part::FeaturePython","Valve"))
   if len(propList):
     pFeatures.Valve(a,*propList)
   else:
@@ -1076,7 +1078,7 @@ def doValves(propList=["DN50", "ball", 72, 50, 40, 150],pypeline=None, pos=0):
         vlist[-1].Placement.move(portsDir(p1)[1]*float(p1.Height))
         vlist[-1].ViewObject.ShapeColor=color
         # if self.combo.currentText()!='<none>':
-          # pCmd.moveToPyLi(self.lastValve,self.combo.currentText())  
+          # pCmd.moveToPyLi(self.lastValve,self.combo.currentText())
       # FreeCAD.ActiveDocument.recompute()
   elif len(fCmd.edges())==0: #..no edges selected
     vs=[v for sx in FreeCADGui.Selection.getSelectionEx() for so in sx.SubObjects for v in so.Vertexes]
@@ -1084,13 +1086,13 @@ def doValves(propList=["DN50", "ball", 72, 50, 40, 150],pypeline=None, pos=0):
       vlist.append(makeValve(propList))
       vlist[-1].ViewObject.ShapeColor=color
       # if self.combo.currentText()!='<none>':
-        # pCmd.moveToPyLi(self.lastValve,self.combo.currentText())  
+        # pCmd.moveToPyLi(self.lastValve,self.combo.currentText())
     else:
       for v in vs: # ... one or more vertexes
         vlist.append(makeValve(propList,v.Point))
         vlist[-1].ViewObject.ShapeColor=color
         # if self.combo.currentText()!='<none>':
-          # pCmd.moveToPyLi(self.lastValve,self.combo.currentText()) 
+          # pCmd.moveToPyLi(self.lastValve,self.combo.currentText())
   else:
     selex=FreeCADGui.Selection.getSelectionEx()
     for objex in selex:
@@ -1099,11 +1101,11 @@ def doValves(propList=["DN50", "ball", 72, 50, 40, 150],pypeline=None, pos=0):
         if edge.curvatureAt(0)==0: # ...straight edges
           vlist.append(makeValve(propList,edge.valueAt(edge.LastParameter/2-propList[4]/2),edge.tangentAt(0)))
           # if self.combo.currentText()!='<none>':
-            # pCmd.moveToPyLi(self.lastValve,self.combo.currentText())  
+            # pCmd.moveToPyLi(self.lastValve,self.combo.currentText())
         else: # ...curved edges
           pos=edge.centerOfCurvatureAt(0) # SNIPPET TO ALIGN WITH THE PORTS OF Pype SELECTED: BEGIN...
           if hasattr(o,'PType') and len(o.Ports)==2:
-            p0,p1=portsPos(o) 
+            p0,p1=portsPos(o)
             if (p0-pos).Length<(p1-pos).Length:
               Z=portsDir(o)[0]
             else:
@@ -1112,7 +1114,7 @@ def doValves(propList=["DN50", "ball", 72, 50, 40, 150],pypeline=None, pos=0):
             Z=edge.tangentAt(0).cross(edge.normalAt(0)) # ...END
           vlist.append(makeValve(propList,pos,Z))
           # if self.combo.currentText()!='<none>':
-            # pCmd.moveToPyLi(self.lastValve,self.combo.currentText())  
+            # pCmd.moveToPyLi(self.lastValve,self.combo.currentText())
         vlist[-1].ViewObject.ShapeColor=color
   if pypeline:
     for v in vlist:
@@ -1148,7 +1150,7 @@ def attachToTube(port=None):
         FreeCAD.Console.PrintMessage('Object Detached\n')
   except:
     FreeCAD.Console.PrintError('Nothing attached\n')
-    
+
 def makeNozzle(DN='DN50', H=200, OD=60.3, thk=3,D=160, d=62, df=132,f=14,t=15,n=4):
   '''
   makeNozzle(DN,OD,thk,D,df,f,t,n)
@@ -1163,7 +1165,7 @@ def makeNozzle(DN='DN50', H=200, OD=60.3, thk=3,D=160, d=62, df=132,f=14,t=15,n=
     n (int): nr. of bolts
   '''
   selex=FreeCADGui.Selection.getSelectionEx()
-  for sx in selex: 
+  for sx in selex:
     #e=sx.SubObjects[0]
     s=sx.Object
     curved=[e for e in fCmd.edges([sx]) if e.curvatureAt(0)]
@@ -1185,7 +1187,7 @@ def makeNozzle(DN='DN50', H=200, OD=60.3, thk=3,D=160, d=62, df=132,f=14,t=15,n=
 def makeRoute(n=Z):
   curvedEdges=[e for e in fCmd.edges() if e.curvatureAt(0)!=0]
   if curvedEdges:
-    s=FreeCAD.ActiveDocument.addObject('Sketcher::SketchObject','pipeRoute')
+    s=FreeCAD.ActiveDocument.addObject('Sketcher::SketchObject',translate("Sketcher::SketchObject",'pipeRoute'))
     s.MapMode = "SectionOfRevolution"
     sup=fCmd.edgeName()
     s.Support = [sup]
@@ -1195,7 +1197,7 @@ def makeRoute(n=Z):
       #s.AttachmentOffset=part.Placement.multiply(s.AttachmentOffset)
   else:
     return None
-  if fCmd.faces(): 
+  if fCmd.faces():
     n=fCmd.faces()[0].normalAt(0,0)
   x=s.Placement.Rotation.multVec(X)
   z=s.Placement.Rotation.multVec(Z)

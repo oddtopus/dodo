@@ -1,0 +1,1 @@
+pylupdate5 ./../InitGui.py ./../fCmd.py ./../CPipe.py ./../CUtils.py ./../dodoDialogs.py ./../dodoPM.py ./../fForms.py ./../fObservers.py ./../CFrame.py ./../pFeatures.py ./../pCmd.py  -ts ./dodo_es-ES.ts
