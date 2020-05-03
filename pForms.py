@@ -16,6 +16,10 @@ mw=FreeCADGui.getMainWindow()
 x=mw.x()+int(mw.width()/20)#100
 y=max(300,int(mw.height()/3))#350
 
+def getLanguagePath():
+    import os
+    return os.path.join(os.path.dirname(__file__),"translations")
+
 class redrawDialog(QDialog):
   def __init__(self):
     super(redrawDialog,self).__init__()
@@ -68,15 +72,15 @@ class redrawDialog(QDialog):
     for cb in self.checkBoxes: cb.setChecked(True)
   def clearAll(self):
     for cb in self.checkBoxes: cb.setChecked(False)
-        
+
 class insertPipeForm(dodoDialogs.protoPypeForm):
   '''
   Dialog to insert tubes.
   For position and orientation you can select
     - one or more straight edges (centerlines)
     - one or more curved edges (axis and origin across the center)
-    - one or more vertexes 
-    - nothing 
+    - one or more vertexes
+    - nothing
   Default length = 200 mm.
   Available one button to reverse the orientation of the last or selected tubes.
   '''
@@ -173,14 +177,14 @@ class insertElbowForm(dodoDialogs.protoPypeForm):
   '''
   Dialog to insert one elbow.
   For position and orientation you can select
-    - one vertex, 
-    - one circular edge 
+    - one vertex,
+    - one circular edge
     - a pair of edges or pipes or beams
     - one pipe at one of its ends
     - nothing.
-  In case one pipe is selected, its properties are applied to the elbow and 
+  In case one pipe is selected, its properties are applied to the elbow and
   the tube or tubes are trimmed or extended automatically.
-  Also available one button to trim/extend one selected pipe to the selected 
+  Also available one button to trim/extend one selected pipe to the selected
   edges, if necessary.
   '''
   def __init__(self):
@@ -260,7 +264,7 @@ class insertElbowForm(dodoDialogs.protoPypeForm):
     if self.edit2.text():
       propList[-1]=float(self.edit2.text())
     # INSERT ELBOW
-    self.lastElbow=pCmd.doElbow(propList, FreeCAD.__activePypeLine__)[-1] 
+    self.lastElbow=pCmd.doElbow(propList, FreeCAD.__activePypeLine__)[-1]
     # TODO: SET PRATING
     FreeCAD.activeDocument().recompute()
   def trim(self):
@@ -311,7 +315,7 @@ class insertFlangeForm(dodoDialogs.protoPypeForm):
     - one or more vertexes,
     - nothing.
   In case one pipe is selected, its properties are applied to the flange.
-  Available one button to reverse the orientation of the last or selected 
+  Available one button to reverse the orientation of the last or selected
   flanges.
   '''
   def __init__(self):
@@ -385,7 +389,7 @@ class insertReductForm(dodoDialogs.protoPypeForm):
     - one vertex
     - nothing (created at origin)
   In case one pipe is selected, its properties are applied to the reduction.
-  Available one button to reverse the orientation of the last or selected 
+  Available one button to reverse the orientation of the last or selected
   reductions.
   '''
   def __init__(self):
@@ -608,8 +612,8 @@ class insertCapForm(dodoDialogs.protoPypeForm):
   Dialog to insert caps.
   For position and orientation you can select
     - one or more curved edges (axis and origin across the center)
-    - one or more vertexes 
-    - nothing 
+    - one or more vertexes
+    - nothing
   Available one button to reverse the orientation of the last or selected tubes.
   '''
   def __init__(self):
@@ -655,10 +659,10 @@ class insertCapForm(dodoDialogs.protoPypeForm):
 class insertPypeLineForm(dodoDialogs.protoPypeForm):
   '''
   Dialog to insert pypelines.
-  Note: Elbow created within this dialog have a standard bending radius of 
+  Note: Elbow created within this dialog have a standard bending radius of
   3/4 x OD, corresponding to a 3D curve. If you aim to have 5D curve or any
   other custom bending radius, you shall apply it in the "Insert Elbow"
-  dialog or change it manually. 
+  dialog or change it manually.
   '''
   def __init__(self):
     super(insertPypeLineForm,self).__init__("PypeLine Manager","Pipe","SCH-STD","pypeline.svg",x,y)
@@ -701,7 +705,7 @@ class insertPypeLineForm(dodoDialogs.protoPypeForm):
         FreeCAD.Console.PrintMessage('Path not defined\n')
   def apply(self):
     d=self.pipeDictList[self.sizeList.currentRow()]
-    if self.combo.currentText()!="<new>":                                           
+    if self.combo.currentText()!="<new>":
       pl=FreeCAD.ActiveDocument.getObjectsByLabel(self.combo.currentText())[0]
       pl.PSize=d["PSize"]
       pl.PRating=self.PRating
@@ -726,8 +730,8 @@ class insertPypeLineForm(dodoDialogs.protoPypeForm):
     FreeCAD.ActiveDocument.recompute()
     FreeCAD.ActiveDocument.recompute()
   def getBase(self):
-    if self.combo.currentText()!="<new>":                                           
-      pl=FreeCAD.ActiveDocument.getObjectsByLabel(self.combo.currentText())[0]    
+    if self.combo.currentText()!="<new>":
+      pl=FreeCAD.ActiveDocument.getObjectsByLabel(self.combo.currentText())[0]
       sel=FreeCADGui.Selection.getSelection()
       if sel:
         base=sel[0]
@@ -788,12 +792,12 @@ class insertPypeLineForm(dodoDialogs.protoPypeForm):
         w.writerows(rows)
         plist.close()
         FreeCAD.Console.PrintMessage('Data saved in %s.\n' %f)
-    
+
 class insertBranchForm(dodoDialogs.protoPypeForm):
   '''
   Dialog to insert branches.
-  Note: Elbow created within this dialog have a standard bending radius of 
-  3/4 x OD, corresponding to a 3D curve.  
+  Note: Elbow created within this dialog have a standard bending radius of
+  3/4 x OD, corresponding to a 3D curve.
   '''
   def __init__(self):
     super(insertBranchForm,self).__init__("Insert a branch","Pipe","SCH-STD","branch.svg",x,y)
@@ -824,7 +828,7 @@ class insertBranchForm(dodoDialogs.protoPypeForm):
         FreeCAD.Console.PrintMessage('Path not defined\n')
   #def apply(self):
     #d=self.pipeDictList[self.sizeList.currentRow()]
-    #if self.combo.currentText()!="<new>":                                           
+    #if self.combo.currentText()!="<new>":
       #pl=FreeCAD.ActiveDocument.getObjectsByLabel(self.combo.currentText())[0]
       #pl.PSize=d["PSize"]
       #pl.PRating=self.PRating
@@ -846,7 +850,7 @@ class insertBranchForm(dodoDialogs.protoPypeForm):
     FreeCAD.activeDocument().commitTransaction()
     FreeCAD.ActiveDocument.recompute()
     FreeCAD.ActiveDocument.recompute()
-    
+
 class breakForm(QDialog):
   '''
   Dialog to break one pipe and create a gap.
@@ -863,7 +867,7 @@ class breakForm(QDialog):
     from PySide.QtGui import QIcon
     Icon=QIcon()
     Icon.addFile(iconPath)
-    self.setWindowIcon(Icon) 
+    self.setWindowIcon(Icon)
     self.grid=QGridLayout()
     self.setLayout(self.grid)
     self.btn0=QPushButton('Length')
@@ -1009,8 +1013,8 @@ class insertValveForm(dodoDialogs.protoPypeForm):
   For position and orientation you can select
     - one or more straight edges (centerlines)
     - one or more curved edges (axis and origin across the center)
-    - one or more vertexes 
-    - nothing 
+    - one or more vertexes
+    - nothing
   Default valve = DN50 ball valve.
   Available one button to reverse the orientation of the last or selected valves.
   '''
@@ -1042,14 +1046,14 @@ class insertValveForm(dodoDialogs.protoPypeForm):
     self.show()
     #########
     self.lastValve=None
-  def reverse(self): 
+  def reverse(self):
       selValves=[p for p in FreeCADGui.Selection.getSelection() if hasattr(p,'PType') and p.PType=='Valve']
       if len(selValves):
         for p in selValves:
           pCmd.rotateTheTubeAx(p,FreeCAD.Vector(1,0,0),180)
       else:
         pCmd.rotateTheTubeAx(self.lastValve,FreeCAD.Vector(1,0,0),180)
-  def insert(self):      
+  def insert(self):
     d=self.pipeDictList[self.sizeList.currentRow()]
     propList=[d['PSize'],d['VType'],float(pq(d['OD'])),float(pq(d['ID'])),float(pq(d['H'])),float(pq(d['Kv']))]
     if self.cb1.isChecked(): # ..place the valve in the middle of pipe(s)
@@ -1076,7 +1080,7 @@ from PySide.QtGui import *
 class point2pointPipe(DraftTools.Line):
   '''
   Draw pipes by sequence point.
-  '''    
+  '''
   def __init__(self, wireFlag=True):
     DraftTools.Line.__init__(self,wireFlag)
     self.Activated()
@@ -1201,7 +1205,7 @@ class insertTankForm(dodoDialogs.protoTypeDialog):
   def accept(self):
     dims=list()
     for lineEdit in [self.form.editX, self.form.editY, self.form.editZ]:
-      if lineEdit.text(): 
+      if lineEdit.text():
         dims.append(float(lineEdit.text()))
       else:
         dims.append(1000)
@@ -1290,7 +1294,7 @@ class insertRouteForm(dodoDialogs.protoTypeDialog):
         FreeCADGui.activeDocument().setEdit(s.Name)
     FreeCAD.ActiveDocument.commitTransaction()
   def selectAction(self):
-    if fCmd.faces(): 
+    if fCmd.faces():
       self.normal=fCmd.faces()[0].normalAt(0,0)
     elif fCmd.edges():
       self.normal=fCmd.edges()[0].tangentAt(0)
@@ -1306,9 +1310,9 @@ class insertRouteForm(dodoDialogs.protoTypeDialog):
       self.edge=infos['Component']
       i=int(self.edge[4:])-1
       e=self.obj.Shape.Edges[i]
-      if e.curvatureAt(0)==0: 
+      if e.curvatureAt(0)==0:
         self.L=e.Length
-      else: 
+      else:
         self.L=0
       self.form.lab2.setText(infos['Object']+': '+self.edge)
     elif fCmd.edges():
@@ -1318,10 +1322,8 @@ class insertRouteForm(dodoDialogs.protoTypeDialog):
       self.edge=fCmd.edgeName(e)[1]
       self.L=float(e.Length)
       self.form.lab2.setText(self.edge+' of '+self.obj.Label)
-    else: 
+    else:
       self.L=0
       self.obj=None
       self.edge=None
       self.form.lab2.setText('<select an edge>')
-      
-    
