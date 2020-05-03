@@ -4,6 +4,8 @@ __license__="LGPL 3"
 
 # import FreeCAD modules
 import FreeCAD, FreeCADGui,inspect , os
+from PySide.QtCore import QT_TRANSLATE_NOOP
+from DraftGui import translate
 
 # helper -------------------------------------------------------------------
 # FreeCAD TemplatePyMod module

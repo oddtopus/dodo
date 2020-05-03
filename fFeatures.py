@@ -14,6 +14,8 @@ from os import listdir
 from os.path import join, dirname, abspath
 from math import degrees
 from uCmd import label3D
+from PySide.QtCore import QT_TRANSLATE_NOOP
+from DraftGui import translate
 
 ################ FUNCTIONS ###########################
 

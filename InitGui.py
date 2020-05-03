@@ -31,6 +31,8 @@ class dodo ( Workbench ):
       FreeCADGui.Snapper = DraftSnap.Snapper()
 
   import sys, FreeCAD
+  from PySide.QtCore import QT_TRANSLATE_NOOP
+  from DraftGui import translate
   v=sys.version_info[0]
   if v<3: FreeCAD.Console.PrintWarning('Dodo is written for Py3 and Qt5\n You may experience mis-behaviuors\n')
   Icon = '''
