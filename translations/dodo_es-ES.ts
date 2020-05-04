@@ -521,6 +521,11 @@
         <source>Simple curve</source>
         <translation>Curva simple</translation>
     </message>
+    <message>
+        <location filename="../pCmd.py" line="134"/>
+        <source>Tube</source>
+        <translation type="obsolete">Tubo</translation>
+    </message>
 </context>
 <context>
     <name>Part::FeaturePython</name>
@@ -649,32 +654,32 @@
 <context>
     <name>dodo</name>
     <message>
-        <location filename="../InitGui.py" line="165"/>
+        <location filename="../InitGui.py" line="166"/>
         <source>Frame tools</source>
         <translation>Herramientas para estructuras</translation>
     </message>
     <message>
-        <location filename="../InitGui.py" line="166"/>
+        <location filename="../InitGui.py" line="167"/>
         <source>Pype tools</source>
         <translation>Herramientas para tuberias</translation>
     </message>
     <message>
-        <location filename="../InitGui.py" line="167"/>
+        <location filename="../InitGui.py" line="168"/>
         <source>Utils</source>
         <translation>Utilerias</translation>
     </message>
     <message>
-        <location filename="../InitGui.py" line="168"/>
+        <location filename="../InitGui.py" line="169"/>
         <source>QkMenus</source>
         <translation>Menus QK</translation>
     </message>
     <message>
-        <location filename="../InitGui.py" line="157"/>
+        <location filename="../InitGui.py" line="158"/>
         <source>frametools</source>
         <translation>Herramientas estructurales</translation>
     </message>
     <message>
-        <location filename="../InitGui.py" line="163"/>
+        <location filename="../InitGui.py" line="164"/>
         <source>pypetools</source>
         <translation>Herramientas de tuberia</translation>
     </message>

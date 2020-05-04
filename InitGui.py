@@ -148,6 +148,7 @@ static char * dodo1_xpm[] = {
     from PySide.QtCore import QT_TRANSLATE_NOOP
     from dodoPM import toolList
     FreeCADGui.addLanguagePath(pForms.getLanguagePath())
+    FreeCADGui.updateLocale()
 
     self.utilsList=["selectSolids","queryModel","moveWorkPlane","offsetWorkPlane","rotateWorkPlane","hackedL","moveHandle","dpCalc"]
     self.appendToolbar(QT_TRANSLATE_NOOP("dodo","Utils"),self.utilsList)
