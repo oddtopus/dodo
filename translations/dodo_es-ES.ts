@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="es">
+<!DOCTYPE TS><TS version="2.0" language="es" sourcelanguage="">
 <context>
     <name>App::Property</name>
     <message>
@@ -392,32 +391,32 @@
 <context>
     <name>dodo</name>
     <message>
-        <location filename="../InitGui.py" line="166"/>
+        <location filename="../InitGui.py" line="167"/>
         <source>Frame tools</source>
         <translation>Herramientas para estructuras</translation>
     </message>
     <message>
-        <location filename="../InitGui.py" line="167"/>
+        <location filename="../InitGui.py" line="168"/>
         <source>Pype tools</source>
         <translation>Herramientas para tuberias</translation>
     </message>
     <message>
-        <location filename="../InitGui.py" line="168"/>
+        <location filename="../InitGui.py" line="169"/>
         <source>Utils</source>
         <translation>Utilerias</translation>
     </message>
     <message>
-        <location filename="../InitGui.py" line="169"/>
+        <location filename="../InitGui.py" line="170"/>
         <source>QkMenus</source>
         <translation>Menus QK</translation>
     </message>
     <message>
-        <location filename="../InitGui.py" line="158"/>
+        <location filename="../InitGui.py" line="159"/>
         <source>frametools</source>
         <translation>Herramientas estructurales</translation>
     </message>
     <message>
-        <location filename="../InitGui.py" line="164"/>
+        <location filename="../InitGui.py" line="165"/>
         <source>pypetools</source>
         <translation>Herramientas de tuberia</translation>
     </message>
