@@ -108,7 +108,7 @@ def portsDir(o):
 
 def simpleSurfBend(path=None,profile=None):
   'select the centerline and the O.D. and let it sweep'
-  curva=FreeCAD.activeDocument().addObject("Part::Feature","CurvaSemplice")
+  curva=FreeCAD.activeDocument().addObject("Part::Feature",QT_TRANSLATE_NOOP("Part::Feature","Simple curve"))
   if path==None or profile==None:
     curva.Shape=Part.makeSweepSurface(*fCmd.edges()[:2])
   elif path.ShapeType==profile.ShapeType=='Edge':
@@ -131,7 +131,7 @@ def makePipe(propList=[], pos=None, Z=None):
     pos=FreeCAD.Vector(0,0,0)
   if Z==None:
     Z=FreeCAD.Vector(0,0,1)
-  a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython","Tubo")
+  a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython",QT_TRANSLATE_NOOP("Part::FeaturePython","Tube"))
   if len(propList)==4:
     pFeatures.Pipe(a,*propList)
   else:
@@ -209,7 +209,7 @@ def makeElbow(propList=[], pos=None, Z=None):
     pos=FreeCAD.Vector(0,0,0)
   if Z==None:
     Z=FreeCAD.Vector(0,0,1)
-  a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython","Curva")
+  a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython",QT_TRANSLATE_NOOP("Part::FeaturePython","Elbow"))
   if len(propList)==5:
     pFeatures.Elbow(a,*propList)
   else:
@@ -366,7 +366,7 @@ def makeFlange(propList=[], pos=None, Z=None):
     pos=FreeCAD.Vector(0,0,0)
   if Z==None:
     Z=FreeCAD.Vector(0,0,1)
-  a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython","Flangia")
+  a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython",QT_TRANSLATE_NOOP("Part::FeaturePython","Flange"))
   if len(propList)>=8:
     pFeatures.Flange(a,*propList)
   else:
@@ -442,7 +442,7 @@ def makeReduct(propList=[], pos=None, Z=None, conc=True):
     pos=FreeCAD.Vector(0,0,0)
   if Z==None:
     Z=FreeCAD.Vector(0,0,1)
-  a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython","Riduz")
+  a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython",QT_TRANSLATE_NOOP("Part::FeaturePython","Reduction"))
   propList.append(conc)
   pFeatures.Reduct(a,*propList)
   a.ViewObject.Proxy=0
@@ -468,7 +468,7 @@ def makeUbolt(propList=[], pos=None, Z=None):
     pos=FreeCAD.Vector(0,0,0)
   if Z==None:
     Z=FreeCAD.Vector(0,0,1)
-  a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython","U-Bolt")
+  a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython",QT_TRANSLATE_NOOP("Part::FeaturePython","U-Bolt"))
   if len(propList)==5:
     pFeatures.Ubolt(a,*propList)
   else:
@@ -488,7 +488,7 @@ def makeShell(L=1000,W=1500,H=1500,thk1=6,thk2=8):
     H(eight):        default=500
     thk (thickness): default=6
   '''
-  a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython","Serbatoio")
+  a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython",QT_TRANSLATE_NOOP("Part::FeaturePython","Tank"))
   pFeatures.Shell(a,L,W,H,thk1,thk2)
   a.ViewObject.Proxy=0
   a.Placement.Base=FreeCAD.Vector(0,0,0)
@@ -513,7 +513,7 @@ def makeCap(propList=[], pos=None, Z=None):
     pos=FreeCAD.Vector(0,0,0)
   if Z==None:
     Z=FreeCAD.Vector(0,0,1)
-  a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython","Fondo")
+  a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython",QT_TRANSLATE_NOOP("Part::FeaturePython","Cap"))
   if len(propList)==3:
     pFeatures.Cap(a,*propList)
   else:
@@ -987,7 +987,7 @@ def makeValve(propList=[], pos=None, Z=None):
     pos=FreeCAD.Vector(0,0,0)
   if Z==None:
     Z=FreeCAD.Vector(0,0,1)
-  a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython","Valvola")
+  a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython",QT_TRANSLATE_NOOP("Part::FeaturePython","Valve"))
   if len(propList):
     pFeatures.Valve(a,*propList)
   else:
@@ -1136,7 +1136,7 @@ def makeNozzle(DN='DN50', H=200, OD=60.3, thk=3,D=160, d=62, df=132,f=14,t=15,n=
 def makeRoute(n=Z):
   curvedEdges=[e for e in fCmd.edges() if e.curvatureAt(0)!=0]
   if curvedEdges:
-    s=FreeCAD.ActiveDocument.addObject('Sketcher::SketchObject','pipeRoute')
+    s=FreeCAD.ActiveDocument.addObject('Sketcher::SketchObject',QT_TRANSLATE_NOOP("Sketcher::SketchObject",'pipeRoute'))
     s.MapMode = "SectionOfRevolution"
     sup=fCmd.edgeName()
     s.Support = [sup]

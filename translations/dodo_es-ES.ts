@@ -4,15 +4,28 @@
 <context>
     <name>App::PropertyAngle</name>
     <message>
-        <location filename="../pFeatures.py" line="121"/>
+        <location filename="../pFeatures.py" line="122"/>
         <source>Bend Angle</source>
         <translation>Angulo de dobles</translation>
     </message>
 </context>
 <context>
+    <name>App::PropertyBool</name>
+    <message>
+        <location filename="../pFeatures.py" line="255"/>
+        <source>Make the lenght variable</source>
+        <translation>Hace la longitud variable</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="264"/>
+        <source>Concentric or Eccentric</source>
+        <translation>Concentrico o excentrico</translation>
+    </message>
+</context>
+<context>
     <name>App::PropertyFloat</name>
     <message>
-        <location filename="../pFeatures.py" line="29"/>
+        <location filename="../pFeatures.py" line="30"/>
         <source>Flow factor (m3/h/bar)</source>
         <translation>Factor de flujo (m3/h/bar)</translation>
     </message>
@@ -20,7 +33,7 @@
 <context>
     <name>App::PropertyInteger</name>
     <message>
-        <location filename="../pFeatures.py" line="192"/>
+        <location filename="../pFeatures.py" line="193"/>
         <source>Nr. of bolts</source>
         <translation>Numero de tornillos</translation>
     </message>
@@ -28,145 +41,150 @@
 <context>
     <name>App::PropertyLength</name>
     <message>
-        <location filename="../pFeatures.py" line="566"/>
+        <location filename="../pFeatures.py" line="567"/>
         <source>Outside diameter</source>
         <translation>Diametro exterior</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="567"/>
+        <location filename="../pFeatures.py" line="568"/>
         <source>Wall thickness</source>
         <translation>Espesor de muro</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="538"/>
+        <location filename="../pFeatures.py" line="539"/>
         <source>Inside diameter</source>
         <translation>Diametro interno</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="539"/>
+        <location filename="../pFeatures.py" line="540"/>
         <source>Length of tube</source>
         <translation>Longitud del tubo</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="569"/>
+        <location filename="../pFeatures.py" line="570"/>
         <source>Bend Radius</source>
         <translation>Radio de dobles</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="187"/>
+        <location filename="../pFeatures.py" line="188"/>
         <source>Flange diameter</source>
         <translation>Diametro de brida</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="188"/>
+        <location filename="../pFeatures.py" line="189"/>
         <source>Bore diameter</source>
         <translation>Diametro de orificio</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="189"/>
+        <location filename="../pFeatures.py" line="190"/>
         <source>Bolts distance</source>
         <translation>Distancia de tornillos</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="190"/>
+        <location filename="../pFeatures.py" line="191"/>
         <source>Bolts hole diameter</source>
         <translation>Diametro de orificio para tornillo</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="191"/>
+        <location filename="../pFeatures.py" line="192"/>
         <source>Thickness of flange</source>
         <translation>Espesor de brida</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="193"/>
+        <location filename="../pFeatures.py" line="194"/>
         <source>Thickness of raised face</source>
         <translation>Espesor de cara elevada</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="194"/>
+        <location filename="../pFeatures.py" line="195"/>
         <source>Diameter of raised face</source>
         <translation>Diametro de cara elevada</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="195"/>
+        <location filename="../pFeatures.py" line="196"/>
         <source>Length of welding neck</source>
         <translation>Longitud de cuello para soldadura</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="196"/>
+        <location filename="../pFeatures.py" line="197"/>
         <source>Diameter of welding neck</source>
         <translation>Diametro de cuello para soldadura</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="197"/>
+        <location filename="../pFeatures.py" line="198"/>
         <source>Outside diameter of pipe</source>
         <translation>Diametro exterior de tuberia</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="246"/>
+        <location filename="../pFeatures.py" line="247"/>
         <source>Major diameter</source>
         <translation>Diametro mayor</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="247"/>
+        <location filename="../pFeatures.py" line="248"/>
         <source>Minor diameter</source>
         <translation>Diametro menor</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="311"/>
+        <location filename="../pFeatures.py" line="312"/>
         <source>Section dim.</source>
         <translation>Dimension de sección.</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="362"/>
+        <location filename="../pFeatures.py" line="363"/>
         <source>the radius of bending</source>
         <translation>El radio de dobles</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="439"/>
+        <location filename="../pFeatures.py" line="440"/>
         <source>Arc diameter</source>
         <translation>Diametro de arco</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="440"/>
+        <location filename="../pFeatures.py" line="441"/>
         <source>Overall height</source>
         <translation>Altura total</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="441"/>
+        <location filename="../pFeatures.py" line="442"/>
         <source>Rod diameter</source>
         <translation>Diametro de vastago</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="469"/>
+        <location filename="../pFeatures.py" line="470"/>
         <source>Tank&apos;s length</source>
         <translation>Longitud de deposito</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="470"/>
+        <location filename="../pFeatures.py" line="471"/>
         <source>Tank&apos;s width</source>
         <translation>Ancho de deposito</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="471"/>
+        <location filename="../pFeatures.py" line="472"/>
         <source>Tank&apos;s height</source>
         <translation>Altura de deposito</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="472"/>
+        <location filename="../pFeatures.py" line="473"/>
         <source>Thikness of tank&apos;s shell</source>
         <translation>Espesor de carcaza del deposito</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="473"/>
+        <location filename="../pFeatures.py" line="474"/>
         <source>Thikness of tank&apos;s top</source>
         <translation>Espesor superior del deposito</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="256"/>
+        <source>Length of reduction</source>
+        <translation>Longitud de reducción</translation>
     </message>
 </context>
 <context>
     <name>App::PropertyLink</name>
     <message>
-        <location filename="../pFeatures.py" line="572"/>
+        <location filename="../pFeatures.py" line="573"/>
         <source>The path.</source>
         <translation>La ruta.</translation>
     </message>
@@ -174,52 +192,52 @@
 <context>
     <name>App::PropertyString</name>
     <message>
-        <location filename="../pFeatures.py" line="25"/>
+        <location filename="../pFeatures.py" line="26"/>
         <source>Type of tubeFeature</source>
         <translation>Tipo caracteristica de tubo</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="26"/>
+        <location filename="../pFeatures.py" line="27"/>
         <source>Rating of pipeFeature</source>
         <translation>Relacion de caracteristicas de tubo</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="27"/>
+        <location filename="../pFeatures.py" line="28"/>
         <source>Nominal diameter</source>
         <translation>Diametro nominal</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="123"/>
+        <location filename="../pFeatures.py" line="263"/>
         <source>Section dim.</source>
         <translation>Dimension de seccion.</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="186"/>
+        <location filename="../pFeatures.py" line="187"/>
         <source>Type of flange</source>
         <translation>Tipo de brida</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="365"/>
+        <location filename="../pFeatures.py" line="366"/>
         <source>The group.</source>
         <translation>El grupo.</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="436"/>
+        <location filename="../pFeatures.py" line="437"/>
         <source>Type of pipeFeature</source>
         <translation>Tipo de caracteristica de tubo</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="437"/>
+        <location filename="../pFeatures.py" line="438"/>
         <source>Type of clamp</source>
         <translation>Tipo de sujeccion</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="438"/>
+        <location filename="../pFeatures.py" line="439"/>
         <source>Size of clamp</source>
         <translation>Tamaño de sujeccion</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="442"/>
+        <location filename="../pFeatures.py" line="443"/>
         <source>Size of thread</source>
         <translation>Tamaño de rosca</translation>
     </message>
@@ -227,12 +245,12 @@
 <context>
     <name>App::PropertyStringList</name>
     <message>
-        <location filename="../pFeatures.py" line="570"/>
+        <location filename="../pFeatures.py" line="571"/>
         <source>The tubes of the branch.</source>
         <translation>Tubos de la derivación.</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="571"/>
+        <location filename="../pFeatures.py" line="572"/>
         <source>The curves of the branch.</source>
         <translation>Las curvas de la derivacion.</translation>
     </message>
@@ -240,7 +258,7 @@
 <context>
     <name>App::PropertyVectorList</name>
     <message>
-        <location filename="../pFeatures.py" line="443"/>
+        <location filename="../pFeatures.py" line="444"/>
         <source>Ports position relative to the origin of Shape</source>
         <translation>Posicion de los puertos relativos al origen de la forma</translation>
     </message>
@@ -248,12 +266,12 @@
 <context>
     <name>FrameBranchManager</name>
     <message>
-        <location filename="../CFrame.py" line="375"/>
+        <location filename="../CFrame.py" line="376"/>
         <source>Open FrameBranch Manager</source>
         <translation>Abre gestor de marcos</translation>
     </message>
     <message>
-        <location filename="../CFrame.py" line="374"/>
+        <location filename="../CFrame.py" line="375"/>
         <source>FrameBranch Manager</source>
         <translation>Derivacion de gestor de marcos</translation>
     </message>
@@ -263,48 +281,53 @@
     <message>
         <location filename="../pCmd.py" line="109"/>
         <source>CurvaSemplice</source>
+        <translation type="obsolete">Curva simple</translation>
+    </message>
+    <message>
+        <location filename="../pCmd.py" line="111"/>
+        <source>Simple curve</source>
         <translation>Curva simple</translation>
     </message>
 </context>
 <context>
     <name>Part::FeaturePython</name>
     <message>
-        <location filename="../pCmd.py" line="132"/>
+        <location filename="../pCmd.py" line="134"/>
         <source>Tube</source>
         <translation>Tubo</translation>
     </message>
     <message>
-        <location filename="../pCmd.py" line="210"/>
+        <location filename="../pCmd.py" line="212"/>
         <source>Elbow</source>
         <translation>Codo</translation>
     </message>
     <message>
-        <location filename="../pCmd.py" line="367"/>
+        <location filename="../pCmd.py" line="369"/>
         <source>Flange</source>
         <translation>Brida</translation>
     </message>
     <message>
-        <location filename="../pCmd.py" line="443"/>
+        <location filename="../pCmd.py" line="445"/>
         <source>Reduction</source>
         <translation>Reducción</translation>
     </message>
     <message>
-        <location filename="../pCmd.py" line="469"/>
+        <location filename="../pCmd.py" line="471"/>
         <source>U-Bolt</source>
         <translation>Tornillo U</translation>
     </message>
     <message>
-        <location filename="../pCmd.py" line="489"/>
+        <location filename="../pCmd.py" line="491"/>
         <source>Tank</source>
         <translation>Deposito</translation>
     </message>
     <message>
-        <location filename="../pCmd.py" line="514"/>
+        <location filename="../pCmd.py" line="516"/>
         <source>Cap</source>
         <translation>Tapon</translation>
     </message>
     <message>
-        <location filename="../pCmd.py" line="988"/>
+        <location filename="../pCmd.py" line="990"/>
         <source>Valve</source>
         <translation>Válvula</translation>
     </message>
@@ -312,20 +335,20 @@
 <context>
     <name>Sketcher::SketchObject</name>
     <message>
-        <location filename="../pCmd.py" line="1137"/>
+        <location filename="../pCmd.py" line="1139"/>
         <source>pipeRoute</source>
-        <translation>Ruteo de tuberia</translation>
+        <translation>Rutatuberia</translation>
     </message>
 </context>
 <context>
     <name>adjustFrameAngle</name>
     <message>
-        <location filename="../CFrame.py" line="282"/>
+        <location filename="../CFrame.py" line="283"/>
         <source>Adjust the angle of frame by two edges</source>
         <translation>Ajusta del angulo del marco por medio de dos aristas</translation>
     </message>
     <message>
-        <location filename="../CFrame.py" line="281"/>
+        <location filename="../CFrame.py" line="282"/>
         <source>adjustFrameAngle</source>
         <translation>Adjuste de angulo de marcos</translation>
     </message>
@@ -333,12 +356,12 @@
 <context>
     <name>alignEdge</name>
     <message>
-        <location filename="../CFrame.py" line="210"/>
+        <location filename="../CFrame.py" line="211"/>
         <source>Join two edges: select two or pre-select several</source>
         <translation>Une dos aristas:selecciona dos o pre selecciona varias</translation>
     </message>
     <message>
-        <location filename="../CFrame.py" line="209"/>
+        <location filename="../CFrame.py" line="210"/>
         <source>Mate the edges</source>
         <translation>Coindicir las aristas</translation>
     </message>
@@ -346,12 +369,12 @@
 <context>
     <name>alignFlange</name>
     <message>
-        <location filename="../CFrame.py" line="115"/>
+        <location filename="../CFrame.py" line="116"/>
         <source>alignFlange</source>
         <translation>Alinear superficies</translation>
     </message>
     <message>
-        <location filename="../CFrame.py" line="116"/>
+        <location filename="../CFrame.py" line="117"/>
         <source>Rotates the section of the beam to make the faces parallel to another face</source>
         <translation>Rota la seccion de la viga para hacer las caras paralelas a otra cara</translation>
     </message>
@@ -393,32 +416,32 @@
 <context>
     <name>dodo</name>
     <message>
-        <location filename="../InitGui.py" line="155"/>
+        <location filename="../InitGui.py" line="166"/>
         <source>Frame tools</source>
         <translation>Herramientas para estructuras</translation>
     </message>
     <message>
-        <location filename="../InitGui.py" line="156"/>
+        <location filename="../InitGui.py" line="167"/>
         <source>Pype tools</source>
         <translation>Herramientas para tuberias</translation>
     </message>
     <message>
-        <location filename="../InitGui.py" line="157"/>
+        <location filename="../InitGui.py" line="168"/>
         <source>Utils</source>
         <translation>Utilerias</translation>
     </message>
     <message>
-        <location filename="../InitGui.py" line="158"/>
+        <location filename="../InitGui.py" line="169"/>
         <source>QkMenus</source>
         <translation>Menus QK</translation>
     </message>
     <message>
-        <location filename="../InitGui.py" line="149"/>
+        <location filename="../InitGui.py" line="158"/>
         <source>frametools</source>
         <translation>Herramientas estructurales</translation>
     </message>
     <message>
-        <location filename="../InitGui.py" line="153"/>
+        <location filename="../InitGui.py" line="164"/>
         <source>pypetools</source>
         <translation>Herramientas de tuberia</translation>
     </message>
@@ -426,12 +449,12 @@
 <context>
     <name>dpCalc</name>
     <message>
-        <location filename="../CUtils.py" line="135"/>
+        <location filename="../CUtils.py" line="136"/>
         <source>Pressure loss calculator</source>
         <translation>Calculadora de Perdida de presion</translation>
     </message>
     <message>
-        <location filename="../CUtils.py" line="136"/>
+        <location filename="../CUtils.py" line="137"/>
         <source>Calculate pressure loss in &quot;pypes&quot; using ChEDL libraries.
  See __doc__ of the module for futher information.</source>
         <translation>Calcular perdida de presión en tuberias utilizando biblioteca ChEDL.
@@ -449,12 +472,12 @@
 <context>
     <name>extend</name>
     <message>
-        <location filename="../CFrame.py" line="266"/>
+        <location filename="../CFrame.py" line="267"/>
         <source>extendTheBeam</source>
         <translation>Extender la viga</translation>
     </message>
     <message>
-        <location filename="../CFrame.py" line="267"/>
+        <location filename="../CFrame.py" line="268"/>
         <source>Extend the beam either to a face, a vertex or the c.o.m. of the selected object</source>
         <translation>Extiende la viga a sea hacia una cara, vertice o C.O.M del objeto seleccionado</translation>
     </message>
@@ -499,12 +522,12 @@
 <context>
     <name>frameIt</name>
     <message>
-        <location filename="../CFrame.py" line="44"/>
+        <location filename="../CFrame.py" line="45"/>
         <source>Place one-beam over one-edge</source>
         <translation>Coloca una viga sobre una arista</translation>
     </message>
     <message>
-        <location filename="../CFrame.py" line="45"/>
+        <location filename="../CFrame.py" line="46"/>
         <source>Place one beam after the other over the edges</source>
         <translation>Coloca una viga despues de las otras aristas</translation>
     </message>
@@ -512,12 +535,12 @@
 <context>
     <name>hackedL</name>
     <message>
-        <location filename="../CUtils.py" line="109"/>
+        <location filename="../CUtils.py" line="110"/>
         <source>draw a DWire</source>
         <translation>Dibuja un Dwire</translation>
     </message>
     <message>
-        <location filename="../CUtils.py" line="110"/>
+        <location filename="../CUtils.py" line="111"/>
         <source>WP is re-positioned at each point. Possible to spin and offset it.</source>
         <translation>Plano de trabajo es posicionado cada point. Es posible girarlo y desfasarlo.</translation>
     </message>
@@ -575,12 +598,12 @@
 <context>
     <name>insertPath</name>
     <message>
-        <location filename="../CFrame.py" line="318"/>
+        <location filename="../CFrame.py" line="319"/>
         <source>insert Path</source>
         <translation>Insertar trayectoria</translation>
     </message>
     <message>
-        <location filename="../CFrame.py" line="319"/>
+        <location filename="../CFrame.py" line="320"/>
         <source>Creates one path along selected edges</source>
         <translation>Crea una trayectoria a lo largo de la arista seleccionada</translation>
     </message>
@@ -630,12 +653,12 @@
 <context>
     <name>insertSection</name>
     <message>
-        <location filename="../CFrame.py" line="388"/>
+        <location filename="../CFrame.py" line="389"/>
         <source>Insert sections</source>
         <translation>Inserta secciones</translation>
     </message>
     <message>
-        <location filename="../CFrame.py" line="389"/>
+        <location filename="../CFrame.py" line="390"/>
         <source>Creates customized beam profiles 2D</source>
         <translation>Crea un perfil de viga 2D personalizado</translation>
     </message>
@@ -698,12 +721,12 @@
 <context>
     <name>levelBeam</name>
     <message>
-        <location filename="../CFrame.py" line="176"/>
+        <location filename="../CFrame.py" line="177"/>
         <source>Flush the surfaces</source>
         <translation>Empotrar las superficies</translation>
     </message>
     <message>
-        <location filename="../CFrame.py" line="177"/>
+        <location filename="../CFrame.py" line="178"/>
         <source>Shift the beams to line-up the faces to the first selection (faces must be //)</source>
         <translation>Desplaza la viga para alinearla a la cara de la primera seleccion (caras deben ser paralelas)</translation>
     </message>
@@ -724,12 +747,12 @@
 <context>
     <name>moveHandle</name>
     <message>
-        <location filename="../CUtils.py" line="123"/>
+        <location filename="../CUtils.py" line="124"/>
         <source>Move objects</source>
         <translation>Mover objetos</translation>
     </message>
     <message>
-        <location filename="../CUtils.py" line="124"/>
+        <location filename="../CUtils.py" line="125"/>
         <source>Move quickly objects inside viewport</source>
         <translation>Mover objetos rapidamente dentro de la vista</translation>
     </message>
@@ -737,12 +760,12 @@
 <context>
     <name>moveWorkPlane</name>
     <message>
-        <location filename="../CUtils.py" line="62"/>
+        <location filename="../CUtils.py" line="63"/>
         <source>align Workplane</source>
         <translation>Alinear plano de trabajo</translation>
     </message>
     <message>
-        <location filename="../CUtils.py" line="63"/>
+        <location filename="../CUtils.py" line="64"/>
         <source>Moves and rotates the drafting workplane with points, edges and faces</source>
         <translation>Mover y rotar el dibujo del plano de trabajo con puntos, aristas y caras</translation>
     </message>
@@ -750,12 +773,12 @@
 <context>
     <name>offsetWorkPlane</name>
     <message>
-        <location filename="../CUtils.py" line="96"/>
+        <location filename="../CUtils.py" line="97"/>
         <source>offset Workplane</source>
         <translation>Desfazar plano de trabajo</translation>
     </message>
     <message>
-        <location filename="../CUtils.py" line="97"/>
+        <location filename="../CUtils.py" line="98"/>
         <source>Shifts the WP alongg its normal.</source>
         <translation>Desplaza el plano de trabajo a lo largo de su normal.</translation>
     </message>
@@ -771,12 +794,12 @@
 <context>
     <name>pivotBeam</name>
     <message>
-        <location filename="../CFrame.py" line="227"/>
+        <location filename="../CFrame.py" line="228"/>
         <source>pivotTheBeam</source>
         <translation>Pivotea la viga</translation>
     </message>
     <message>
-        <location filename="../CFrame.py" line="228"/>
+        <location filename="../CFrame.py" line="229"/>
         <source>Rotates the beam around an axis (edge or center-of-curvature)</source>
         <translation>Rota la viga alrededor de un eje (arista o centro de curvatura)</translation>
     </message>
@@ -797,12 +820,12 @@
 <context>
     <name>queryModel</name>
     <message>
-        <location filename="../CUtils.py" line="38"/>
+        <location filename="../CUtils.py" line="39"/>
         <source>query the model</source>
         <translation>Consultar el modelo</translation>
     </message>
     <message>
-        <location filename="../CUtils.py" line="39"/>
+        <location filename="../CUtils.py" line="40"/>
         <source>Click objects to print infos</source>
         <translation>Cliquear objetos para imprimir información</translation>
     </message>
@@ -823,12 +846,12 @@
 <context>
     <name>reverseBeam</name>
     <message>
-        <location filename="../CFrame.py" line="83"/>
+        <location filename="../CFrame.py" line="84"/>
         <source>Reverse orientation</source>
         <translation>Invertir orientacion</translation>
     </message>
     <message>
-        <location filename="../CFrame.py" line="84"/>
+        <location filename="../CFrame.py" line="85"/>
         <source>Reverse the orientation of selected objects</source>
         <translation>Invertir orientacion a los objetos seleccionados</translation>
     </message>
@@ -836,12 +859,12 @@
 <context>
     <name>rotJoin</name>
     <message>
-        <location filename="../CFrame.py" line="300"/>
+        <location filename="../CFrame.py" line="301"/>
         <source>rotJoinEdge</source>
         <translation>Rotar arista de union</translation>
     </message>
     <message>
-        <location filename="../CFrame.py" line="301"/>
+        <location filename="../CFrame.py" line="302"/>
         <source>Rotates and align the beam according another edge</source>
         <translation>Rota y alinea la viga acorde a otra arista</translation>
     </message>
@@ -849,12 +872,12 @@
 <context>
     <name>rotateWorkPlane</name>
     <message>
-        <location filename="../CUtils.py" line="75"/>
+        <location filename="../CUtils.py" line="76"/>
         <source>rotate Workplane</source>
         <translation>Rota el plano de trabajo</translation>
     </message>
     <message>
-        <location filename="../CUtils.py" line="76"/>
+        <location filename="../CUtils.py" line="77"/>
         <source>Spin the Draft working plane about one of its axes</source>
         <translation>Gira el dibujo en el plano de trabajo a lo largo de uno de sus ejes</translation>
     </message>
@@ -862,12 +885,12 @@
 <context>
     <name>selectSolids</name>
     <message>
-        <location filename="../CUtils.py" line="149"/>
+        <location filename="../CUtils.py" line="150"/>
         <source>Select solids</source>
         <translation>Seleccionar solidos</translation>
     </message>
     <message>
-        <location filename="../CUtils.py" line="150"/>
+        <location filename="../CUtils.py" line="151"/>
         <source>Grab all solids or those partially selected
  to export in .step format</source>
         <translation>Sujeta todos los solidos parcialmente seleccionados
@@ -877,12 +900,12 @@ para exportar en formato step</translation>
 <context>
     <name>shiftBeam</name>
     <message>
-        <location filename="../CFrame.py" line="143"/>
+        <location filename="../CFrame.py" line="144"/>
         <source>shiftTheBeam</source>
         <translation>Desplaza la viga</translation>
     </message>
     <message>
-        <location filename="../CFrame.py" line="144"/>
+        <location filename="../CFrame.py" line="145"/>
         <source>Translate objects by vectors defined on existing geometry</source>
         <translation>Traslada el objeto por vectores definidos sobre la geometria existente</translation>
     </message>
@@ -890,12 +913,12 @@ para exportar en formato step</translation>
 <context>
     <name>spinSect</name>
     <message>
-        <location filename="../CFrame.py" line="63"/>
+        <location filename="../CFrame.py" line="64"/>
         <source>Spin beams by 45 deg.</source>
         <translation>Gira viga a 45 grados.</translation>
     </message>
     <message>
-        <location filename="../CFrame.py" line="64"/>
+        <location filename="../CFrame.py" line="65"/>
         <source>Rotates the section of the beam by 45 degrees</source>
         <translation>Rota la seccion de la viga a 45 grados</translation>
     </message>
@@ -903,12 +926,12 @@ para exportar en formato step</translation>
 <context>
     <name>stretchBeam</name>
     <message>
-        <location filename="../CFrame.py" line="249"/>
+        <location filename="../CFrame.py" line="250"/>
         <source>stretchTheBeam</source>
         <translation>Estira la viga</translation>
     </message>
     <message>
-        <location filename="../CFrame.py" line="250"/>
+        <location filename="../CFrame.py" line="251"/>
         <source>Changes the length of the beam, either according a preselected edge or a direct input</source>
         <translation>Cambia la longituf de la viga, ya sea acorde a la arista preseleccionada o una entrada directa</translation>
     </message>
