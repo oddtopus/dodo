@@ -10,6 +10,8 @@ metaObjs=['PypeLine','PypeBranch']
 import FreeCAD, FreeCADGui, Part, fCmd, pCmd
 from copy import copy
 from os.path import join, dirname, abspath
+from PySide.QtCore import QT_TRANSLATE_NOOP
+from DraftGui import translate
 
 vO=FreeCAD.Vector(0,0,0)
 vX=FreeCAD.Vector(1,0,0)
@@ -250,16 +252,16 @@ class Reduct(pypeType):
       obj.thk2=thk
     else:
       obj.thk2=thk2
-    obj.addProperty("App::PropertyBool","calcH","Reduct","Make the lenght variable")
-    obj.addProperty("App::PropertyLength","Height","Reduct","Length of reduct")
+    obj.addProperty("App::PropertyBool","calcH","Reduct",QT_TRANSLATE_NOOP("App::PropertyBool","Make the lenght variable"))
+    obj.addProperty("App::PropertyLength","Height","Reduction",QT_TRANSLATE_NOOP("App::PropertyLength","Length of reduction"))
     if not H:
       obj.calcH=True
       obj.Height=3*(obj.OD-obj.OD2)
     else:
       obj.calcH=False
       obj.Height=float(H)
-    obj.addProperty("App::PropertyString","Profile","Reduct","Section dim.").Profile=str(obj.OD)+"x"+str(obj.OD2)
-    obj.addProperty("App::PropertyBool","conc","Reduct","Concentric or Eccentric").conc=conc
+    obj.addProperty("App::PropertyString","Profile","Reduct",QT_TRANSLATE_NOOP("App::PropertyString","Section dim.")).Profile=str(obj.OD)+"x"+str(obj.OD2)
+    obj.addProperty("App::PropertyBool","conc","Reduct",QT_TRANSLATE_NOOP("App::PropertyBool","Concentric or Eccentric")).conc=conc
   def onChanged(self, fp, prop):
     return None
   def execute(self, fp):
