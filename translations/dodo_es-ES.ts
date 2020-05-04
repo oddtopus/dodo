@@ -2,44 +2,37 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="es">
 <context>
-    <name>App::PropertyAngle</name>
+    <name>App::Property</name>
     <message>
-        <location filename="../pFeatures.py" line="122"/>
-        <source>Bend Angle</source>
-        <translation>Angulo de dobles</translation>
-    </message>
-</context>
-<context>
-    <name>App::PropertyBool</name>
-    <message>
-        <location filename="../pFeatures.py" line="255"/>
-        <source>Make the lenght variable</source>
-        <translation>Hace la longitud variable</translation>
+        <location filename="../pFeatures.py" line="540"/>
+        <source>Length of tube</source>
+        <translation>Longitud del tubo</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="264"/>
-        <source>Concentric or Eccentric</source>
-        <translation>Concentrico o excentrico</translation>
+        <location filename="../pFeatures.py" line="26"/>
+        <source>Type of tubeFeature</source>
+        <translation>Tipo caracteristica de tubo</translation>
     </message>
-</context>
-<context>
-    <name>App::PropertyFloat</name>
+    <message>
+        <location filename="../pFeatures.py" line="27"/>
+        <source>Rating of pipeFeature</source>
+        <translation>Relacion de caracteristicas de tubo</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="28"/>
+        <source>Nominal diameter</source>
+        <translation>Diametro nominal</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="444"/>
+        <source>Ports position relative to the origin of Shape</source>
+        <translation>Posicion de los puertos relativos al origen de la forma</translation>
+    </message>
     <message>
         <location filename="../pFeatures.py" line="30"/>
         <source>Flow factor (m3/h/bar)</source>
         <translation>Factor de flujo (m3/h/bar)</translation>
     </message>
-</context>
-<context>
-    <name>App::PropertyInteger</name>
-    <message>
-        <location filename="../pFeatures.py" line="193"/>
-        <source>Nr. of bolts</source>
-        <translation>Numero de tornillos</translation>
-    </message>
-</context>
-<context>
-    <name>App::PropertyLength</name>
     <message>
         <location filename="../pFeatures.py" line="567"/>
         <source>Outside diameter</source>
@@ -56,14 +49,24 @@
         <translation>Diametro interno</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="540"/>
-        <source>Length of tube</source>
-        <translation>Longitud del tubo</translation>
+        <location filename="../pFeatures.py" line="312"/>
+        <source>Section dim.</source>
+        <translation>Dimension de seccion.</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="122"/>
+        <source>Bend Angle</source>
+        <translation>Angulo de dobles</translation>
     </message>
     <message>
         <location filename="../pFeatures.py" line="570"/>
         <source>Bend Radius</source>
         <translation>Radio de dobles</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="187"/>
+        <source>Type of flange</source>
+        <translation>Tipo de brida</translation>
     </message>
     <message>
         <location filename="../pFeatures.py" line="188"/>
@@ -89,6 +92,11 @@
         <location filename="../pFeatures.py" line="192"/>
         <source>Thickness of flange</source>
         <translation>Espesor de brida</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="193"/>
+        <source>Nr. of bolts</source>
+        <translation>Numero de tornillos</translation>
     </message>
     <message>
         <location filename="../pFeatures.py" line="194"/>
@@ -126,14 +134,44 @@
         <translation>Diametro menor</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="312"/>
-        <source>Section dim.</source>
-        <translation>Dimension de sección.</translation>
+        <location filename="../pFeatures.py" line="255"/>
+        <source>Make the lenght variable</source>
+        <translation>Hace la longitud variable</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="256"/>
+        <source>Length of reduction</source>
+        <translation>Longitud de reducción</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="264"/>
+        <source>Concentric or Eccentric</source>
+        <translation>Concentrico o excentrico</translation>
     </message>
     <message>
         <location filename="../pFeatures.py" line="363"/>
         <source>the radius of bending</source>
         <translation>El radio de dobles</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="366"/>
+        <source>The group.</source>
+        <translation>El grupo.</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="437"/>
+        <source>Type of pipeFeature</source>
+        <translation>Tipo de caracteristica de tubo</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="438"/>
+        <source>Type of clamp</source>
+        <translation>Tipo de sujeccion</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="439"/>
+        <source>Size of clamp</source>
+        <translation>Tamaño de sujeccion</translation>
     </message>
     <message>
         <location filename="../pFeatures.py" line="440"/>
@@ -149,6 +187,11 @@
         <location filename="../pFeatures.py" line="442"/>
         <source>Rod diameter</source>
         <translation>Diametro de vastago</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="443"/>
+        <source>Size of thread</source>
+        <translation>Tamaño de rosca</translation>
     </message>
     <message>
         <location filename="../pFeatures.py" line="470"/>
@@ -176,75 +219,6 @@
         <translation>Espesor superior del deposito</translation>
     </message>
     <message>
-        <location filename="../pFeatures.py" line="256"/>
-        <source>Length of reduction</source>
-        <translation>Longitud de reducción</translation>
-    </message>
-</context>
-<context>
-    <name>App::PropertyLink</name>
-    <message>
-        <location filename="../pFeatures.py" line="573"/>
-        <source>The path.</source>
-        <translation>La ruta.</translation>
-    </message>
-</context>
-<context>
-    <name>App::PropertyString</name>
-    <message>
-        <location filename="../pFeatures.py" line="26"/>
-        <source>Type of tubeFeature</source>
-        <translation>Tipo caracteristica de tubo</translation>
-    </message>
-    <message>
-        <location filename="../pFeatures.py" line="27"/>
-        <source>Rating of pipeFeature</source>
-        <translation>Relacion de caracteristicas de tubo</translation>
-    </message>
-    <message>
-        <location filename="../pFeatures.py" line="28"/>
-        <source>Nominal diameter</source>
-        <translation>Diametro nominal</translation>
-    </message>
-    <message>
-        <location filename="../pFeatures.py" line="263"/>
-        <source>Section dim.</source>
-        <translation>Dimension de seccion.</translation>
-    </message>
-    <message>
-        <location filename="../pFeatures.py" line="187"/>
-        <source>Type of flange</source>
-        <translation>Tipo de brida</translation>
-    </message>
-    <message>
-        <location filename="../pFeatures.py" line="366"/>
-        <source>The group.</source>
-        <translation>El grupo.</translation>
-    </message>
-    <message>
-        <location filename="../pFeatures.py" line="437"/>
-        <source>Type of pipeFeature</source>
-        <translation>Tipo de caracteristica de tubo</translation>
-    </message>
-    <message>
-        <location filename="../pFeatures.py" line="438"/>
-        <source>Type of clamp</source>
-        <translation>Tipo de sujeccion</translation>
-    </message>
-    <message>
-        <location filename="../pFeatures.py" line="439"/>
-        <source>Size of clamp</source>
-        <translation>Tamaño de sujeccion</translation>
-    </message>
-    <message>
-        <location filename="../pFeatures.py" line="443"/>
-        <source>Size of thread</source>
-        <translation>Tamaño de rosca</translation>
-    </message>
-</context>
-<context>
-    <name>App::PropertyStringList</name>
-    <message>
         <location filename="../pFeatures.py" line="571"/>
         <source>The tubes of the branch.</source>
         <translation>Tubos de la derivación.</translation>
@@ -254,13 +228,272 @@
         <source>The curves of the branch.</source>
         <translation>Las curvas de la derivacion.</translation>
     </message>
+    <message>
+        <location filename="../pFeatures.py" line="573"/>
+        <source>The path.</source>
+        <translation>La ruta.</translation>
+    </message>
+</context>
+<context>
+    <name>App::PropertyAngle</name>
+    <message>
+        <location filename="../pFeatures.py" line="122"/>
+        <source>Bend Angle</source>
+        <translation type="obsolete">Angulo de dobles</translation>
+    </message>
+</context>
+<context>
+    <name>App::PropertyBool</name>
+    <message>
+        <location filename="../pFeatures.py" line="255"/>
+        <source>Make the lenght variable</source>
+        <translation type="obsolete">Hace la longitud variable</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="264"/>
+        <source>Concentric or Eccentric</source>
+        <translation type="obsolete">Concentrico o excentrico</translation>
+    </message>
+</context>
+<context>
+    <name>App::PropertyFloat</name>
+    <message>
+        <location filename="../pFeatures.py" line="30"/>
+        <source>Flow factor (m3/h/bar)</source>
+        <translation type="obsolete">Factor de flujo (m3/h/bar)</translation>
+    </message>
+</context>
+<context>
+    <name>App::PropertyInteger</name>
+    <message>
+        <location filename="../pFeatures.py" line="193"/>
+        <source>Nr. of bolts</source>
+        <translation type="obsolete">Numero de tornillos</translation>
+    </message>
+</context>
+<context>
+    <name>App::PropertyLength</name>
+    <message>
+        <location filename="../pFeatures.py" line="567"/>
+        <source>Outside diameter</source>
+        <translation type="obsolete">Diametro exterior</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="568"/>
+        <source>Wall thickness</source>
+        <translation type="obsolete">Espesor de muro</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="539"/>
+        <source>Inside diameter</source>
+        <translation type="obsolete">Diametro interno</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="85"/>
+        <source>Length of tube</source>
+        <translation type="obsolete">Longitud del tubo</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="570"/>
+        <source>Bend Radius</source>
+        <translation type="obsolete">Radio de dobles</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="188"/>
+        <source>Flange diameter</source>
+        <translation type="obsolete">Diametro de brida</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="189"/>
+        <source>Bore diameter</source>
+        <translation type="obsolete">Diametro de orificio</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="190"/>
+        <source>Bolts distance</source>
+        <translation type="obsolete">Distancia de tornillos</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="191"/>
+        <source>Bolts hole diameter</source>
+        <translation type="obsolete">Diametro de orificio para tornillo</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="192"/>
+        <source>Thickness of flange</source>
+        <translation type="obsolete">Espesor de brida</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="194"/>
+        <source>Thickness of raised face</source>
+        <translation type="obsolete">Espesor de cara elevada</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="195"/>
+        <source>Diameter of raised face</source>
+        <translation type="obsolete">Diametro de cara elevada</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="196"/>
+        <source>Length of welding neck</source>
+        <translation type="obsolete">Longitud de cuello para soldadura</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="197"/>
+        <source>Diameter of welding neck</source>
+        <translation type="obsolete">Diametro de cuello para soldadura</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="198"/>
+        <source>Outside diameter of pipe</source>
+        <translation type="obsolete">Diametro exterior de tuberia</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="247"/>
+        <source>Major diameter</source>
+        <translation type="obsolete">Diametro mayor</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="248"/>
+        <source>Minor diameter</source>
+        <translation type="obsolete">Diametro menor</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="312"/>
+        <source>Section dim.</source>
+        <translation type="obsolete">Dimension de sección.</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="363"/>
+        <source>the radius of bending</source>
+        <translation type="obsolete">El radio de dobles</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="440"/>
+        <source>Arc diameter</source>
+        <translation type="obsolete">Diametro de arco</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="441"/>
+        <source>Overall height</source>
+        <translation type="obsolete">Altura total</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="442"/>
+        <source>Rod diameter</source>
+        <translation type="obsolete">Diametro de vastago</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="470"/>
+        <source>Tank&apos;s length</source>
+        <translation type="obsolete">Longitud de deposito</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="471"/>
+        <source>Tank&apos;s width</source>
+        <translation type="obsolete">Ancho de deposito</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="472"/>
+        <source>Tank&apos;s height</source>
+        <translation type="obsolete">Altura de deposito</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="473"/>
+        <source>Thikness of tank&apos;s shell</source>
+        <translation type="obsolete">Espesor de carcaza del deposito</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="474"/>
+        <source>Thikness of tank&apos;s top</source>
+        <translation type="obsolete">Espesor superior del deposito</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="256"/>
+        <source>Length of reduction</source>
+        <translation type="obsolete">Longitud de reducción</translation>
+    </message>
+</context>
+<context>
+    <name>App::PropertyLink</name>
+    <message>
+        <location filename="../pFeatures.py" line="573"/>
+        <source>The path.</source>
+        <translation type="obsolete">La ruta.</translation>
+    </message>
+</context>
+<context>
+    <name>App::PropertyString</name>
+    <message>
+        <location filename="../pFeatures.py" line="26"/>
+        <source>Type of tubeFeature</source>
+        <translation type="obsolete">Tipo caracteristica de tubo</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="27"/>
+        <source>Rating of pipeFeature</source>
+        <translation type="obsolete">Relacion de caracteristicas de tubo</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="28"/>
+        <source>Nominal diameter</source>
+        <translation type="obsolete">Diametro nominal</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="263"/>
+        <source>Section dim.</source>
+        <translation type="obsolete">Dimension de seccion.</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="187"/>
+        <source>Type of flange</source>
+        <translation type="obsolete">Tipo de brida</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="366"/>
+        <source>The group.</source>
+        <translation type="obsolete">El grupo.</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="437"/>
+        <source>Type of pipeFeature</source>
+        <translation type="obsolete">Tipo de caracteristica de tubo</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="438"/>
+        <source>Type of clamp</source>
+        <translation type="obsolete">Tipo de sujeccion</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="439"/>
+        <source>Size of clamp</source>
+        <translation type="obsolete">Tamaño de sujeccion</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="443"/>
+        <source>Size of thread</source>
+        <translation type="obsolete">Tamaño de rosca</translation>
+    </message>
+</context>
+<context>
+    <name>App::PropertyStringList</name>
+    <message>
+        <location filename="../pFeatures.py" line="571"/>
+        <source>The tubes of the branch.</source>
+        <translation type="obsolete">Tubos de la derivación.</translation>
+    </message>
+    <message>
+        <location filename="../pFeatures.py" line="572"/>
+        <source>The curves of the branch.</source>
+        <translation type="obsolete">Las curvas de la derivacion.</translation>
+    </message>
 </context>
 <context>
     <name>App::PropertyVectorList</name>
     <message>
         <location filename="../pFeatures.py" line="444"/>
         <source>Ports position relative to the origin of Shape</source>
-        <translation>Posicion de los puertos relativos al origen de la forma</translation>
+        <translation type="obsolete">Posicion de los puertos relativos al origen de la forma</translation>
     </message>
 </context>
 <context>
@@ -416,32 +649,32 @@
 <context>
     <name>dodo</name>
     <message>
-        <location filename="../InitGui.py" line="166"/>
+        <location filename="../InitGui.py" line="165"/>
         <source>Frame tools</source>
         <translation>Herramientas para estructuras</translation>
     </message>
     <message>
-        <location filename="../InitGui.py" line="167"/>
+        <location filename="../InitGui.py" line="166"/>
         <source>Pype tools</source>
         <translation>Herramientas para tuberias</translation>
     </message>
     <message>
-        <location filename="../InitGui.py" line="168"/>
+        <location filename="../InitGui.py" line="167"/>
         <source>Utils</source>
         <translation>Utilerias</translation>
     </message>
     <message>
-        <location filename="../InitGui.py" line="169"/>
+        <location filename="../InitGui.py" line="168"/>
         <source>QkMenus</source>
         <translation>Menus QK</translation>
     </message>
     <message>
-        <location filename="../InitGui.py" line="158"/>
+        <location filename="../InitGui.py" line="157"/>
         <source>frametools</source>
         <translation>Herramientas estructurales</translation>
     </message>
     <message>
-        <location filename="../InitGui.py" line="164"/>
+        <location filename="../InitGui.py" line="163"/>
         <source>pypetools</source>
         <translation>Herramientas de tuberia</translation>
     </message>

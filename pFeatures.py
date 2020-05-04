@@ -23,11 +23,11 @@ vZ=FreeCAD.Vector(0,0,1)
 class pypeType(object):
   def __init__(self,obj):
     obj.Proxy = self
-    obj.addProperty("App::PropertyString","PType","PBase",QT_TRANSLATE_NOOP("App::PropertyString","Type of tubeFeature")).PType
-    obj.addProperty("App::PropertyString","PRating","PBase",QT_TRANSLATE_NOOP("App::PropertyString","Rating of pipeFeature")).PRating
-    obj.addProperty("App::PropertyString","PSize","PBase",QT_TRANSLATE_NOOP("App::PropertyString","Nominal diameter")).PSize
-    obj.addProperty("App::PropertyVectorList","Ports","PBase",QT_TRANSLATE_NOOP("App::PropertyVectorList","Ports position relative to the origin of Shape"))
-    obj.addProperty("App::PropertyFloat","Kv","PBase",QT_TRANSLATE_NOOP("App::PropertyFloat","Flow factor (m3/h/bar)")).Kv
+    obj.addProperty("App::PropertyString","PType","PBase",QT_TRANSLATE_NOOP("App::Property","Type of tubeFeature")).PType
+    obj.addProperty("App::PropertyString","PRating","PBase",QT_TRANSLATE_NOOP("App::Property","Rating of pipeFeature")).PRating
+    obj.addProperty("App::PropertyString","PSize","PBase",QT_TRANSLATE_NOOP("App::Property","Nominal diameter")).PSize
+    obj.addProperty("App::PropertyVectorList","Ports","PBase",QT_TRANSLATE_NOOP("App::Property","Ports position relative to the origin of Shape"))
+    obj.addProperty("App::PropertyFloat","Kv","PBase",QT_TRANSLATE_NOOP("App::Property","Flow factor (m3/h/bar)")).Kv
     obj.addExtension("Part::AttachExtensionPython",obj)
     #self.obj=obj sostituire con obj.Name e usare metodi per recuperare obj
     self.Name=obj.Name
@@ -79,11 +79,11 @@ class Pipe(pypeType):
     obj.PRating="SCH-STD"
     obj.PSize=DN
     # define specific properties
-    obj.addProperty("App::PropertyLength","OD","Pipe",QT_TRANSLATE_NOOP("App::PropertyLength","Outside diameter")).OD=OD
-    obj.addProperty("App::PropertyLength","thk","Pipe",QT_TRANSLATE_NOOP("App::PropertyLength","Wall thickness")).thk=thk
-    obj.addProperty("App::PropertyLength","ID","Pipe",QT_TRANSLATE_NOOP("App::PropertyLength","Inside diameter")).ID=obj.OD-2*obj.thk
-    obj.addProperty("App::PropertyLength","Height","Pipe",QT_TRANSLATE_NOOP("App::PropertyLength","Length of tube")).Height=H
-    obj.addProperty("App::PropertyString","Profile","Pipe",QT_TRANSLATE_NOOP("App::PropertyString","Section dim.")).Profile=str(obj.OD)+"x"+str(obj.thk)
+    obj.addProperty("App::PropertyLength","OD","Pipe",QT_TRANSLATE_NOOP("App::Property","Outside diameter")).OD=OD
+    obj.addProperty("App::PropertyLength","thk","Pipe",QT_TRANSLATE_NOOP("App::Property","Wall thickness")).thk=thk
+    obj.addProperty("App::PropertyLength","ID","Pipe",QT_TRANSLATE_NOOP("App::Property","Inside diameter")).ID=obj.OD-2*obj.thk
+    obj.addProperty("App::PropertyLength","Height","Pipe",QT_TRANSLATE_NOOP("App::Property","Length of tube")).Height=H
+    obj.addProperty("App::PropertyString","Profile","Pipe",QT_TRANSLATE_NOOP("App::Property","Section dim.")).Profile=str(obj.OD)+"x"+str(obj.thk)
   def onChanged(self, fp, prop):
     if prop=='ID' and fp.ID<fp.OD:
       fp.thk=(fp.OD-fp.ID)/2
@@ -116,12 +116,12 @@ class Elbow(pypeType):
     obj.PRating="SCH-STD"
     obj.PSize=DN
     # define specific properties
-    obj.addProperty("App::PropertyLength","OD","Elbow",QT_TRANSLATE_NOOP("App::PropertyLength","Outside diameter")).OD=OD
-    obj.addProperty("App::PropertyLength","thk","Elbow",QT_TRANSLATE_NOOP("App::PropertyLength","Wall thickness")).thk=thk
-    obj.addProperty("App::PropertyLength","ID","Elbow",QT_TRANSLATE_NOOP("App::PropertyLength","Inside diameter")).ID=obj.OD-2*obj.thk
-    obj.addProperty("App::PropertyAngle","BendAngle","Elbow",QT_TRANSLATE_NOOP("App::PropertyAngle","Bend Angle")).BendAngle=BA
-    obj.addProperty("App::PropertyLength","BendRadius","Elbow",QT_TRANSLATE_NOOP("App::PropertyLength","Bend Radius")).BendRadius=BR
-    obj.addProperty("App::PropertyString","Profile","Elbow",QT_TRANSLATE_NOOP("App::PropertyString","Section dim.")).Profile=str(obj.OD)+"x"+str(obj.thk)
+    obj.addProperty("App::PropertyLength","OD","Elbow",QT_TRANSLATE_NOOP("App::Property","Outside diameter")).OD=OD
+    obj.addProperty("App::PropertyLength","thk","Elbow",QT_TRANSLATE_NOOP("App::Property","Wall thickness")).thk=thk
+    obj.addProperty("App::PropertyLength","ID","Elbow",QT_TRANSLATE_NOOP("App::Property","Inside diameter")).ID=obj.OD-2*obj.thk
+    obj.addProperty("App::PropertyAngle","BendAngle","Elbow",QT_TRANSLATE_NOOP("App::Property","Bend Angle")).BendAngle=BA
+    obj.addProperty("App::PropertyLength","BendRadius","Elbow",QT_TRANSLATE_NOOP("App::Property","Bend Radius")).BendRadius=BR
+    obj.addProperty("App::PropertyString","Profile","Elbow",QT_TRANSLATE_NOOP("App::Property","Section dim.")).Profile=str(obj.OD)+"x"+str(obj.thk)
     #obj.Ports=[FreeCAD.Vector(1,0,0),FreeCAD.Vector(0,1,0)]
     self.execute(obj)
   def onChanged(self, fp, prop):
@@ -184,18 +184,18 @@ class Flange(pypeType):
     obj.PRating="DIN-PN16"
     obj.PSize=DN
     # define specific properties
-    obj.addProperty("App::PropertyString","FlangeType","Flange",QT_TRANSLATE_NOOP("App::PropertyString","Type of flange")).FlangeType=FlangeType
-    obj.addProperty("App::PropertyLength","D","Flange",QT_TRANSLATE_NOOP("App::PropertyLength","Flange diameter")).D=D
-    obj.addProperty("App::PropertyLength","d","Flange",QT_TRANSLATE_NOOP("App::PropertyLength","Bore diameter")).d=d
-    obj.addProperty("App::PropertyLength","df","Flange",QT_TRANSLATE_NOOP("App::PropertyLength","Bolts distance")).df=df
-    obj.addProperty("App::PropertyLength","f","Flange",QT_TRANSLATE_NOOP("App::PropertyLength","Bolts hole diameter")).f=f
-    obj.addProperty("App::PropertyLength","t","Flange",QT_TRANSLATE_NOOP("App::PropertyLength","Thickness of flange")).t=t
-    obj.addProperty("App::PropertyInteger","n","Flange",QT_TRANSLATE_NOOP("App::PropertyInteger","Nr. of bolts")).n=n
-    obj.addProperty("App::PropertyLength","trf","Flange2",QT_TRANSLATE_NOOP("App::PropertyLength","Thickness of raised face")).trf=trf
-    obj.addProperty("App::PropertyLength","drf","Flange2",QT_TRANSLATE_NOOP("App::PropertyLength","Diameter of raised face")).drf=drf
-    obj.addProperty("App::PropertyLength","twn","Flange2",QT_TRANSLATE_NOOP("App::PropertyLength","Length of welding neck")).twn=twn
-    obj.addProperty("App::PropertyLength","dwn","Flange2",QT_TRANSLATE_NOOP("App::PropertyLength","Diameter of welding neck")).dwn=dwn
-    obj.addProperty("App::PropertyLength","ODp","Flange2",QT_TRANSLATE_NOOP("App::PropertyLength","Outside diameter of pipe")).ODp=ODp
+    obj.addProperty("App::PropertyString","FlangeType","Flange",QT_TRANSLATE_NOOP("App::Property","Type of flange")).FlangeType=FlangeType
+    obj.addProperty("App::PropertyLength","D","Flange",QT_TRANSLATE_NOOP("App::Property","Flange diameter")).D=D
+    obj.addProperty("App::PropertyLength","d","Flange",QT_TRANSLATE_NOOP("App::Property","Bore diameter")).d=d
+    obj.addProperty("App::PropertyLength","df","Flange",QT_TRANSLATE_NOOP("App::Property","Bolts distance")).df=df
+    obj.addProperty("App::PropertyLength","f","Flange",QT_TRANSLATE_NOOP("App::Property","Bolts hole diameter")).f=f
+    obj.addProperty("App::PropertyLength","t","Flange",QT_TRANSLATE_NOOP("App::Property","Thickness of flange")).t=t
+    obj.addProperty("App::PropertyInteger","n","Flange",QT_TRANSLATE_NOOP("App::Property","Nr. of bolts")).n=n
+    obj.addProperty("App::PropertyLength","trf","Flange2",QT_TRANSLATE_NOOP("App::Property","Thickness of raised face")).trf=trf
+    obj.addProperty("App::PropertyLength","drf","Flange2",QT_TRANSLATE_NOOP("App::Property","Diameter of raised face")).drf=drf
+    obj.addProperty("App::PropertyLength","twn","Flange2",QT_TRANSLATE_NOOP("App::Property","Length of welding neck")).twn=twn
+    obj.addProperty("App::PropertyLength","dwn","Flange2",QT_TRANSLATE_NOOP("App::Property","Diameter of welding neck")).dwn=dwn
+    obj.addProperty("App::PropertyLength","ODp","Flange2",QT_TRANSLATE_NOOP("App::Property","Outside diameter of pipe")).ODp=ODp
   def onChanged(self, fp, prop):
     return None
   def execute(self, fp):
@@ -244,24 +244,24 @@ class Reduct(pypeType):
     obj.PRating="SCH-STD"
     obj.PSize=DN
     # define specific properties
-    obj.addProperty("App::PropertyLength","OD","Reduct",QT_TRANSLATE_NOOP("App::PropertyLength","Major diameter")).OD=OD
-    obj.addProperty("App::PropertyLength","OD2","Reduct",QT_TRANSLATE_NOOP("App::PropertyLength","Minor diameter")).OD2=OD2
-    obj.addProperty("App::PropertyLength","thk","Reduct",QT_TRANSLATE_NOOP("App::PropertyLength","Wall thickness")).thk=thk
-    obj.addProperty("App::PropertyLength","thk2","Reduct",QT_TRANSLATE_NOOP("App::PropertyLength","Wall thickness"))
+    obj.addProperty("App::PropertyLength","OD","Reduct",QT_TRANSLATE_NOOP("App::Property","Major diameter")).OD=OD
+    obj.addProperty("App::PropertyLength","OD2","Reduct",QT_TRANSLATE_NOOP("App::Property","Minor diameter")).OD2=OD2
+    obj.addProperty("App::PropertyLength","thk","Reduct",QT_TRANSLATE_NOOP("App::Property","Wall thickness")).thk=thk
+    obj.addProperty("App::PropertyLength","thk2","Reduct",QT_TRANSLATE_NOOP("App::Property","Wall thickness"))
     if not thk2:
       obj.thk2=thk
     else:
       obj.thk2=thk2
-    obj.addProperty("App::PropertyBool","calcH","Reduct",QT_TRANSLATE_NOOP("App::PropertyBool","Make the lenght variable"))
-    obj.addProperty("App::PropertyLength","Height","Reduction",QT_TRANSLATE_NOOP("App::PropertyLength","Length of reduction"))
+    obj.addProperty("App::PropertyBool","calcH","Reduct",QT_TRANSLATE_NOOP("App::Property","Make the lenght variable"))
+    obj.addProperty("App::PropertyLength","Height","Reduction",QT_TRANSLATE_NOOP("App::Property","Length of reduction"))
     if not H:
       obj.calcH=True
       obj.Height=3*(obj.OD-obj.OD2)
     else:
       obj.calcH=False
       obj.Height=float(H)
-    obj.addProperty("App::PropertyString","Profile","Reduct",QT_TRANSLATE_NOOP("App::PropertyString","Section dim.")).Profile=str(obj.OD)+"x"+str(obj.OD2)
-    obj.addProperty("App::PropertyBool","conc","Reduct",QT_TRANSLATE_NOOP("App::PropertyBool","Concentric or Eccentric")).conc=conc
+    obj.addProperty("App::PropertyString","Profile","Reduct",QT_TRANSLATE_NOOP("App::Property","Section dim.")).Profile=str(obj.OD)+"x"+str(obj.OD2)
+    obj.addProperty("App::PropertyBool","conc","Reduct",QT_TRANSLATE_NOOP("App::Property","Concentric or Eccentric")).conc=conc
   def onChanged(self, fp, prop):
     return None
   def execute(self, fp):
@@ -306,10 +306,10 @@ class Cap(pypeType):
     obj.PRating="SCH-STD"
     obj.PSize=DN
     # define specific properties
-    obj.addProperty("App::PropertyLength","OD","Cap",QT_TRANSLATE_NOOP("App::PropertyLength","Outside diameter")).OD=OD
-    obj.addProperty("App::PropertyLength","thk","Cap",QT_TRANSLATE_NOOP("App::PropertyLength","Wall thickness")).thk=thk
-    obj.addProperty("App::PropertyLength","ID","Cap",QT_TRANSLATE_NOOP("App::PropertyLength","Inside diameter")).ID=obj.OD-2*obj.thk
-    obj.addProperty("App::PropertyString","Profile","Cap",QT_TRANSLATE_NOOP("App::PropertyLength","Section dim.")).Profile=str(obj.OD)+"x"+str(obj.thk)
+    obj.addProperty("App::PropertyLength","OD","Cap",QT_TRANSLATE_NOOP("App::Property","Outside diameter")).OD=OD
+    obj.addProperty("App::PropertyLength","thk","Cap",QT_TRANSLATE_NOOP("App::Property","Wall thickness")).thk=thk
+    obj.addProperty("App::PropertyLength","ID","Cap",QT_TRANSLATE_NOOP("App::Property","Inside diameter")).ID=obj.OD-2*obj.thk
+    obj.addProperty("App::PropertyString","Profile","Cap",QT_TRANSLATE_NOOP("App::Property","Section dim.")).Profile=str(obj.OD)+"x"+str(obj.thk)
   def onChanged(self, fp, prop):
     return None
   def execute(self, fp):
@@ -360,10 +360,10 @@ class PypeLine2(pypeType):
     # define specific properties
     if not BR:
       BR=0.75*OD
-    obj.addProperty("App::PropertyLength","BendRadius","PypeLine2",QT_TRANSLATE_NOOP("App::PropertyLength","the radius of bending")).BendRadius=BR
-    obj.addProperty("App::PropertyLength","OD","PypeLine2",QT_TRANSLATE_NOOP("App::PropertyLength","Outside diameter")).OD=OD
-    obj.addProperty("App::PropertyLength","thk","PypeLine2",QT_TRANSLATE_NOOP("App::PropertyLength","Wall thickness")).thk=thk
-    obj.addProperty("App::PropertyString","Group","PypeLine2",QT_TRANSLATE_NOOP("App::PropertyString","The group.")).Group=obj.Label+"_pieces"
+    obj.addProperty("App::PropertyLength","BendRadius","PypeLine2",QT_TRANSLATE_NOOP("App::Property","the radius of bending")).BendRadius=BR
+    obj.addProperty("App::PropertyLength","OD","PypeLine2",QT_TRANSLATE_NOOP("App::Property","Outside diameter")).OD=OD
+    obj.addProperty("App::PropertyLength","thk","PypeLine2",QT_TRANSLATE_NOOP("App::Property","Wall thickness")).thk=thk
+    obj.addProperty("App::PropertyString","Group","PypeLine2",QT_TRANSLATE_NOOP("App::Property","The group.")).Group=obj.Label+"_pieces"
     group=FreeCAD.activeDocument().addObject("App::DocumentObjectGroup",obj.Group)
     group.addObject(obj)
     FreeCAD.Console.PrintWarning("Created group "+obj.Group+"\n")
@@ -434,14 +434,14 @@ class Ubolt():
   '''
   def __init__(self, obj,DN="DN50",ClampType="DIN-UBolt", C=76, H=109, d=10):
     obj.Proxy = self
-    obj.addProperty("App::PropertyString","PType","Ubolt",QT_TRANSLATE_NOOP("App::PropertyString","Type of pipeFeature")).PType="Clamp"
-    obj.addProperty("App::PropertyString","ClampType","Ubolt",QT_TRANSLATE_NOOP("App::PropertyString","Type of clamp")).ClampType=ClampType
-    obj.addProperty("App::PropertyString","PSize","Ubolt",QT_TRANSLATE_NOOP("App::PropertyString","Size of clamp")).PSize=DN
-    obj.addProperty("App::PropertyLength","C","Ubolt",QT_TRANSLATE_NOOP("App::PropertyLength","Arc diameter")).C=C
-    obj.addProperty("App::PropertyLength","H","Ubolt",QT_TRANSLATE_NOOP("App::PropertyLength","Overall height")).H=H
-    obj.addProperty("App::PropertyLength","d","Ubolt",QT_TRANSLATE_NOOP("App::PropertyLength","Rod diameter")).d=d
-    obj.addProperty("App::PropertyString","thread","Ubolt",QT_TRANSLATE_NOOP("App::PropertyString","Size of thread")).thread="M"+str(d)
-    obj.addProperty("App::PropertyVectorList","Ports","PBase",QT_TRANSLATE_NOOP("App::PropertyVectorList","Ports position relative to the origin of Shape"))
+    obj.addProperty("App::PropertyString","PType","Ubolt",QT_TRANSLATE_NOOP("App::Property","Type of pipeFeature")).PType="Clamp"
+    obj.addProperty("App::PropertyString","ClampType","Ubolt",QT_TRANSLATE_NOOP("App::Property","Type of clamp")).ClampType=ClampType
+    obj.addProperty("App::PropertyString","PSize","Ubolt",QT_TRANSLATE_NOOP("App::Property","Size of clamp")).PSize=DN
+    obj.addProperty("App::PropertyLength","C","Ubolt",QT_TRANSLATE_NOOP("App::Property","Arc diameter")).C=C
+    obj.addProperty("App::PropertyLength","H","Ubolt",QT_TRANSLATE_NOOP("App::Property","Overall height")).H=H
+    obj.addProperty("App::PropertyLength","d","Ubolt",QT_TRANSLATE_NOOP("App::Property","Rod diameter")).d=d
+    obj.addProperty("App::PropertyString","thread","Ubolt",QT_TRANSLATE_NOOP("App::Property","Size of thread")).thread="M"+str(d)
+    obj.addProperty("App::PropertyVectorList","Ports","PBase",QT_TRANSLATE_NOOP("App::Property","Ports position relative to the origin of Shape"))
   def onChanged(self, fp, prop):
     return None
   def execute(self, fp):
@@ -467,11 +467,11 @@ class Shell():
   '''
   def __init__(self,obj,L=800,W=400,H=500,thk1=6, thk2=8):
     obj.Proxy=self
-    obj.addProperty("App::PropertyLength","L","Tank",QT_TRANSLATE_NOOP("App::PropertyLength","Tank's length")).L=L
-    obj.addProperty("App::PropertyLength","W","Tank",QT_TRANSLATE_NOOP("App::PropertyLength","Tank's width")).W=W
-    obj.addProperty("App::PropertyLength","H","Tank",QT_TRANSLATE_NOOP("App::PropertyLength","Tank's height")).H=H
-    obj.addProperty("App::PropertyLength","thk1","Tank",QT_TRANSLATE_NOOP("App::PropertyLength","Thikness of tank's shell")).thk1=thk1
-    obj.addProperty("App::PropertyLength","thk2","Tank",QT_TRANSLATE_NOOP("App::PropertyLength","Thikness of tank's top")).thk2=thk2
+    obj.addProperty("App::PropertyLength","L","Tank",QT_TRANSLATE_NOOP("App::Property","Tank's length")).L=L
+    obj.addProperty("App::PropertyLength","W","Tank",QT_TRANSLATE_NOOP("App::Property","Tank's width")).W=W
+    obj.addProperty("App::PropertyLength","H","Tank",QT_TRANSLATE_NOOP("App::Property","Tank's height")).H=H
+    obj.addProperty("App::PropertyLength","thk1","Tank",QT_TRANSLATE_NOOP("App::Property","Thikness of tank's shell")).thk1=thk1
+    obj.addProperty("App::PropertyLength","thk2","Tank",QT_TRANSLATE_NOOP("App::Property","Thikness of tank's top")).thk2=thk2
   def onChanged(self, fp, prop):
     return None
   def execute(self, fp):
@@ -535,9 +535,9 @@ class Valve(pypeType):
     obj.PSize=DN
     obj.Kv=Kv
     # define specific properties
-    obj.addProperty("App::PropertyLength","OD","Valve",QT_TRANSLATE_NOOP("App::PropertyLength","Outside diameter")).OD=OD
-    obj.addProperty("App::PropertyLength","ID","Valve",QT_TRANSLATE_NOOP("App::PropertyLength","Inside diameter")).ID=ID
-    obj.addProperty("App::PropertyLength","Height","Valve",QT_TRANSLATE_NOOP("App::PropertyLength","Length of tube")).Height=H
+    obj.addProperty("App::PropertyLength","OD","Valve",QT_TRANSLATE_NOOP("App::Property","Outside diameter")).OD=OD
+    obj.addProperty("App::PropertyLength","ID","Valve",QT_TRANSLATE_NOOP("App::Property","Inside diameter")).ID=ID
+    obj.addProperty("App::PropertyLength","Height","Valve",QT_TRANSLATE_NOOP("App::Property","Length of tube")).Height=H
   def execute(self, fp):
     c=Part.makeCone(fp.OD/2,fp.OD/5,fp.Height/2)
     v=c.fuse(c.mirror(FreeCAD.Vector(0,0,fp.Height/2),FreeCAD.Vector(0,0,1)))
@@ -564,13 +564,13 @@ class PypeBranch2(pypeType): # use AttachExtensionPython
     obj.PRating=PRating
     # define specific properties
     obj.addExtension("App::GroupExtensionPython",obj)  # GROUP test in progress!
-    obj.addProperty("App::PropertyLength","OD","PypeBranch",QT_TRANSLATE_NOOP("App::PropertyLength","Outside diameter")).OD=OD
-    obj.addProperty("App::PropertyLength","thk","PypeBranch",QT_TRANSLATE_NOOP("App::PropertyLength","Wall thickness")).thk=thk
+    obj.addProperty("App::PropertyLength","OD","PypeBranch",QT_TRANSLATE_NOOP("App::Property","Outside diameter")).OD=OD
+    obj.addProperty("App::PropertyLength","thk","PypeBranch",QT_TRANSLATE_NOOP("App::Property","Wall thickness")).thk=thk
     if not BR: BR=0.75*OD
-    obj.addProperty("App::PropertyLength","BendRadius","PypeBranch",QT_TRANSLATE_NOOP("App::PropertyLength","Bend Radius")).BendRadius=BR
-    obj.addProperty("App::PropertyStringList","Tubes","PypeBranch",QT_TRANSLATE_NOOP("App::PropertyStringList","The tubes of the branch."))
-    obj.addProperty("App::PropertyStringList","Curves","PypeBranch",QT_TRANSLATE_NOOP("App::PropertyStringList","The curves of the branch."))
-    obj.addProperty("App::PropertyLink","Base","PypeBranch",QT_TRANSLATE_NOOP("App::PropertyLink","The path."))
+    obj.addProperty("App::PropertyLength","BendRadius","PypeBranch",QT_TRANSLATE_NOOP("App::Property","Bend Radius")).BendRadius=BR
+    obj.addProperty("App::PropertyStringList","Tubes","PypeBranch",QT_TRANSLATE_NOOP("App::Property","The tubes of the branch."))
+    obj.addProperty("App::PropertyStringList","Curves","PypeBranch",QT_TRANSLATE_NOOP("App::Property","The curves of the branch."))
+    obj.addProperty("App::PropertyLink","Base","PypeBranch",QT_TRANSLATE_NOOP("App::Property","The path."))
     if hasattr(base,"Shape") and base.Shape.Edges:
       obj.Base=base
     else:

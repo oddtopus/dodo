@@ -31,8 +31,6 @@ class dodo ( Workbench ):
       FreeCADGui.Snapper = DraftSnap.Snapper()
 
   import sys, FreeCAD
-  from PySide.QtCore import QT_TRANSLATE_NOOP
-  from DraftGui import translate
   v=sys.version_info[0]
   if v<3: FreeCAD.Console.PrintWarning('Dodo is written for Py3 and Qt5\n You may experience mis-behaviuors\n')
   Icon = '''
@@ -143,7 +141,8 @@ static char * dodo1_xpm[] = {
   MenuText = "Dodo WB"
   ToolTip = "Dodo workbench \n(substitute of flamingo for Py3/Qt5)"
   def Initialize(self):
-    import CUtils, pForms
+    import pForms
+    import CUtils
     import CFrame
     import CPipe
     from PySide.QtCore import QT_TRANSLATE_NOOP
