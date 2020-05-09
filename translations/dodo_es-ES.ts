@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="es" sourcelanguage="">
+<!DOCTYPE TS>
+<TS version="2.1" language="es">
 <context>
     <name>App::Property</name>
     <message>
@@ -284,7 +285,7 @@
     <message>
         <location filename="../pCmd.py" line="445"/>
         <source>Reduction</source>
-        <translation>Reducción</translation>
+        <translation>Reduccion</translation>
     </message>
     <message>
         <location filename="../pCmd.py" line="471"/>
@@ -304,7 +305,7 @@
     <message>
         <location filename="../pCmd.py" line="990"/>
         <source>Valve</source>
-        <translation>Válvula</translation>
+        <translation>Valvula</translation>
     </message>
 </context>
 <context>
