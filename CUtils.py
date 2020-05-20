@@ -4,9 +4,11 @@ __license__="LGPL 3"
 
 # import FreeCAD modules
 import FreeCAD, FreeCADGui,inspect , os
+from PySide.QtCore import QT_TRANSLATE_NOOP
+from DraftGui import translate
 
 # helper -------------------------------------------------------------------
-# FreeCAD TemplatePyMod module  
+# FreeCAD TemplatePyMod module
 # (c) 2007 Juergen Riegel LGPL
 
 def addCommand(name,cmdObject):
@@ -31,11 +33,15 @@ class queryModel:
     form = uForms.QueryForm(FreeCADGui.Selection)
 
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","query.svg"),'Accel':"Q,M",'MenuText':'query the model','ToolTip':'Click objects to print infos'}
-    
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+	"iconz","query.svg"),
+	'Accel':"Q,M",
+	'MenuText':QT_TRANSLATE_NOOP('queryModel','query the model'),
+	'ToolTip':QT_TRANSLATE_NOOP('queryModel','Click objects to print infos')}
+
 class moveWorkPlane:
   '''
-  Tool to set the DraftWorkingPlane according existing geometry of 
+  Tool to set the DraftWorkingPlane according existing geometry of
   the model.
   The normal of plane is set:
   * 1st according the selected face,
@@ -51,8 +57,12 @@ class moveWorkPlane:
     uCmd.setWP()
 
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","grid.svg"),'Accel':"A,W",'MenuText':'align Workplane','ToolTip':'Moves and rotates the drafting workplane with points, edges and faces'}
-    
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+	"iconz","grid.svg"),
+	'Accel':"A,W",
+	'MenuText':QT_TRANSLATE_NOOP('moveWorkPlane','align Workplane'),
+	'ToolTip':QT_TRANSLATE_NOOP('moveWorkPlane','Moves and rotates the drafting workplane with points, edges and faces')}
+
 class rotateWorkPlane:
 
   def Activated(self):
@@ -60,8 +70,12 @@ class rotateWorkPlane:
     form = uForms.rotWPForm()
 
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","rotWP.svg"),'Accel':"R,W",'MenuText':'rotate Workplane','ToolTip':'Spin the Draft working plane about one of its axes'}
-    
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+	"iconz","rotWP.svg"),
+	'Accel':"R,W",
+	'MenuText':QT_TRANSLATE_NOOP('rotateWorkPlane','rotate Workplane'),
+	'ToolTip':QT_TRANSLATE_NOOP('rotateWorkPlane','Spin the Draft working plane about one of its axes')}
+
 class offsetWorkPlane:
 
   def Activated(self):
@@ -77,8 +91,12 @@ class offsetWorkPlane:
       #FreeCADGui.ActiveDocument.ActiveView.getSceneGraph().removeChild(arrow.node)
       arrow.closeArrow()
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","offsetWP.svg"),'Accel':"O,W",'MenuText':'offset Workplane','ToolTip':'Shifts the WP alongg its normal.'}
-    
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+	"iconz","offsetWP.svg"),
+	'Accel':"O,W",
+	'MenuText':QT_TRANSLATE_NOOP('offsetWorkPlane','offset Workplane'),
+	'ToolTip':QT_TRANSLATE_NOOP('offsetWorkPlane','Shifts the WP alongg its normal.')}
+
 class hackedL:
 
   def Activated(self):
@@ -86,8 +104,12 @@ class hackedL:
     form = uCmd.hackedLine()
 
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","hackedL.svg"),'Accel':"H,L",'MenuText':'draw a DWire','ToolTip':'WP is re-positioned at each point. Possible to spin and offset it.'}
-    
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+	"iconz","hackedL.svg"),
+	'Accel':"H,L",
+	'MenuText':QT_TRANSLATE_NOOP('hackedL','draw a DWire'),
+	'ToolTip':QT_TRANSLATE_NOOP('hackedL','WP is re-positioned at each point. Possible to spin and offset it.')}
+
 class moveHandle:
 
   def Activated(self):
@@ -96,8 +118,12 @@ class moveHandle:
     #form = uCmd.handleDialog()
 
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","moveHandle.svg"),'Accel':"M,H",'MenuText':'Move objects','ToolTip':'Move quickly objects inside viewport'}
-    
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+	"iconz","moveHandle.svg"),
+	'Accel':"M,H",
+	'MenuText':QT_TRANSLATE_NOOP('moveHandle','Move objects'),
+	'ToolTip':QT_TRANSLATE_NOOP('moveHandle','Move quickly objects inside viewport')}
+
 class dpCalc:
 
   def Activated(self):
@@ -105,7 +131,10 @@ class dpCalc:
     FreeCADGui.Control.showDialog(uForms.dpCalcDialog())
 
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","delta.svg"),'MenuText':'Pressure loss calculator','ToolTip':'Calculate pressure loss in "pypes" using ChEDL libraries.\n See __doc__ of the module for futher information.'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+	"iconz","delta.svg"),
+	'MenuText':QT_TRANSLATE_NOOP('dpCalc','Pressure loss calculator'),
+	'ToolTip':QT_TRANSLATE_NOOP('dpCalc','Calculate pressure loss in "pypes" using ChEDL libraries.\n See __doc__ of the module for futher information.')}
 
 class selectSolids:
 
@@ -116,13 +145,16 @@ class selectSolids:
     getSolids(allDoc)
 
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","solids.svg"),'MenuText':'Select solids','ToolTip':'Grab all solids or those partially selected\n to export in .step format'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),
+	"iconz","solids.svg"),
+	'MenuText':QT_TRANSLATE_NOOP('selectSolids','Select solids'),
+	'ToolTip':QT_TRANSLATE_NOOP('selectSolids','Grab all solids or those partially selected\n to export in .step format')}
 
 #---------------------------------------------------------------------------
 # Adds the commands to the FreeCAD command manager
 #---------------------------------------------------------------------------
-addCommand('queryModel',queryModel()) 
-addCommand('moveWorkPlane',moveWorkPlane()) 
+addCommand('queryModel',queryModel())
+addCommand('moveWorkPlane',moveWorkPlane())
 addCommand('rotateWorkPlane',rotateWorkPlane())
 addCommand('offsetWorkPlane',offsetWorkPlane())
 addCommand('hackedL',hackedL())
