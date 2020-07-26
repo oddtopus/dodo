@@ -869,11 +869,42 @@ def extendTheTubes2intersection(pipe1=None,pipe2=None,both=True):
       pipe1,pipe2=fCmd.beams()[:2]
     except:
       FreeCAD.Console.PrintError('Insufficient arguments for extendTheTubes2intersection\n')
-  P=fCmd.intersectionCLines(pipe1,pipe2)
+  P=fCmd.intersectionCLines(pipe1,pipe2) 
   if P!=None:
     fCmd.extendTheBeam(pipe1,P)
     if both:
       fCmd.extendTheBeam(pipe2,P)
+
+def header(): #start 20200725
+  '''
+  creates an header with multiple branches
+  '''
+  import BOPTools.JoinFeatures
+  branches=fCmd.beams()
+  for p in branches:
+    if not hasattr(p,'PType') and p.PType!='Pipe':
+      branches.pop(branches.index(p))
+  if len(branches)>1:
+    header=branches.pop(0)
+    for branch in branches:
+      P=fCmd.intersectionCLines(branch,header) # sostituire con estensione di tubo fino a superficie + "delta"
+      #P=branch.Shape.distToShape(header.Shape)[1][1])
+      if P!=None: # eliminare, condizione non necessaria
+        fCmd.extendTheBeam(branch,P)
+      else:
+        branches.pop(branches.index(branch))
+        FreeCAD.Console.PrintError('Pipe '+branch.Label+' does not intersect header\n')
+    pl=header.Placement
+    for p in [header]+branches:
+      p.Placement=pl.inverse().multiply(p.Placement)
+    join= BOPTools.JoinFeatures.makeConnect('Header')
+    join.Objects=[header]+branches
+    join.Placement=pl
+    for pipe in join.Objects:
+      pipe.ViewObject.Visibility=False
+  else:
+    FreeCAD.Console.PrintError('Insufficient pipes selected\n')
+
 
 def laydownTheTube(pipe=None, refFace=None, support=None):
   '''

@@ -239,6 +239,16 @@ class insertRoute:
   def GetResources(self):
     return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","route.svg"),'MenuText':'Insert a pipe route','ToolTip':'Create a sketch attached to a circular edge'} 
 
+class makeHeader:
+  def Activated (self):
+    import pCmd
+    FreeCAD.activeDocument().openTransaction('Connect to header')
+    pCmd.header()
+    FreeCAD.activeDocument().recompute()
+    FreeCAD.activeDocument().commitTransaction()
+  def GetResources(self):
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","header.svg"),'MenuText':'Connect to header','ToolTip':'Connect branches to one header pipe'}
+
 #---------------------------------------------------------------------------
 # Adds the commands to the FreeCAD command manager
 #---------------------------------------------------------------------------
@@ -264,6 +274,7 @@ addCommand('laydown',laydown())
 addCommand('raiseup',raiseup())
 addCommand('point2point',point2point())
 addCommand('insertAnyz',insertAnyz())
+addCommand('makeHeader',makeHeader())
 
 ### QkMenus ###
 class pipeQM:
