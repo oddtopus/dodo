@@ -882,26 +882,45 @@ def header(): #start 20200725
   import BOPTools.JoinFeatures
   branches=fCmd.beams()
   for p in branches:
-    if not hasattr(p,'PType') and p.PType!='Pipe':
+    if not hasattr(p,'PType'):
+      branches.pop(branches.index(p))
+    elif p.PType!='Pipe':
       branches.pop(branches.index(p))
   if len(branches)>1:
     header=branches.pop(0)
-    for branch in branches:
-      P=fCmd.intersectionCLines(branch,header) # sostituire con estensione di tubo fino a superficie + "delta"
-      #P=branch.Shape.distToShape(header.Shape)[1][1])
-      if P!=None: # eliminare, condizione non necessaria
-        fCmd.extendTheBeam(branch,P)
-      else:
-        branches.pop(branches.index(branch))
-        FreeCAD.Console.PrintError('Pipe '+branch.Label+' does not intersect header\n')
+    print ("Header is "+header.Label)
     pl=header.Placement
-    for p in [header]+branches:
-      p.Placement=pl.inverse().multiply(p.Placement)
-    join= BOPTools.JoinFeatures.makeConnect('Header')
-    join.Objects=[header]+branches
-    join.Placement=pl
-    for pipe in join.Objects:
-      pipe.ViewObject.Visibility=False
+    for t in [header]+branches:
+      t.Placement=pl.inverse().multiply(t.Placement)
+    O=FreeCAD.Vector(0,0,0)
+    Z=FreeCAD.Vector(0,0,1)
+    for t in branches:
+      P=t.Proxy.nearestPort(FreeCAD.Vector())[1]
+      if t.Proxy.nearestPort(O)[0]:
+        u=fCmd.beamAx(t).negative()
+      else:
+        u=fCmd.beamAx(t)
+      I=P.projectToPlane(O,u)
+      I[2]=0.0
+      # migliorare aggiustamento delta in funzione di ang e t.OD    
+      delta=(float(header.OD/2)**2-I.Length**2)**.5-float(header.thk)-float(t.OD/2)
+      if round(u.dot(Z),5) or delta.imag:# or round(I.Length+float(t.OD)/2,3)>round(float(header.OD)/2,3):
+        print('%s has exception and will not be connected' %(t.Label))
+        branches[branches.index(t)]=None
+        t.Placement=pl.multiply(t.Placement)
+      else:
+        fCmd.extendTheBeam(t,I+u*delta)
+      ### join and move back
+    branches=[b for b in branches if b]
+    if branches:
+      join= BOPTools.JoinFeatures.makeConnect('Header')
+      join.Objects=[header]+branches
+      join.Placement=pl
+      for pipe in join.Objects:
+        pipe.ViewObject.Visibility=False
+    else:
+      header.Placement=pl.multiply(header.Placement)
+    FreeCAD.activeDocument().recompute()
   else:
     FreeCAD.Console.PrintError('Insufficient pipes selected\n')
 

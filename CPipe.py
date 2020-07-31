@@ -247,7 +247,7 @@ class makeHeader:
     FreeCAD.activeDocument().recompute()
     FreeCAD.activeDocument().commitTransaction()
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","header.svg"),'MenuText':'Connect to header','ToolTip':'Connect branches to one header pipe'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","header.svg"),'MenuText':'Connect to header','ToolTip':'Connect branches to one header pipe\nBranches and header\'s axes must be ortho'}
 
 #---------------------------------------------------------------------------
 # Adds the commands to the FreeCAD command manager
