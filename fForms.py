@@ -8,6 +8,7 @@ from PySide.QtCore import *
 from PySide.QtGui import *
 from os.path import join, dirname, abspath
 from sys import platform
+from uCmd import label3D
 
 FTypes=['R','circle','T','H','U','L','Z','omega']
 
@@ -60,7 +61,7 @@ class extendForm(dodoDialogs.protoTypeDialog):
         fCmd.extendTheBeam(beam,self.target)
       FreeCAD.activeDocument().recompute()
       FreeCAD.activeDocument().commitTransaction()
-      
+              
 class stretchForm(dodoDialogs.protoTypeDialog):
   '''dialog for stretchTheBeam()
     [Get Length] measures the min. distance of the selected objects or
@@ -101,12 +102,12 @@ class stretchForm(dodoDialogs.protoTypeDialog):
     else:
       self.form.edit1.setText('') 
     self.form.slider.setValue(0)
-    self.writeTail()
-  def writeTail(self):
-    if fCmd.beams():
-      beam=fCmd.beams()[0]
-      from uCmd import label3D
-      self.labTail=label3D(pl=beam.Placement, text='____TAIL')
+    # self.writeTail()
+  # def writeTail(self):
+    # if fCmd.beams():
+      # beam=fCmd.beams()[0]
+      # from uCmd import label3D
+      # self.labTail=label3D(pl=beam.Placement, text='____TAIL')
   def accept(self):
     if self.labTail:
       self.labTail.removeLabel()
@@ -130,6 +131,24 @@ class stretchForm(dodoDialogs.protoTypeDialog):
     if self.labTail:
       self.labTail.removeLabel()
     super(stretchForm,self).reject()
+  def mouseActionB1(self, CtrlAltShift):
+    v = FreeCADGui.ActiveDocument.ActiveView
+    i = v.getObjectInfo(v.getCursorPos())
+    if i: 
+      labText=i['Object']
+      obj=FreeCAD.ActiveDocument.getObject(i['Object'])
+      if hasattr(obj,'Height'):
+        if self.labTail:
+          self.labTail.removeLabel()
+        self.labTail=label3D(pl=obj.Placement, text='____TAIL')
+      else:
+        if self.labTail:
+          self.labTail.removeLabel()
+        self.labTail=label3D(pl=FreeCAD.Placement(), text='')
+    else:
+      if self.labTail:
+        self.labTail.removeLabel()
+      self.labTail=label3D(pl=FreeCAD.Placement(), text='')
 
 class translateForm(dodoDialogs.protoTypeDialog):   
   'dialog for moving blocks'

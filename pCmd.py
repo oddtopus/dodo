@@ -916,6 +916,7 @@ def header(): #start 20200725
       join= BOPTools.JoinFeatures.makeConnect('Header')
       join.Objects=[header]+branches
       join.Placement=pl
+      join.Refine=True
       for pipe in join.Objects:
         pipe.ViewObject.Visibility=False
     else:
