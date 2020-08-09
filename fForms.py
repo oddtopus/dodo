@@ -288,8 +288,12 @@ class alignForm(dodoDialogs.protoTypeDialog):
     objs=FreeCADGui.Selection.getSelection() #beams=fCmd.beams()
     if len(faces)==len(objs)>0 and self.faceRef:
       FreeCAD.activeDocument().openTransaction('AlignFlange')
-      for i in range(len(objs)):
-        fCmd.rotTheBeam(objs[i],self.faceRef,faces[i])
+      if self.form.cbInvert.isChecked():
+        for i in range(len(objs)):
+          fCmd.rotTheBeam(objs[i],self.faceRef,faces[i],True)
+      else:
+        for i in range(len(objs)):
+          fCmd.rotTheBeam(objs[i],self.faceRef,faces[i])
       FreeCAD.activeDocument().recompute()
       FreeCAD.activeDocument().commitTransaction()
     

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>285</width>
-    <height>171</height>
+    <height>182</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -33,6 +33,87 @@
    <bool>false</bool>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <item row="4" column="1">
+    <widget class="QLineEdit" name="Y">
+     <property name="minimumSize">
+      <size>
+       <width>24</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="toolTip">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="placeholderText">
+      <string>normY</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2">
+    <widget class="QPushButton" name="btnYZ">
+     <property name="minimumSize">
+      <size>
+       <width>24</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>YZ</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="3">
+    <widget class="QPushButton" name="btn1">
+     <property name="minimumSize">
+      <size>
+       <width>24</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>(S)elect face</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QPushButton" name="btnXZ">
+     <property name="minimumSize">
+      <size>
+       <width>24</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>XZ</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" colspan="3">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>hotkeys: &quot;S&quot; to select, &quot;X&quot; to execute</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QPushButton" name="btnXY">
+     <property name="minimumSize">
+      <size>
+       <width>24</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>XY</string>
+     </property>
+    </widget>
+   </item>
    <item row="0" column="0" colspan="3">
     <widget class="QLabel" name="label">
      <property name="minimumSize">
@@ -55,8 +136,8 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="0" colspan="3">
-    <widget class="QPushButton" name="btn1">
+   <item row="5" column="0" colspan="3">
+    <widget class="QPushButton" name="btnNorm">
      <property name="minimumSize">
       <size>
        <width>24</width>
@@ -64,50 +145,11 @@
       </size>
      </property>
      <property name="text">
-      <string>(S)elect face</string>
+      <string>Set notmal</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="0">
-    <widget class="QPushButton" name="btnXY">
-     <property name="minimumSize">
-      <size>
-       <width>24</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="text">
-      <string>XY</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QPushButton" name="btnXZ">
-     <property name="minimumSize">
-      <size>
-       <width>24</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="text">
-      <string>XZ</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="2">
-    <widget class="QPushButton" name="btnYZ">
-     <property name="minimumSize">
-      <size>
-       <width>24</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="text">
-      <string>YZ</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0">
+   <item row="4" column="0">
     <widget class="QLineEdit" name="X">
      <property name="minimumSize">
       <size>
@@ -129,26 +171,7 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="1">
-    <widget class="QLineEdit" name="Y">
-     <property name="minimumSize">
-      <size>
-       <width>24</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="toolTip">
-      <string/>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-     <property name="placeholderText">
-      <string>normY</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="2">
+   <item row="4" column="2">
     <widget class="QLineEdit" name="Z">
      <property name="minimumSize">
       <size>
@@ -170,26 +193,16 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="0" colspan="3">
-    <widget class="QPushButton" name="btnNorm">
-     <property name="minimumSize">
-      <size>
-       <width>24</width>
-       <height>0</height>
-      </size>
+   <item row="2" column="0" colspan="3">
+    <widget class="QCheckBox" name="cbInvert">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
      <property name="text">
-      <string>Set notmal</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0" colspan="3">
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>hotkeys: &quot;S&quot; to select, &quot;X&quot; to execute</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
+      <string>Invert normal</string>
      </property>
     </widget>
    </item>

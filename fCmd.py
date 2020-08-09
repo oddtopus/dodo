@@ -310,13 +310,16 @@ def placeTheBeam(beam, edge):
   beam.Placement.Base=edge.valueAt(0)
   beam.Height=edge.Length
 
-def rotTheBeam(beam,faceBase,faceAlign):
-  '''arg1=beam, arg2=faceBase, arg3=faceToMakeParallel: rotate the beams to make the flanges parallel to that of first selection.'''
+def rotTheBeam(beam,faceBase,faceAlign,invert=False):
+  '''arg1=beam, arg2=faceBase, arg3=faceToMakeParallel, arg4=invertTheNormal
+  Rotates the beams to make the flanges parallel to that of first selection.'''
   from Part import Face
   if type(faceBase)==Face:
     n1=faceBase.normalAt(0,0)
   elif type(faceBase)==FreeCAD.Base.Vector:
     n1=faceBase
+  if invert:
+    n1=n1.negative()
   n2=faceAlign.normalAt(0,0)
   rot=FreeCAD.Rotation(n2,n1)
   beam.Placement.Rotation=rot.multiply(beam.Placement.Rotation)
