@@ -511,7 +511,10 @@ class frameBranchForm(dodoDialogs.protoTypeDialog):
       name=FB.Profile.Name
       FB.Profile=profile
       FB.Proxy.redraw(FB)
-      FreeCAD.ActiveDocument.removeObject(name)
+      if self.SType == '<by sketch>':
+        profile.ViewObject.Visibility = False
+      else:
+        FreeCAD.ActiveDocument.removeObject(name)
       FreeCAD.ActiveDocument.recompute()
       FreeCAD.ActiveDocument.recompute()
     else:
