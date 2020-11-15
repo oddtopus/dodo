@@ -1,4 +1,5 @@
 ## Dodo Workbench
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/oddtopus/dodo.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/oddtopus/dodo/alerts/) [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/oddtopus/dodo.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/oddtopus/dodo/context:python)  
 Dodo is the port of "Flamingo tools" for Py3/Qt5 builds of FreeCAD.
 While providing basically the same features of flamingo and being compatible with its feature-pythons, it is also a general review of the instruments and interface.
 
