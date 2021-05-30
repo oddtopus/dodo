@@ -27,8 +27,10 @@ class dodo ( Workbench ):
       import DraftSnap
   except Exception:
       import draftguitools.gui_snapper as DraftSnap
+      print('flag') # patch
   if not hasattr(FreeCADGui, "Snapper"):
       FreeCADGui.Snapper = DraftSnap.Snapper()
+      print('flag2') # patch
 
   import sys, FreeCAD
   v=sys.version_info[0]
@@ -166,10 +168,10 @@ static char * dodo1_xpm[] = {
     self.appendContextMenu('Utils', self.utilsList)
 
   def Activated(self):
-    if hasattr(FreeCADGui,"draftToolBar"):
-      FreeCADGui.draftToolBar.Activated()
-    if hasattr(FreeCADGui,"Snapper"):
-      FreeCADGui.Snapper.show()
+    # if hasattr(FreeCADGui,"draftToolBar"):	#patch
+      # FreeCADGui.draftToolBar.Activated()		#patch
+    # if hasattr(FreeCADGui,"Snapper"):			#patch
+      # FreeCADGui.Snapper.show()				#patchm
     FreeCAD.__activePypeLine__=None
     FreeCAD.__activeFrameLine__=None
     Msg("Created variables in FreeCAD module:\n")
