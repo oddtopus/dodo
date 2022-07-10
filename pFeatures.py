@@ -26,8 +26,10 @@ class pypeType(object):
     obj.addProperty("App::PropertyString","PSize","PBase","Nominal diameter").PSize
     obj.addProperty("App::PropertyVectorList","Ports","PBase","Ports position relative to the origin of Shape")
     obj.addProperty("App::PropertyFloat","Kv","PBase","Flow factor (m3/h/bar)").Kv
-    obj.addExtension("Part::AttachExtensionPython",obj)
-    #self.obj=obj sostituire con obj.Name e usare metodi per recuperare obj
+    if int(FreeCAD.Version()[1])>19:
+      obj.addExtension("Part::AttachExtensionPython")
+    else:
+      obj.addExtension("Part::AttachExtensionPython",obj)#20220704
     self.Name=obj.Name
   def execute(self, fp):
     fp.positionBySupport() # to recomute placement according the Support
@@ -494,8 +496,11 @@ class Shell():
 class ViewProviderPypeBranch:
   def __init__(self,vobj):
     vobj.Proxy = self
-    vobj.addExtension("Gui::ViewProviderGroupExtensionPython",self)  # GROUP test in progress!
-    #vobj.ExtensionProxy=self # GROUP test in progress!
+    if int(FreeCAD.Version()[1])>19:
+      vobj.addExtension("Gui::ViewProviderGroupExtensionPython")
+    else:
+      vobj.addExtension("Gui::ViewProviderGroupExtensionPython",self)  #20220704
+    #vobj.ExtensionProxy=self #20220703 
   def getIcon(self):
     from os.path import join, dirname, abspath
     return join(dirname(abspath(__file__)),"iconz","branch.svg")
@@ -561,7 +566,10 @@ class PypeBranch2(pypeType): # use AttachExtensionPython
     obj.PSize=DN
     obj.PRating=PRating
     # define specific properties
-    obj.addExtension("App::GroupExtensionPython",obj)  # GROUP test in progress!
+    if int(FreeCAD.Version()[1])>19:
+      obj.addExtension("App::GroupExtensionPython")
+    else:
+      obj.addExtension("App::GroupExtensionPython",obj)  #20220704
     obj.addProperty("App::PropertyLength","OD","PypeBranch","Outside diameter").OD=OD
     obj.addProperty("App::PropertyLength","thk","PypeBranch","Wall thickness").thk=thk
     if not BR: BR=0.75*OD
