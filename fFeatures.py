@@ -479,7 +479,10 @@ class frameBranchForm(dodoDialogs.protoTypeDialog):
         beam.addProperty("App::PropertyFloat","tailOffset","FrameBranch","The extension of the tail")
         beam.addProperty("App::PropertyFloat","headOffset","FrameBranch","The extension of the head")
         beam.addProperty("App::PropertyFloat","spin","FrameBranch","The rotation of the section")
-        beam.addExtension("Part::AttachExtensionPython",beam)
+        if int(FreeCAD.Version()[1])>19: #20220704
+          beam.addExtension("Part::AttachExtensionPython")
+        else:
+          beam.addExtension("Part::AttachExtensionPython",beam)
         beam.Support=[(FB.Base,'Edge'+str(i+1))]
         beam.MapMode='NormalToEdge'
         beam.MapReversed=True
@@ -690,7 +693,10 @@ class FrameBranch(object):
         beam=makeStructure(obj.Profile)
         beam.addProperty("App::PropertyFloat","tailOffset","FrameBranch","The extension of the tail")
         beam.addProperty("App::PropertyFloat","headOffset","FrameBranch","The extension of the head")
-        beam.addProperty("App::PropertyFloat","spin","FrameBranch","The rotation of the section")
+        if int(FreeCAD.Version()[1])>19: #20220704
+          beam.addExtension("Part::AttachExtensionPython")
+        else:
+          beam.addExtension("Part::AttachExtensionPython",beam)
         beam.addExtension("Part::AttachExtensionPython",beam)
         beam.Support=[(obj.Base,'Edge'+str(i+1))]
         beam.MapMode='NormalToEdge'
