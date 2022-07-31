@@ -661,7 +661,6 @@ class FrameBranch(object):
     # PROXY CLASS PROPERTIES
     self.objName=obj.Name
     # FEATUREPYTHON OBJECT PROPERTIES
-    # obj.addExtension("App::GroupExtensionPython",obj) #test
     obj.addProperty("App::PropertyString","FType","FrameBranch","Type of frameFeature").FType='FrameBranch'
     obj.addProperty("App::PropertyStringList","Beams","FrameBranch","The beams names")
     obj.addProperty("App::PropertyLink","Base","FrameBranch","The path.").Base=base
@@ -693,11 +692,11 @@ class FrameBranch(object):
         beam=makeStructure(obj.Profile)
         beam.addProperty("App::PropertyFloat","tailOffset","FrameBranch","The extension of the tail")
         beam.addProperty("App::PropertyFloat","headOffset","FrameBranch","The extension of the head")
+        beam.addProperty("App::PropertyFloat","spin","FrameBranch","The rotation of the section")
         if int(FreeCAD.Version()[1])>19: #20220704
           beam.addExtension("Part::AttachExtensionPython")
         else:
           beam.addExtension("Part::AttachExtensionPython",beam)
-        beam.addExtension("Part::AttachExtensionPython",beam)
         beam.Support=[(obj.Base,'Edge'+str(i+1))]
         beam.MapMode='NormalToEdge'
         beam.MapReversed=True
