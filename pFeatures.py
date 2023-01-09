@@ -88,6 +88,27 @@ class Pipe(pypeType):
     if prop=='ID' and fp.ID<fp.OD:
       fp.thk=(fp.OD-fp.ID)/2
   def execute(self, fp):
+    from math import tan
+    try:
+      parent = fp.getParentGroup()
+      i = parent.Tubes.index(fp.Name)
+      edges = parent.Base.Shape.Edges
+      L=edges[i].Length
+      R=parent.BendRadius
+      if i<len(parent.Curves):
+        v1,v2=[e.tangentAt(0) for e in edges[i:i+2]]
+        alfa=float(v1.getAngle(v2))/2
+        L-=float(R*tan(alfa)) 
+      if i: 
+        v1,v2=[e.tangentAt(0) for e in edges[i-1:i+1]]
+        alfa=float(v1.getAngle(v2))/2
+        tang=float(R*tan(alfa)) 
+        L-=tang
+        fp.AttachmentOffset.Base=FreeCAD.Vector(0,0,tang)
+      fp.Height=L
+    except Exception as e:
+      #  FreeCAD.Console.PrintWarning(str(e) + "\n")
+      pass
     if fp.thk>fp.OD/2:
       fp.thk=fp.OD/2
     fp.ID=fp.OD-2*fp.thk
@@ -128,6 +149,16 @@ class Elbow(pypeType):
     if prop=='ID' and fp.ID<fp.OD:
       fp.thk=(fp.OD-fp.ID)/2
   def execute(self, fp):
+    parent = fp.getParentGroup()
+    if parent:
+      try:
+        edges = parent.Base.Shape.Edges
+        i = parent.Curves.index(fp.Name)
+        v1,v2=[e.tangentAt(0) for e in edges[i:i+2]]
+        pCmd.placeTheElbow(fp,v1,v2)
+      except Exception as e:
+        #  FreeCAD.Console.PrintWarning(str(e) + "\n")
+        pass
     if fp.BendAngle<180:
       if fp.thk>fp.OD/2:
         fp.thk=fp.OD/2
@@ -604,25 +635,6 @@ class PypeBranch2(pypeType): # use AttachExtensionPython
       self.purge(fp)
       self.redraw(fp)
       return
-    from math import tan
-    for i in range(len(fp.Tubes)):
-      L=fp.Base.Shape.Edges[i].Length
-      R=fp.BendRadius
-      # adjust the curve
-      if i<len(fp.Curves):
-        c=FreeCAD.ActiveDocument.getObject(fp.Curves[i])
-        v1,v2=[e.tangentAt(0) for e in fp.Base.Shape.Edges[i:i+2]]
-        pCmd.placeTheElbow(c,v1,v2) 
-        alfa=float(v1.getAngle(v2))/2
-        L-=float(R*tan(alfa)) 
-      # adjust the pipes
-      if i: 
-        v1,v2=[e.tangentAt(0) for e in fp.Base.Shape.Edges[i-1:i+1]]
-        alfa=float(v1.getAngle(v2))/2
-        tang=float(R*tan(alfa)) 
-        L-=tang
-        FreeCAD.ActiveDocument.getObject(fp.Tubes[i]).AttachmentOffset.Base=FreeCAD.Vector(0,0,tang)
-      FreeCAD.ActiveDocument.getObject(fp.Tubes[i]).Height=L
   def redraw(self,fp): 
     from math import tan, degrees
     tubes=list()
@@ -665,7 +677,10 @@ class PypeBranch2(pypeType): # use AttachExtensionPython
           curves.append(c.Name)
       fp.Tubes=tubes
       fp.Curves=curves
-      fp.addObjects([FreeCAD.ActiveDocument.getObject(name) for name in fp.Tubes+fp.Curves])
+      objs = [FreeCAD.ActiveDocument.getObject(name) for name in fp.Tubes+fp.Curves]
+      fp.addObjects(objs)
+      for obj in objs:
+          obj.Proxy.execute(obj)
   def purge(self,fp):
     if hasattr(fp,'Tubes'):
       fp.removeObjects([FreeCAD.ActiveDocument.getObject(name) for name in fp.Tubes])
