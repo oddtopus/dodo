@@ -515,6 +515,10 @@ class ViewProviderPypeBranch:
     return None
   def __setstate__(self,state):
     return None
+  def dumps(self):
+    return None
+  def loads(self,state):
+    return None
   def claimChildren(self):
     children=[FreeCAD.ActiveDocument.getObject(name) for name in self.Object.Tubes+self.Object.Curves]
     return children
