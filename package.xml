@@ -4,7 +4,7 @@
   <description>A set of commands and objects that help to speed-up the drawing of frames and pipelines. Py3/Qt5 port of flamingo.</description>
   <version>1.0.0</version>
   <maintainer email="unknown">Riccardo Treu (oddtopus)</maintainer>
-  <license file="LICENSE">LGPLv3</license>
+  <license file="LICENSE">LGPL-3.0-or-later</license>
   <url type="repository" branch="master">https://github.com/oddtopus/dodo</url>
   <url type="readme">https://github.com/oddtopus/dodo/blob/master/README.md</url>
   <url type="bugtracker">https://github.com/oddtopus/dodo/issues</url>
