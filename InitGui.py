@@ -147,9 +147,29 @@ static char * dodo1_xpm[] = {
     self.utilsList=["selectSolids","queryModel","moveWorkPlane","offsetWorkPlane","rotateWorkPlane","hackedL","moveHandle","dpCalc"]
     self.appendToolbar("Utils",self.utilsList)
     Log ('Loading Utils: done\n')
+    
     import CFrame
-    self.frameList=["frameIt","FrameBranchManager","insertSection","spinSect","reverseBeam","shiftBeam","pivotBeam","levelBeam","alignEdge","rotJoin","alignFlange","stretchBeam","extend","adjustFrameAngle","insertPath"]
+    from cut_list.cut_list_commands import cutListCommand      
+ 
+    self.frameList=["frameIt",
+                    "FrameBranchManager",
+                    "insertSection",
+                    "spinSect",
+                    "reverseBeam",
+                    "shiftBeam",
+                    "pivotBeam",
+                    "levelBeam",
+                    "alignEdge",
+                    "rotJoin",
+                    "alignFlange",
+                    "stretchBeam",
+                    "extend",
+                    "adjustFrameAngle",
+                    "insertPath",
+                    "Create Cut List"]
+    
     self.appendToolbar("frameTools",self.frameList)
+    
     Log ('Loading Frame tools: done\n')
     import CPipe
     self.pypeList=["insertPipe","insertElbow","insertReduct","insertCap","insertValve","insertFlange","insertUbolt","insertPypeLine","insertBranch","insertTank","insertRoute","breakPipe","mateEdges","flat","extend2intersection","extend1intersection","makeHeader","laydown","raiseup","attach2tube","point2point","insertAnyz"]#,"joinPype"]
