@@ -8,7 +8,7 @@ from . import RESOURCE_PATH
 
 class cutListCommand:
     toolbarName = 'Cut List'
-    commandName = 'Create Cut List'
+    commandName = 'createCutList'
 
     def GetResources(self):
         Icon = os.path.join(RESOURCE_PATH, "cut_list_icon.svg")

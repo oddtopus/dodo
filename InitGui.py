@@ -166,7 +166,7 @@ static char * dodo1_xpm[] = {
                     "extend",
                     "adjustFrameAngle",
                     "insertPath",
-                    "Create Cut List"]
+                    "createCutList"]
     
     self.appendToolbar("frameTools",self.frameList)
     
