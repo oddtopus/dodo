@@ -1,6 +1,6 @@
-# Cut List Creation Command for Freecad Dodo Workbench (Macro Version)
+# Cut List Creation Command for Dodo Workbench 
 
-This macro can be used to create a cut list of beams created by the DODO-Workbench.\
+This Module can be used to create a cut list of beams created by the DODO-Workbench.\
 The cut list can use one or more profiles (sections/sketches).\
 A position number will be generated for each profile & length combination (rounded to 0.01mm).\
 The script will create a new speadsheet object with each cut list.
