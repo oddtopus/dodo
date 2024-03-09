@@ -726,6 +726,10 @@ class ViewProviderFrameBranch:
     return None
   def __setstate__(self,state):
     return None
+  def dumps(self):
+    return None
+  def loads(self,state):
+    return None
   def claimChildren(self):
     children=[FreeCAD.ActiveDocument.getObject(name) for name in self.Object.Beams]
     return children 
