@@ -18,7 +18,7 @@ y=max(300,int(mw.height()/3))#350
 
 def getLanguagePath():
     import os
-    return os.path.join(os.path.dirname(__file__),"translations")
+    return os.path.join(os.path.dirname(__file__),"translationz")
 
 class redrawDialog(QDialog):
   def __init__(self):
