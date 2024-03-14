@@ -11,6 +11,7 @@ from PySide.QtCore import *
 from PySide.QtGui import *
 from math import degrees
 from DraftVecUtils import rounded
+from DraftGui import translate
 
 mw=FreeCADGui.getMainWindow()
 x=mw.x()+int(mw.width()/20)#100
@@ -1113,7 +1114,7 @@ class point2pointPipe(DraftTools.Line):
       s=FreeCAD.ParamGet("User parameter:BaseApp/Preferences/Mod/Draft").GetInt("gridSize")
       sc=[float(x*s) for x in [1,1,.2]]
       varrow =uCmd.arrow(FreeCAD.DraftWorkingPlane.getPlacement(),scale=sc,offset=s)
-      offset=QInputDialog.getInt(None,'Offset Work Plane','Offset: ')
+      offset=QInputDialog.getInt(None, translate("pForms", "Offset Work Plane"), translate("pForms", "Offset: "))
       if offset[1]:
         uCmd.offsetWP(offset[0])
       FreeCADGui.ActiveDocument.ActiveView.getSceneGraph().removeChild(varrow.node)

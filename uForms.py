@@ -7,6 +7,7 @@ __license__="LGPL 3"
 
 from PySide import QtGui, QtCore
 import FreeCAD,FreeCADGui
+from DraftGui import translate
  
 # UI Class definitions
  
@@ -21,31 +22,31 @@ class QueryForm(QtGui.QDialog): #QWidget):
     self.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint)
     self.setMouseTracking(True)
     #1st row
-    self.labName = QtGui.QLabel("(seleziona un oggetto)", self)
+    self.labName = QtGui.QLabel(translate("uForms", "(seleziona un oggetto)", self))
     #2nd row
-    self.labBaseVal = QtGui.QLabel("(base)", self)
+    self.labBaseVal = QtGui.QLabel(translate("uForms", "(base)", self))
     self.subFLayout1=QtGui.QFormLayout()
-    self.subFLayout1.addRow('Base: ',self.labBaseVal)
+    self.subFLayout1.addRow(translate("uForms", "Base: ", self.labBaseVal))
     #3rd row
-    self.labRotAng = QtGui.QLabel("(angle)", self)
+    self.labRotAng = QtGui.QLabel(translate("uForms", "(angle)", self))
     self.subFLayout2=QtGui.QFormLayout()
-    self.subFLayout2.addRow('Rotation angle: ',self.labRotAng)
+    self.subFLayout2.addRow(translate("uForms", "Rotation angle: ", self.labRotAng))
     # 4th row
-    self.labRotAx = QtGui.QLabel("v = (x,y,z)", self)
+    self.labRotAx = QtGui.QLabel(translate("uForms", "v = (x,y,z)", self))
     self.subFLayout3=QtGui.QFormLayout()
-    self.subFLayout3.addRow('Rotation axis: ',self.labRotAx)
+    self.subFLayout3.addRow(translate("uForms", "Rotation axis: ", self.labRotAx))
     # 5th row
-    self.labSubObj = QtGui.QLabel("(Sub object property)", self)
+    self.labSubObj = QtGui.QLabel(translate("uForms", "(Sub object property)", self))
     # 6th row
-    self.labBeam = QtGui.QLabel("(Beam property)", self)
+    self.labBeam = QtGui.QLabel(translate("uForms", "(Beam property)", self))
     # 7th row
-    self.labProfile = QtGui.QLabel("(Profile property)", self)
+    self.labProfile = QtGui.QLabel(translate("uForms", "(Profile property)", self))
     # 8th row
-    self.pushButton1 = QtGui.QPushButton('QueryObject')
+    self.pushButton1 = QtGui.QPushButton(translate("uForms", "QueryObject"))
     self.pushButton1.setDefault(True)
     self.pushButton1.clicked.connect(self.onPushButton1)
     self.pushButton1.setMinimumWidth(90)
-    self.cancelButton = QtGui.QPushButton('Exit')
+    self.cancelButton = QtGui.QPushButton(translate("uForms", "Exit"))
     self.cancelButton.clicked.connect(self.onCancel)
     self.subHLayout1=QtGui.QHBoxLayout()
     self.subHLayout1.addWidget(self.pushButton1)
@@ -118,7 +119,7 @@ class rotWPForm(QDialog): #QWidget):
   '''
   Dialog to rotate the working plane about its axis.
   '''
-  def __init__(self,winTitle='Rotate WP', icon='rotWP.svg'):
+  def __init__(self,winTitle=translate("uForms", "Rotate WP"), icon="rotWP.svg"):
     super(rotWPForm,self).__init__()
     self.move(QPoint(100,250))
     self.setWindowFlags(Qt.WindowStaysOnTopHint)
@@ -134,7 +135,7 @@ class rotWPForm(QDialog): #QWidget):
     self.radioX.setChecked(True)
     self.radioY=QRadioButton('Y')
     self.radioZ=QRadioButton('Z')
-    self.lab1=QLabel('Angle:')
+    self.lab1=QLabel(translate("uForms", "Angle:"))
     self.edit1=QLineEdit('45')
     self.edit1.setAlignment(Qt.AlignCenter)
     self.edit1.setValidator(QDoubleValidator())
@@ -274,9 +275,9 @@ class dpCalcDialog:
         if self.isLiquid:
           loss=(Q*3600/o.Kv)**2*100000*self.Rho/1000
         elif self.form.comboFluid.currentText()=='water' and not self.isLiquid:
-          pass # TODO formula for steam
+          pass # TODO: formula for steam
         else:
-          pass # TODO formula for gases
+          pass # TODO: formula for gases
         if hasattr(o,'ID'):
           ID = float(o.ID)/1000
           v=Q/(ID**2*pi/4)

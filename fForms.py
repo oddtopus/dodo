@@ -6,6 +6,7 @@ import FreeCAD,FreeCADGui
 import fCmd, dodoDialogs
 from PySide.QtCore import *
 from PySide.QtGui import *
+from DraftGui import translate
 from os.path import join, dirname, abspath
 from sys import platform
 from uCmd import label3D
@@ -402,35 +403,35 @@ class profEdit(dodoDialogs.protoTypeDialog):
     if typeS=='square':
       self.form.labImg.setPixmap(pixSquare)
       self.type="R"
-      self.label="Square"
+      self.label=translate("profEdit", "Square", "Profile name in the Tree View")
     elif typeS=='T':
       self.form.labImg.setPixmap(pixT)
       self.type="T"
-      self.label="T-profile"
+      self.label=translate("profEdit", "T-profile", "Profile name in the Tree View")
     elif typeS=='U':
       self.form.labImg.setPixmap(pixU)
       self.type="U"
-      self.label="U-profile"
+      self.label=translate("profEdit", "U-profile", "Profile name in the Tree View")
     elif typeS=='H':
       self.form.labImg.setPixmap(pixH)
       self.type="H"
-      self.label="H-profile"
+      self.label=translate("profEdit", "H-profile", "Profile name in the Tree View")
     elif typeS=='L':
       self.form.labImg.setPixmap(pixL)
       self.type="L"
-      self.label="L-profile"
+      self.label=translate("profEdit", "L-profile", "Profile name in the Tree View")
     elif typeS=='Z':
       self.form.labImg.setPixmap(pixZ)
       self.type="Z"
-      self.label="Z-profile"
+      self.label=translate("profEdit", "Z-profile", "Profile name in the Tree View")
     elif typeS=='omega':
       self.form.labImg.setPixmap(pixOmega)
       self.type="omega"
-      self.label="Omega-profile"
+      self.label=translate("profEdit", "Omega-profile", "Profile name in the Tree View")
     elif typeS=='circle':
       self.form.labImg.setPixmap(pixCircle)
       self.type="circle"
-      self.label="Circle-profile"
+      self.label=translate("profEdit", "Circle-profile", "Profile name in the Tree View")
   def accept(self):
     D, H, B, t1, t2, t3 = float(self.form.editD.text()),\
                           float(self.form.editH.text()),\
@@ -441,7 +442,7 @@ class profEdit(dodoDialogs.protoTypeDialog):
     if not self.form.lineEdit.text(): label=self.label
     else: label= self.form.lineEdit.text()
     if FreeCAD.ActiveDocument:
-      FreeCAD.activeDocument().openTransaction('Insert profile')
+      FreeCAD.activeDocument().openTransaction(translate("profEdit", "Insert profile", "Transaction, used on undo/redo lists"))
       if self.type=='R':
         if not self.form.cbFull.isChecked() and t2<H/2 and t1<B/2:
           sect=fFeatures.doProfile("RH",label,[B,H,t1,t2])
@@ -480,7 +481,7 @@ class profEdit(dodoDialogs.protoTypeDialog):
     if sel:
       obj=sel[0]
       if hasattr(obj,'Shape') and obj.Shape.ShapeType in ('Face','Shell'):
-        FreeCAD.ActiveDocument.openTransaction('Modify profile')
+        FreeCAD.ActiveDocument.openTransaction(translate("profEdit", "Modify profile", "Transaction, used on undo/redo lists"))
         if self.form.lineEdit.text(): 
           obj.Label = self.form.lineEdit.text()
         if hasattr(obj,'H'):
@@ -553,7 +554,7 @@ class profEdit(dodoDialogs.protoTypeDialog):
     if sect:
       sect.Placement.move(sect.Shape.CenterOfMass.negative())
       FreeCAD.ActiveDocument.recompute()
-      FreeCAD.ActiveDocument.openTransaction('Shift profile')
+      FreeCAD.ActiveDocument.openTransaction(translate("profEdit", "Shift profile", "Transaction, used on undo/redo lists"))
       B=sect.Shape.BoundBox
       O=sect.Shape.CenterOfMass
       N=FreeCAD.Vector(0,O.y-B.YMin,0)

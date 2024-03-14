@@ -5,7 +5,6 @@ __license__="LGPL 3"
 # import FreeCAD modules
 import FreeCAD, FreeCADGui,inspect , os
 from PySide.QtCore import QT_TRANSLATE_NOOP
-from DraftGui import translate
 
 # helper -------------------------------------------------------------------
 # FreeCAD TemplatePyMod module
@@ -85,7 +84,8 @@ class offsetWorkPlane:
       sc=[float(x*s) for x in [1,1,.2]]
       arrow =uCmd.arrow(FreeCAD.DraftWorkingPlane.getPlacement(),scale=sc,offset=s)
       from PySide.QtGui import QInputDialog as qid
-      offset=qid.getInt(None,'Offset Work Plane','Offset: ')
+      from DraftGui import translate
+      offset=qid.getInt(None, translate('offsetWorkPlane','Offset Work Plane'), translate('offsetWorkPlane','Offset: '))
       if offset[1]>0:
         uCmd.offsetWP(offset[0])
       #FreeCADGui.ActiveDocument.ActiveView.getSceneGraph().removeChild(arrow.node)

@@ -6,6 +6,7 @@ __url__="github.com/oddtopus/dodo"
 __license__="LGPL 3"
 
 import FreeCAD, FreeCADGui, fCmd
+from DraftGui import translate
 
 class frameObserverPrototype(object): 
     def __init__(self,msg):
@@ -29,7 +30,7 @@ class frameObserverPrototype(object):
         
 class frameItObserver(frameObserverPrototype): 
     def __init__(self):
-      super(frameItObserver,self).__init__('Select one beam and one edge')
+      super(frameItObserver,self).__init__(translate("fObservers", "Select one beam and one edge"))
       self.beam=self.edge=None
     def addSelection(self,doc,obj,sub,pnt):
       selex=FreeCADGui.Selection.getSelectionEx()
@@ -48,7 +49,7 @@ class frameItObserver(frameObserverPrototype):
 
 class fillFrameObserver(frameObserverPrototype): 
     def __init__(self):
-        super(fillFrameObserver,self).__init__('First select the base beam, then the edges')
+        super(fillFrameObserver,self).__init__(translate("fObservers", "First select the base beam, then the edges"))
         self.beam=None
     def addSelection(self,doc,obj,sub,pnt):
         if self.beam==None and FreeCAD.getDocument(doc).getObject(obj).TypeId=='Part::FeaturePython':
@@ -61,7 +62,7 @@ class fillFrameObserver(frameObserverPrototype):
 
 class levelBeamObserver(frameObserverPrototype):
     def __init__(self):
-      super(levelBeamObserver,self).__init__('First select the target plane, then the faces to align')
+      super(levelBeamObserver,self).__init__(translate("fObservers", "First select the target plane, then the faces to align"))
       self.targetFace=None
     def addSelection(self,doc,obj,sub,pnt):
       subObject=FreeCAD.getDocument(doc).getObject(obj).Shape.getElement(sub)
@@ -71,7 +72,7 @@ class levelBeamObserver(frameObserverPrototype):
           FreeCAD.Console.PrintMessage('Target face selected.\n')
         else:
           beam=FreeCAD.getDocument(doc).getObject(obj)
-          FreeCAD.activeDocument().openTransaction('levelTheBeam')
+          FreeCAD.activeDocument().openTransaction(translate("fObservers", "levelTheBeam", "Transaction"))
           fCmd.levelTheBeam(beam,[self.targetFace,subObject])
           FreeCAD.activeDocument().commitTransaction()
           FreeCAD.Console.PrintMessage('Face moved.\n')
@@ -79,7 +80,7 @@ class levelBeamObserver(frameObserverPrototype):
 
 class alignFlangeObserver(frameObserverPrototype):
     def __init__(self):
-      super(alignFlangeObserver,self).__init__('Select the target face, then the others')
+      super(alignFlangeObserver,self).__init__(translate("fObservers", "Select the target face, then the others"))
       self.faceBase=None
     def addSelection(self,doc,obj,sub,pnt):
       subObject=FreeCAD.getDocument(doc).getObject(obj).Shape.getElement(sub)
@@ -88,13 +89,13 @@ class alignFlangeObserver(frameObserverPrototype):
           self.faceBase=subObject
           FreeCAD.Console.PrintMessage('Target face selected.\n')
         else:
-          FreeCAD.activeDocument().openTransaction('alignFlange')
+          FreeCAD.activeDocument().openTransaction(translate("fObservers", "alignFlange", "Transaction"))
           fCmd.rotTheBeam(FreeCAD.getDocument(doc).getObject(obj),self.faceBase,subObject)
           FreeCAD.activeDocument().commitTransaction()
 
 class alignEdgeObserver(frameObserverPrototype):
     def __init__(self):
-      super(alignEdgeObserver,self).__init__('Select two edges to join.')
+      super(alignEdgeObserver,self).__init__(translate("fObservers", "Select two edges to join."))
       self.edges=[]
     def addSelection(self,doc,obj,sub,pnt):
       subObject=FreeCAD.getDocument(doc).getObject(obj).Shape.getElement(sub)
@@ -104,7 +105,7 @@ class alignEdgeObserver(frameObserverPrototype):
       if len(self.edges)>1:
         sel=FreeCADGui.Selection.getSelection()
         beam=sel[len(sel)-1]
-        FreeCAD.activeDocument().openTransaction('joinTheBeamsEdges')
+        FreeCAD.activeDocument().openTransaction(translate("fObservers", "joinTheBeamsEdges", "Transaction"))
         fCmd.joinTheBeamsEdges(beam,self.edges[0],self.edges[1])
         FreeCAD.activeDocument().commitTransaction()
         FreeCAD.Console.PrintMessage('Done.\n')
@@ -113,7 +114,7 @@ class alignEdgeObserver(frameObserverPrototype):
 
 class stretchBeamObserver(frameObserverPrototype): #OBSOLETE: replaced with dialog
     def __init__(self):
-      super(stretchBeamObserver,self).__init__('Select the beam and input the length')
+      super(stretchBeamObserver,self).__init__(translate("fObservers", "Select the beam and input the length"))
       self.beam=None
     def addSelection(self,doc,obj,sub,pnt):
       Obj=FreeCAD.getDocument(doc).getObject(obj)
@@ -130,7 +131,7 @@ class stretchBeamObserver(frameObserverPrototype): #OBSOLETE: replaced with dial
 
 class extendObserver(frameObserverPrototype): #OBSOLETE: replaced with dialog
     def __init__(self):
-      super(extendObserver,self).__init__('First Select the target shape, then the beams to extend.')
+      super(extendObserver,self).__init__(translate("fObservers", "First Select the target shape, then the beams to extend."))
       self.target=None
     def addSelection(self,doc,obj,sub,pnt):
       lastSel=FreeCAD.getDocument(doc).getObject(obj)
@@ -143,7 +144,7 @@ class extendObserver(frameObserverPrototype): #OBSOLETE: replaced with dialog
 
 class adjustAngleObserver(frameObserverPrototype): 
     def __init__(self):
-      super(adjustAngleObserver,self).__init__('Select 2 edges')
+      super(adjustAngleObserver,self).__init__(translate("fObservers", "Select 2 edges"))
       self.edges=[]
       self.beams=[]
     def addSelection(self,doc,obj,sub,pnt):
@@ -156,7 +157,7 @@ class adjustAngleObserver(frameObserverPrototype):
       if (len(self.edges)==len(self.beams)==2):
         if fCmd.isOrtho(*self.edges):
           self.beams.reverse()
-          FreeCAD.ActiveDocument.openTransaction('Adjust angle')
+          FreeCAD.ActiveDocument.openTransaction(translate("fObservers", "Adjust angle", "Transaction"))
           for i in range(len(self.edges)):
           	fCmd.extendTheBeam(self.beams[i],self.edges[i])
           FreeCAD.ActiveDocument.commitTransaction()
@@ -171,7 +172,7 @@ class adjustAngleObserver(frameObserverPrototype):
 
 class rotjoinObserver(frameObserverPrototype):   # OBSOLETE
     def __init__(self):
-      super(rotjoinObserver,self).__init__('Select 2 edges =>[Ctrl]+select')
+      super(rotjoinObserver,self).__init__(translate("fObservers", "Select 2 edges =>[Ctrl]+select"))
       self.edges=[]
     def addSelection(self,doc,obj,sub,pnt):
       lastSel=FreeCAD.getDocument(doc).getObject(obj)
@@ -181,7 +182,7 @@ class rotjoinObserver(frameObserverPrototype):   # OBSOLETE
         FreeCAD.Console.PrintMessage('Edge'+str(len(self.edges))+' OK.\n')
       if len(self.edges)==2:
         try:
-          FreeCAD.activeDocument().openTransaction('rotJoin')
+          FreeCAD.activeDocument().openTransaction(translate("fObservers", "rotJoin", "Transaction"))
           fCmd.rotjoinTheBeam()
           FreeCAD.activeDocument().commitTransaction()
           FreeCAD.activeDocument().recompute()

@@ -5,6 +5,7 @@ __license__="LGPL 3"
 
 import FreeCAD, FreeCADGui, fCmd, dodoDialogs
 from os.path import join, dirname, abspath
+from DraftGui import translate
 from pivy import coin
 
 def setWP(): #TARGET [working]: deal with App::Parts
@@ -157,7 +158,7 @@ class arrow_move(arrow):
     # draw arrow
     super(arrow_move,self).__init__(pl=pl, scale=[M/2,M/2,M/10], offset=M/2)
   def pickAction(self,path=None,event=None,arg=None):
-    FreeCAD.activeDocument().openTransaction('Quick move')
+    FreeCAD.activeDocument().openTransaction(translate("uCmd", "Quick move", "Transaction"))
     if event.wasCtrlDown(): k=-1*float(self.edit.text())
     else: k=1*float(self.edit.text())
     sel=FreeCADGui.Selection.getSelection()
@@ -283,7 +284,7 @@ class hackedLine(DraftTools.Line):
       s=FreeCAD.ParamGet("User parameter:BaseApp/Preferences/Mod/Draft").GetInt("gridSize")
       sc=[float(x*s) for x in [1,1,.2]]
       varrow =arrow(FreeCAD.DraftWorkingPlane.getPlacement(),scale=sc,offset=s)
-      offset=QInputDialog.getInt(None,'Offset Work Plane','Offset: ')
+      offset=QInputDialog.getInt(None, translate("uCmd", "Offset Work Plane"), translate("uCmd", "Offset: "))
       if offset[1]:
         offsetWP(offset[0])
       FreeCADGui.ActiveDocument.ActiveView.getSceneGraph().removeChild(varrow.node)

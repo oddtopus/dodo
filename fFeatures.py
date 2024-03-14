@@ -745,7 +745,7 @@ from FreeCAD import Vector
 if FreeCAD.GuiUp:
     # import FreeCADGui
     # from PySide import QtCore, QtGui
-    from DraftTools import translate
+    from DraftGui import translate
     from PySide.QtCore import QT_TRANSLATE_NOOP
 else:
     # \cond
