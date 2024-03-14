@@ -399,6 +399,7 @@ class profEdit(dodoDialogs.protoTypeDialog):
       icon = QIcon()
       icon.addPixmap(z[0], QIcon.Normal, QIcon.Off)
       z[1].setIcon(icon)
+    # TODO: translation
   def setProfile(self, typeS):
     if typeS=='square':
       self.form.labImg.setPixmap(pixSquare)
