@@ -706,6 +706,84 @@
     </message>
 </context>
 <context>
+    <name>fObservers</name>
+    <message>
+        <location filename="../fObservers.py" line="33"/>
+        <source>Select one beam and one edge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../fObservers.py" line="52"/>
+        <source>First select the base beam, then the edges</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../fObservers.py" line="65"/>
+        <source>First select the target plane, then the faces to align</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../fObservers.py" line="75"/>
+        <source>levelTheBeam</source>
+        <comment>Transaction</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../fObservers.py" line="83"/>
+        <source>Select the target face, then the others</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../fObservers.py" line="92"/>
+        <source>alignFlange</source>
+        <comment>Transaction</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../fObservers.py" line="98"/>
+        <source>Select two edges to join.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../fObservers.py" line="108"/>
+        <source>joinTheBeamsEdges</source>
+        <comment>Transaction</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../fObservers.py" line="117"/>
+        <source>Select the beam and input the length</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../fObservers.py" line="134"/>
+        <source>First Select the target shape, then the beams to extend.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../fObservers.py" line="147"/>
+        <source>Select 2 edges</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../fObservers.py" line="160"/>
+        <source>Adjust angle</source>
+        <comment>Transaction</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../fObservers.py" line="175"/>
+        <source>Select 2 edges =&gt;[Ctrl]+select</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../fObservers.py" line="185"/>
+        <source>rotJoin</source>
+        <comment>Transaction</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>flangeQM</name>
     <message>
         <location filename="../CPipe.py" line="363"/>
@@ -994,6 +1072,16 @@ Branches and header&apos;s axes must be ortho</source>
 <context>
     <name>offsetWorkPlane</name>
     <message>
+        <location filename="../CUtils.py" line="89"/>
+        <source>Offset Work Plane</source>
+        <translation>Desplazar plano de trabajo</translation>
+    </message>
+    <message>
+        <location filename="../CUtils.py" line="89"/>
+        <source>Offset: </source>
+        <translation>Desplazamiento: </translation>
+    </message>
+    <message>
         <location filename="../CUtils.py" line="97"/>
         <source>offset Workplane</source>
         <translation>Desfazar plano de trabajo</translation>
@@ -1002,6 +1090,19 @@ Branches and header&apos;s axes must be ortho</source>
         <location filename="../CUtils.py" line="98"/>
         <source>Shifts the WP alongg its normal.</source>
         <translation>Desplaza el plano de trabajo a lo largo de su normal.</translation>
+    </message>
+</context>
+<context>
+    <name>pForms</name>
+    <message>
+        <location filename="../pForms.py" line="1117"/>
+        <source>Offset Work Plane</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="1117"/>
+        <source>Offset: </source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1036,6 +1137,75 @@ Branches and header&apos;s axes must be ortho</source>
         <location filename="../CPipe.py" line="272"/>
         <source>Click on subsequent points.</source>
         <translation>Da clic en puntos subsecuentes.</translation>
+    </message>
+</context>
+<context>
+    <name>profEdit</name>
+    <message>
+        <location filename="../fForms.py" line="406"/>
+        <source>Square</source>
+        <comment>Profile name in the Tree View</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../fForms.py" line="410"/>
+        <source>T-profile</source>
+        <comment>Profile name in the Tree View</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../fForms.py" line="414"/>
+        <source>U-profile</source>
+        <comment>Profile name in the Tree View</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../fForms.py" line="418"/>
+        <source>H-profile</source>
+        <comment>Profile name in the Tree View</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../fForms.py" line="422"/>
+        <source>L-profile</source>
+        <comment>Profile name in the Tree View</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../fForms.py" line="426"/>
+        <source>Z-profile</source>
+        <comment>Profile name in the Tree View</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../fForms.py" line="430"/>
+        <source>Omega-profile</source>
+        <comment>Profile name in the Tree View</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../fForms.py" line="434"/>
+        <source>Circle-profile</source>
+        <comment>Profile name in the Tree View</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../fForms.py" line="445"/>
+        <source>Insert profile</source>
+        <comment>Transaction, used on undo/redo lists</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../fForms.py" line="484"/>
+        <source>Modify profile</source>
+        <comment>Transaction, used on undo/redo lists</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../fForms.py" line="557"/>
+        <source>Shift profile</source>
+        <comment>Transaction, used on undo/redo lists</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1155,6 +1325,48 @@ para exportar en formato step</translation>
         <location filename="../CFrame.py" line="251"/>
         <source>Changes the length of the beam, either according a preselected edge or a direct input</source>
         <translation>Cambia la longituf de la viga, ya sea acorde a la arista preseleccionada o una entrada directa</translation>
+    </message>
+</context>
+<context>
+    <name>uCmd</name>
+    <message>
+        <location filename="../uCmd.py" line="161"/>
+        <source>Quick move</source>
+        <comment>Transaction</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uCmd.py" line="287"/>
+        <source>Offset Work Plane</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uCmd.py" line="287"/>
+        <source>Offset: </source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>uForms</name>
+    <message>
+        <location filename="../uForms.py" line="45"/>
+        <source>QueryObject</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="49"/>
+        <source>Exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="122"/>
+        <source>Rotate WP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="138"/>
+        <source>Angle:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
