@@ -73,7 +73,7 @@
    <item row="10" column="0">
     <widget class="QPushButton" name="btnSingle">
      <property name="text">
-      <string>Add single</string>
+      <string>Add single beam</string>
      </property>
     </widget>
    </item>

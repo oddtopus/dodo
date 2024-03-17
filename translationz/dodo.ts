@@ -463,6 +463,14 @@
     </message>
 </context>
 <context>
+    <name>DialogQM</name>
+    <message>
+        <location filename="../dodoPM.py" line="309"/>
+        <source>Quick Insert</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>FrameBranchManager</name>
     <message>
         <location filename="../CFrame.py" line="375"/>
@@ -587,6 +595,34 @@
     </message>
 </context>
 <context>
+    <name>breakForm</name>
+    <message>
+        <location filename="../pForms.py" line="1161"/>
+        <source>Break the pipes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="1181"/>
+        <source>Length</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="1183"/>
+        <source>&lt;reference&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="1184"/>
+        <source>PypeLine:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="1186"/>
+        <source>&lt;none&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>breakPipe</name>
     <message>
         <location filename="../CPipe.py" line="129"/>
@@ -652,6 +688,47 @@
         <location filename="../CUtils.py" line="138"/>
         <source>Calculate pressure loss in &quot;pypes&quot; using ChEDL libraries.
  See __doc__ of the module for futher information.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>dpCalcDialog</name>
+    <message>
+        <location filename="../uForms.py" line="431"/>
+        <location filename="../uForms.py" line="407"/>
+        <source>No data found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="408"/>
+        <source>It seems the fluid has not
+a liquid state.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="415"/>
+        <source>*** LIQUID ***</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="416"/>
+        <source>Flow (m3/h)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="432"/>
+        <source>It seems the fluid has not
+a gas state.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="439"/>
+        <source>*** GAS/VAPOUR ***</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="440"/>
+        <source>Flow (kg/h)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -846,11 +923,47 @@
     </message>
 </context>
 <context>
+    <name>insertBranchForm</name>
+    <message>
+        <location filename="../pForms.py" line="1071"/>
+        <source>Insert a branch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="1083"/>
+        <source>&lt;name&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="1087"/>
+        <source>&lt;bend radius&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>insertCap</name>
     <message>
         <location filename="../CPipe.py" line="79"/>
         <location filename="../CPipe.py" line="78"/>
         <source>Insert a cap</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>insertCapForm</name>
+    <message>
+        <location filename="../pForms.py" line="802"/>
+        <source>Insert caps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="807"/>
+        <source>Reverse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="810"/>
+        <source>Apply</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -864,11 +977,78 @@
     </message>
 </context>
 <context>
+    <name>insertElbowForm</name>
+    <message>
+        <location filename="../pForms.py" line="241"/>
+        <source>Insert elbows</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="252"/>
+        <source>&lt;bend angle&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="257"/>
+        <source>&lt;bend radius&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="261"/>
+        <source>Trim/Extend</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="264"/>
+        <source>Reverse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="267"/>
+        <source>Apply</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="283"/>
+        <source>0 deg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="351"/>
+        <source>Wrong selection
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="359"/>
+        <source> deg</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>insertFlange</name>
     <message>
         <location filename="../CPipe.py" line="89"/>
         <location filename="../CPipe.py" line="88"/>
         <source>Insert a flange</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>insertFlangeForm</name>
+    <message>
+        <location filename="../pForms.py" line="401"/>
+        <source>Insert flanges</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="411"/>
+        <source>Reverse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="416"/>
+        <source>Apply</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -895,6 +1075,24 @@
     </message>
 </context>
 <context>
+    <name>insertPipeForm</name>
+    <message>
+        <location filename="../pForms.py" line="107"/>
+        <source>Insert pipes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="123"/>
+        <source>Reverse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="126"/>
+        <source>Apply</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>insertPypeLine</name>
     <message>
         <location filename="../CPipe.py" line="108"/>
@@ -908,11 +1106,77 @@
     </message>
 </context>
 <context>
+    <name>insertPypeLineForm</name>
+    <message>
+        <location filename="../pForms.py" line="865"/>
+        <source>PypeLine Manager</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="877"/>
+        <source>&lt;name&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="880"/>
+        <source>Redraw</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="883"/>
+        <source>Part list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="886"/>
+        <source>Color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="889"/>
+        <source>Get Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="892"/>
+        <source>Get Profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="896"/>
+        <source>&lt;new&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>insertReduct</name>
     <message>
         <location filename="../CPipe.py" line="69"/>
         <location filename="../CPipe.py" line="68"/>
         <source>Insert a reduction</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>insertReductForm</name>
+    <message>
+        <location filename="../pForms.py" line="504"/>
+        <source>Insert reductions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="520"/>
+        <source>Reverse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="522"/>
+        <source>Apply</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="529"/>
+        <source>Eccentric</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -926,6 +1190,14 @@
     <message>
         <location filename="../CPipe.py" line="306"/>
         <source>Create a sketch attached to a circular edge</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>insertRouteForm</name>
+    <message>
+        <location filename="../pForms.py" line="1807"/>
+        <source>&lt;select an edge&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -956,6 +1228,29 @@
     </message>
 </context>
 <context>
+    <name>insertTankForm</name>
+    <message>
+        <location filename="../pForms.py" line="1665"/>
+        <source>doing combine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="1700"/>
+        <source>files read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="1702"/>
+        <source>files not read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="1709"/>
+        <source>listNozzles: %s</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>insertUbolt</name>
     <message>
         <location filename="../CPipe.py" line="99"/>
@@ -965,11 +1260,67 @@
     </message>
 </context>
 <context>
+    <name>insertUboltForm</name>
+    <message>
+        <location filename="../pForms.py" line="681"/>
+        <source>Insert U-bolt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="690"/>
+        <source>- no ref. face -</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="694"/>
+        <source>Ref. face</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="699"/>
+        <source> Head</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="701"/>
+        <source> Middle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="702"/>
+        <source> Tail</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>insertValve</name>
     <message>
         <location filename="../CPipe.py" line="247"/>
         <location filename="../CPipe.py" line="246"/>
         <source>Insert a valve</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>insertValveForm</name>
+    <message>
+        <location filename="../pForms.py" line="1375"/>
+        <source>Insert valves</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="1386"/>
+        <source>Reverse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="1389"/>
+        <source>Apply</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="1399"/>
+        <source> Insert in pipe</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1136,6 +1487,19 @@ Branches and header&apos;s axes must be ortho</source>
     </message>
 </context>
 <context>
+    <name>point2pointPipe</name>
+    <message>
+        <location filename="../pForms.py" line="1431"/>
+        <source>Reset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="1437"/>
+        <source> Move WP on click </source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>profEdit</name>
     <message>
         <location filename="../fForms.py" line="406"/>
@@ -1205,6 +1569,41 @@ Branches and header&apos;s axes must be ortho</source>
     </message>
 </context>
 <context>
+    <name>protoPypeForm</name>
+    <message>
+        <location filename="../dodoDialogs.py" line="208"/>
+        <location filename="../dodoDialogs.py" line="136"/>
+        <source>Rating: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dodoDialogs.py" line="174"/>
+        <source>Insert</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>protoTypeDialog</name>
+    <message>
+        <location filename="../dodoDialogs.py" line="33"/>
+        <source>&quot;%s&quot; to select; &quot;%s&quot; to execute
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dodoDialogs.py" line="46"/>
+        <source>No view available.
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dodoDialogs.py" line="82"/>
+        <source>Actions &quot;%s&quot; and &quot;%s&quot; removed
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>queryModel</name>
     <message>
         <location filename="../CUtils.py" line="39"/>
@@ -1253,6 +1652,19 @@ Branches and header&apos;s axes must be ortho</source>
     <message>
         <location filename="../CFrame.py" line="302"/>
         <source>Rotates and align the beam according another edge</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>rotWPForm</name>
+    <message>
+        <location filename="../uForms.py" line="178"/>
+        <source>Angle:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="182"/>
+        <source>Rotate working plane</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1344,6 +1756,61 @@ Branches and header&apos;s axes must be ortho</source>
 <context>
     <name>uForms</name>
     <message>
+        <location filename="../uForms.py" line="24"/>
+        <source>QueryTool</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="28"/>
+        <source>(Select a object)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="30"/>
+        <source>(base)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="32"/>
+        <source>Base: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="34"/>
+        <source>(angle)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="36"/>
+        <source>Rotation angle: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="38"/>
+        <source>v = (x,y,z)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="40"/>
+        <source>Rotation axis: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="43"/>
+        <source>(Sub object property)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="46"/>
+        <source>(Beam property)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="48"/>
+        <source>(Profile property)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../uForms.py" line="45"/>
         <source>QueryObject</source>
         <translation type="unfinished"></translation>
@@ -1354,13 +1821,13 @@ Branches and header&apos;s axes must be ortho</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uForms.py" line="122"/>
-        <source>Rotate WP</source>
+        <location filename="../uForms.py" line="138"/>
+        <source>Angle:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uForms.py" line="138"/>
-        <source>Angle:</source>
+        <location filename="../uForms.py" line="122"/>
+        <source>Rotate WP</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1416,6 +1883,11 @@ Branches and header&apos;s axes must be ortho</source>
     </message>
     <message>
         <location filename="../dialogz/align.ui" line="148"/>
+        <source>Set normal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/align.ui" line="148"/>
         <source>Set notmal</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1467,12 +1939,27 @@ Branches and header&apos;s axes must be ortho</source>
     </message>
     <message>
         <location filename="../dialogz/beamshift.ui" line="76"/>
+        <source>Z: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/beamshift.ui" line="76"/>
         <source> Z:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogz/beamshift.ui" line="116"/>
+        <source>Steps: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/beamshift.ui" line="116"/>
         <source> Steps: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/beamshift.ui" line="126"/>
+        <source>Y: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1483,6 +1970,11 @@ Branches and header&apos;s axes must be ortho</source>
     <message>
         <location filename="../dialogz/beamshift.ui" line="143"/>
         <source>copy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/beamshift.ui" line="150"/>
+        <source>X: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1762,6 +2254,11 @@ Branches and header&apos;s axes must be ortho</source>
     <message>
         <location filename="../dialogz/fbranch.ui" line="69"/>
         <source>AddBeams</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/fbranch.ui" line="76"/>
+        <source>Add single beam</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

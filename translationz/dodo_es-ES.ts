@@ -240,24 +240,24 @@
         <location filename="../fFeatures.py" line="695"/>
         <location filename="../fFeatures.py" line="481"/>
         <source>The extension of the tail</source>
-        <translation type="unfinished"></translation>
+        <translation>La extension de la cola</translation>
     </message>
     <message>
         <location filename="../fFeatures.py" line="696"/>
         <location filename="../fFeatures.py" line="482"/>
         <source>The extension of the head</source>
-        <translation type="unfinished"></translation>
+        <translation>La extension de la cabezera</translation>
     </message>
     <message>
         <location filename="../fFeatures.py" line="697"/>
         <location filename="../fFeatures.py" line="483"/>
         <source>The rotation of the section</source>
-        <translation type="unfinished"></translation>
+        <translation>La rotacion de la seccion</translation>
     </message>
     <message>
         <location filename="../pFeatures.py" line="30"/>
         <source>Flow factor (m3/h/bar)</source>
-        <translation type="unfinished"></translation>
+        <translation>Factor de flujo (m3/h/bar)</translation>
     </message>
 </context>
 <context>
@@ -268,7 +268,7 @@
         <location filename="../fFeatures.py" line="909"/>
         <location filename="../fFeatures.py" line="886"/>
         <source>Width of the beam</source>
-        <translation type="unfinished"></translation>
+        <translation>Ancho de la viga</translation>
     </message>
     <message>
         <location filename="../fFeatures.py" line="1014"/>
@@ -279,104 +279,93 @@
         <location filename="../fFeatures.py" line="910"/>
         <location filename="../fFeatures.py" line="887"/>
         <source>Height of the beam</source>
-        <translation type="unfinished"></translation>
+        <translation>Alto de la viga</translation>
     </message>
     <message>
         <location filename="../fFeatures.py" line="888"/>
         <source>Thickness of the vertical sides</source>
-        <translation type="unfinished"></translation>
+        <translation>Espesor de los lados verticales</translation>
     </message>
     <message>
         <location filename="../fFeatures.py" line="889"/>
         <source>Thickness of the horizontal sides</source>
-        <translation type="unfinished"></translation>
+        <translation>Espesor de los lados horizontales</translation>
     </message>
     <message>
         <location filename="../fFeatures.py" line="928"/>
         <source>Diameter of the beam</source>
-        <translation type="unfinished"></translation>
+        <translation>Diametro de la viga</translation>
     </message>
     <message>
         <location filename="../fFeatures.py" line="929"/>
         <source>Thickness</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../fFeatures.py" line="957"/>
-        <location filename="../fFeatures.py" line="944"/>
-        <source>W of the beam</source>
-        <translation type="unfinished"></translation>
+        <translation>Espesor</translation>
     </message>
     <message>
         <location filename="../fFeatures.py" line="947"/>
         <location filename="../fFeatures.py" line="946"/>
         <source>Thickness of the webs</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../fFeatures.py" line="958"/>
-        <source>H of the beam</source>
-        <translation type="unfinished"></translation>
+        <translation>Espesor de la redes</translation>
     </message>
     <message>
         <location filename="../fFeatures.py" line="972"/>
         <location filename="../fFeatures.py" line="960"/>
         <location filename="../fFeatures.py" line="959"/>
         <source>Thickness of the web</source>
-        <translation type="unfinished"></translation>
+        <translation>Espesor de la red</translation>
     </message>
     <message>
         <location filename="../fFeatures.py" line="973"/>
         <source>Thickness of the flanges</source>
-        <translation type="unfinished"></translation>
+        <translation>Espesor de las bridas</translation>
     </message>
     <message>
         <location filename="../fFeatures.py" line="985"/>
         <source>Width of the flanges</source>
-        <translation type="unfinished"></translation>
+        <translation>Ancho de las bridas</translation>
     </message>
     <message>
         <location filename="../fFeatures.py" line="1016"/>
         <location filename="../fFeatures.py" line="1001"/>
         <location filename="../fFeatures.py" line="986"/>
         <source>Thickness 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Espesor 1</translation>
     </message>
     <message>
         <location filename="../fFeatures.py" line="1017"/>
         <location filename="../fFeatures.py" line="1002"/>
         <location filename="../fFeatures.py" line="987"/>
         <source>Thickness 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Espesor 2</translation>
     </message>
     <message>
         <location filename="../fFeatures.py" line="1018"/>
         <location filename="../fFeatures.py" line="1003"/>
         <location filename="../fFeatures.py" line="988"/>
         <source>Thickness 3</source>
-        <translation type="unfinished"></translation>
+        <translation>Espesor 3</translation>
     </message>
     <message>
         <location filename="../fFeatures.py" line="1013"/>
         <location filename="../fFeatures.py" line="998"/>
         <source>Width of the bottom flange</source>
-        <translation type="unfinished"></translation>
+        <translation>Ancho inferior de la brida</translation>
     </message>
     <message>
         <location filename="../fFeatures.py" line="1015"/>
         <location filename="../fFeatures.py" line="1000"/>
         <source>Width of the top flange</source>
-        <translation type="unfinished"></translation>
+        <translation>Ancho superior de la brida</translation>
     </message>
     <message>
         <location filename="../pFeatures.py" line="579"/>
         <source>Outside diameter</source>
-        <translation type="unfinished"></translation>
+        <translation>Diametro exterior</translation>
     </message>
     <message>
         <location filename="../pFeatures.py" line="580"/>
         <source>Wall thickness</source>
-        <translation type="unfinished"></translation>
+        <translation>Espesor de pared</translation>
     </message>
 </context>
 <context>
@@ -384,22 +373,22 @@
     <message>
         <location filename="../fFeatures.py" line="618"/>
         <source>the edges</source>
-        <translation type="unfinished"></translation>
+        <translation>Los bordes</translation>
     </message>
     <message>
         <location filename="../fFeatures.py" line="619"/>
         <source>the profile</source>
-        <translation type="unfinished"></translation>
+        <translation>El perfil</translation>
     </message>
     <message>
         <location filename="../fFeatures.py" line="668"/>
         <source>The path.</source>
-        <translation type="unfinished"></translation>
+        <translation>La trayectoria.</translation>
     </message>
     <message>
         <location filename="../fFeatures.py" line="669"/>
         <source>The profile</source>
-        <translation type="unfinished"></translation>
+        <translation>El perfil</translation>
     </message>
 </context>
 <context>
@@ -408,17 +397,17 @@
         <location filename="../fFeatures.py" line="666"/>
         <location filename="../fFeatures.py" line="610"/>
         <source>Type of frameFeature</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipo de caracteristica de marco</translation>
     </message>
     <message>
         <location filename="../fFeatures.py" line="611"/>
         <source>Size of frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Tamaño de marco</translation>
     </message>
     <message>
         <location filename="../fFeatures.py" line="614"/>
         <source>The group.</source>
-        <translation type="unfinished"></translation>
+        <translation>El grupo.</translation>
     </message>
     <message>
         <location filename="../fFeatures.py" line="1012"/>
@@ -431,12 +420,12 @@
         <location filename="../fFeatures.py" line="908"/>
         <location filename="../fFeatures.py" line="885"/>
         <source>Type of section</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipo de seccion</translation>
     </message>
     <message>
         <location filename="../pFeatures.py" line="26"/>
         <source>Type of tubeFeature</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipo de caracteristica de tubo</translation>
     </message>
     <message>
         <location filename="../pFeatures.py" line="27"/>
@@ -446,7 +435,7 @@
     <message>
         <location filename="../pFeatures.py" line="28"/>
         <source>Nominal diameter</source>
-        <translation type="unfinished"></translation>
+        <translation>Diametro nominal</translation>
     </message>
 </context>
 <context>
@@ -454,7 +443,7 @@
     <message>
         <location filename="../fFeatures.py" line="667"/>
         <source>The beams names</source>
-        <translation type="unfinished"></translation>
+        <translation>Los nombres de las vigas</translation>
     </message>
 </context>
 <context>
@@ -462,6 +451,14 @@
     <message>
         <location filename="../pFeatures.py" line="29"/>
         <source>Ports position relative to the origin of Shape</source>
+        <translation>Posiciones de los puertos relativos al origen de la forma</translation>
+    </message>
+</context>
+<context>
+    <name>DialogQM</name>
+    <message>
+        <location filename="../dodoPM.py" line="309"/>
+        <source>Quick Insert</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -600,6 +597,34 @@
     </message>
 </context>
 <context>
+    <name>breakForm</name>
+    <message>
+        <location filename="../pForms.py" line="1161"/>
+        <source>Break the pipes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="1181"/>
+        <source>Length</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="1183"/>
+        <source>&lt;reference&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="1184"/>
+        <source>PypeLine:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="1186"/>
+        <source>&lt;none&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>breakPipe</name>
     <message>
         <location filename="../CPipe.py" line="129"/>
@@ -669,6 +694,57 @@
     </message>
 </context>
 <context>
+    <name>dpCalcDialog</name>
+    <message>
+        <location filename="../uForms.py" line="431"/>
+        <location filename="../uForms.py" line="407"/>
+        <source>No data found</source>
+        <translation>Datos no encontrados</translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="408"/>
+        <source>It seems the fluid has not
+a liquid state.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="408"/>
+        <source>It seems the fluid has not a liquid state.</source>
+        <translation>Parece que el fluido no tiene un estado liquido</translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="415"/>
+        <source>*** LIQUID ***</source>
+        <translation>*** LIQUIDO ***</translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="416"/>
+        <source>Flow (m3/h)</source>
+        <translation>Flujo (m3/h)</translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="432"/>
+        <source>It seems the fluid has not
+a gas state.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="432"/>
+        <source>It seems the fluid has not a gas state.</source>
+        <translation>Parece que el fluido no tiene un estado gaseoso</translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="439"/>
+        <source>*** GAS/VAPOUR ***</source>
+        <translation>*** GAS/VAPOR ***</translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="440"/>
+        <source>Flow (kg/h)</source>
+        <translation>Flujo (kg/h)</translation>
+    </message>
+</context>
+<context>
     <name>elbowQM</name>
     <message>
         <location filename="../CPipe.py" line="353"/>
@@ -686,7 +762,7 @@
     <message>
         <location filename="../CFrame.py" line="268"/>
         <source>Extend the beam either to a face, a vertex or the c.o.m. of the selected object</source>
-        <translation>Extiende la viga a sea hacia una cara, vertice o C.O.M del objeto seleccionado</translation>
+        <translation>Extiende la viga a sea hacia una cara, vertice o centro de masa del objeto seleccionado</translation>
     </message>
 </context>
 <context>
@@ -694,7 +770,7 @@
     <message>
         <location filename="../CPipe.py" line="180"/>
         <source>Extends pipe to intersection</source>
-        <translation>Extiende tubo a la insercción</translation>
+        <translation>Extiende tubo a la interseccion</translation>
     </message>
 </context>
 <context>
@@ -857,11 +933,47 @@
     </message>
 </context>
 <context>
+    <name>insertBranchForm</name>
+    <message>
+        <location filename="../pForms.py" line="1071"/>
+        <source>Insert a branch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="1083"/>
+        <source>&lt;name&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="1087"/>
+        <source>&lt;bend radius&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>insertCap</name>
     <message>
         <location filename="../CPipe.py" line="79"/>
         <source>Insert a cap</source>
         <translation>Insertar un tapon</translation>
+    </message>
+</context>
+<context>
+    <name>insertCapForm</name>
+    <message>
+        <location filename="../pForms.py" line="802"/>
+        <source>Insert caps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="807"/>
+        <source>Reverse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="810"/>
+        <source>Apply</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -873,11 +985,78 @@
     </message>
 </context>
 <context>
+    <name>insertElbowForm</name>
+    <message>
+        <location filename="../pForms.py" line="241"/>
+        <source>Insert elbows</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="252"/>
+        <source>&lt;bend angle&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="257"/>
+        <source>&lt;bend radius&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="261"/>
+        <source>Trim/Extend</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="264"/>
+        <source>Reverse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="267"/>
+        <source>Apply</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="283"/>
+        <source>0 deg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="351"/>
+        <source>Wrong selection
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="359"/>
+        <source> deg</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>insertFlange</name>
     <message>
         <location filename="../CPipe.py" line="89"/>
         <source>Insert a flange</source>
         <translation>Insertar una brida</translation>
+    </message>
+</context>
+<context>
+    <name>insertFlangeForm</name>
+    <message>
+        <location filename="../pForms.py" line="401"/>
+        <source>Insert flanges</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="411"/>
+        <source>Reverse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="416"/>
+        <source>Apply</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -902,6 +1081,24 @@
     </message>
 </context>
 <context>
+    <name>insertPipeForm</name>
+    <message>
+        <location filename="../pForms.py" line="107"/>
+        <source>Insert pipes</source>
+        <translation>Insertar tuberia</translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="123"/>
+        <source>Reverse</source>
+        <translation>Invertir</translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="126"/>
+        <source>Apply</source>
+        <translation>Aplicar</translation>
+    </message>
+</context>
+<context>
     <name>insertPypeLine</name>
     <message>
         <location filename="../CPipe.py" line="108"/>
@@ -915,11 +1112,77 @@
     </message>
 </context>
 <context>
+    <name>insertPypeLineForm</name>
+    <message>
+        <location filename="../pForms.py" line="865"/>
+        <source>PypeLine Manager</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="877"/>
+        <source>&lt;name&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="880"/>
+        <source>Redraw</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="883"/>
+        <source>Part list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="886"/>
+        <source>Color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="889"/>
+        <source>Get Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="892"/>
+        <source>Get Profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="896"/>
+        <source>&lt;new&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>insertReduct</name>
     <message>
         <location filename="../CPipe.py" line="69"/>
         <source>Insert a reduction</source>
         <translation>Insertar una reducción</translation>
+    </message>
+</context>
+<context>
+    <name>insertReductForm</name>
+    <message>
+        <location filename="../pForms.py" line="504"/>
+        <source>Insert reductions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="520"/>
+        <source>Reverse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="522"/>
+        <source>Apply</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="529"/>
+        <source>Eccentric</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -933,6 +1196,14 @@
         <location filename="../CPipe.py" line="306"/>
         <source>Create a sketch attached to a circular edge</source>
         <translation>Crea un boceto adjunta a una aristar circular</translation>
+    </message>
+</context>
+<context>
+    <name>insertRouteForm</name>
+    <message>
+        <location filename="../pForms.py" line="1807"/>
+        <source>&lt;select an edge&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -962,6 +1233,29 @@
     </message>
 </context>
 <context>
+    <name>insertTankForm</name>
+    <message>
+        <location filename="../pForms.py" line="1665"/>
+        <source>doing combine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="1700"/>
+        <source>files read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="1702"/>
+        <source>files not read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="1709"/>
+        <source>listNozzles: %s</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>insertUbolt</name>
     <message>
         <location filename="../CPipe.py" line="99"/>
@@ -970,11 +1264,67 @@
     </message>
 </context>
 <context>
+    <name>insertUboltForm</name>
+    <message>
+        <location filename="../pForms.py" line="681"/>
+        <source>Insert U-bolt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="690"/>
+        <source>- no ref. face -</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="694"/>
+        <source>Ref. face</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="699"/>
+        <source> Head</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="701"/>
+        <source> Middle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="702"/>
+        <source> Tail</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>insertValve</name>
     <message>
         <location filename="../CPipe.py" line="247"/>
         <source>Insert a valve</source>
         <translation>Insertar una valvula</translation>
+    </message>
+</context>
+<context>
+    <name>insertValveForm</name>
+    <message>
+        <location filename="../pForms.py" line="1375"/>
+        <source>Insert valves</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="1386"/>
+        <source>Reverse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="1389"/>
+        <source>Apply</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="1399"/>
+        <source> Insert in pipe</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1021,10 +1371,15 @@
     <message>
         <location filename="../CPipe.py" line="318"/>
         <source>Connect to header</source>
-        <translation type="unfinished"></translation>
+        <translation>Conectar a la cabezera</translation>
     </message>
     <message>
         <location filename="../CPipe.py" line="319"/>
+        <source>Connect branches to one header pipe Branches and header&apos;s axes must be ortho</source>
+        <translation>Conectar rama a una de las cabezeras de tubo; Ejes de ramificaciones y cabezeras deben ser ortogonales</translation>
+    </message>
+    <message>
+        <location filename="../CPipe.py" line="478"/>
         <source>Connect branches to one header pipe
 Branches and header&apos;s axes must be ortho</source>
         <translation type="unfinished"></translation>
@@ -1097,12 +1452,12 @@ Branches and header&apos;s axes must be ortho</source>
     <message>
         <location filename="../pForms.py" line="1117"/>
         <source>Offset Work Plane</source>
-        <translation type="unfinished"></translation>
+        <translation>Desface de plano de trabajo</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="1117"/>
         <source>Offset: </source>
-        <translation type="unfinished"></translation>
+        <translation>Desface:</translation>
     </message>
 </context>
 <context>
@@ -1140,72 +1495,130 @@ Branches and header&apos;s axes must be ortho</source>
     </message>
 </context>
 <context>
+    <name>point2pointPipe</name>
+    <message>
+        <location filename="../pForms.py" line="1431"/>
+        <source>Reset</source>
+        <translation>Reiniciar</translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="1437"/>
+        <source> Move WP on click </source>
+        <translation>Mover plano de trabajo al click</translation>
+    </message>
+</context>
+<context>
     <name>profEdit</name>
     <message>
         <location filename="../fForms.py" line="406"/>
         <source>Square</source>
         <comment>Profile name in the Tree View</comment>
-        <translation type="unfinished"></translation>
+        <translation>Rectangular</translation>
     </message>
     <message>
         <location filename="../fForms.py" line="410"/>
         <source>T-profile</source>
         <comment>Profile name in the Tree View</comment>
-        <translation type="unfinished"></translation>
+        <translation>Perfil T</translation>
     </message>
     <message>
         <location filename="../fForms.py" line="414"/>
         <source>U-profile</source>
         <comment>Profile name in the Tree View</comment>
-        <translation type="unfinished"></translation>
+        <translation>Perfil U</translation>
     </message>
     <message>
         <location filename="../fForms.py" line="418"/>
         <source>H-profile</source>
         <comment>Profile name in the Tree View</comment>
-        <translation type="unfinished"></translation>
+        <translation>Perfil H</translation>
     </message>
     <message>
         <location filename="../fForms.py" line="422"/>
         <source>L-profile</source>
         <comment>Profile name in the Tree View</comment>
-        <translation type="unfinished"></translation>
+        <translation>Perfil L</translation>
     </message>
     <message>
         <location filename="../fForms.py" line="426"/>
         <source>Z-profile</source>
         <comment>Profile name in the Tree View</comment>
-        <translation type="unfinished"></translation>
+        <translation>Perfil Z</translation>
     </message>
     <message>
         <location filename="../fForms.py" line="430"/>
         <source>Omega-profile</source>
         <comment>Profile name in the Tree View</comment>
-        <translation type="unfinished"></translation>
+        <translation>Perfil Omega</translation>
     </message>
     <message>
         <location filename="../fForms.py" line="434"/>
         <source>Circle-profile</source>
         <comment>Profile name in the Tree View</comment>
-        <translation type="unfinished"></translation>
+        <translation>Perfil circular</translation>
     </message>
     <message>
         <location filename="../fForms.py" line="445"/>
         <source>Insert profile</source>
         <comment>Transaction, used on undo/redo lists</comment>
-        <translation type="unfinished"></translation>
+        <translation>Insertar perfil</translation>
     </message>
     <message>
         <location filename="../fForms.py" line="484"/>
         <source>Modify profile</source>
         <comment>Transaction, used on undo/redo lists</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modificar perfil</translation>
     </message>
     <message>
         <location filename="../fForms.py" line="557"/>
         <source>Shift profile</source>
         <comment>Transaction, used on undo/redo lists</comment>
+        <translation>Gira perfil</translation>
+    </message>
+</context>
+<context>
+    <name>protoPypeForm</name>
+    <message>
+        <location filename="../dodoDialogs.py" line="208"/>
+        <location filename="../dodoDialogs.py" line="136"/>
+        <source>Rating: </source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dodoDialogs.py" line="174"/>
+        <source>Insert</source>
+        <translation>Insertar</translation>
+    </message>
+</context>
+<context>
+    <name>protoTypeDialog</name>
+    <message>
+        <location filename="../dodoDialogs.py" line="33"/>
+        <source>&quot;%s&quot; to select; &quot;%s&quot; to execute
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dodoDialogs.py" line="33"/>
+        <source>&quot;%s&quot; to select; &quot;%s&quot; to execute</source>
+        <translation>&quot;%s&quot; para seleccionar; &quot;%s&quot; para ejecutar</translation>
+    </message>
+    <message>
+        <location filename="../dodoDialogs.py" line="46"/>
+        <source>No view available.
+</source>
+        <translation>Vista no disponible</translation>
+    </message>
+    <message>
+        <location filename="../dodoDialogs.py" line="82"/>
+        <source>Actions &quot;%s&quot; and &quot;%s&quot; removed
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dodoDialogs.py" line="82"/>
+        <source>Actions &quot;%s&quot; and &quot;%s&quot; removed</source>
+        <translation>Acciones &quot;%s&quot; y &quot;%s&quot; eliminado</translation>
     </message>
 </context>
 <context>
@@ -1261,11 +1674,24 @@ Branches and header&apos;s axes must be ortho</source>
     </message>
 </context>
 <context>
+    <name>rotWPForm</name>
+    <message>
+        <location filename="../uForms.py" line="178"/>
+        <source>Angle:</source>
+        <translation>Angulo:</translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="182"/>
+        <source>Rotate working plane</source>
+        <translation>Rotar plano de trabajo</translation>
+    </message>
+</context>
+<context>
     <name>rotateWorkPlane</name>
     <message>
         <location filename="../CUtils.py" line="76"/>
         <source>rotate Workplane</source>
-        <translation>Rota el plano de trabajo</translation>
+        <translation>Rotar plano de trabajo</translation>
     </message>
     <message>
         <location filename="../CUtils.py" line="77"/>
@@ -1333,40 +1759,95 @@ para exportar en formato step</translation>
         <location filename="../uCmd.py" line="161"/>
         <source>Quick move</source>
         <comment>Transaction</comment>
-        <translation type="unfinished"></translation>
+        <translation>Movimiento rapido</translation>
     </message>
     <message>
         <location filename="../uCmd.py" line="287"/>
         <source>Offset Work Plane</source>
-        <translation type="unfinished"></translation>
+        <translation>Desfasar plano de trabajo</translation>
     </message>
     <message>
         <location filename="../uCmd.py" line="287"/>
         <source>Offset: </source>
-        <translation type="unfinished"></translation>
+        <translation>Desface:</translation>
     </message>
 </context>
 <context>
     <name>uForms</name>
     <message>
+        <location filename="../uForms.py" line="24"/>
+        <source>QueryTool</source>
+        <translation>Herramienta de consulta</translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="28"/>
+        <source>(Select a object)</source>
+        <translation>(Seleccionar un objeto)</translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="30"/>
+        <source>(base)</source>
+        <translation>(base)</translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="32"/>
+        <source>Base: </source>
+        <translation>Base:</translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="34"/>
+        <source>(angle)</source>
+        <translation>(angulo)</translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="36"/>
+        <source>Rotation angle: </source>
+        <translation>Angulo de rotacion:</translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="38"/>
+        <source>v = (x,y,z)</source>
+        <translation>v = (x,y,z)</translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="40"/>
+        <source>Rotation axis: </source>
+        <translation>Eje de rotacion:</translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="43"/>
+        <source>(Sub object property)</source>
+        <translation>(Propiedad de sub objeto)</translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="46"/>
+        <source>(Beam property)</source>
+        <translation>(Propiedad de viga)</translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="48"/>
+        <source>(Profile property)</source>
+        <translation>(Propiedad de perfil)</translation>
+    </message>
+    <message>
         <location filename="../uForms.py" line="45"/>
         <source>QueryObject</source>
-        <translation type="unfinished"></translation>
+        <translation>Consulta de objeto</translation>
     </message>
     <message>
         <location filename="../uForms.py" line="49"/>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../uForms.py" line="122"/>
-        <source>Rotate WP</source>
-        <translation type="unfinished"></translation>
+        <translation>Salir</translation>
     </message>
     <message>
         <location filename="../uForms.py" line="138"/>
         <source>Angle:</source>
-        <translation type="unfinished"></translation>
+        <translation>Angulo:</translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="122"/>
+        <source>Rotate WP</source>
+        <translation>Rotar plano de trabajo</translation>
     </message>
 </context>
 <context>
@@ -1382,62 +1863,62 @@ para exportar en formato step</translation>
     <message>
         <location filename="../dialogz/align.ui" line="26"/>
         <source>Align flanges</source>
-        <translation type="unfinished"></translation>
+        <translation>Alinear bridas</translation>
     </message>
     <message>
         <location filename="../dialogz/align.ui" line="51"/>
         <source>normY</source>
-        <translation type="unfinished"></translation>
+        <translation>Normal a Y</translation>
     </message>
     <message>
         <location filename="../dialogz/align.ui" line="64"/>
         <source>YZ</source>
-        <translation type="unfinished"></translation>
+        <translation>YZ</translation>
     </message>
     <message>
         <location filename="../dialogz/align.ui" line="77"/>
         <source>(S)elect face</source>
-        <translation type="unfinished"></translation>
+        <translation>(S)elecciona cara</translation>
     </message>
     <message>
         <location filename="../dialogz/align.ui" line="90"/>
         <source>XZ</source>
-        <translation type="unfinished"></translation>
+        <translation>XZ</translation>
     </message>
     <message>
         <location filename="../dialogz/align.ui" line="97"/>
         <source>hotkeys: &quot;S&quot; to select, &quot;X&quot; to execute</source>
-        <translation type="unfinished"></translation>
+        <translation>Teclas rapidas: &quot;S&quot; para seleccionar, &quot;X&quot; para ejecutar</translation>
     </message>
     <message>
         <location filename="../dialogz/align.ui" line="113"/>
         <source>XY</source>
-        <translation type="unfinished"></translation>
+        <translation>XY</translation>
     </message>
     <message>
         <location filename="../dialogz/align.ui" line="132"/>
         <source>&lt; select a target face &gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt; selecciona una cara como objetivo &gt;</translation>
     </message>
     <message>
         <location filename="../dialogz/align.ui" line="148"/>
-        <source>Set notmal</source>
-        <translation type="unfinished"></translation>
+        <source>Set normal</source>
+        <translation>Asignar normal</translation>
     </message>
     <message>
         <location filename="../dialogz/align.ui" line="170"/>
         <source>normX</source>
-        <translation type="unfinished"></translation>
+        <translation>Normal a X</translation>
     </message>
     <message>
         <location filename="../dialogz/align.ui" line="192"/>
         <source>normZ</source>
-        <translation type="unfinished"></translation>
+        <translation>Normal a Z</translation>
     </message>
     <message>
         <location filename="../dialogz/align.ui" line="205"/>
         <source>Invert normal</source>
-        <translation type="unfinished"></translation>
+        <translation>Invertir normal</translation>
     </message>
 </context>
 <context>
@@ -1445,45 +1926,50 @@ para exportar en formato step</translation>
     <message>
         <location filename="../dialogz/beamshift.ui" line="17"/>
         <source>Move</source>
-        <translation type="unfinished"></translation>
+        <translation>Mover</translation>
     </message>
     <message>
         <location filename="../dialogz/beamshift.ui" line="26"/>
         <source> Multiple: </source>
-        <translation type="unfinished"></translation>
+        <translation>Multiplicar:</translation>
     </message>
     <message>
         <location filename="../dialogz/beamshift.ui" line="36"/>
         <location filename="../dialogz/beamshift.ui" line="86"/>
         <source>1</source>
-        <translation type="unfinished"></translation>
+        <translation>1</translation>
     </message>
     <message>
         <location filename="../dialogz/beamshift.ui" line="46"/>
         <location filename="../dialogz/beamshift.ui" line="66"/>
         <location filename="../dialogz/beamshift.ui" line="106"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../dialogz/beamshift.ui" line="59"/>
         <source>Set dist.</source>
-        <translation type="unfinished"></translation>
+        <translation>Asignar distancia</translation>
     </message>
     <message>
         <location filename="../dialogz/beamshift.ui" line="76"/>
-        <source> Z:</source>
+        <source>Z: </source>
+        <translation>Z: </translation>
+    </message>
+    <message>
+        <location filename="../dialogz/beamshift.ui" line="116"/>
+        <source>Steps: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dialogz/beamshift.ui" line="116"/>
         <source> Steps: </source>
-        <translation type="unfinished"></translation>
+        <translation>Pasos: </translation>
     </message>
     <message>
         <location filename="../dialogz/beamshift.ui" line="126"/>
-        <source> Y:</source>
-        <translation type="unfinished"></translation>
+        <source>Y: </source>
+        <translation>Y: </translation>
     </message>
     <message>
         <location filename="../dialogz/beamshift.ui" line="143"/>
@@ -1492,13 +1978,13 @@ para exportar en formato step</translation>
     </message>
     <message>
         <location filename="../dialogz/beamshift.ui" line="150"/>
-        <source> X:</source>
-        <translation type="unfinished"></translation>
+        <source>X: </source>
+        <translation>X: </translation>
     </message>
     <message>
         <location filename="../dialogz/beamshift.ui" line="160"/>
         <source>hotkeys: &quot;S&quot; to select, &quot;X&quot; to execute</source>
-        <translation type="unfinished"></translation>
+        <translation>teclas rapidas: &quot;S&quot; para seleccionar, &quot;X&quot; para ejecutar</translation>
     </message>
 </context>
 <context>
@@ -1506,42 +1992,42 @@ para exportar en formato step</translation>
     <message>
         <location filename="../dialogz/beamstretch.ui" line="20"/>
         <source>Stretch</source>
-        <translation type="unfinished"></translation>
+        <translation>Estirar</translation>
     </message>
     <message>
         <location filename="../dialogz/beamstretch.ui" line="29"/>
         <source>(S)et length</source>
-        <translation type="unfinished"></translation>
+        <translation>(S)Asignar longitud</translation>
     </message>
     <message>
         <location filename="../dialogz/beamstretch.ui" line="36"/>
         <source>both</source>
-        <translation type="unfinished"></translation>
+        <translation>ambos</translation>
     </message>
     <message>
         <location filename="../dialogz/beamstretch.ui" line="43"/>
         <source>head</source>
-        <translation type="unfinished"></translation>
+        <translation>cabecera</translation>
     </message>
     <message>
         <location filename="../dialogz/beamstretch.ui" line="53"/>
         <source>tail</source>
-        <translation type="unfinished"></translation>
+        <translation>cola</translation>
     </message>
     <message>
         <location filename="../dialogz/beamstretch.ui" line="60"/>
         <source>New length - mm:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nueva longitud - mm:</translation>
     </message>
     <message>
         <location filename="../dialogz/beamstretch.ui" line="87"/>
         <source>hotkeys: &quot;S&quot; to select, &quot;X&quot; to execute</source>
-        <translation type="unfinished"></translation>
+        <translation>teclas rapidas: &quot;S&quot; para seleccionar, &quot;X&quot; para ejecutar</translation>
     </message>
     <message>
         <location filename="../dialogz/beamstretch.ui" line="97"/>
         <source>Stretched end:</source>
-        <translation type="unfinished"></translation>
+        <translation>Estirado final</translation>
     </message>
 </context>
 <context>
@@ -1549,29 +2035,29 @@ para exportar en formato step</translation>
     <message>
         <location filename="../dialogz/disp.ui" line="20"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Dialogo</translation>
     </message>
     <message>
         <location filename="../dialogz/disp.ui" line="26"/>
         <source>Angle:</source>
-        <translation type="unfinished"></translation>
+        <translation>Angulo:</translation>
     </message>
     <message>
         <location filename="../dialogz/disp.ui" line="42"/>
         <source>SET</source>
-        <translation type="unfinished"></translation>
+        <translation>Asignar</translation>
     </message>
     <message>
         <location filename="../dialogz/disp.ui" line="49"/>
         <source>  * Click on arrow to move
   * Ctrl+Click to go back
   * Ctrl+Alt+Click to rotate</source>
-        <translation type="unfinished"></translation>
+        <translation>* Cliquear en flecha para mover * Control+clic para regresar * control+alt+clic para rotar</translation>
     </message>
     <message>
         <location filename="../dialogz/disp.ui" line="61"/>
         <source>Displacement:</source>
-        <translation type="unfinished"></translation>
+        <translation>Desplazamiento:</translation>
     </message>
     <message>
         <location filename="../dialogz/disp.ui" line="71"/>
@@ -1589,22 +2075,22 @@ para exportar en formato step</translation>
     <message>
         <location filename="../dialogz/dp.ui" line="14"/>
         <source>Dp calculator</source>
-        <translation type="unfinished"></translation>
+        <translation>Calculadora de Dp</translation>
     </message>
     <message>
         <location filename="../dialogz/dp.ui" line="30"/>
         <source>calculation</source>
-        <translation type="unfinished"></translation>
+        <translation>calculo</translation>
     </message>
     <message>
         <location filename="../dialogz/dp.ui" line="36"/>
         <source>Nr. of curves = 0</source>
-        <translation type="unfinished"></translation>
+        <translation>Numero de curvas = 0</translation>
     </message>
     <message>
         <location filename="../dialogz/dp.ui" line="52"/>
         <source>Roughness (um)</source>
-        <translation type="unfinished"></translation>
+        <translation>Rugozidad (um)</translation>
     </message>
     <message>
         <location filename="../dialogz/dp.ui" line="74"/>
@@ -1620,52 +2106,52 @@ para exportar en formato step</translation>
     <message>
         <location filename="../dialogz/dp.ui" line="112"/>
         <source>Flow-rate (m3/h)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ritmo de flujo (m3/h)</translation>
     </message>
     <message>
         <location filename="../dialogz/dp.ui" line="122"/>
         <source>Total length = 0</source>
-        <translation type="unfinished"></translation>
+        <translation>Longitud total = 0</translation>
     </message>
     <message>
         <location filename="../dialogz/dp.ui" line="138"/>
         <source>Scope</source>
-        <translation type="unfinished"></translation>
+        <translation>Alcance</translation>
     </message>
     <message>
         <location filename="../dialogz/dp.ui" line="161"/>
         <source>&lt;on selection&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;en seleccion&gt;</translation>
     </message>
     <message>
         <location filename="../dialogz/dp.ui" line="182"/>
         <source>Pipe material</source>
-        <translation type="unfinished"></translation>
+        <translation>Material de tubo</translation>
     </message>
     <message>
         <location filename="../dialogz/dp.ui" line="196"/>
         <source>fluid properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Propiedades del fluido</translation>
     </message>
     <message>
         <location filename="../dialogz/dp.ui" line="208"/>
         <source>Density (kg/m3)</source>
-        <translation type="unfinished"></translation>
+        <translation>Densidad (kg/m3)</translation>
     </message>
     <message>
         <location filename="../dialogz/dp.ui" line="224"/>
         <source>liquid</source>
-        <translation type="unfinished"></translation>
+        <translation>liquido</translation>
     </message>
     <message>
         <location filename="../dialogz/dp.ui" line="240"/>
         <source>T (°C)</source>
-        <translation type="unfinished"></translation>
+        <translation>T (°C)</translation>
     </message>
     <message>
         <location filename="../dialogz/dp.ui" line="256"/>
         <source>Viscosity (cP)</source>
-        <translation type="unfinished"></translation>
+        <translation>Viscosidad (cP)</translation>
     </message>
     <message>
         <location filename="../dialogz/dp.ui" line="272"/>
@@ -1676,7 +2162,7 @@ para exportar en formato step</translation>
     <message>
         <location filename="../dialogz/dp.ui" line="310"/>
         <source>gas/vapour</source>
-        <translation type="unfinished"></translation>
+        <translation>gas/vapor</translation>
     </message>
     <message>
         <location filename="../dialogz/dp.ui" line="329"/>
@@ -1686,27 +2172,27 @@ para exportar en formato step</translation>
     <message>
         <location filename="../dialogz/dp.ui" line="367"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre</translation>
     </message>
     <message>
         <location filename="../dialogz/dp.ui" line="383"/>
         <source>P abs. (bar)</source>
-        <translation type="unfinished"></translation>
+        <translation>Presion absoluta. (bar)</translation>
     </message>
     <message>
         <location filename="../dialogz/dp.ui" line="394"/>
         <source>results</source>
-        <translation type="unfinished"></translation>
+        <translation>resultados</translation>
     </message>
     <message>
         <location filename="../dialogz/dp.ui" line="407"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportar</translation>
     </message>
     <message>
         <location filename="../dialogz/dp.ui" line="434"/>
         <source>*** LIQUID ***</source>
-        <translation type="unfinished"></translation>
+        <translation>*** LIQUIDO ***</translation>
     </message>
     <message>
         <location filename="../dialogz/dp.ui" line="461"/>
@@ -1719,22 +2205,22 @@ para exportar en formato step</translation>
     <message>
         <location filename="../dialogz/extend.ui" line="20"/>
         <source>Extend beams</source>
-        <translation type="unfinished"></translation>
+        <translation>Extender viga</translation>
     </message>
     <message>
         <location filename="../dialogz/extend.ui" line="35"/>
         <source>&lt; select a target &gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;seleccionar un objetivo&gt;</translation>
     </message>
     <message>
         <location filename="../dialogz/extend.ui" line="45"/>
         <source>(S)elect target</source>
-        <translation type="unfinished"></translation>
+        <translation>(S)elecciona un objetivo</translation>
     </message>
     <message>
         <location filename="../dialogz/extend.ui" line="52"/>
         <source>hotkeys: &quot;S&quot; to select, &quot;X&quot; to execute</source>
-        <translation type="unfinished"></translation>
+        <translation>teclas rapidas: &quot;S&quot; para seleccionar, &quot;X&quot; para ejecutar</translation>
     </message>
 </context>
 <context>
@@ -1742,82 +2228,82 @@ para exportar en formato step</translation>
     <message>
         <location filename="../dialogz/fbranch.ui" line="20"/>
         <source>FrameBranch Manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Gestor de marcos ramificados</translation>
     </message>
     <message>
         <location filename="../dialogz/fbranch.ui" line="26"/>
         <source>&lt;no target selected&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;ningun objetivo seleccionado&gt;</translation>
     </message>
     <message>
         <location filename="../dialogz/fbranch.ui" line="45"/>
         <source>&lt;degrees&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;grados&gt;</translation>
     </message>
     <message>
         <location filename="../dialogz/fbranch.ui" line="55"/>
         <source>offset tail</source>
-        <translation type="unfinished"></translation>
+        <translation>Desfasar cola</translation>
     </message>
     <message>
         <location filename="../dialogz/fbranch.ui" line="62"/>
         <source>Trim/Extend</source>
-        <translation type="unfinished"></translation>
+        <translation>Cortar/Extender</translation>
     </message>
     <message>
         <location filename="../dialogz/fbranch.ui" line="69"/>
         <source>AddBeams</source>
-        <translation type="unfinished"></translation>
+        <translation>Agregar vigas</translation>
     </message>
     <message>
         <location filename="../dialogz/fbranch.ui" line="76"/>
-        <source>Add single</source>
-        <translation type="unfinished"></translation>
+        <source>Add single beam</source>
+        <translation>Agregar viga simple</translation>
     </message>
     <message>
         <location filename="../dialogz/fbranch.ui" line="83"/>
         <source>ChangeProfile</source>
-        <translation type="unfinished"></translation>
+        <translation>Cambiar perfil</translation>
     </message>
     <message>
         <location filename="../dialogz/fbranch.ui" line="99"/>
         <source>&lt;name&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;nombre&gt;</translation>
     </message>
     <message>
         <location filename="../dialogz/fbranch.ui" line="119"/>
         <source>&lt;no item selected&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;ningun elemento seleccionado&gt;</translation>
     </message>
     <message>
         <location filename="../dialogz/fbranch.ui" line="135"/>
         <source>Redraw</source>
-        <translation type="unfinished"></translation>
+        <translation>Redibujar</translation>
     </message>
     <message>
         <location filename="../dialogz/fbranch.ui" line="148"/>
         <source>offset head</source>
-        <translation type="unfinished"></translation>
+        <translation>Desfasar cabezera</translation>
     </message>
     <message>
         <location filename="../dialogz/fbranch.ui" line="190"/>
         <source>RemoveBeams</source>
-        <translation type="unfinished"></translation>
+        <translation>Eliminar vigas</translation>
     </message>
     <message>
         <location filename="../dialogz/fbranch.ui" line="197"/>
         <source>Get targets</source>
-        <translation type="unfinished"></translation>
+        <translation>Obtener objetivos</translation>
     </message>
     <message>
         <location filename="../dialogz/fbranch.ui" line="207"/>
         <source>&lt;length&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;longitud&gt;</translation>
     </message>
     <message>
         <location filename="../dialogz/fbranch.ui" line="214"/>
         <source>hotkeys: &quot;S&quot; to select, &quot;X&quot; to trim</source>
-        <translation type="unfinished"></translation>
+        <translation>teclas rapidas: &quot;S&quot; para seleccionar, &quot;X&quot; para ejecutar</translation>
     </message>
 </context>
 <context>
@@ -1825,32 +2311,32 @@ para exportar en formato step</translation>
     <message>
         <location filename="../dialogz/fillframe.ui" line="20"/>
         <source>Fill frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Llenar marco</translation>
     </message>
     <message>
         <location filename="../dialogz/fillframe.ui" line="35"/>
         <source>move</source>
-        <translation type="unfinished"></translation>
+        <translation>mover</translation>
     </message>
     <message>
         <location filename="../dialogz/fillframe.ui" line="45"/>
         <source>(S)elect</source>
-        <translation type="unfinished"></translation>
+        <translation>(S)eleccionar</translation>
     </message>
     <message>
         <location filename="../dialogz/fillframe.ui" line="58"/>
         <source>&lt; select a beam &gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt; selecciona una viga &gt;</translation>
     </message>
     <message>
         <location filename="../dialogz/fillframe.ui" line="68"/>
         <source>copy</source>
-        <translation type="unfinished"></translation>
+        <translation>copiar</translation>
     </message>
     <message>
         <location filename="../dialogz/fillframe.ui" line="78"/>
         <source>hotkeys: &quot;S&quot; to select, &quot;X&quot; to execute</source>
-        <translation type="unfinished"></translation>
+        <translation>teclas rapidas: &quot;S&quot; para seleccionar, &quot;X&quot; para ejecutar</translation>
     </message>
 </context>
 <context>
@@ -1858,29 +2344,29 @@ para exportar en formato step</translation>
     <message>
         <location filename="../dialogz/hackedline.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Dialogo</translation>
     </message>
     <message>
         <location filename="../dialogz/hackedline.ui" line="20"/>
         <source>(M)ove origin on click</source>
-        <translation type="unfinished"></translation>
+        <translation>(M)over origen en clic</translation>
     </message>
     <message>
         <location filename="../dialogz/hackedline.ui" line="38"/>
         <source>(R)otate WP</source>
-        <translation type="unfinished"></translation>
+        <translation>(R)otar plano de trabajo</translation>
     </message>
     <message>
         <location filename="../dialogz/hackedline.ui" line="51"/>
         <source>(O)ffset WP</source>
-        <translation type="unfinished"></translation>
+        <translation>(O)Desface de plano de trabajo</translation>
     </message>
     <message>
         <location filename="../dialogz/hackedline.ui" line="80"/>
         <location filename="../dialogz/hackedline.ui" line="108"/>
         <location filename="../dialogz/hackedline.ui" line="136"/>
         <source>Align WP to principal plane</source>
-        <translation type="unfinished"></translation>
+        <translation>Alinear plano de trabajo al plano principal</translation>
     </message>
     <message>
         <location filename="../dialogz/hackedline.ui" line="83"/>
@@ -1903,12 +2389,12 @@ para exportar en formato step</translation>
     <message>
         <location filename="../dialogz/joinPypes.ui" line="14"/>
         <source>Join pypes</source>
-        <translation type="unfinished"></translation>
+        <translation>Unir tubos</translation>
     </message>
     <message>
         <location filename="../dialogz/joinPypes.ui" line="20"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Reiniciar</translation>
     </message>
     <message>
         <location filename="../dialogz/joinPypes.ui" line="27"/>
@@ -1921,7 +2407,7 @@ para exportar en formato step</translation>
     <message>
         <location filename="../dialogz/protoPypeForm.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Dialogo</translation>
     </message>
     <message>
         <location filename="../dialogz/protoPypeForm.ui" line="20"/>
@@ -1931,7 +2417,7 @@ para exportar en formato step</translation>
     <message>
         <location filename="../dialogz/protoPypeForm.ui" line="36"/>
         <source>Insert</source>
-        <translation type="unfinished"></translation>
+        <translation>Insertar</translation>
     </message>
 </context>
 <context>
@@ -1939,7 +2425,7 @@ para exportar en formato step</translation>
     <message>
         <location filename="../dialogz/rotAround.ui" line="26"/>
         <source>Rotate around axis</source>
-        <translation type="unfinished"></translation>
+        <translation>Rotar alrededor del eje</translation>
     </message>
     <message>
         <location filename="../dialogz/rotAround.ui" line="44"/>
@@ -1959,7 +2445,7 @@ para exportar en formato step</translation>
     <message>
         <location filename="../dialogz/rotAround.ui" line="92"/>
         <source>Reverse</source>
-        <translation type="unfinished"></translation>
+        <translation>Invertir</translation>
     </message>
     <message>
         <location filename="../dialogz/rotAround.ui" line="157"/>
@@ -1969,12 +2455,12 @@ para exportar en formato step</translation>
     <message>
         <location filename="../dialogz/rotAround.ui" line="182"/>
         <source>&lt;select one axis&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;selecciona un eje&gt;</translation>
     </message>
     <message>
         <location filename="../dialogz/rotAround.ui" line="204"/>
         <source>copy items</source>
-        <translation type="unfinished"></translation>
+        <translation>copiar elementos</translation>
     </message>
     <message>
         <location filename="../dialogz/rotAround.ui" line="223"/>
@@ -1984,7 +2470,7 @@ para exportar en formato step</translation>
     <message>
         <location filename="../dialogz/rotAround.ui" line="245"/>
         <source>(S)et axis</source>
-        <translation type="unfinished"></translation>
+        <translation>(S)Asignar eje</translation>
     </message>
 </context>
 <context>
@@ -1992,7 +2478,7 @@ para exportar en formato step</translation>
     <message>
         <location filename="../dialogz/route.ui" line="26"/>
         <source>Create pipe route</source>
-        <translation type="unfinished"></translation>
+        <translation>Crear trayectoria de tuberia</translation>
     </message>
     <message>
         <location filename="../dialogz/route.ui" line="53"/>
@@ -2017,12 +2503,12 @@ para exportar en formato step</translation>
     <message>
         <location filename="../dialogz/route.ui" line="135"/>
         <source>Normal to sketch:</source>
-        <translation type="unfinished"></translation>
+        <translation>Normal al croquis</translation>
     </message>
     <message>
         <location filename="../dialogz/route.ui" line="148"/>
         <source>Offset (mm):</source>
-        <translation type="unfinished"></translation>
+        <translation>Desfasar (mm):</translation>
     </message>
     <message>
         <location filename="../dialogz/route.ui" line="167"/>
