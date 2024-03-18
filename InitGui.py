@@ -143,24 +143,34 @@ static char * dodo1_xpm[] = {
   MenuText = "Dodo WB"
   ToolTip = "Dodo workbench \n(substitute of flamingo for Py3/Qt5)"
   def Initialize(self):
+    import pForms
     import CUtils
-    self.utilsList=["selectSolids","queryModel","moveWorkPlane","offsetWorkPlane","rotateWorkPlane","hackedL","moveHandle","dpCalc"]
-    self.appendToolbar("Utils",self.utilsList)
-    Log ('Loading Utils: done\n')
     import CFrame
-    self.frameList=["frameIt","FrameBranchManager","insertSection","spinSect","reverseBeam","shiftBeam","pivotBeam","levelBeam","alignEdge","rotJoin","alignFlange","stretchBeam","extend","adjustFrameAngle","insertPath"]
-    self.appendToolbar("frameTools",self.frameList)
-    Log ('Loading Frame tools: done\n')
     import CPipe
     self.pypeList=["insertPipe","insertElbow","insertReduct","insertCap","insertValve","insertFlange","insertUbolt","insertPypeLine","insertBranch","insertTank","insertRoute","breakPipe","mateEdges","flat","extend2intersection","extend1intersection","makeHeader","laydown","raiseup","attach2tube","point2point","insertAnyz"]#,"joinPype"]
+    from PySide.QtCore import QT_TRANSLATE_NOOP
+    from DraftGui import translate
     from dodoPM import toolList
+    FreeCADGui.addLanguagePath(pForms.getLanguagePath())
+    FreeCADGui.updateLocale()
+
+    self.utilsList=["selectSolids","queryModel","moveWorkPlane","offsetWorkPlane","rotateWorkPlane","hackedL","moveHandle","dpCalc"]
+    self.appendToolbar(translate("dodo","Utils"),self.utilsList)
+    Log ('Loading Utils: done\n')
+
+    self.frameList=["frameIt","FrameBranchManager","insertSection","spinSect","reverseBeam","shiftBeam","pivotBeam","levelBeam","alignEdge","rotJoin","alignFlange","stretchBeam","extend","adjustFrameAngle","insertPath"]
+    self.appendToolbar(translate("dodo","frametools"),self.frameList)
+    Log ('Loading Frame tools: done\n')
+
+    self.pypeList=["insertPipe","insertElbow","insertReduct","insertCap","insertValve","insertFlange","insertUbolt","insertPypeLine","insertBranch","insertTank","insertRoute","breakPipe","mateEdges","flat","extend2intersection","extend1intersection","laydown","raiseup","attach2tube","point2point","insertAnyz"]#,"joinPype"]
+
     self.qm=toolList # ["pipeQM","elbowQM","reductQM"]
-    self.appendToolbar("pipeTools",self.pypeList)
+    self.appendToolbar(translate("dodo","pypetools"),self.pypeList)
     Log ('Loading Pipe tools: done\n')
-    self.appendMenu(["Frame tools"],self.frameList)
-    self.appendMenu(["Pype tools"],self.pypeList)    
-    self.appendMenu(["Utils"],self.utilsList)
-    self.appendMenu(["QkMenus"], self.qm)
+    self.appendMenu(translate("dodo","Frame tools"),self.frameList)
+    self.appendMenu(translate("dodo","Pype tools"),self.pypeList)
+    self.appendMenu(translate("dodo","Utils"),self.utilsList)
+    self.appendMenu(translate("dodo","QkMenus"),self.qm)
 
   def ContextMenu(self, recipient):
     self.appendContextMenu('Frames', self.frameList)
@@ -195,5 +205,5 @@ static char * dodo1_xpm[] = {
     # del FreeCAD.__dodoPMact__
     # Msg("__dodoPMact__ variable deleted\n")
     # Msg("dodo deactivated()\n")
- 
+
 Gui.addWorkbench(dodo)
