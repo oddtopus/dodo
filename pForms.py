@@ -115,7 +115,7 @@ class insertPipeForm(dodoDialogs.protoPypeForm):
         self.ratingList.setCurrentRow(0)
         self.btn1.clicked.connect(self.insert)
         self.edit1 = QLineEdit()
-        self.edit1.setPlaceholderText("<length>")
+        self.edit1.setPlaceholderText(translate("insertPipeForm", "<length>"))
         self.edit1.setAlignment(Qt.AlignHCenter)
         self.edit1.setValidator(QDoubleValidator())
         self.edit1.editingFinished.connect(lambda: self.sli.setValue(100))

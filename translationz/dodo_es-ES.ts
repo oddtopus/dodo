@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="es-ES" sourcelanguage="en">
+<TS version="2.1" language="es_ES" sourcelanguage="en">
 <context>
     <name>App::Property</name>
     <message>
@@ -430,7 +430,7 @@
     <message>
         <location filename="../pFeatures.py" line="27"/>
         <source>Rating of pipeFeature</source>
-        <translation type="unfinished"></translation>
+        <translation>Grado de caracteristica de tuberia</translation>
     </message>
     <message>
         <location filename="../pFeatures.py" line="28"/>
@@ -459,7 +459,7 @@
     <message>
         <location filename="../dodoPM.py" line="309"/>
         <source>Quick Insert</source>
-        <translation type="unfinished"></translation>
+        <translation>Insercion rapida</translation>
     </message>
 </context>
 <context>
@@ -601,27 +601,27 @@
     <message>
         <location filename="../pForms.py" line="1161"/>
         <source>Break the pipes</source>
-        <translation type="unfinished"></translation>
+        <translation>Romper las tuberias</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="1181"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Longituf</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="1183"/>
         <source>&lt;reference&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;referencia&gt;</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="1184"/>
         <source>PypeLine:</source>
-        <translation type="unfinished"></translation>
+        <translation>Linea de tubo:</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="1186"/>
         <source>&lt;none&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;ninguno&gt;</translation>
     </message>
 </context>
 <context>
@@ -696,6 +696,17 @@
 <context>
     <name>dpCalcDialog</name>
     <message>
+        <location filename="../uForms.py" line="390"/>
+        <location filename="../uForms.py" line="266"/>
+        <source>*** CUSTOM FLUID ***</source>
+        <translation>*** FLUIDO PERSONALIZADO ***</translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="267"/>
+        <source>&lt;custom fluid&gt;</source>
+        <translation>&lt;Fluido personalizado&gt;</translation>
+    </message>
+    <message>
         <location filename="../uForms.py" line="431"/>
         <location filename="../uForms.py" line="407"/>
         <source>No data found</source>
@@ -703,14 +714,8 @@
     </message>
     <message>
         <location filename="../uForms.py" line="408"/>
-        <source>It seems the fluid has not
-a liquid state.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../uForms.py" line="408"/>
         <source>It seems the fluid has not a liquid state.</source>
-        <translation>Parece que el fluido no tiene un estado liquido</translation>
+        <translation>Parece que el fluido no tiene un estado liquido.</translation>
     </message>
     <message>
         <location filename="../uForms.py" line="415"/>
@@ -724,14 +729,8 @@ a liquid state.</source>
     </message>
     <message>
         <location filename="../uForms.py" line="432"/>
-        <source>It seems the fluid has not
-a gas state.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../uForms.py" line="432"/>
         <source>It seems the fluid has not a gas state.</source>
-        <translation>Parece que el fluido no tiene un estado gaseoso</translation>
+        <translation>Parece que el fluido no tiene un estado gaseoso.</translation>
     </message>
     <message>
         <location filename="../uForms.py" line="439"/>
@@ -762,7 +761,7 @@ a gas state.</source>
     <message>
         <location filename="../CFrame.py" line="268"/>
         <source>Extend the beam either to a face, a vertex or the c.o.m. of the selected object</source>
-        <translation>Extiende la viga a sea hacia una cara, vertice o centro de masa del objeto seleccionado</translation>
+        <translation>Extender la viga a sea hacia una cara, vertice o centro de masa del objeto seleccionado</translation>
     </message>
 </context>
 <context>
@@ -770,7 +769,7 @@ a gas state.</source>
     <message>
         <location filename="../CPipe.py" line="180"/>
         <source>Extends pipe to intersection</source>
-        <translation>Extiende tubo a la interseccion</translation>
+        <translation>Extender tubo a la interseccion</translation>
     </message>
 </context>
 <context>
@@ -778,7 +777,7 @@ a gas state.</source>
     <message>
         <location filename="../CPipe.py" line="167"/>
         <source>Extends pipes to intersection</source>
-        <translation>Extiende tubos a la interseccion</translation>
+        <translation>Extender tubos a la interseccion</translation>
     </message>
 </context>
 <context>
@@ -786,77 +785,77 @@ a gas state.</source>
     <message>
         <location filename="../fObservers.py" line="33"/>
         <source>Select one beam and one edge</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleccionar una viga y un borde</translation>
     </message>
     <message>
         <location filename="../fObservers.py" line="52"/>
         <source>First select the base beam, then the edges</source>
-        <translation type="unfinished"></translation>
+        <translation>Primero seleccionar la base, luego los bordes</translation>
     </message>
     <message>
         <location filename="../fObservers.py" line="65"/>
         <source>First select the target plane, then the faces to align</source>
-        <translation type="unfinished"></translation>
+        <translation>Primero seleccionar el plano objetivo, luego las caras a alinear</translation>
     </message>
     <message>
         <location filename="../fObservers.py" line="75"/>
         <source>levelTheBeam</source>
         <comment>Transaction</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nivelar la viga</translation>
     </message>
     <message>
         <location filename="../fObservers.py" line="83"/>
         <source>Select the target face, then the others</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleccionar la cara objetivo, luego las otras</translation>
     </message>
     <message>
         <location filename="../fObservers.py" line="92"/>
         <source>alignFlange</source>
         <comment>Transaction</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alinear brida</translation>
     </message>
     <message>
         <location filename="../fObservers.py" line="98"/>
         <source>Select two edges to join.</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleccionar dos bordes para unir.</translation>
     </message>
     <message>
         <location filename="../fObservers.py" line="108"/>
         <source>joinTheBeamsEdges</source>
         <comment>Transaction</comment>
-        <translation type="unfinished"></translation>
+        <translation>Unir los bordes de las vigas</translation>
     </message>
     <message>
         <location filename="../fObservers.py" line="117"/>
         <source>Select the beam and input the length</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecciona la viga y la entrada de la longitud</translation>
     </message>
     <message>
         <location filename="../fObservers.py" line="134"/>
         <source>First Select the target shape, then the beams to extend.</source>
-        <translation type="unfinished"></translation>
+        <translation>Primero selecciona la forma objetivo, luego la viga a extender.</translation>
     </message>
     <message>
         <location filename="../fObservers.py" line="147"/>
         <source>Select 2 edges</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleccionar 2 bordes</translation>
     </message>
     <message>
         <location filename="../fObservers.py" line="160"/>
         <source>Adjust angle</source>
         <comment>Transaction</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ajustar angulo</translation>
     </message>
     <message>
         <location filename="../fObservers.py" line="175"/>
         <source>Select 2 edges =&gt;[Ctrl]+select</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleccionar 2 bordes =&gt;[Ctrl]+seleccionar</translation>
     </message>
     <message>
         <location filename="../fObservers.py" line="185"/>
         <source>rotJoin</source>
         <comment>Transaction</comment>
-        <translation type="unfinished"></translation>
+        <translation>Rotar union</translation>
     </message>
 </context>
 <context>
@@ -937,17 +936,17 @@ a gas state.</source>
     <message>
         <location filename="../pForms.py" line="1071"/>
         <source>Insert a branch</source>
-        <translation type="unfinished"></translation>
+        <translation>Insertar una ramificacion</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="1083"/>
         <source>&lt;name&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;nombre&gt;</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="1087"/>
         <source>&lt;bend radius&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;radio de dobles&gt;</translation>
     </message>
 </context>
 <context>
@@ -963,17 +962,17 @@ a gas state.</source>
     <message>
         <location filename="../pForms.py" line="802"/>
         <source>Insert caps</source>
-        <translation type="unfinished"></translation>
+        <translation>Insertar tapones</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="807"/>
         <source>Reverse</source>
-        <translation type="unfinished"></translation>
+        <translation>Invertir</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="810"/>
         <source>Apply</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplicar</translation>
     </message>
 </context>
 <context>
@@ -989,48 +988,49 @@ a gas state.</source>
     <message>
         <location filename="../pForms.py" line="241"/>
         <source>Insert elbows</source>
-        <translation type="unfinished"></translation>
+        <translation>Insertar codos</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="252"/>
         <source>&lt;bend angle&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;angulo de dobles&gt;</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="257"/>
         <source>&lt;bend radius&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;radio de dobles&gt;</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="261"/>
         <source>Trim/Extend</source>
-        <translation type="unfinished"></translation>
+        <translation>Cortar/Extender</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="264"/>
         <source>Reverse</source>
-        <translation type="unfinished"></translation>
+        <translation>Invertir</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="267"/>
         <source>Apply</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplicar</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="283"/>
         <source>0 deg</source>
-        <translation type="unfinished"></translation>
+        <translation>0 grados</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="351"/>
         <source>Wrong selection
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Seleccion equivocada
+</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="359"/>
         <source> deg</source>
-        <translation type="unfinished"></translation>
+        <translation> grados</translation>
     </message>
 </context>
 <context>
@@ -1046,17 +1046,17 @@ a gas state.</source>
     <message>
         <location filename="../pForms.py" line="401"/>
         <source>Insert flanges</source>
-        <translation type="unfinished"></translation>
+        <translation>Insertar bridas</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="411"/>
         <source>Reverse</source>
-        <translation type="unfinished"></translation>
+        <translation>Invertir</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="416"/>
         <source>Apply</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplicar</translation>
     </message>
 </context>
 <context>
@@ -1088,6 +1088,11 @@ a gas state.</source>
         <translation>Insertar tuberia</translation>
     </message>
     <message>
+        <location filename="../pForms.py" line="118"/>
+        <source>&lt;length&gt;</source>
+        <translation>&lt;Longitud&gt;</translation>
+    </message>
+    <message>
         <location filename="../pForms.py" line="123"/>
         <source>Reverse</source>
         <translation>Invertir</translation>
@@ -1116,42 +1121,42 @@ a gas state.</source>
     <message>
         <location filename="../pForms.py" line="865"/>
         <source>PypeLine Manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Gestor de linea de tubo</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="877"/>
         <source>&lt;name&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;nombre&gt;</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="880"/>
         <source>Redraw</source>
-        <translation type="unfinished"></translation>
+        <translation>Redibujar</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="883"/>
         <source>Part list</source>
-        <translation type="unfinished"></translation>
+        <translation>Lista de parte</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="886"/>
         <source>Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Color</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="889"/>
         <source>Get Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Obtener trayectoria</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="892"/>
         <source>Get Profile</source>
-        <translation type="unfinished"></translation>
+        <translation>Obtener perfil</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="896"/>
         <source>&lt;new&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;nuevo&gt;</translation>
     </message>
 </context>
 <context>
@@ -1167,22 +1172,22 @@ a gas state.</source>
     <message>
         <location filename="../pForms.py" line="504"/>
         <source>Insert reductions</source>
-        <translation type="unfinished"></translation>
+        <translation>Insertar reducciones</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="520"/>
         <source>Reverse</source>
-        <translation type="unfinished"></translation>
+        <translation>Invertir</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="522"/>
         <source>Apply</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplicar</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="529"/>
         <source>Eccentric</source>
-        <translation type="unfinished"></translation>
+        <translation>Excentrico</translation>
     </message>
 </context>
 <context>
@@ -1203,7 +1208,7 @@ a gas state.</source>
     <message>
         <location filename="../pForms.py" line="1807"/>
         <source>&lt;select an edge&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;seleccionar un borde&gt;</translation>
     </message>
 </context>
 <context>
@@ -1237,22 +1242,22 @@ a gas state.</source>
     <message>
         <location filename="../pForms.py" line="1665"/>
         <source>doing combine</source>
-        <translation type="unfinished"></translation>
+        <translation>Haciendo combinado</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="1700"/>
         <source>files read</source>
-        <translation type="unfinished"></translation>
+        <translation>leer archivos</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="1702"/>
         <source>files not read</source>
-        <translation type="unfinished"></translation>
+        <translation>no leer archivos</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="1709"/>
         <source>listNozzles: %s</source>
-        <translation type="unfinished"></translation>
+        <translation>Lista de boquillas: %s</translation>
     </message>
 </context>
 <context>
@@ -1268,32 +1273,32 @@ a gas state.</source>
     <message>
         <location filename="../pForms.py" line="681"/>
         <source>Insert U-bolt</source>
-        <translation type="unfinished"></translation>
+        <translation>Insertar tornillo U</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="690"/>
         <source>- no ref. face -</source>
-        <translation type="unfinished"></translation>
+        <translation>Sin cara de referencia</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="694"/>
         <source>Ref. face</source>
-        <translation type="unfinished"></translation>
+        <translation>Cara de referencia</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="699"/>
         <source> Head</source>
-        <translation type="unfinished"></translation>
+        <translation> Cabecera</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="701"/>
         <source> Middle</source>
-        <translation type="unfinished"></translation>
+        <translation> Medio</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="702"/>
         <source> Tail</source>
-        <translation type="unfinished"></translation>
+        <translation> Cola</translation>
     </message>
 </context>
 <context>
@@ -1309,22 +1314,22 @@ a gas state.</source>
     <message>
         <location filename="../pForms.py" line="1375"/>
         <source>Insert valves</source>
-        <translation type="unfinished"></translation>
+        <translation>Insertar valvulas</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="1386"/>
         <source>Reverse</source>
-        <translation type="unfinished"></translation>
+        <translation>Invertir</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="1389"/>
         <source>Apply</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplicar</translation>
     </message>
     <message>
         <location filename="../pForms.py" line="1399"/>
         <source> Insert in pipe</source>
-        <translation type="unfinished"></translation>
+        <translation> Insertar en tubo</translation>
     </message>
 </context>
 <context>
@@ -1382,7 +1387,13 @@ a gas state.</source>
         <location filename="../CPipe.py" line="478"/>
         <source>Connect branches to one header pipe
 Branches and header&apos;s axes must be ortho</source>
-        <translation type="unfinished"></translation>
+        <translation>Conectar ramificaciones a una cabecera de tubo; ramificaciones y ejes de cabecera&apos;s deben ser ortogonales</translation>
+    </message>
+    <message>
+        <location filename="../CPipe.py" line="478"/>
+        <source>Connect branches to one header pipe
+        Branches and header&apos;s axes must be ortho</source>
+        <translation>Conectar ramificaciones a una cabecera de tubo; ramificaciones y ejes de cabecera&apos;s deben ser ortogonales</translation>
     </message>
 </context>
 <context>
@@ -1457,7 +1468,7 @@ Branches and header&apos;s axes must be ortho</source>
     <message>
         <location filename="../pForms.py" line="1117"/>
         <source>Offset: </source>
-        <translation>Desface:</translation>
+        <translation>Desface: </translation>
     </message>
 </context>
 <context>
@@ -1504,7 +1515,7 @@ Branches and header&apos;s axes must be ortho</source>
     <message>
         <location filename="../pForms.py" line="1437"/>
         <source> Move WP on click </source>
-        <translation>Mover plano de trabajo al click</translation>
+        <translation> Mover plano de trabajo al click </translation>
     </message>
 </context>
 <context>
@@ -1582,7 +1593,7 @@ Branches and header&apos;s axes must be ortho</source>
         <location filename="../dodoDialogs.py" line="208"/>
         <location filename="../dodoDialogs.py" line="136"/>
         <source>Rating: </source>
-        <translation type="unfinished"></translation>
+        <translation>Grado: </translation>
     </message>
     <message>
         <location filename="../dodoDialogs.py" line="174"/>
@@ -1594,26 +1605,13 @@ Branches and header&apos;s axes must be ortho</source>
     <name>protoTypeDialog</name>
     <message>
         <location filename="../dodoDialogs.py" line="33"/>
-        <source>&quot;%s&quot; to select; &quot;%s&quot; to execute
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dodoDialogs.py" line="33"/>
         <source>&quot;%s&quot; to select; &quot;%s&quot; to execute</source>
         <translation>&quot;%s&quot; para seleccionar; &quot;%s&quot; para ejecutar</translation>
     </message>
     <message>
         <location filename="../dodoDialogs.py" line="46"/>
-        <source>No view available.
-</source>
-        <translation>Vista no disponible</translation>
-    </message>
-    <message>
-        <location filename="../dodoDialogs.py" line="82"/>
-        <source>Actions &quot;%s&quot; and &quot;%s&quot; removed
-</source>
-        <translation type="unfinished"></translation>
+        <source>No view available.</source>
+        <translation>Vista no disponible.</translation>
     </message>
     <message>
         <location filename="../dodoDialogs.py" line="82"/>
@@ -1769,7 +1767,7 @@ para exportar en formato step</translation>
     <message>
         <location filename="../uCmd.py" line="287"/>
         <source>Offset: </source>
-        <translation>Desface:</translation>
+        <translation>Desface: </translation>
     </message>
 </context>
 <context>
@@ -1792,7 +1790,7 @@ para exportar en formato step</translation>
     <message>
         <location filename="../uForms.py" line="32"/>
         <source>Base: </source>
-        <translation>Base:</translation>
+        <translation>Base: </translation>
     </message>
     <message>
         <location filename="../uForms.py" line="34"/>
@@ -1802,7 +1800,7 @@ para exportar en formato step</translation>
     <message>
         <location filename="../uForms.py" line="36"/>
         <source>Rotation angle: </source>
-        <translation>Angulo de rotacion:</translation>
+        <translation>Angulo de rotacion: </translation>
     </message>
     <message>
         <location filename="../uForms.py" line="38"/>
@@ -1812,7 +1810,7 @@ para exportar en formato step</translation>
     <message>
         <location filename="../uForms.py" line="40"/>
         <source>Rotation axis: </source>
-        <translation>Eje de rotacion:</translation>
+        <translation>Eje de rotacion: </translation>
     </message>
     <message>
         <location filename="../uForms.py" line="43"/>
@@ -1856,6 +1854,343 @@ para exportar en formato step</translation>
         <location filename="../CPipe.py" line="373"/>
         <source>QM for valves</source>
         <translation>QM para valvulas</translation>
+    </message>
+</context>
+<context>
+    <name>Dialog</name>
+    <message>
+        <location filename="../dialogz/dp.ui" line="14"/>
+        <source>Dp calculator</source>
+        <translation>Calculadora de Dp</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="30"/>
+        <source>calculation</source>
+        <translation>calculos</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="36"/>
+        <source>Nr. of curves = 0</source>
+        <translation>Numero de curvas = 0</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="52"/>
+        <source>Roughness (um)</source>
+        <translation>Rugozidad (um)</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="112"/>
+        <source>Flow-rate (m3/h)</source>
+        <translation>Ritmo de flujo (m3/h)</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="122"/>
+        <source>Total length = 0</source>
+        <translation>Longitud total = 0</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="138"/>
+        <source>Scope</source>
+        <translation>Alcance</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="161"/>
+        <source>&lt;on selection&gt;</source>
+        <translation>&lt;en seleccion&gt;</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="182"/>
+        <source>Pipe material</source>
+        <translation>Material de tubo</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="196"/>
+        <source>fluid properties</source>
+        <translation>Propiedades del fluido</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="208"/>
+        <source>Density (kg/m3)</source>
+        <translation>Densidad (kg/m3)</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="224"/>
+        <source>liquid</source>
+        <translation>liquido</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="240"/>
+        <source>T (°C)</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="256"/>
+        <source>Viscosity (cP)</source>
+        <translation>Viscosidad (cP)</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="310"/>
+        <source>gas/vapour</source>
+        <translation>gas/vapor</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="367"/>
+        <source>Name</source>
+        <translation>Nombre</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="383"/>
+        <source>P abs. (bar)</source>
+        <translation>Presion absoluta (bar)</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="394"/>
+        <source>results</source>
+        <translation>resultados</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="407"/>
+        <source>Export</source>
+        <translation>Exportar</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="434"/>
+        <source>*** LIQUID ***</source>
+        <translation>*** LIQUIDO ***</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="461"/>
+        <source>---</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/hackedline.ui" line="14"/>
+        <location filename="../dialogz/tank.ui" line="20"/>
+        <source>Dialog</source>
+        <translation>Dialogo</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/hackedline.ui" line="20"/>
+        <source>(M)ove origin on click</source>
+        <translation>(M)over origen sobre clic</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/hackedline.ui" line="38"/>
+        <source>(R)otate WP</source>
+        <translation>(R)otar plano de trabajo</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/hackedline.ui" line="51"/>
+        <source>(O)ffset WP</source>
+        <translation>(O)Desfasar plano de trabajo</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/hackedline.ui" line="80"/>
+        <location filename="../dialogz/hackedline.ui" line="108"/>
+        <location filename="../dialogz/hackedline.ui" line="136"/>
+        <source>Align WP to principal plane</source>
+        <translation>Alinear plano de trabajo al plano principal</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/rotAround.ui" line="26"/>
+        <source>Rotate around axis</source>
+        <translation>Rotar alrededor del eje</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/rotAround.ui" line="92"/>
+        <source>Reverse</source>
+        <translation>Invertir</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/rotAround.ui" line="182"/>
+        <source>&lt;select one axis&gt;</source>
+        <translation>&lt;Seleccionar un eje&gt;</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/rotAround.ui" line="204"/>
+        <source>copy items</source>
+        <translation>copiar elementos</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/rotAround.ui" line="223"/>
+        <source>hotkeys: &quot;S&quot; to select, &quot;X&quot; to execute</source>
+        <translation>teclas rapidas: &quot;S&quot; para seleccionar, &quot;X&quot; para ejecutar</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/rotAround.ui" line="245"/>
+        <source>(S)et axis</source>
+        <translation>(S)Asignar eje</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="14"/>
+        <source>Beams profile editor</source>
+        <translation>Editor de perfiles de vigas</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="138"/>
+        <source>t1</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="158"/>
+        <source>t2</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="178"/>
+        <source>t3</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="204"/>
+        <source>&lt;name&gt;</source>
+        <translation>&lt;nombre&gt;</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="226"/>
+        <source>NW</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="236"/>
+        <source>N</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="246"/>
+        <source>NE</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="256"/>
+        <source>W</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="266"/>
+        <source>C</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="279"/>
+        <source>E</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="289"/>
+        <source>SW</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="299"/>
+        <source>S</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="309"/>
+        <source>SE</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="382"/>
+        <location filename="../dialogz/sections.ui" line="420"/>
+        <location filename="../dialogz/sections.ui" line="455"/>
+        <location filename="../dialogz/sections.ui" line="490"/>
+        <location filename="../dialogz/sections.ui" line="525"/>
+        <location filename="../dialogz/sections.ui" line="560"/>
+        <location filename="../dialogz/sections.ui" line="595"/>
+        <location filename="../dialogz/sections.ui" line="630"/>
+        <source>...</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="716"/>
+        <source>Full section</source>
+        <translation>Seccion completa</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="726"/>
+        <source>Apply
+dimensions</source>
+        <translation>Aplicar
+dimensiones</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="740"/>
+        <source>Shift
+profile</source>
+        <translation>Desfasar perfil</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/shapes.ui" line="14"/>
+        <source>Import shapes</source>
+        <translation>Importar formas</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/shapes.ui" line="21"/>
+        <source>&lt;shapes&gt;</source>
+        <translation>&lt;formas&gt;</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/tank.ui" line="33"/>
+        <source>Tank</source>
+        <translation>Deposito</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/tank.ui" line="65"/>
+        <source>Length</source>
+        <translation>Longitud</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/tank.ui" line="82"/>
+        <source>X</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/tank.ui" line="110"/>
+        <source>Width:</source>
+        <translation>Ancho:</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/tank.ui" line="127"/>
+        <source>Y</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/tank.ui" line="155"/>
+        <source>Height:</source>
+        <translation>Alto:</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/tank.ui" line="172"/>
+        <source>Z</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/tank.ui" line="182"/>
+        <source>Nozzles</source>
+        <translation>Boquillas</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/tank.ui" line="198"/>
+        <source>Pipe type:</source>
+        <translation>Tipo de tubo:</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/tank.ui" line="213"/>
+        <location filename="../dialogz/tank.ui" line="260"/>
+        <source>&lt;select&gt;</source>
+        <translation>&lt;seleccionar&gt;</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/tank.ui" line="248"/>
+        <source>Flange type:</source>
+        <translation>Tipo de brida:</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/tank.ui" line="291"/>
+        <source>Add nozzle</source>
+        <translation>Agregar boquilla</translation>
     </message>
 </context>
 <context>
@@ -1931,7 +2266,7 @@ para exportar en formato step</translation>
     <message>
         <location filename="../dialogz/beamshift.ui" line="26"/>
         <source> Multiple: </source>
-        <translation>Multiplicar:</translation>
+        <translation> Multiplicar: </translation>
     </message>
     <message>
         <location filename="../dialogz/beamshift.ui" line="36"/>
@@ -1949,7 +2284,7 @@ para exportar en formato step</translation>
     <message>
         <location filename="../dialogz/beamshift.ui" line="59"/>
         <source>Set dist.</source>
-        <translation>Asignar distancia</translation>
+        <translation>Asignar distancia.</translation>
     </message>
     <message>
         <location filename="../dialogz/beamshift.ui" line="76"/>
@@ -1959,11 +2294,6 @@ para exportar en formato step</translation>
     <message>
         <location filename="../dialogz/beamshift.ui" line="116"/>
         <source>Steps: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/beamshift.ui" line="116"/>
-        <source> Steps: </source>
         <translation>Pasos: </translation>
     </message>
     <message>
@@ -1974,7 +2304,7 @@ para exportar en formato step</translation>
     <message>
         <location filename="../dialogz/beamshift.ui" line="143"/>
         <source>copy</source>
-        <translation type="unfinished"></translation>
+        <translation>copiar</translation>
     </message>
     <message>
         <location filename="../dialogz/beamshift.ui" line="150"/>
@@ -2027,7 +2357,7 @@ para exportar en formato step</translation>
     <message>
         <location filename="../dialogz/beamstretch.ui" line="97"/>
         <source>Stretched end:</source>
-        <translation>Estirado final</translation>
+        <translation>Estirado final:</translation>
     </message>
 </context>
 <context>
@@ -2052,7 +2382,9 @@ para exportar en formato step</translation>
         <source>  * Click on arrow to move
   * Ctrl+Click to go back
   * Ctrl+Alt+Click to rotate</source>
-        <translation>* Cliquear en flecha para mover * Control+clic para regresar * control+alt+clic para rotar</translation>
+        <translation>  * Cliquear en flecha para mover
+  * Control+clic para regresar
+  * Control+alt+clic para rotar</translation>
     </message>
     <message>
         <location filename="../dialogz/disp.ui" line="61"/>
@@ -2062,142 +2394,12 @@ para exportar en formato step</translation>
     <message>
         <location filename="../dialogz/disp.ui" line="71"/>
         <source>100</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogz/disp.ui" line="97"/>
         <source>90</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>DialogDp</name>
-    <message>
-        <location filename="../dialogz/dp.ui" line="14"/>
-        <source>Dp calculator</source>
-        <translation>Calculadora de Dp</translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="30"/>
-        <source>calculation</source>
-        <translation>calculo</translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="36"/>
-        <source>Nr. of curves = 0</source>
-        <translation>Numero de curvas = 0</translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="52"/>
-        <source>Roughness (um)</source>
-        <translation>Rugozidad (um)</translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="74"/>
-        <source>100</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="96"/>
-        <location filename="../dialogz/dp.ui" line="351"/>
-        <source>20</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="112"/>
-        <source>Flow-rate (m3/h)</source>
-        <translation>Ritmo de flujo (m3/h)</translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="122"/>
-        <source>Total length = 0</source>
-        <translation>Longitud total = 0</translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="138"/>
-        <source>Scope</source>
-        <translation>Alcance</translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="161"/>
-        <source>&lt;on selection&gt;</source>
-        <translation>&lt;en seleccion&gt;</translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="182"/>
-        <source>Pipe material</source>
-        <translation>Material de tubo</translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="196"/>
-        <source>fluid properties</source>
-        <translation>Propiedades del fluido</translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="208"/>
-        <source>Density (kg/m3)</source>
-        <translation>Densidad (kg/m3)</translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="224"/>
-        <source>liquid</source>
-        <translation>liquido</translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="240"/>
-        <source>T (°C)</source>
-        <translation>T (°C)</translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="256"/>
-        <source>Viscosity (cP)</source>
-        <translation>Viscosidad (cP)</translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="272"/>
-        <location filename="../dialogz/dp.ui" line="291"/>
-        <source>0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="310"/>
-        <source>gas/vapour</source>
-        <translation>gas/vapor</translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="329"/>
-        <source>1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="367"/>
-        <source>Name</source>
-        <translation>Nombre</translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="383"/>
-        <source>P abs. (bar)</source>
-        <translation>Presion absoluta. (bar)</translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="394"/>
-        <source>results</source>
-        <translation>resultados</translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="407"/>
-        <source>Export</source>
-        <translation>Exportar</translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="434"/>
-        <source>*** LIQUID ***</source>
-        <translation>*** LIQUIDO ***</translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="461"/>
-        <source>---</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -2340,6 +2542,261 @@ para exportar en formato step</translation>
     </message>
 </context>
 <context>
+    <name>DialogJoinPypes</name>
+    <message>
+        <location filename="../dialogz/joinPypes.ui" line="14"/>
+        <source>Join pypes</source>
+        <translation>Unir tubos</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/joinPypes.ui" line="20"/>
+        <source>Reset</source>
+        <translation>Reiniciar</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/joinPypes.ui" line="27"/>
+        <source>hotkeys: &quot;S&quot; to select, &quot;X&quot; to execute</source>
+        <translation>teclas rapidas: &quot;S&quot; para seleccionar, &quot;X&quot; para ejecutar</translation>
+    </message>
+</context>
+<context>
+    <name>DialogProtoPipeForm</name>
+    <message>
+        <location filename="../dialogz/protoPypeForm.ui" line="14"/>
+        <source>Dialog</source>
+        <translation>Dialogo</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/protoPypeForm.ui" line="20"/>
+        <source>Rating: </source>
+        <translation>Grado: </translation>
+    </message>
+    <message>
+        <location filename="../dialogz/protoPypeForm.ui" line="36"/>
+        <source>Insert</source>
+        <translation>Insertar</translation>
+    </message>
+</context>
+<context>
+    <name>DialogRoute</name>
+    <message>
+        <location filename="../dialogz/route.ui" line="26"/>
+        <source>Create pipe route</source>
+        <translation>Crear trayectoria de tuberia</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/route.ui" line="53"/>
+        <source>Y</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/route.ui" line="72"/>
+        <source>X</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/route.ui" line="91"/>
+        <source>Z</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/route.ui" line="119"/>
+        <source>global Z</source>
+        <translation>Z global</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/route.ui" line="135"/>
+        <source>Normal to sketch:</source>
+        <translation>Normal al croquis:</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/route.ui" line="148"/>
+        <source>Offset (mm):</source>
+        <translation>Desfasar (mm):</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/route.ui" line="167"/>
+        <source>0</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/route.ui" line="199"/>
+        <source>&lt;select an edge&gt;</source>
+        <translation>&lt;seleccionar un borde&gt;</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/route.ui" line="209"/>
+        <source>Get edge</source>
+        <translation>Obtener borde</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/route.ui" line="228"/>
+        <source>(S)et normal</source>
+        <translation>(S)Asignar normal</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/route.ui" line="235"/>
+        <source>hotkeys:
+&quot;S&quot; to select normal from geometry
+&quot;X&quot; to execute</source>
+        <translation>teclas rapidas: &quot;S&quot; para seleccionar la normal de la geometria
+        &quot;X&quot; para ejecutar</translation>
+    </message>
+</context>
+<context>
+    <name>DialogValves</name>
+    <message>
+        <location filename="../dialogz/valves.ui" line="14"/>
+        <source>Insert valves</source>
+        <translation>Insertar valvulas</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/valves.ui" line="20"/>
+        <source>Apply</source>
+        <translation>Aplicar</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/valves.ui" line="27"/>
+        <source>Reverse</source>
+        <translation>Invertir</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/valves.ui" line="40"/>
+        <source>Type:</source>
+        <translation>Tipo:</translation>
+    </message>
+</context>
+<context>
+    <name>DialogDp</name>
+    <message>
+        <location filename="../dialogz/dp.ui" line="14"/>
+        <source>Dp calculator</source>
+        <translation>Calculadora de Dp</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="30"/>
+        <source>calculation</source>
+        <translation>calculo</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="36"/>
+        <source>Nr. of curves = 0</source>
+        <translation>Numero de curvas = 0</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="52"/>
+        <source>Roughness (um)</source>
+        <translation>Rugozidad (um)</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="74"/>
+        <source>100</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="96"/>
+        <location filename="../dialogz/dp.ui" line="351"/>
+        <source>20</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="112"/>
+        <source>Flow-rate (m3/h)</source>
+        <translation>Ritmo de flujo (m3/h)</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="122"/>
+        <source>Total length = 0</source>
+        <translation>Longitud total = 0</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="138"/>
+        <source>Scope</source>
+        <translation>Alcance</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="161"/>
+        <source>&lt;on selection&gt;</source>
+        <translation>&lt;en seleccion&gt;</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="182"/>
+        <source>Pipe material</source>
+        <translation>Material de tubo</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="196"/>
+        <source>fluid properties</source>
+        <translation>Propiedades del fluido</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="208"/>
+        <source>Density (kg/m3)</source>
+        <translation>Densidad (kg/m3)</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="224"/>
+        <source>liquid</source>
+        <translation>liquido</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="240"/>
+        <source>T (°C)</source>
+        <translation>T (°C)</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="256"/>
+        <source>Viscosity (cP)</source>
+        <translation>Viscosidad (cP)</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="272"/>
+        <location filename="../dialogz/dp.ui" line="291"/>
+        <source>0</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="310"/>
+        <source>gas/vapour</source>
+        <translation>gas/vapor</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="329"/>
+        <source>1</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="367"/>
+        <source>Name</source>
+        <translation>Nombre</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="383"/>
+        <source>P abs. (bar)</source>
+        <translation>Presion absoluta. (bar)</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="394"/>
+        <source>results</source>
+        <translation>resultados</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="407"/>
+        <source>Export</source>
+        <translation>Exportar</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="434"/>
+        <source>*** LIQUID ***</source>
+        <translation>*** LIQUIDO ***</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="461"/>
+        <source>---</source>
+        <translation></translation>
+    </message>
+</context>
+<context>
     <name>DialogHackedLine</name>
     <message>
         <location filename="../dialogz/hackedline.ui" line="14"/>
@@ -2371,53 +2828,17 @@ para exportar en formato step</translation>
     <message>
         <location filename="../dialogz/hackedline.ui" line="83"/>
         <source>XY</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogz/hackedline.ui" line="111"/>
         <source>XZ</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogz/hackedline.ui" line="139"/>
         <source>YZ</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>DialogJoinPypes</name>
-    <message>
-        <location filename="../dialogz/joinPypes.ui" line="14"/>
-        <source>Join pypes</source>
-        <translation>Unir tubos</translation>
-    </message>
-    <message>
-        <location filename="../dialogz/joinPypes.ui" line="20"/>
-        <source>Reset</source>
-        <translation>Reiniciar</translation>
-    </message>
-    <message>
-        <location filename="../dialogz/joinPypes.ui" line="27"/>
-        <source>hotkeys: &quot;S&quot; to select, &quot;X&quot; to execute</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>DialogProtoPipeForm</name>
-    <message>
-        <location filename="../dialogz/protoPypeForm.ui" line="14"/>
-        <source>Dialog</source>
-        <translation>Dialogo</translation>
-    </message>
-    <message>
-        <location filename="../dialogz/protoPypeForm.ui" line="20"/>
-        <source>Rating: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/protoPypeForm.ui" line="36"/>
-        <source>Insert</source>
-        <translation>Insertar</translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -2430,17 +2851,17 @@ para exportar en formato step</translation>
     <message>
         <location filename="../dialogz/rotAround.ui" line="44"/>
         <source>Z</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogz/rotAround.ui" line="63"/>
         <source>90</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogz/rotAround.ui" line="85"/>
         <source>Y</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogz/rotAround.ui" line="92"/>
@@ -2450,7 +2871,7 @@ para exportar en formato step</translation>
     <message>
         <location filename="../dialogz/rotAround.ui" line="157"/>
         <source>X</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogz/rotAround.ui" line="182"/>
@@ -2465,7 +2886,7 @@ para exportar en formato step</translation>
     <message>
         <location filename="../dialogz/rotAround.ui" line="223"/>
         <source>hotkeys: &quot;S&quot; to select, &quot;X&quot; to execute</source>
-        <translation type="unfinished"></translation>
+        <translation>teclas rapidas: &quot;S&quot; para seleccionar, &quot;X&quot; para ejecutar</translation>
     </message>
     <message>
         <location filename="../dialogz/rotAround.ui" line="245"/>
@@ -2474,174 +2895,109 @@ para exportar en formato step</translation>
     </message>
 </context>
 <context>
-    <name>DialogRoute</name>
-    <message>
-        <location filename="../dialogz/route.ui" line="26"/>
-        <source>Create pipe route</source>
-        <translation>Crear trayectoria de tuberia</translation>
-    </message>
-    <message>
-        <location filename="../dialogz/route.ui" line="53"/>
-        <source>Y</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/route.ui" line="72"/>
-        <source>X</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/route.ui" line="91"/>
-        <source>Z</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/route.ui" line="119"/>
-        <source>global Z</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/route.ui" line="135"/>
-        <source>Normal to sketch:</source>
-        <translation>Normal al croquis</translation>
-    </message>
-    <message>
-        <location filename="../dialogz/route.ui" line="148"/>
-        <source>Offset (mm):</source>
-        <translation>Desfasar (mm):</translation>
-    </message>
-    <message>
-        <location filename="../dialogz/route.ui" line="167"/>
-        <source>0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/route.ui" line="199"/>
-        <source>&lt;select an edge&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/route.ui" line="209"/>
-        <source>Get edge</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/route.ui" line="228"/>
-        <source>(S)et normal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/route.ui" line="235"/>
-        <source>hotkeys:
-&quot;S&quot; to select normal from geometry
-&quot;X&quot; to execute</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>DialogSections</name>
     <message>
         <location filename="../dialogz/sections.ui" line="14"/>
         <source>Beams profile editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Editor de perfiles de vigas</translation>
     </message>
     <message>
         <location filename="../dialogz/sections.ui" line="48"/>
         <location filename="../dialogz/sections.ui" line="68"/>
         <source>45</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogz/sections.ui" line="58"/>
         <source>D</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogz/sections.ui" line="78"/>
         <source>80</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogz/sections.ui" line="88"/>
         <source>H</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogz/sections.ui" line="98"/>
         <source>B</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogz/sections.ui" line="138"/>
         <source>t1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogz/sections.ui" line="148"/>
         <location filename="../dialogz/sections.ui" line="168"/>
         <location filename="../dialogz/sections.ui" line="188"/>
         <source>5</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogz/sections.ui" line="158"/>
         <source>t2</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogz/sections.ui" line="178"/>
         <source>t3</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogz/sections.ui" line="204"/>
         <source>&lt;name&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;nombre&gt;</translation>
     </message>
     <message>
         <location filename="../dialogz/sections.ui" line="226"/>
         <source>NW</source>
-        <translation type="unfinished"></translation>
+        <translation>Nor Oeste</translation>
     </message>
     <message>
         <location filename="../dialogz/sections.ui" line="236"/>
         <source>N</source>
-        <translation type="unfinished"></translation>
+        <translation>Norte</translation>
     </message>
     <message>
         <location filename="../dialogz/sections.ui" line="246"/>
         <source>NE</source>
-        <translation type="unfinished"></translation>
+        <translation>Nor Este</translation>
     </message>
     <message>
         <location filename="../dialogz/sections.ui" line="256"/>
         <source>W</source>
-        <translation type="unfinished"></translation>
+        <translation>Oeste</translation>
     </message>
     <message>
         <location filename="../dialogz/sections.ui" line="266"/>
         <source>C</source>
-        <translation type="unfinished"></translation>
+        <translation>Centro</translation>
     </message>
     <message>
         <location filename="../dialogz/sections.ui" line="279"/>
         <source>E</source>
-        <translation type="unfinished"></translation>
+        <translation>Este</translation>
     </message>
     <message>
         <location filename="../dialogz/sections.ui" line="289"/>
         <source>SW</source>
-        <translation type="unfinished"></translation>
+        <translation>Sur Oeste</translation>
     </message>
     <message>
         <location filename="../dialogz/sections.ui" line="299"/>
         <source>S</source>
-        <translation type="unfinished"></translation>
+        <translation>Sur</translation>
     </message>
     <message>
         <location filename="../dialogz/sections.ui" line="309"/>
         <source>SE</source>
-        <translation type="unfinished"></translation>
+        <translation>Sur Este</translation>
     </message>
     <message>
         <location filename="../dialogz/sections.ui" line="382"/>
@@ -2653,24 +3009,38 @@ para exportar en formato step</translation>
         <location filename="../dialogz/sections.ui" line="595"/>
         <location filename="../dialogz/sections.ui" line="630"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogz/sections.ui" line="716"/>
         <source>Full section</source>
-        <translation type="unfinished"></translation>
+        <translation>Seccion completa</translation>
     </message>
     <message>
         <location filename="../dialogz/sections.ui" line="726"/>
         <source>Apply
 dimensions</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplicar dimensiones</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="726"/>
+        <source>Apply
+        dimensions</source>
+        <translation>Aplicar
+        dimensiones</translation>
     </message>
     <message>
         <location filename="../dialogz/sections.ui" line="740"/>
         <source>Shift
 profile</source>
-        <translation type="unfinished"></translation>
+        <translation>Desfazar perfil</translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="740"/>
+        <source>Shift
+        profile</source>
+        <translation>Orientar
+        perfil</translation>
     </message>
 </context>
 <context>
@@ -2678,17 +3048,17 @@ profile</source>
     <message>
         <location filename="../dialogz/shapes.ui" line="14"/>
         <source>Import shapes</source>
-        <translation type="unfinished"></translation>
+        <translation>Importar formas</translation>
     </message>
     <message>
         <location filename="../dialogz/shapes.ui" line="21"/>
         <source>&lt;shapes&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;formas&gt;</translation>
     </message>
     <message>
         <location filename="../dialogz/shapes.ui" line="32"/>
         <source>-</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -2696,96 +3066,73 @@ profile</source>
     <message>
         <location filename="../dialogz/tank.ui" line="20"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Dialogo</translation>
     </message>
     <message>
         <location filename="../dialogz/tank.ui" line="33"/>
         <source>Tank</source>
-        <translation type="unfinished"></translation>
+        <translation>Deposito</translation>
     </message>
     <message>
         <location filename="../dialogz/tank.ui" line="65"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Longitud</translation>
     </message>
     <message>
         <location filename="../dialogz/tank.ui" line="79"/>
         <source>X</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogz/tank.ui" line="107"/>
         <source>Width:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ancho:</translation>
     </message>
     <message>
         <location filename="../dialogz/tank.ui" line="121"/>
         <source>Y</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogz/tank.ui" line="149"/>
         <source>Height:</source>
-        <translation type="unfinished"></translation>
+        <translation>Alto:</translation>
     </message>
     <message>
         <location filename="../dialogz/tank.ui" line="163"/>
         <source>Z</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogz/tank.ui" line="173"/>
         <source>Nozzles</source>
-        <translation type="unfinished"></translation>
+        <translation>Boquillas</translation>
     </message>
     <message>
         <location filename="../dialogz/tank.ui" line="189"/>
         <source>Pipe type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipo de tubo:</translation>
     </message>
     <message>
         <location filename="../dialogz/tank.ui" line="204"/>
         <location filename="../dialogz/tank.ui" line="251"/>
         <source>&lt;select&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;seleccionar&gt;</translation>
     </message>
     <message>
         <location filename="../dialogz/tank.ui" line="239"/>
         <source>Flange type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipo de brida:</translation>
     </message>
     <message>
         <location filename="../dialogz/tank.ui" line="266"/>
         <source>200</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../dialogz/tank.ui" line="282"/>
         <source>Add nozzle</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>DialogValves</name>
-    <message>
-        <location filename="../dialogz/valves.ui" line="14"/>
-        <source>Insert valves</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/valves.ui" line="20"/>
-        <source>Apply</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/valves.ui" line="27"/>
-        <source>Reverse</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/valves.ui" line="40"/>
-        <source>Type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Agregar boquilla</translation>
     </message>
 </context>
 </TS>

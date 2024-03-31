@@ -694,9 +694,25 @@
 <context>
     <name>dpCalcDialog</name>
     <message>
+        <location filename="../uForms.py" line="390"/>
+        <location filename="../uForms.py" line="266"/>
+        <source>*** CUSTOM FLUID ***</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="267"/>
+        <source>&lt;custom fluid&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../uForms.py" line="431"/>
         <location filename="../uForms.py" line="407"/>
         <source>No data found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="408"/>
+        <source>It seems the fluid has not a liquid state.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -713,6 +729,11 @@ a liquid state.</source>
     <message>
         <location filename="../uForms.py" line="416"/>
         <source>Flow (m3/h)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uForms.py" line="432"/>
+        <source>It seems the fluid has not a gas state.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1079,6 +1100,11 @@ a gas state.</source>
     <message>
         <location filename="../pForms.py" line="107"/>
         <source>Insert pipes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pForms.py" line="118"/>
+        <source>&lt;length&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1586,14 +1612,29 @@ Branches and header&apos;s axes must be ortho</source>
     <name>protoTypeDialog</name>
     <message>
         <location filename="../dodoDialogs.py" line="33"/>
+        <source>&quot;%s&quot; to select; &quot;%s&quot; to execute</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dodoDialogs.py" line="33"/>
         <source>&quot;%s&quot; to select; &quot;%s&quot; to execute
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../dodoDialogs.py" line="46"/>
+        <source>No view available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dodoDialogs.py" line="46"/>
         <source>No view available.
 </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dodoDialogs.py" line="82"/>
+        <source>Actions &quot;%s&quot; and &quot;%s&quot; removed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1840,6 +1881,342 @@ Branches and header&apos;s axes must be ortho</source>
     </message>
 </context>
 <context>
+    <name>Dialog</name>
+    <message>
+        <location filename="../dialogz/dp.ui" line="14"/>
+        <source>Dp calculator</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="30"/>
+        <source>calculation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="36"/>
+        <source>Nr. of curves = 0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="52"/>
+        <source>Roughness (um)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="112"/>
+        <source>Flow-rate (m3/h)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="122"/>
+        <source>Total length = 0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="138"/>
+        <source>Scope</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="161"/>
+        <source>&lt;on selection&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="182"/>
+        <source>Pipe material</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="196"/>
+        <source>fluid properties</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="208"/>
+        <source>Density (kg/m3)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="224"/>
+        <source>liquid</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="240"/>
+        <source>T (°C)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="256"/>
+        <source>Viscosity (cP)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="310"/>
+        <source>gas/vapour</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="367"/>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="383"/>
+        <source>P abs. (bar)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="394"/>
+        <source>results</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="407"/>
+        <source>Export</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="434"/>
+        <source>*** LIQUID ***</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="461"/>
+        <source>---</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/hackedline.ui" line="14"/>
+        <location filename="../dialogz/tank.ui" line="20"/>
+        <source>Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/hackedline.ui" line="20"/>
+        <source>(M)ove origin on click</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/hackedline.ui" line="38"/>
+        <source>(R)otate WP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/hackedline.ui" line="51"/>
+        <source>(O)ffset WP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/hackedline.ui" line="80"/>
+        <location filename="../dialogz/hackedline.ui" line="108"/>
+        <location filename="../dialogz/hackedline.ui" line="136"/>
+        <source>Align WP to principal plane</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/rotAround.ui" line="26"/>
+        <source>Rotate around axis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/rotAround.ui" line="92"/>
+        <source>Reverse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/rotAround.ui" line="182"/>
+        <source>&lt;select one axis&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/rotAround.ui" line="204"/>
+        <source>copy items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/rotAround.ui" line="223"/>
+        <source>hotkeys: &quot;S&quot; to select, &quot;X&quot; to execute</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/rotAround.ui" line="245"/>
+        <source>(S)et axis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="14"/>
+        <source>Beams profile editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="138"/>
+        <source>t1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="158"/>
+        <source>t2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="178"/>
+        <source>t3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="204"/>
+        <source>&lt;name&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="226"/>
+        <source>NW</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="236"/>
+        <source>N</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="246"/>
+        <source>NE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="256"/>
+        <source>W</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="266"/>
+        <source>C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="279"/>
+        <source>E</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="289"/>
+        <source>SW</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="299"/>
+        <source>S</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="309"/>
+        <source>SE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="382"/>
+        <location filename="../dialogz/sections.ui" line="420"/>
+        <location filename="../dialogz/sections.ui" line="455"/>
+        <location filename="../dialogz/sections.ui" line="490"/>
+        <location filename="../dialogz/sections.ui" line="525"/>
+        <location filename="../dialogz/sections.ui" line="560"/>
+        <location filename="../dialogz/sections.ui" line="595"/>
+        <location filename="../dialogz/sections.ui" line="630"/>
+        <source>...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="716"/>
+        <source>Full section</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="726"/>
+        <source>Apply
+dimensions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/sections.ui" line="740"/>
+        <source>Shift
+profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/shapes.ui" line="14"/>
+        <source>Import shapes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/shapes.ui" line="21"/>
+        <source>&lt;shapes&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/tank.ui" line="33"/>
+        <source>Tank</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/tank.ui" line="65"/>
+        <source>Length</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/tank.ui" line="82"/>
+        <source>X</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/tank.ui" line="110"/>
+        <source>Width:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/tank.ui" line="127"/>
+        <source>Y</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/tank.ui" line="155"/>
+        <source>Height:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/tank.ui" line="172"/>
+        <source>Z</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/tank.ui" line="182"/>
+        <source>Nozzles</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/tank.ui" line="198"/>
+        <source>Pipe type:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/tank.ui" line="213"/>
+        <location filename="../dialogz/tank.ui" line="260"/>
+        <source>&lt;select&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/tank.ui" line="248"/>
+        <source>Flange type:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/tank.ui" line="291"/>
+        <source>Add nozzle</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DialogAlign</name>
     <message>
         <location filename="../dialogz/align.ui" line="26"/>
@@ -2072,136 +2449,6 @@ Branches and header&apos;s axes must be ortho</source>
     </message>
 </context>
 <context>
-    <name>DialogDp</name>
-    <message>
-        <location filename="../dialogz/dp.ui" line="14"/>
-        <source>Dp calculator</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="30"/>
-        <source>calculation</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="36"/>
-        <source>Nr. of curves = 0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="52"/>
-        <source>Roughness (um)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="74"/>
-        <source>100</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="96"/>
-        <location filename="../dialogz/dp.ui" line="351"/>
-        <source>20</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="112"/>
-        <source>Flow-rate (m3/h)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="122"/>
-        <source>Total length = 0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="138"/>
-        <source>Scope</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="161"/>
-        <source>&lt;on selection&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="182"/>
-        <source>Pipe material</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="196"/>
-        <source>fluid properties</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="208"/>
-        <source>Density (kg/m3)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="224"/>
-        <source>liquid</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="240"/>
-        <source>T (°C)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="256"/>
-        <source>Viscosity (cP)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="272"/>
-        <location filename="../dialogz/dp.ui" line="291"/>
-        <source>0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="310"/>
-        <source>gas/vapour</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="329"/>
-        <source>1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="367"/>
-        <source>Name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="383"/>
-        <source>P abs. (bar)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="394"/>
-        <source>results</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="407"/>
-        <source>Export</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="434"/>
-        <source>*** LIQUID ***</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/dp.ui" line="461"/>
-        <source>---</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>DialogExtend</name>
     <message>
         <location filename="../dialogz/extend.ui" line="20"/>
@@ -2346,51 +2593,6 @@ Branches and header&apos;s axes must be ortho</source>
     </message>
 </context>
 <context>
-    <name>DialogHackedLine</name>
-    <message>
-        <location filename="../dialogz/hackedline.ui" line="14"/>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/hackedline.ui" line="20"/>
-        <source>(M)ove origin on click</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/hackedline.ui" line="38"/>
-        <source>(R)otate WP</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/hackedline.ui" line="51"/>
-        <source>(O)ffset WP</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/hackedline.ui" line="80"/>
-        <location filename="../dialogz/hackedline.ui" line="108"/>
-        <location filename="../dialogz/hackedline.ui" line="136"/>
-        <source>Align WP to principal plane</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/hackedline.ui" line="83"/>
-        <source>XY</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/hackedline.ui" line="111"/>
-        <source>XZ</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/hackedline.ui" line="139"/>
-        <source>YZ</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>DialogJoinPypes</name>
     <message>
         <location filename="../dialogz/joinPypes.ui" line="14"/>
@@ -2423,59 +2625,6 @@ Branches and header&apos;s axes must be ortho</source>
     <message>
         <location filename="../dialogz/protoPypeForm.ui" line="36"/>
         <source>Insert</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>DialogRotAround</name>
-    <message>
-        <location filename="../dialogz/rotAround.ui" line="26"/>
-        <source>Rotate around axis</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/rotAround.ui" line="44"/>
-        <source>Z</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/rotAround.ui" line="63"/>
-        <source>90</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/rotAround.ui" line="85"/>
-        <source>Y</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/rotAround.ui" line="92"/>
-        <source>Reverse</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/rotAround.ui" line="157"/>
-        <source>X</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/rotAround.ui" line="182"/>
-        <source>&lt;select one axis&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/rotAround.ui" line="204"/>
-        <source>copy items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/rotAround.ui" line="223"/>
-        <source>hotkeys: &quot;S&quot; to select, &quot;X&quot; to execute</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/rotAround.ui" line="245"/>
-        <source>(S)et axis</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2541,6 +2690,257 @@ Branches and header&apos;s axes must be ortho</source>
         <source>hotkeys:
 &quot;S&quot; to select normal from geometry
 &quot;X&quot; to execute</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DialogValves</name>
+    <message>
+        <location filename="../dialogz/valves.ui" line="14"/>
+        <source>Insert valves</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/valves.ui" line="20"/>
+        <source>Apply</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/valves.ui" line="27"/>
+        <source>Reverse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/valves.ui" line="40"/>
+        <source>Type:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DialogDp</name>
+    <message>
+        <location filename="../dialogz/dp.ui" line="14"/>
+        <source>Dp calculator</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="30"/>
+        <source>calculation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="36"/>
+        <source>Nr. of curves = 0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="52"/>
+        <source>Roughness (um)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="74"/>
+        <source>100</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="96"/>
+        <location filename="../dialogz/dp.ui" line="351"/>
+        <source>20</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="112"/>
+        <source>Flow-rate (m3/h)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="122"/>
+        <source>Total length = 0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="138"/>
+        <source>Scope</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="161"/>
+        <source>&lt;on selection&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="182"/>
+        <source>Pipe material</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="196"/>
+        <source>fluid properties</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="208"/>
+        <source>Density (kg/m3)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="224"/>
+        <source>liquid</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="240"/>
+        <source>T (°C)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="256"/>
+        <source>Viscosity (cP)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="272"/>
+        <location filename="../dialogz/dp.ui" line="291"/>
+        <source>0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="310"/>
+        <source>gas/vapour</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="329"/>
+        <source>1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="367"/>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="383"/>
+        <source>P abs. (bar)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="394"/>
+        <source>results</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="407"/>
+        <source>Export</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="434"/>
+        <source>*** LIQUID ***</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/dp.ui" line="461"/>
+        <source>---</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DialogHackedLine</name>
+    <message>
+        <location filename="../dialogz/hackedline.ui" line="14"/>
+        <source>Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/hackedline.ui" line="20"/>
+        <source>(M)ove origin on click</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/hackedline.ui" line="38"/>
+        <source>(R)otate WP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/hackedline.ui" line="51"/>
+        <source>(O)ffset WP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/hackedline.ui" line="80"/>
+        <location filename="../dialogz/hackedline.ui" line="108"/>
+        <location filename="../dialogz/hackedline.ui" line="136"/>
+        <source>Align WP to principal plane</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/hackedline.ui" line="83"/>
+        <source>XY</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/hackedline.ui" line="111"/>
+        <source>XZ</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/hackedline.ui" line="139"/>
+        <source>YZ</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DialogRotAround</name>
+    <message>
+        <location filename="../dialogz/rotAround.ui" line="26"/>
+        <source>Rotate around axis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/rotAround.ui" line="44"/>
+        <source>Z</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/rotAround.ui" line="63"/>
+        <source>90</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/rotAround.ui" line="85"/>
+        <source>Y</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/rotAround.ui" line="92"/>
+        <source>Reverse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/rotAround.ui" line="157"/>
+        <source>X</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/rotAround.ui" line="182"/>
+        <source>&lt;select one axis&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/rotAround.ui" line="204"/>
+        <source>copy items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/rotAround.ui" line="223"/>
+        <source>hotkeys: &quot;S&quot; to select, &quot;X&quot; to execute</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogz/rotAround.ui" line="245"/>
+        <source>(S)et axis</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2768,29 +3168,6 @@ profile</source>
     <message>
         <location filename="../dialogz/tank.ui" line="282"/>
         <source>Add nozzle</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>DialogValves</name>
-    <message>
-        <location filename="../dialogz/valves.ui" line="14"/>
-        <source>Insert valves</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/valves.ui" line="20"/>
-        <source>Apply</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/valves.ui" line="27"/>
-        <source>Reverse</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogz/valves.ui" line="40"/>
-        <source>Type:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

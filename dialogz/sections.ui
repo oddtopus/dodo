@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>DialogSections</class>
+ <class>Dialog</class>
  <widget class="QDialog" name="Dialog">
   <property name="geometry">
    <rect>
@@ -45,7 +45,7 @@
       <item row="3" column="1">
        <widget class="QLineEdit" name="editB">
         <property name="text">
-         <string>45</string>
+         <string notr="true">45</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -55,7 +55,7 @@
       <item row="4" column="0">
        <widget class="QLabel" name="labD">
         <property name="text">
-         <string>D</string>
+         <string notr="true">D</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -65,7 +65,7 @@
       <item row="4" column="1">
        <widget class="QLineEdit" name="editD">
         <property name="text">
-         <string>45</string>
+         <string notr="true">45</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -75,7 +75,7 @@
       <item row="1" column="1">
        <widget class="QLineEdit" name="editH">
         <property name="text">
-         <string>80</string>
+         <string notr="true">80</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -85,7 +85,7 @@
       <item row="1" column="0">
        <widget class="QLabel" name="labH">
         <property name="text">
-         <string>H</string>
+         <string notr="true">H</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -95,7 +95,7 @@
       <item row="3" column="0">
        <widget class="QLabel" name="labB">
         <property name="text">
-         <string>B</string>
+         <string notr="true">B</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -145,7 +145,7 @@
       <item row="0" column="1">
        <widget class="QLineEdit" name="editT1">
         <property name="text">
-         <string>5</string>
+         <string notr="true">5</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -165,7 +165,7 @@
       <item row="1" column="1">
        <widget class="QLineEdit" name="editT2">
         <property name="text">
-         <string>5</string>
+         <string notr="true">5</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -185,7 +185,7 @@
       <item row="2" column="1">
        <widget class="QLineEdit" name="editT3">
         <property name="text">
-         <string>5</string>
+         <string notr="true">5</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -353,8 +353,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>153</width>
-        <height>321</height>
+        <width>151</width>
+        <height>320</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_5">
@@ -382,7 +382,7 @@
           <string>...</string>
          </property>
          <property name="icon">
-          <iconset resource="../../../../Documenti/programmazione/QtDialogs/profileEditor/imgages.qrc">
+          <iconset>
            <normaloff>:/images/square.png</normaloff>:/images/square.png</iconset>
          </property>
          <property name="iconSize">
@@ -420,7 +420,7 @@
           <string>...</string>
          </property>
          <property name="icon">
-          <iconset resource="../../../../Documenti/programmazione/QtDialogs/profileEditor/imgages.qrc">
+          <iconset>
            <normaloff>:/images/circle.png</normaloff>:/images/circle.png</iconset>
          </property>
          <property name="iconSize">
@@ -455,7 +455,7 @@
           <string>...</string>
          </property>
          <property name="icon">
-          <iconset resource="../../../../Documenti/programmazione/QtDialogs/profileEditor/imgages.qrc">
+          <iconset>
            <normaloff>:/images/T.png</normaloff>:/images/T.png</iconset>
          </property>
          <property name="iconSize">
@@ -490,7 +490,7 @@
           <string>...</string>
          </property>
          <property name="icon">
-          <iconset resource="../../../../Documenti/programmazione/QtDialogs/profileEditor/imgages.qrc">
+          <iconset>
            <normaloff>:/images/U.png</normaloff>:/images/U.png</iconset>
          </property>
          <property name="iconSize">
@@ -525,7 +525,7 @@
           <string>...</string>
          </property>
          <property name="icon">
-          <iconset resource="../../../../Documenti/programmazione/QtDialogs/profileEditor/imgages.qrc">
+          <iconset>
            <normaloff>:/images/H.png</normaloff>:/images/H.png</iconset>
          </property>
          <property name="iconSize">
@@ -560,7 +560,7 @@
           <string>...</string>
          </property>
          <property name="icon">
-          <iconset resource="../../../../Documenti/programmazione/QtDialogs/profileEditor/imgages.qrc">
+          <iconset>
            <normaloff>:/images/L.png</normaloff>:/images/L.png</iconset>
          </property>
          <property name="iconSize">
@@ -595,7 +595,7 @@
           <string>...</string>
          </property>
          <property name="icon">
-          <iconset resource="../../../../Documenti/programmazione/QtDialogs/profileEditor/imgages.qrc">
+          <iconset>
            <normaloff>:/images/Z.png</normaloff>:/images/Z.png</iconset>
          </property>
          <property name="iconSize">
@@ -630,7 +630,7 @@
           <string>...</string>
          </property>
          <property name="icon">
-          <iconset resource="../../../../Documenti/programmazione/QtDialogs/profileEditor/imgages.qrc">
+          <iconset>
            <normaloff>:/images/omega.png</normaloff>:/images/omega.png</iconset>
          </property>
          <property name="iconSize">
@@ -681,7 +681,7 @@
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="../../../../Documenti/programmazione/QtDialogs/profileEditor/imgages.qrc">:/images/square.png</pixmap>
+         <pixmap>:/images/square.png</pixmap>
         </property>
         <property name="scaledContents">
          <bool>true</bool>
@@ -772,7 +772,6 @@ profile</string>
   <tabstop>tbOmega</tabstop>
  </tabstops>
  <resources>
-  <include location="../../../../Documenti/programmazione/QtDialogs/profileEditor/imgages.qrc"/>
   <include location="../../../../Documenti/programmazione/QtDialogs/profileEditor/imgages.qrc"/>
  </resources>
  <connections/>

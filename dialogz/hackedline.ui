@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>DialogHackedLine</class>
+ <class>Dialog</class>
  <widget class="QDialog" name="Dialog">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>196</width>
-    <height>110</height>
+    <width>278</width>
+    <height>118</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -80,7 +80,7 @@
         <string>Align WP to principal plane</string>
        </property>
        <property name="text">
-        <string>XY</string>
+        <string notr="true">XY</string>
        </property>
       </widget>
      </item>
@@ -108,7 +108,7 @@
         <string>Align WP to principal plane</string>
        </property>
        <property name="text">
-        <string>XZ</string>
+        <string notr="true">XZ</string>
        </property>
       </widget>
      </item>
@@ -136,7 +136,7 @@
         <string>Align WP to principal plane</string>
        </property>
        <property name="text">
-        <string>YZ</string>
+        <string notr="true">YZ</string>
        </property>
       </widget>
      </item>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>DialogRotAround</class>
+ <class>Dialog</class>
  <widget class="QDialog" name="Dialog">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>275</width>
-    <height>242</height>
+    <height>256</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -41,7 +41,7 @@
       </size>
      </property>
      <property name="text">
-      <string>Z</string>
+      <string notr="true">Z</string>
      </property>
     </widget>
    </item>
@@ -60,7 +60,7 @@
       </size>
      </property>
      <property name="text">
-      <string>90</string>
+      <string notr="true">90</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -82,7 +82,7 @@
       </size>
      </property>
      <property name="text">
-      <string>Y</string>
+      <string notr="true">Y</string>
      </property>
     </widget>
    </item>
@@ -154,7 +154,7 @@
       </size>
      </property>
      <property name="text">
-      <string>X</string>
+      <string notr="true">X</string>
      </property>
     </widget>
    </item>

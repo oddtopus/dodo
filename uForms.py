@@ -263,8 +263,8 @@ class dpCalcDialog:
         self.form.editViscosity.setEnabled(True)
         self.form.editDensity.setText("1000")
         self.form.editViscosity.setText("1")
-        self.form.labName.setText("*** CUSTOM FLUID ***")
-        self.form.comboFluid.addItems(["<custom fluid>"])
+        self.form.labName.setText(translate("dpCalcDialog", "*** CUSTOM FLUID ***"))
+        self.form.comboFluid.addItems([translate("dpCalcDialog", "<custom fluid>")])
         self.form.comboWhat.addItems(
             [
                 o.Label
@@ -387,7 +387,7 @@ class dpCalcDialog:
         P = float(self.form.editPressure.text()) * 1e5
         self.isMixture = True
         self.fluid = None
-        self.form.labName.setText("*** CUSTOM FLUID ***")
+        self.form.labName.setText(translate("dpCalcDialog", "*** CUSTOM FLUID ***"))
         self.form.editDensity.setEnabled(True)
         self.form.editViscosity.setEnabled(True)
         self.form.labResult.setText("---")
@@ -406,7 +406,7 @@ class dpCalcDialog:
                     None,
                     translate("dpCalcDialog", "No data found"),
                     translate(
-                        "dpCalcDialog", "It seems the fluid has not\na liquid state."
+                        "dpCalcDialog", "It seems the fluid has not a liquid state."
                     ),
                 )
                 self.form.radioGas.setChecked(True)
@@ -430,7 +430,7 @@ class dpCalcDialog:
                     None,
                     translate("dpCalcDialog", "No data found"),
                     translate(
-                        "dpCalcDialog", "It seems the fluid has not\na gas state."
+                        "dpCalcDialog", "It seems the fluid has not a gas state."
                     ),
                 )
                 self.form.radioLiquid.setChecked(True)

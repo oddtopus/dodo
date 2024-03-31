@@ -30,7 +30,7 @@ class protoTypeDialog(object):
         self.mw.addAction(self.actionS)
         self.actionESC = QAction(self.mw)
         FreeCAD.Console.PrintMessage(
-            translate("protoTypeDialog", '"%s" to select; "%s" to execute\n')
+            translate("protoTypeDialog", '"%s" to select; "%s" to execute')
             % (
                 self.actionS.shortcuts()[0].toString(),
                 self.actionX.shortcuts()[0].toString(),
@@ -43,7 +43,7 @@ class protoTypeDialog(object):
             )  # SoKeyboardEvents replaced by QAction'
         except:
             FreeCAD.Console.PrintError(
-                translate("protoTypeDialog", "No view available.\n")
+                translate("protoTypeDialog", "No view available.")
             )
 
     def action(self, arg):
@@ -79,7 +79,7 @@ class protoTypeDialog(object):
         self.mw.removeAction(self.actionX)
         self.mw.removeAction(self.actionS)
         FreeCAD.Console.PrintMessage(
-            translate("protoTypeDialog", 'Actions "%s" and "%s" removed\n')
+            translate("protoTypeDialog", 'Actions "%s" and "%s" removed')
             % (self.actionX.objectName(), self.actionS.objectName())
         )
         try:
