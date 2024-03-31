@@ -7,9 +7,11 @@ __license__="LGPL 3"
 
 # import FreeCAD modules
 import FreeCAD, FreeCADGui, inspect, os
+from PySide.QtCore import QT_TRANSLATE_NOOP
+from DraftGui import translate
 
 # helper -------------------------------------------------------------------
-# FreeCAD TemplatePyMod module  
+# FreeCAD TemplatePyMod module
 # (c) 2007 Juergen Riegel LGPL
 
 def addCommand(name,cmdObject):
@@ -37,13 +39,15 @@ class frameIt:
     import FreeCAD, FreeCADGui, fObservers, fCmd
     s=fObservers.frameItObserver()
     FreeCADGui.Selection.addObserver(s)
-    
+
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","beamFit.svg"),'MenuText':'Place one-beam over one-edge','ToolTip':'Place one beam after the other over the edges'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","beamFit.svg"),
+	'MenuText':QT_TRANSLATE_NOOP("frameIt",'Place one-beam over one-edge'),
+	'ToolTip':QT_TRANSLATE_NOOP("frameIt",'Place one beam after the other over the edges')}
 
 class spinSect:
   '''
-  Tool to spin one object around the "Z" axis of its shape 
+  Tool to spin one object around the "Z" axis of its shape
   by 45 degrees.
   '''
   def Activated(self):
@@ -54,13 +58,15 @@ class spinSect:
       pCmd.rotateTheTubeAx(beam)
     FreeCAD.activeDocument().recompute()
     FreeCAD.activeDocument().commitTransaction()
-        
+
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","beamRot.svg"),'MenuText':'Spin beams by 45 deg.','ToolTip':'Rotates the section of the beam by 45 degrees'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","beamRot.svg"),
+	'MenuText':QT_TRANSLATE_NOOP("spinSect",'Spin beams by 45 deg.'),
+	'ToolTip':QT_TRANSLATE_NOOP("spinSect",'Rotates the section of the beam by 45 degrees')}
 
 class reverseBeam:
   '''
-  Tool to spin one object around the "X" axis of its shape 
+  Tool to spin one object around the "X" axis of its shape
   by 180 degrees.
   Note: - if one edge of the object is selected, that is used
   as the pivot of rotation.
@@ -72,9 +78,11 @@ class reverseBeam:
       pCmd.reverseTheTube(objEx)
     FreeCAD.activeDocument().recompute()
     FreeCAD.activeDocument().commitTransaction()
-        
+
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","reverse.svg"),'MenuText':'Reverse orientation','ToolTip':'Reverse the orientation of selected objects'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","reverse.svg"),
+	'MenuText':QT_TRANSLATE_NOOP("reverseBeam",'Reverse orientation'),
+	'ToolTip':QT_TRANSLATE_NOOP("reverseBeam",'Reverse the orientation of selected objects')}
 
 # class fillFrame:
   # '''
@@ -86,13 +94,13 @@ class reverseBeam:
     # import fForms
     # #frameFormObj=fForms.fillForm()
     # FreeCADGui.Control.showDialog(fForms.fillForm())
-      
+
   # def GetResources(self):
     # return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","fillFrame.svg"),'MenuText':'Fill the frame','ToolTip':'Fill the sketch of the frame with the selected beam'}
 
 class alignFlange:
   '''
-  Tool to rotate beams (or other objects) so that their surfaces are 
+  Tool to rotate beams (or other objects) so that their surfaces are
   parallel to one reference plane.
   If multiple faces are preselected, objects will be rotated according
   the first face in the selections set. Otherwise the program prompts
@@ -104,18 +112,20 @@ class alignFlange:
     FreeCADGui.Control.showDialog(fForms.alignForm())
 
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","flangeAlign.svg"),'MenuText':'alignFlange','ToolTip':'Rotates the section of the beam to make the faces parallel to another face'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","flangeAlign.svg"),
+	'MenuText':QT_TRANSLATE_NOOP("alignFlange",'alignFlange'),
+	'ToolTip':QT_TRANSLATE_NOOP("alignFlange",'Rotates the section of the beam to make the faces parallel to another face')}
 
 class shiftBeam:
   '''
   Dialog to translate and copy objects.
-  * "x/y/z" textboxes: direct input of amount of translation in each 
+  * "x/y/z" textboxes: direct input of amount of translation in each
   direction.
   * "Multiple" textbox: the multiple coefficient of the translation
   amount.
   * "Steps" textbox: the denominator of the translation amount. It's
   used when the amount of translation is to be covered in some steps.
-  * "move/copy" radiobuttons: to select if the selected objects shall 
+  * "move/copy" radiobuttons: to select if the selected objects shall
   be copied or only translated.
   * [Displacement] button: takes the amount and direction of translation
   from the distance of selected entities (points, edges, faces).
@@ -130,12 +140,14 @@ class shiftBeam:
     FreeCADGui.Control.showDialog(fForms.translateForm())
 
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","beamShift.svg"),'MenuText':'shiftTheBeam','ToolTip':'Translate objects by vectors defined on existing geometry'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","beamShift.svg"),
+	'MenuText':QT_TRANSLATE_NOOP("shiftBeam",'shiftTheBeam'),
+	'ToolTip':QT_TRANSLATE_NOOP("shiftBeam",'Translate objects by vectors defined on existing geometry')}
 
 class levelBeam:
   '''
   Tool to flush the parallel faces of two objects.
-  
+
   Note: - actually the command takes to the same level, respect the
   position and orientation of the first face selected, the center-of-mass
   of all faces selected. Thus it translates the objects even if the
@@ -161,12 +173,14 @@ class levelBeam:
       FreeCADGui.Selection.addObserver(s)
 
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","beamLevel.svg"),'MenuText':'Flush the surfaces','ToolTip':'Shift the beams to line-up the faces to the first selection (faces must be //)'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","beamLevel.svg"),
+	'MenuText':QT_TRANSLATE_NOOP("levelBeam",'Flush the surfaces'),
+	'ToolTip':QT_TRANSLATE_NOOP("levelBeam",'Shift the beams to line-up the faces to the first selection (faces must be //)')}
 
 class alignEdge:
   '''
   Tool to mate two parallel edges.
-  
+
   Notes: - actually the command moves the objects along the minimum
   distance of their selected edge to the first one. Thus it translates
   the object even if edges are not parallel.
@@ -190,9 +204,11 @@ class alignEdge:
       FreeCADGui.Selection.clearSelection()
       s=fObservers.alignEdgeObserver()
       FreeCADGui.Selection.addObserver(s)
-    
+
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","edgeAlign.svg"),'MenuText':'Mate the edges','ToolTip':'Join two edges: select two or pre-select several'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","edgeAlign.svg"),
+	'MenuText':QT_TRANSLATE_NOOP("alignEdge",'Mate the edges'),
+	'ToolTip':QT_TRANSLATE_NOOP("alignEdge",'Join two edges: select two or pre-select several')}
 
 class pivotBeam:
   '''
@@ -205,10 +221,12 @@ class pivotBeam:
   def Activated(self):
     import fForms
     #frameFormObj=fForms.pivotForm()
-    FreeCADGui.Control.showDialog(fForms.rotateAroundForm()) 
-    
+    FreeCADGui.Control.showDialog(fForms.rotateAroundForm())
+
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","around.svg"),'MenuText':'pivotTheBeam','ToolTip':'Rotates the beam around an axis (edge or center-of-curvature)'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","around.svg"),
+	'MenuText':QT_TRANSLATE_NOOP("pivotBeam",'pivotTheBeam'),
+	'ToolTip':QT_TRANSLATE_NOOP("pivotBeam",'Rotates the beam around an axis (edge or center-of-curvature)')}
 
 class stretchBeam:
   '''
@@ -220,15 +238,17 @@ class stretchBeam:
   entities (point, edges, faces).
   * [Cancel]: exits
   * slider: extends the reference length from -100% to +100%.
-  
+
   '''
   def Activated(self):
     import fForms
     #frameFormObj=fForms.stretchForm()
     FreeCADGui.Control.showDialog(fForms.stretchForm())
-    
+
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","beamStretch.svg"),'MenuText':'stretchTheBeam','ToolTip':'Changes the length of the beam, either according a preselected edge or a direct input'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","beamStretch.svg"),
+	'MenuText':QT_TRANSLATE_NOOP("stretchBeam",'stretchTheBeam'),
+	'ToolTip':QT_TRANSLATE_NOOP("stretchBeam",'Changes the length of the beam, either according a preselected edge or a direct input')}
 
 class extend:
   '''
@@ -241,9 +261,11 @@ class extend:
     import fForms
     #frameFormObj=fForms.extendForm()
     FreeCADGui.Control.showDialog(fForms.extendForm())
-    
+
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","extend.svg"),'MenuText':'extendTheBeam','ToolTip':'Extend the beam either to a face, a vertex or the c.o.m. of the selected object'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","extend.svg"),
+	'MenuText':QT_TRANSLATE_NOOP("extend",'extendTheBeam'),
+	'ToolTip':QT_TRANSLATE_NOOP("extend",'Extend the beam either to a face, a vertex or the c.o.m. of the selected object')}
 
 class adjustFrameAngle:
   '''
@@ -254,9 +276,11 @@ class adjustFrameAngle:
     FreeCADGui.Selection.clearSelection()
     s=fObservers.adjustAngleObserver()
     FreeCADGui.Selection.addObserver(s)
-    
+
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","adjustAngle.svg"),'MenuText':'adjustFrameAngle','ToolTip':'Adjust the angle of frame by two edges'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","adjustAngle.svg"),
+	'MenuText':QT_TRANSLATE_NOOP("adjustFrameAngle",'adjustFrameAngle'),
+	'ToolTip':QT_TRANSLATE_NOOP("adjustFrameAngle",'Adjust the angle of frame by two edges')}
 
 class rotJoin:
   '''
@@ -273,7 +297,9 @@ class rotJoin:
       FreeCAD.Console.PrintError('Please select two edges of beams before\n')
 
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","rotjoin.svg"),'MenuText':'rotJoinEdge','ToolTip':'Rotates and align the beam according another edge'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","rotjoin.svg"),
+	'MenuText':QT_TRANSLATE_NOOP("rotJoin",'rotJoinEdge'),
+	'ToolTip':QT_TRANSLATE_NOOP("rotJoin",'Rotates and align the beam according another edge')}
 
 class insertPath:
   '''
@@ -289,13 +315,15 @@ class insertPath:
     FreeCAD.activeDocument().commitTransaction()
 
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","path.svg"),'MenuText':'insert Path','ToolTip':'Creates one path along selected edges'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","path.svg"),
+	'MenuText':QT_TRANSLATE_NOOP("insertPath",'insert Path'),
+	'ToolTip':QT_TRANSLATE_NOOP("insertPath",'Creates one path along selected edges')}
 
 # class FrameLineManager:
   # '''
   # Dialog to create and change properties of objects FrameLine
   # providing the following features:
-  # * a list of beams' profiles previously included in the model 
+  # * a list of beams' profiles previously included in the model
   # by "insertSection" dialog;
   # * a combo-box to select the active FrameLine among those already
   # created or <new> to create a new one;
@@ -314,16 +342,16 @@ class insertPath:
   # * [Get Path] button: assigns the Dwire selected to the attribute Path
   # of the FrameLine object.
   # * [Get Profile] button: changes the Profile attribute of the FrameLine
-  # object to the one of the beam selected in the viewport or the one 
+  # object to the one of the beam selected in the viewport or the one
   # selected in the list.
   # * "Copy profile" checkbox: if checked generates a new profile object
   # for each beam in order to avoid multiple references in the model.
   # * "Move to origin" checkbox: if checked, moves the center-of-mass
   # of the profile to the origin of coordinates system: that makes the
   # centerline of the beam coincide with the c.o.m. of the profile.
-  
+
   # Notes: - if the name of a FrameLine object is modified, also the name
-  # of the relevant group will change automatically but not viceversa. 
+  # of the relevant group will change automatically but not viceversa.
   # '''
   # def Activated(self):
     # if FreeCAD.ActiveDocument:
@@ -343,7 +371,9 @@ class FrameBranchManager:
       FreeCADGui.Control.showDialog(fFeatures.frameBranchForm())
 
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","framebranch.svg"),'MenuText':'FrameBranch Manager','ToolTip':'Open FrameBranch Manager'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","framebranch.svg"),
+	'MenuText':QT_TRANSLATE_NOOP("FrameBranchManager",'FrameBranch Manager'),
+	'ToolTip':QT_TRANSLATE_NOOP("FrameBranchManager",'Open FrameBranch Manager')}
 
 class insertSection:
   '''
@@ -355,12 +385,14 @@ class insertSection:
       FreeCADGui.Control.showDialog(fForms.profEdit())
 
   def GetResources(self):
-    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","sect.svg"),'MenuText':'Insert sections','ToolTip':'Creates customized beam profiles 2D'}
+    return{'Pixmap':os.path.join(os.path.dirname(os.path.abspath(__file__)),"iconz","sect.svg"),
+	'MenuText':QT_TRANSLATE_NOOP("insertSection",'Insert sections'),
+	'ToolTip':QT_TRANSLATE_NOOP("insertSection",'Creates customized beam profiles 2D')}
 
 #---------------------------------------------------------------------------
 # Adds the commands to the FreeCAD command manager
 #---------------------------------------------------------------------------
-addCommand('frameIt',frameIt()) 
+addCommand('frameIt',frameIt())
 addCommand('spinSect',spinSect())
 addCommand('reverseBeam',reverseBeam())
 #addCommand('fillFrame',fillFrame())
