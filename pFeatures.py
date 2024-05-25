@@ -170,9 +170,9 @@ class Flange(pypeType):
     f (float): bolts holes diameter
     t (float): flange thickness
     n (int): nr. of bolts
-    trf (float): raised-face thikness - OPTIONAL -
+    trf (float): raised-face thickness - OPTIONAL -
     drf (float): raised-face diameter - OPTIONAL -
-    twn (float): welding-neck thikness - OPTIONAL -
+    twn (float): welding-neck thickness - OPTIONAL -
     dwn (float): welding-neck diameter - OPTIONAL -
     ODp (float): outside diameter of pipe for wn flanges - OPTIONAL -
   '''
@@ -252,7 +252,7 @@ class Reduct(pypeType):
       obj.thk2=thk
     else:
       obj.thk2=thk2
-    obj.addProperty("App::PropertyBool","calcH","Reduct","Make the lenght variable")
+    obj.addProperty("App::PropertyBool","calcH","Reduct","Make the length variable")
     obj.addProperty("App::PropertyLength","Height","Reduct","Length of reduct")
     if not H:
       obj.calcH=True
@@ -474,8 +474,8 @@ class Shell():
     obj.addProperty("App::PropertyLength","L","Tank","Tank's length").L=L
     obj.addProperty("App::PropertyLength","W","Tank","Tank's width").W=W
     obj.addProperty("App::PropertyLength","H","Tank","Tank's height").H=H
-    obj.addProperty("App::PropertyLength","thk1","Tank","Thikness of tank's shell").thk1=thk1
-    obj.addProperty("App::PropertyLength","thk2","Tank","Thikness of tank's top").thk2=thk2
+    obj.addProperty("App::PropertyLength","thk1","Tank","Thickness of tank's shell").thk1=thk1
+    obj.addProperty("App::PropertyLength","thk2","Tank","Thickness of tank's top").thk2=thk2
   def onChanged(self, fp, prop):
     return None
   def execute(self, fp):

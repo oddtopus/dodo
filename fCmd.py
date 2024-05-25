@@ -224,7 +224,7 @@ def beamAx(beam, vShapeRef=None):
   return beam.Placement.Rotation.multVec(vShapeRef).normalize()
 
 def getDistance(shapes=None):
-  'measure the lenght of an edge or the distance of two shapes'
+  'measure the length of an edge or the distance of two shapes'
   if not shapes:
     shapes=[y for x in FreeCADGui.Selection.getSelectionEx() for y in x.SubObjects if hasattr(y,'ShapeType')]
   if len(shapes)==1 and shapes[0].ShapeType=='Edge':
