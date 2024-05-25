@@ -413,6 +413,10 @@ class PypeLine2(pypeType):
     return None
 
 class ViewProviderPypeLine:
+  def __getstate__(self):
+    return None
+  def __setstate__(self, data):
+    return None
   def __init__(self,vobj):
     vobj.Proxy = self
   def getIcon(self):
