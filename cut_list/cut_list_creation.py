@@ -2,6 +2,7 @@ import FreeCAD
 import FreeCADGui
 
 from dataclasses import dataclass, asdict
+from typing import List
 
 from . import resultSpreadsheet
 
@@ -35,7 +36,7 @@ class Beam:
     number: int
     length: object
     lengthLeft: object
-    cuts: list[Cut]
+    cuts: List[Cut]
 
     def addCut(self,cut):
         """ Try to fit the cutted piece on the Beam and provide a status if it fits
